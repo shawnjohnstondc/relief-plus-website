@@ -4,11 +4,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.myreliefplus.com"),
   title: {
-    default: "Relief Plus | Chiropractic & Wellness Care in Lafayette, LA",
+    default:
+      "Relief Plus | Chiropractic, Physical Therapy & Regenerative Medicine",
     template: "%s | Relief Plus",
   },
   description:
-    "Relief Plus provides chiropractic care and advanced wellness services for patients in Lafayette, Carencro, and Acadiana.",
+    "Relief Plus provides chiropractic, physical therapy, and regenerative medicine for patients in Lafayette, Carencro, and Acadiana.",
   authors: [{ name: "Relief Plus" }],
   creator: "Relief Plus",
   publisher: "Relief Plus",
@@ -17,9 +18,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.myreliefplus.com",
     siteName: "Relief Plus",
-    title: "Relief Plus | Chiropractic & Wellness Care in Lafayette, LA",
+    title:
+      "Relief Plus | Chiropractic, Physical Therapy & Regenerative Medicine",
     description:
-      "Chiropractic care and advanced wellness services for Lafayette, Carencro, and the Acadiana community.",
+      "Chiropractic, physical therapy, and regenerative medicine for Lafayette, Carencro, and the Acadiana community.",
   },
   robots: {
     index: true,

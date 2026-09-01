@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const treatments = [
   {
     title: "Chiropractic Care",
@@ -30,9 +33,9 @@ const treatments = [
     href: "/shockwave-therapy",
   },
   {
-    title: "Therapeutic Injections",
+    title: "Regenerative Medicine",
     description:
-      "Clinically directed injection options used as part of an individualized musculoskeletal and recovery plan.",
+      "Clinically directed regenerative treatment options used as part of an individualized musculoskeletal recovery plan.",
     href: "/therapeutic-injections",
   },
 ];
@@ -58,7 +61,7 @@ export default function Home() {
       {/* HEADER */}
       <header className="border-b border-[#12233f]/10 bg-[#f7f5ef]/95">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <a href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b08d3b] text-lg font-semibold text-[#b08d3b]">
               R+
             </div>
@@ -71,27 +74,30 @@ export default function Home() {
                 Lafayette · Carencro
               </div>
             </div>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
-            <a className="hover:text-[#9a7428]" href="/chiropractic-adjustments-lafayette">
+            <Link
+              className="hover:text-[#9a7428]"
+              href="/chiropractic-adjustments-lafayette"
+            >
               Chiropractic
-            </a>
-            <a className="hover:text-[#9a7428]" href="#treatments">
+            </Link>
+            <Link className="hover:text-[#9a7428]" href="#treatments">
               Treatments
-            </a>
-            <a className="hover:text-[#9a7428]" href="#conditions">
+            </Link>
+            <Link className="hover:text-[#9a7428]" href="#conditions">
               Conditions
-            </a>
-            <a className="hover:text-[#9a7428]" href="/about">
+            </Link>
+            <Link className="hover:text-[#9a7428]" href="/about">
               About
-            </a>
-            <a className="hover:text-[#9a7428]" href="/blog">
+            </Link>
+            <Link className="hover:text-[#9a7428]" href="/blog">
               Resources
-            </a>
-            <a className="hover:text-[#9a7428]" href="/contact">
+            </Link>
+            <Link className="hover:text-[#9a7428]" href="/contact">
               Contact
-            </a>
+            </Link>
           </nav>
 
           <a
@@ -108,7 +114,7 @@ export default function Home() {
         <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.08fr_.92fr] lg:px-8">
           <div className="max-w-3xl">
             <p className="mb-6 text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7428]">
-              Chiropractic · Recovery · Wellness
+              Chiropractic · Physical Therapy · Regenerative Medicine
             </p>
 
             <h1 className="max-w-4xl font-serif text-5xl leading-[1.02] tracking-[-0.035em] text-[#12233f] sm:text-6xl lg:text-7xl">
@@ -120,11 +126,11 @@ export default function Home() {
             </h1>
 
             <p className="mt-8 max-w-2xl text-lg leading-8 text-[#12233f]/70">
-              Relief Plus provides chiropractic care and advanced
-              musculoskeletal treatment for patients throughout Lafayette,
-              Carencro, and Acadiana — with a focus on understanding the
-              problem, restoring function, and helping you get back to the
-              things that matter.
+              Relief Plus brings chiropractic care, physical therapy, and
+              regenerative medicine together in one integrated clinic. We
+              combine evidence-informed care with advanced treatment options
+              to help identify the source of pain, restore function, and
+              support long-term recovery.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -135,40 +141,33 @@ export default function Home() {
                 Call to Schedule
               </a>
 
-              <a
+              <Link
                 href="#treatments"
                 className="rounded-full border border-[#12233f]/20 px-7 py-4 text-center text-sm font-semibold transition hover:border-[#b08d3b] hover:text-[#9a7428]"
               >
                 Explore Our Treatments
-              </a>
+              </Link>
             </div>
 
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-7 text-sm text-[#12233f]/60">
-              <span>Chiropractic first</span>
-              <span>Individualized care</span>
+              <span>Evidence-informed care</span>
+              <span>Individualized treatment</span>
               <span>Advanced recovery options</span>
             </div>
           </div>
 
-          {/* PHOTO PLACEHOLDER */}
-          <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-[#12233f]/10 bg-[#dfe3dc] shadow-[0_35px_90px_rgba(18,35,63,0.12)]">
-              <div className="flex h-full flex-col items-center justify-center px-10 text-center">
-                <div className="mb-5 h-px w-16 bg-[#b08d3b]" />
-                <p className="font-serif text-3xl text-[#12233f]">
-                  Your clinic photography
-                </p>
-                <p className="mt-4 max-w-xs text-sm leading-6 text-[#12233f]/55">
-                  We’ll replace this with one of your professional clinic or
-                  doctor photographs.
-                </p>
-              </div>
-            </div>
+          <div className="relative min-h-[430px] overflow-hidden rounded-[2rem] lg:min-h-[560px]">
+            <Image
+              src="/relief-plus-hero-wide.webp"
+              alt="Relief Plus chiropractic, physical therapy, and regenerative medicine in Lafayette and Carencro, Louisiana"
+              fill
+              priority
+              sizes="(min-width: 1024px) 43vw, 100vw"
+              className="object-cover object-center"
+            />
 
-            <div className="absolute -bottom-8 -left-8 hidden rounded-2xl bg-[#153e35] p-6 text-white shadow-xl md:block">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-                Serving
-              </p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent px-8 pb-8 pt-24 text-white">
+              <p className="text-xs uppercase tracking-[0.25em]">Serving</p>
               <p className="mt-2 font-serif text-xl">
                 Lafayette · Carencro · Acadiana
               </p>
@@ -198,9 +197,9 @@ export default function Home() {
             </p>
 
             <p className="mt-6 text-lg leading-8 text-white/72">
-              Chiropractic remains at the center of what we do, supported by
-              additional treatment and rehabilitation options when they can
-              meaningfully contribute to your recovery.
+              Chiropractic, physical therapy, and regenerative medicine work
+              together as the three pillars of our approach, with each care
+              plan shaped around what can meaningfully support your recovery.
             </p>
           </div>
         </div>
@@ -228,7 +227,7 @@ export default function Home() {
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-[#12233f]/10 bg-[#12233f]/10 md:grid-cols-2 lg:grid-cols-3">
             {treatments.map((treatment) => (
-              <a
+              <Link
                 key={treatment.title}
                 href={treatment.href}
                 className="group bg-[#f7f5ef] p-8 transition hover:bg-white"
@@ -244,7 +243,7 @@ export default function Home() {
                 <p className="mt-8 text-sm font-semibold text-[#12233f] transition group-hover:text-[#9a7428]">
                   Learn more →
                 </p>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -268,12 +267,12 @@ export default function Home() {
               determine the most appropriate path forward.
             </p>
 
-            <a
+            <Link
               href="/conditions-we-treat"
               className="mt-8 inline-block text-sm font-semibold text-[#9a7428]"
             >
               View all conditions →
-            </a>
+            </Link>
           </div>
 
           <div className="grid gap-x-8 sm:grid-cols-2">
@@ -321,17 +320,17 @@ export default function Home() {
 
             <p className="mt-5 text-lg leading-8 text-[#12233f]/68">
               Our goal is to provide an environment where chiropractic,
-              rehabilitation, recovery, and wellness services work together
+              physical therapy, and regenerative medicine work together
               without losing the personal relationship at the center of good
               healthcare.
             </p>
 
-            <a
+            <Link
               href="/about"
               className="mt-8 inline-block rounded-full border border-[#12233f]/20 px-6 py-3 text-sm font-semibold"
             >
               About Relief Plus
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -372,8 +371,8 @@ export default function Home() {
                 Relief <span className="text-[#d5b765]">+</span>
               </div>
               <p className="mt-4 max-w-xs text-sm leading-6 text-white/55">
-                Chiropractic, recovery, and wellness care for Lafayette,
-                Carencro, and the Acadiana community.
+                Chiropractic, physical therapy, and regenerative medicine for
+                Lafayette, Carencro, and the Acadiana community.
               </p>
             </div>
 
@@ -382,10 +381,20 @@ export default function Home() {
                 Explore
               </p>
               <div className="mt-5 space-y-3 text-sm">
-                <p><a href="/chiropractic-adjustments-lafayette">Chiropractic</a></p>
-                <p><a href="/conditions-we-treat">Conditions</a></p>
-                <p><a href="/about">About</a></p>
-                <p><a href="/blog">Resources</a></p>
+                <p>
+                  <Link href="/chiropractic-adjustments-lafayette">
+                    Chiropractic
+                  </Link>
+                </p>
+                <p>
+                  <Link href="/conditions-we-treat">Conditions</Link>
+                </p>
+                <p>
+                  <Link href="/about">About</Link>
+                </p>
+                <p>
+                  <Link href="/blog">Resources</Link>
+                </p>
               </div>
             </div>
 
@@ -394,9 +403,19 @@ export default function Home() {
                 Patient Information
               </p>
               <div className="mt-5 space-y-3 text-sm">
-                <p><a href="/hipaa-notice-of-privacy-practices">HIPAA Notice of Privacy Practices</a></p>
-                <p><a href="/good-faith-estimate">Good Faith Estimate</a></p>
-                <p><a href="/privacy-policy">Privacy Policy</a></p>
+                <p>
+                  <Link href="/hipaa-notice-of-privacy-practices">
+                    HIPAA Notice of Privacy Practices
+                  </Link>
+                </p>
+                <p>
+                  <Link href="/good-faith-estimate">
+                    Good Faith Estimate
+                  </Link>
+                </p>
+                <p>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
+                </p>
               </div>
             </div>
 
@@ -410,7 +429,7 @@ export default function Home() {
                   <a href="tel:3375654200">337-565-4200</a>
                 </p>
                 <p>
-                  <a href="/contact">Contact Relief Plus</a>
+                  <Link href="/contact">Contact Relief Plus</Link>
                 </p>
               </div>
             </div>
@@ -419,12 +438,12 @@ export default function Home() {
           <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
             <p>© 2026 Relief Plus. All rights reserved.</p>
 
-            <a
+            <Link
               href="/time-card"
               className="text-white/25 transition hover:text-white/60"
             >
               Staff
-            </a>
+            </Link>
           </div>
         </div>
       </footer>
