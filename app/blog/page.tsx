@@ -32,6 +32,7 @@ const articleClusters = [
   { title: "Knee, Hip & Lower Extremity", categories: ["Knee & Lower Extremity", "Hip & Lower Extremity"] },
   { title: "Treatments & Advanced Options", categories: ["Advanced Treatment Education", "Treatment Education"] },
   { title: "Injury, Work & Recovery", categories: ["Injury & Recovery", "Work & Function"] },
+  { title: "Physical Therapy & Rehabilitation", categories: ["Rehabilitation & Function"] },
 ].map((cluster) => ({ ...cluster, posts: blogPosts.filter((post) => cluster.categories.includes(post.category)) }));
 
 export default function BlogPage() {
