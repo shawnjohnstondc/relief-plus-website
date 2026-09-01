@@ -9,8 +9,8 @@ const description = "Explore musculoskeletal conditions evaluated at Relief Plus
 export const metadata = createPageMetadata({ title: "Conditions We Treat in Lafayette, LA", description, path });
 
 const groups = [
-  { title: "Spine, nerve, and headache concerns", items: [["Back Pain", "/back-pain-lafayette"], ["Neck Pain", "/neck-pain-lafayette"], ["Sciatica", "/sciatica-treatment-lafayette"], ["Herniated Disc", "/herniated-disc-lafayette"], ["Pinched Nerve", "/pinched-nerve-lafayette"], ["Headaches", "/headache-treatment-lafayette"]] },
-  { title: "Joint and soft-tissue concerns", items: [["Shoulder Pain", "/shoulder-pain-lafayette"], ["Knee Pain", "/knee-pain-lafayette"], ["Hip Pain", "/hip-pain-lafayette"], ["Plantar Fasciitis", "/plantar-fasciitis-lafayette"], ["Tendonitis", "/tendonitis-treatment-lafayette"]] },
+  { title: "Spine, nerve, and headache concerns", items: [["Back Pain", "/back-pain-lafayette"], ["Neck Pain", "/neck-pain-lafayette"], ["Sciatica", "/sciatica-treatment-lafayette"], ["Herniated Disc", "/herniated-disc-lafayette"], ["Pinched Nerve", "/pinched-nerve-lafayette"], ["SI Joint Pain", "/si-joint-pain-lafayette"], ["Headaches", "/headache-treatment-lafayette"], ["TMJ / Jaw Pain", "/tmj-treatment-lafayette"]] },
+  { title: "Joint and soft-tissue concerns", items: [["Shoulder Pain", "/shoulder-pain-lafayette"], ["Rotator Cuff Pain", "/rotator-cuff-pain-lafayette"], ["Frozen Shoulder", "/frozen-shoulder-lafayette"], ["Knee Pain", "/knee-pain-lafayette"], ["Knee Osteoarthritis", "/knee-osteoarthritis-lafayette"], ["Hip Pain", "/hip-pain-lafayette"], ["Hip Bursitis / GTPS", "/hip-bursitis-lafayette"], ["Tennis Elbow", "/tennis-elbow-lafayette"], ["Achilles Tendinopathy", "/achilles-tendinopathy-lafayette"], ["Plantar Fasciitis", "/plantar-fasciitis-lafayette"], ["Tendonitis", "/tendonitis-treatment-lafayette"]] },
   { title: "Injury-related concerns", items: [["Car Accident Injuries", "/car-accident-injuries-lafayette"], ["Work Injuries", "/work-injury-lafayette"]] },
 ] as const;
 

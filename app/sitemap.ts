@@ -20,6 +20,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sciatica-treatment-lafayette", priority: 0.8 },
     { path: "/herniated-disc-lafayette", priority: 0.8 },
     { path: "/pinched-nerve-lafayette", priority: 0.8 },
+    { path: "/knee-osteoarthritis-lafayette", priority: 0.8 },
+    { path: "/rotator-cuff-pain-lafayette", priority: 0.8 },
+    { path: "/tmj-treatment-lafayette", priority: 0.8 },
+    { path: "/frozen-shoulder-lafayette", priority: 0.8 },
+    { path: "/hip-bursitis-lafayette", priority: 0.8 },
+    { path: "/tennis-elbow-lafayette", priority: 0.8 },
+    { path: "/achilles-tendinopathy-lafayette", priority: 0.8 },
+    { path: "/si-joint-pain-lafayette", priority: 0.8 },
   ] as const;
 
   return routes.map(({ path, priority }) => ({
