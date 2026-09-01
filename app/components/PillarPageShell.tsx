@@ -305,8 +305,8 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       {data.pageSources && (
         <section className="border-t border-[#12233f]/10 px-6 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">Selected Clinical Sources</p>
-            <h2 className="mt-4 font-serif text-3xl">Evidence used to inform this patient guide.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">{data.sourcesEyebrow ?? "Selected Clinical Sources"}</p>
+            <h2 className="mt-4 font-serif text-3xl">{data.sourcesTitle ?? "Evidence used to inform this patient guide."}</h2>
             <ul className="mt-8 grid gap-4 md:grid-cols-2">
               {data.pageSources.map((source) => (
                 <li key={source.href} className="rounded-2xl border border-[#12233f]/10 bg-white/50 p-5">

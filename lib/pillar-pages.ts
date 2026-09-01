@@ -48,6 +48,8 @@ export type PillarPageData = {
   ctaDescription: string;
   educationSections?: EducationSection[];
   pageSources?: Array<{ label: string; href: string; note: string }>;
+  sourcesEyebrow?: string;
+  sourcesTitle?: string;
 };
 
 export const chiropracticPage: PillarPageData = {
@@ -245,21 +247,21 @@ export const regenerativePage: PillarPageData = {
   path: "/regenerative-cellular-therapy-lafayette",
   breadcrumbLabel: "Regenerative Cellular Therapy",
   eyebrow: "Regenerative Medicine in Lafayette, Louisiana",
-  h1: "Regenerative medicine considered with care and context.",
+  h1: "Regenerative medicine explored with scientific interest, transparency, and care.",
   seoTitle: "Regenerative Cellular Therapy in Lafayette, LA",
   seoDescription:
     "Regenerative cellular therapy in Lafayette, LA at Relief Plus, with advanced options considered through examination, goals, and clinical appropriateness.",
   heroDescription:
-    "Regenerative medicine is the advanced-treatment pillar at Relief Plus. Options are considered individually, based on the condition being evaluated, prior care, patient goals, and whether a particular approach is clinically appropriate.",
+    "Regenerative medicine is the advanced-treatment pillar at Relief Plus, bringing thoughtful clinical evaluation to a rapidly evolving area of musculoskeletal care. Each conversation connects scientific interest with the patient’s condition, goals, and the exact option being considered.",
   heroPoints: [
-    "Clinical evaluation before discussing treatment options",
-    "Careful candidate selection rather than a universal approach",
-    "Integration with movement and rehabilitation when appropriate",
+    "Advanced options evaluated for a defined musculoskeletal need",
+    "Evidence and product details translated into a clear patient discussion",
+    "Treatment coordinated with movement and rehabilitation when appropriate",
   ],
-  overviewTitle: "Advanced options should support a clear clinical plan.",
+  overviewTitle: "Advanced options can add value when the science, product, and patient align.",
   overviewParagraphs: [
-    "Regenerative medicine refers to a group of advanced treatment options considered for selected musculoskeletal concerns. It is not a single treatment, and no option is appropriate for every diagnosis or every patient.",
-    "At Relief Plus, the conversation begins with an examination, the nature and duration of the problem, prior treatment, functional goals, and the alternatives available. Recommendations should reflect that full context rather than a promise of a particular outcome.",
+    "Regenerative medicine refers to a group of advanced treatment options being explored for selected musculoskeletal concerns. The field’s scientific momentum makes it an important conversation for some patients, while its breadth makes product-specific evidence essential.",
+    "At Relief Plus, the conversation begins with an examination, the nature and duration of the problem, prior treatment, functional goals, and the alternatives available. That context helps identify when an advanced option may have a defensible role in a broader recovery plan.",
   ],
   serviceTitle: "How regenerative options are considered.",
   serviceSteps: [
@@ -276,7 +278,7 @@ export const regenerativePage: PillarPageData = {
       description: "When appropriate, an advanced option may be coordinated with rehabilitation, activity guidance, or another part of the broader care plan.",
     },
   ],
-  whoTitle: "Not every patient is a candidate.",
+  whoTitle: "The best advanced-care decisions start with thoughtful candidacy.",
   whoDescription:
     "A regenerative consultation does not assume that treatment will be recommended. Candidacy depends on examination findings, the condition, health considerations, goals, and reasonable alternatives.",
   considerations: [

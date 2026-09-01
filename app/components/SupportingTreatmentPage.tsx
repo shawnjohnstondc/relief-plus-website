@@ -2,7 +2,7 @@ import JsonLd from "./JsonLd";
 import PillarPageShell from "./PillarPageShell";
 import type { PillarPageData } from "@/lib/pillar-pages";
 import { createServiceStructuredData } from "@/lib/seo";
-import { treatmentEducation } from "@/lib/treatment-education";
+import { treatmentEducation, treatmentResearch } from "@/lib/treatment-education";
 
 export default function SupportingTreatmentPage({
   data,
@@ -18,7 +18,15 @@ export default function SupportingTreatmentPage({
           path: data.path,
         })}
       />
-      <PillarPageShell data={{ ...data, educationSections: treatmentEducation[data.path] }} />
+      <PillarPageShell
+        data={{
+          ...data,
+          educationSections: treatmentEducation[data.path],
+          pageSources: treatmentResearch[data.path],
+          sourcesEyebrow: "Selected Research",
+          sourcesTitle: "Research informing this treatment guide.",
+        }}
+      />
     </>
   );
 }

@@ -1,314 +1,86 @@
 import type { EducationSection, PillarPageData } from "./pillar-pages";
 
+type ResearchSource = { label: string; href: string; note: string };
+
 const dryNeedling: EducationSection[] = [
-  {
-    eyebrow: "What Treatment Actually Involves",
-    title: "A precise needle technique—not an injection.",
-    paragraphs: [
-      "Dry needling uses a thin, solid filament needle. No medication is delivered. After an assessment, a trained clinician selects muscular areas that may be contributing to a familiar pain pattern or movement restriction rather than simply needling wherever it hurts.",
-      "A needle may produce pressure, an ache, a brief cramp-like sensation, or a local twitch response—an involuntary muscle contraction. A twitch response can occur, but it is not required to prove that treatment was successful. The number of sites and technique should reflect the patient’s presentation and tolerance.",
-      "Dry needling is not acupuncture. Both use thin needles, but dry needling is applied within a musculoskeletal examination and treatment framework; acupuncture comes from a distinct system of practice, training, and clinical reasoning.",
-    ],
-    items: [
-      { title: "Commonly discussed areas", description: "Neck and shoulder muscles, lower back and hip muscles, calf, foot, and other regions may be considered when examination findings support it." },
-      { title: "What happens afterward", description: "Temporary soreness, bruising, fatigue, or a short-lived increase in familiar symptoms can occur. Activity advice depends on the area and response." },
-    ],
-  },
-  {
-    eyebrow: "Safety and Clinical Fit",
-    title: "Why screening and anatomy matter.",
-    paragraphs: [
-      "Needle aversion, pregnancy, medications or conditions affecting bleeding, infection, compromised skin, altered sensation, immune concerns, and the anatomy of the proposed area can affect whether or how dry needling is used. Patients should share relevant medical history and medications before treatment.",
-      "Minor events such as soreness, small amounts of bleeding, or bruising are more common than serious complications. Rare but important complications can occur, particularly when needling near the chest or other sensitive anatomy, which is why practitioner training, informed consent, and appropriate technique matter.",
-    ],
-    items: [
-      { title: "When another option may fit", description: "If symptoms suggest a problem not primarily driven by muscle, or needling is not safe or acceptable, exercise, hands-on care, medical evaluation, or another modality may make more sense." },
-      { title: "Realistic expectations", description: "Evidence varies by condition and comparison treatment. Dry needling is best viewed as a possible adjunct, not a stand-alone correction or proof of the diagnosis." },
-    ],
-    sources: [
-      { label: "APTA dry needling competencies", href: "https://www.apta.org/contentassets/524be3943be0425c96b09f02165a1d4c/analysiscompetenciesfordryneedlingbypt.pdf" },
-      { label: "Systematic review of adverse events", href: "https://pubmed.ncbi.nlm.nih.gov/42096510/" },
-    ],
-  },
-  {
-    eyebrow: "A Larger Recovery Plan",
-    title: "Symptom change is useful only if function can move forward.",
-    paragraphs: [
-      "Dry needling may create a window in which movement feels more tolerable, but it does not build strength, change workload, or restore capacity by itself. Mobility work, progressive exercise, physical therapy, chiropractic care, sleep and activity considerations, or changes in training demands may still be relevant.",
-    ],
-    items: [
-      { title: "Does soreness mean it worked?", description: "No. Soreness is a possible post-treatment response, not a measure of effectiveness." },
-      { title: "Must the muscle twitch?", description: "No. A local twitch can occur, but its absence does not automatically make a session unsuccessful." },
-      { title: "How many sessions are needed?", description: "There is no universal schedule. Continued use should depend on diagnosis, response, goals, and whether function is progressing." },
-      { title: "Can it accompany PT or chiropractic?", description: "Yes, when it supports—not replaces—the movement, strength, joint, or activity goals in the plan." },
-    ],
-  },
+  { eyebrow: "Why This Treatment Gets Our Attention", title: "A focused way to reduce muscular sensitivity and make movement easier.", paragraphs: ["Dry needling gives the clinician direct access to selected muscular and trigger-point presentations using a thin, solid filament needle, without injecting medication. For the right patient, a short-term reduction in pain or guarding can make it easier to turn, reach, walk, train, or begin the exercise that builds lasting capacity.", "A 2023 umbrella review found short-term pain reduction across body regions and reported that dry needling can add value when combined with physical-therapy interventions. Functional findings were more variable, so Relief Plus connects symptom change to a meaningful movement goal rather than treating soreness as success.", "That makes dry needling especially useful as a bridge: creating a more comfortable window for mobility work, physical therapy, chiropractic care, or progressive loading."], items: [{ title: "Direct and targeted", description: "Muscular findings should reproduce the patient’s familiar pattern." }, { title: "Useful before active care", description: "Reduced sensitivity may improve tolerance for exercise and movement progression." }, { title: "No injected medication", description: "The technique is distinct from trigger-point injection." }, { title: "Diagnosis still leads", description: "A muscle can contribute to pain without being the whole condition." }] },
+  { eyebrow: "What Treatment Feels Like", title: "Brief, precise input followed by a useful movement reassessment.", paragraphs: ["After evaluation, the clinician selects location, depth, and technique. Patients may feel pressure, an ache, a brief cramp-like sensation, or a local twitch response—an involuntary contraction that sometimes occurs when the needle reaches a responsive area.", "A twitch is not required and does not prove the session worked. The more useful question is whether familiar pain, motion, or task tolerance changes and helps rehabilitation move forward. Dry needling and acupuncture both use thin needles but are distinct practices; here it is used in a musculoskeletal framework.", "Temporary soreness, bruising, fatigue, or a short-lived increase in familiar symptoms can occur. Screening considers anatomy, pregnancy, infection, skin condition, sensation, needle tolerance, and bleeding risk. Serious complications are uncommon but possible, which is why training and appropriate technique matter."], items: [{ title: "How many sessions?", description: "There is no universal number; continued use depends on response and function." }, { title: "Does soreness mean it worked?", description: "No. Soreness is a possible response, not the goal." }, { title: "What comes next?", description: "Movement, strengthening, or joint care may help turn symptom relief into durable progress." }] },
 ];
 
 const laser: EducationSection[] = [
-  {
-    eyebrow: "Understanding Photobiomodulation",
-    title: "The treatment is light-based, but the dose is not generic.",
-    paragraphs: [
-      "Class IV describes a device safety classification associated with higher-power lasers. In musculoskeletal care, the term photobiomodulation describes applying selected wavelengths of light to a defined area. The proposed cellular mechanisms are studied as possible explanations for clinical effects; they do not guarantee pain relief, inflammation reduction, or tissue healing.",
-      "Wavelength, power, total energy, treatment time, surface area, tissue depth, technique, and diagnosis all influence the delivered dose. Two sessions called “laser therapy” may therefore represent meaningfully different protocols.",
-      "Patients typically wear protective eyewear while an applicator is moved over or held near the treatment area. Warmth may be felt with some settings, but treatment should not be presented as a test of pain tolerance.",
-    ],
-  },
-  {
-    eyebrow: "Evidence and Limitations",
-    title: "Results depend on the condition and protocol studied.",
-    paragraphs: [
-      "Photobiomodulation has been studied for several musculoskeletal conditions, including some knee, shoulder, tendon, plantar-fascia, neck, and back presentations. Findings are not interchangeable across diagnoses, devices, or dosing schedules.",
-      "Some reviews report short-term improvements for selected outcomes, while also identifying heterogeneous protocols, limited follow-up, risk of bias, or low certainty. That supports a measured adjunctive role rather than a claim that laser predictably repairs tissue or replaces active care.",
-    ],
-    items: [
-      { title: "Why diagnosis matters", description: "A painful area may reflect different tissues and contributing factors. Laser parameters and whether the modality makes sense depend on that context." },
-      { title: "Why reassessment matters", description: "Ongoing treatment should be tied to meaningful symptom or functional change—not continued simply because the device is available." },
-    ],
-    sources: [
-      { label: "Review of orthopedic pain studies", href: "https://pubmed.ncbi.nlm.nih.gov/41789279/" },
-      { label: "Knee osteoarthritis review", href: "https://pubmed.ncbi.nlm.nih.gov/38775202/" },
-    ],
-  },
-  {
-    eyebrow: "Precautions and Alternatives",
-    title: "Eye protection is mandatory, and screening comes first.",
-    paragraphs: [
-      "Direct eye exposure must be avoided and wavelength-appropriate protective eyewear is required. The clinician should screen the proposed area and relevant medical circumstances, including pregnancy, suspected malignancy, active bleeding, impaired sensation, photosensitivity, photosensitizing medications, and other device- or protocol-specific precautions.",
-      "Laser does not replace progressive loading, exercise, activity modification, hands-on care, medication discussions, imaging when indicated, or referral. The better choice depends on the diagnosis and patient goals.",
-    ],
-    items: [
-      { title: "What might I feel?", description: "Often little sensation or mild warmth. The expected experience depends on the device, settings, area, and technique." },
-      { title: "Can I return to activity?", description: "Laser alone usually does not determine activity restrictions; the underlying condition and broader plan do." },
-      { title: "Is more power always better?", description: "No. Appropriate dosing matters more than assuming a higher setting produces a better clinical result." },
-      { title: "Can it complement rehabilitation?", description: "It may, when used to support a plan that still addresses mobility, strength, tolerance, and function." },
-    ],
-  },
+  { eyebrow: "Why Patients Like This Option", title: "Non-invasive, comfortable care with a growing musculoskeletal evidence base.", paragraphs: ["Class IV laser therapy is a high-intensity light-based treatment within the broader field of photobiomodulation. It is non-invasive, typically requires no downtime, and commonly produces little sensation or comfortable warmth while an applicator moves over a defined area.", "A 2023 meta-analysis of 44 randomized trials reported improvements in pain and function across selected musculoskeletal disorders, with outcomes varying by diagnosis and comparison treatment. Knee and shoulder conditions showed notable functional findings. Reviews of knee osteoarthritis also report promising pain results, including when laser is paired with exercise.", "Laser can be especially appealing when pain makes active care difficult. A useful response may help the patient participate more comfortably in strengthening, mobility, and movement progression while rehabilitation addresses capacity."], items: [{ title: "Non-invasive", description: "No needle or injection is required." }, { title: "Comfortable", description: "Patients often feel little sensation or mild warmth." }, { title: "Supports active care", description: "Research includes positive findings when laser is paired with exercise." }, { title: "Studied across conditions", description: "Knee, shoulder, back, tendon, and other presentations have been investigated." }] },
+  { eyebrow: "Dose and Clinical Fit", title: "Good laser care is more specific than switching on a device.", paragraphs: ["Wavelength, power, total energy, treatment time, surface area, tissue depth, pulsing, and technique determine the delivered dose. Two sessions called laser therapy may therefore be meaningfully different. Relief Plus connects parameters to the diagnosis, target, and intended outcome, then reassesses meaningful change.", "Photobiomodulation mechanisms explain scientific interest but do not guarantee tissue repair or complete inflammation elimination. We often get the most value when laser supports the movement, strengthening, or rehabilitation the patient needs.", "Wavelength-appropriate eye protection is mandatory. Screening also considers impaired sensation, active bleeding, photosensitivity or photosensitizing medication, suspected malignancy, pregnancy, and treatment-area factors. Appropriate dosage—not simply more power—is the priority."], items: [{ title: "How is progress judged?", description: "By symptom and functional change over a planned reassessment window." }, { title: "Can I stay active?", description: "Activity guidance comes from the underlying condition." }, { title: "Is it stand-alone?", description: "It may be, but often creates more value alongside active care." }] },
 ];
 
 const shockwave: EducationSection[] = [
-  {
-    eyebrow: "How Acoustic-Wave Care Works",
-    title: "A mechanical stimulus delivered from outside the body.",
-    paragraphs: [
-      "Shockwave therapy applies repeated acoustic pressure waves through a handheld applicator over a selected area. Treatment commonly feels like rapid tapping or pulsing; intensity may be adjusted based on the protocol and tolerance.",
-      "Focused and radial systems generate and distribute acoustic energy differently. Because the equipment used by Relief Plus has not been documented in the project, this page does not claim which technology, depth, or energy profile the clinic provides. Patients can ask which device is proposed and why.",
-      "Temporary tenderness, redness, swelling, bruising, or soreness during and after treatment can occur. Recommendations about activity afterward should reflect the treated condition and loading plan.",
-    ],
-  },
-  {
-    eyebrow: "Where Evidence Is Most Relevant",
-    title: "Persistent tendon and plantar-fascia problems require diagnosis and loading context.",
-    paragraphs: [
-      "Shockwave is commonly studied for persistent plantar fasciopathy and selected tendinopathies. Evidence and protocols vary by body region, symptom duration, device type, dose, comparator, and outcome measured.",
-      "It should not be described as breaking up scar tissue or guaranteeing new tissue growth. A reasonable discussion asks whether the diagnosis matches the populations studied and whether progressive loading, footwear changes, strength work, or other contributors are being addressed.",
-    ],
-    items: [
-      { title: "Potential clinical fit", description: "A persistent, well-evaluated tendon or plantar-fascia presentation that has not progressed as expected with an appropriate plan." },
-      { title: "A different path", description: "A new injury, suspected tear, nerve symptoms, bone stress concern, inflammatory condition, or uncertain diagnosis may call for different evaluation or management." },
-    ],
-    sources: [
-      { label: "Plantar fasciopathy efficacy review", href: "https://pubmed.ncbi.nlm.nih.gov/39257331/" },
-      { label: "Plantar fasciitis safety review", href: "https://pubmed.ncbi.nlm.nih.gov/28890412/" },
-    ],
-  },
-  {
-    eyebrow: "Safety and Recovery",
-    title: "The treatment area and health history shape precautions.",
-    paragraphs: [
-      "Screening should consider the proposed treatment location and factors such as pregnancy, active infection, tumor in the area, bleeding disorders or anticoagulant use, impaired sensation, open growth plates, recent corticosteroid exposure, and nearby lung, nerve, vessel, or other vulnerable anatomy. Device-specific guidance also matters.",
-    ],
-    items: [
-      { title: "Does it hurt?", description: "It can be uncomfortable. Sensation varies with location, settings, irritability, and individual tolerance." },
-      { title: "Is soreness expected?", description: "Temporary soreness or bruising can occur; severe or unexpected symptoms should be reported." },
-      { title: "Does it replace exercise?", description: "Usually not. Tendon and soft-tissue capacity often still requires appropriate loading and progression." },
-      { title: "How is response judged?", description: "By meaningful changes in symptoms, function, and load tolerance over an appropriate time—not sensation during the session." },
-    ],
-  },
+  { eyebrow: "Where Shockwave Stands Out", title: "A compelling non-invasive option for selected persistent tendon and plantar-fascia problems.", paragraphs: ["Shockwave therapy applies repeated acoustic pressure waves through a handheld applicator. It has become an important non-surgical option for persistent plantar heel pain and selected tendinopathies—especially when diagnosis-specific exercise and simpler strategies have not produced enough progress.", "Recent systematic reviews report pain and functional improvement in selected plantar-fascia populations. A 2024 meta-analysis found better three-month pain and foot-function outcomes than corticosteroid injection. Reviews across tendinopathies also report benefit in some Achilles and lateral-elbow populations, although results and certainty vary by region.", "Chronic tendon problems can require more than rest because rest may calm symptoms without restoring load capacity. Shockwave can add a useful stimulus while progressive loading rebuilds what the tendon or plantar fascia needs to do."], items: [{ title: "Persistent plantar heel pain", description: "One of the most studied applications." }, { title: "Selected tendinopathies", description: "May fit Achilles, lateral elbow, gluteal, or other tendon presentations." }, { title: "Non-invasive", description: "Acoustic energy is delivered without injection or incision." }, { title: "Pairs with loading", description: "Strength and progressive exposure still restore capacity." }] },
+  { eyebrow: "The Patient Experience", title: "Focused acoustic-wave sessions with adjustable intensity and a clear loading plan.", paragraphs: ["Treatment often feels like rapid tapping or pulsing. Intensity can be adjusted to the protocol and tolerance. Temporary tenderness, redness, bruising, or soreness can occur, while response may develop across and after a treatment series rather than during the first session.", "Focused and radial systems distribute energy differently. The equipment used by Relief Plus is not documented in the project, so patients should ask which technology is proposed, why it fits the target, and how response will be measured.", "The best results start with a confirmed diagnosis and a plan addressing strength, footwear or work demand, training load, and other contributors. A new injury, suspected tear or fracture, nerve symptoms, infection, open wound, active tumor, bleeding risk, pregnancy, or vulnerable nearby anatomy may require a different approach."], items: [{ title: "Does it replace exercise?", description: "Usually not for tendon and plantar-fascia conditions." }, { title: "Is it scar-tissue removal?", description: "No. It is not described as breaking scar tissue or guaranteeing tissue growth." }, { title: "What if it is uncomfortable?", description: "Intensity and technique can be adjusted within the intended protocol." }] },
 ];
 
 const prp: EducationSection[] = [
-  {
-    eyebrow: "From Blood Draw to Targeted Procedure",
-    title: "PRP is prepared from the patient’s own blood.",
-    paragraphs: [
-      "A blood sample is collected and processed to concentrate a plasma fraction containing platelets. Platelets contain signaling proteins often discussed as growth factors, but that biological concept does not mean a procedure predictably regrows cartilage, heals a tendon, or reverses arthritis.",
-      "PRP preparations differ. Platelet concentration, white- and red-cell content, processing system, activation, injection volume, target, and number of procedures vary across practices and studies. Those differences are one reason evidence from one protocol cannot automatically be applied to another.",
-      "The procedure generally includes a blood draw, preparation period, cleaning the treatment area, and a targeted injection. The specific guidance method, anesthetic approach, and protocol used by Relief Plus should be confirmed with the clinic rather than inferred here.",
-    ],
-  },
-  {
-    eyebrow: "Diagnosis-Specific Evidence",
-    title: "PRP is not one answer for every joint or tendon problem.",
-    paragraphs: [
-      "PRP has been studied in knee osteoarthritis and several tendon conditions, but findings vary substantially by diagnosis and protocol. Evidence suggesting benefit in one condition does not establish benefit for a different joint, tendon, tear, or stage of disease.",
-      "For example, some analyses report improvements for certain knee osteoarthritis outcomes, while a recent review of Achilles tendinopathy found no significant advantage over controls. A candidacy discussion should identify the exact diagnosis, evidence relevant to it, and reasonable alternatives.",
-    ],
-    items: [
-      { title: "A reasonable candidate discussion", description: "Considers a defined diagnosis, symptom duration, prior evidence-based care, health factors, goals, and whether the expected tradeoffs are acceptable." },
-      { title: "When another option may fit", description: "Rehabilitation, load modification, medication discussion, another injection, surgical opinion, or further diagnostic evaluation may be more appropriate." },
-    ],
-    sources: [
-      { label: "Knee injection network meta-analysis", href: "https://pubmed.ncbi.nlm.nih.gov/38331363/" },
-      { label: "Achilles tendinopathy review", href: "https://pubmed.ncbi.nlm.nih.gov/39611122/" },
-    ],
-  },
-  {
-    eyebrow: "Before and After PRP",
-    title: "Plan for a procedure—not instant proof of success.",
-    paragraphs: [
-      "Temporary pain, stiffness, swelling, bruising, or soreness can follow an injection. Other risks include bleeding, infection, injury to nearby structures, and lack of meaningful improvement. Individual medication and supplement guidance must come from the treating clinician; patients should not stop prescribed medication based on website content.",
-      "Aftercare and rehabilitation timing depend on the target and procedure. A staged return to loading may be part of the plan, but PRP does not eliminate the need to restore strength, mobility, or activity tolerance when those deficits are present.",
-    ],
-    items: [
-      { title: "How soon will I know?", description: "Response is not immediate or guaranteed. The expected reassessment window should be explained for the diagnosis and protocol." },
-      { title: "How many injections?", description: "There is no universal number; protocols differ and should be justified rather than assumed." },
-      { title: "Is PRP FDA-approved for my diagnosis?", description: "Patients should distinguish regulatory status of preparation devices from approval of a PRP product or orthopedic therapeutic claim." },
-      { title: "What should I ask?", description: "Ask about the preparation system, target, evidence for the exact diagnosis, risks, alternatives, cost, follow-up, and rehabilitation plan." },
-    ],
-  },
+  { eyebrow: "Why PRP Is So Interesting", title: "A patient’s own blood becomes a concentrated, targeted biologic option.", paragraphs: ["Platelet-rich plasma begins with a small sample of the patient’s own blood. Processing separates a plasma fraction with a higher platelet concentration. Platelets contain signaling molecules involved in normal tissue response, making PRP one of the most actively studied biologic options in musculoskeletal care.", "The strongest clinical story is diagnosis-specific. In knee osteoarthritis, recent meta-analyses report improvements in pain and function compared with placebo and some other injections. A 2024 network meta-analysis of randomized trials found PRP significantly improved knee-OA pain and function versus placebo at six months or longer.", "For an appropriately selected patient, PRP offers a compelling option to discuss alongside rehabilitation, medication, other injections, and surgical consultation. Clinical improvement does not establish cartilage regeneration or guaranteed structural repair."], items: [{ title: "Autologous", description: "PRP is prepared from the patient’s own blood." }, { title: "Research momentum", description: "Knee osteoarthritis has a substantial randomized-trial literature." }, { title: "Targeted", description: "The exact diagnosis determines whether evidence applies." }, { title: "Works with rehabilitation", description: "Strength, mobility, and loading may still shape function." }] },
+  { eyebrow: "Preparation, Candidacy, and Recovery", title: "PRP is a category of preparations—not one identical product.", paragraphs: ["Platelet concentration, white- and red-cell content, processing system, activation, volume, target, guidance, and number of procedures vary. Patients should ask which protocol Relief Plus uses, what evidence supports the exact diagnosis, and how aftercare will be coordinated.", "The best discussion considers diagnosis, duration, prior evidence-based care, health factors, goals, alternatives, cost, and procedure tradeoffs. Results are less consistent for some tendon diagnoses than for knee osteoarthritis, so evidence from one region should not be generalized.", "Temporary pain, stiffness, swelling, bruising, or soreness can follow injection; less common risks include bleeding, infection, and nearby-structure injury. Medication instructions must come from the clinician. Response is not immediate or guaranteed, and a staged return to loading may remain important."], items: [{ title: "How many procedures?", description: "There is no universal number; the protocol should be justified." }, { title: "What should I ask?", description: "Ask about preparation, target, evidence, risks, alternatives, cost, and rehabilitation." }, { title: "Does PRP regrow cartilage?", description: "Relief Plus does not make that claim." }] },
 ];
 
 const ozone: EducationSection[] = [
-  {
-    eyebrow: "What the Procedure Means",
-    title: "Medical ozone therapy uses a clinician-prepared oxygen–ozone mixture.",
-    paragraphs: [
-      "For musculoskeletal use, a controlled oxygen–ozone gas mixture may be administered to a selected area by a qualified clinician. The route, concentration, volume, target, equipment, and safety procedures matter. This page intentionally does not provide preparation or do-it-yourself instructions.",
-      "Proposed biological mechanisms are still being studied and should not be translated into promises of tissue repair, reliable inflammation reduction, or cure. Relief Plus positions ozone as an advanced option that requires diagnosis-specific discussion, not as a treatment for unrelated systemic disease.",
-    ],
-  },
-  {
-    eyebrow: "A Developing Evidence Base",
-    title: "Short-term findings do not settle long-term value.",
-    paragraphs: [
-      "Oxygen–ozone injections have been studied in knee osteoarthritis and some spine, shoulder, and other musculoskeletal contexts. Reviews describe variable protocols and comparators, and the overall certainty is limited by study quality and heterogeneity.",
-      "Some studies report short-term symptom improvement, while comparisons with other injections and longer follow-up are inconsistent. This makes careful patient selection, transparent uncertainty, and planned reassessment more appropriate than broad claims.",
-    ],
-    items: [
-      { title: "Why the target matters", description: "Evidence for one joint or procedure route cannot be assumed to apply to another muscle, tendon, disc, or pain condition." },
-      { title: "Why alternatives matter", description: "Exercise-based rehabilitation, activity modification, medication discussions, other injections, or specialist input may have different evidence and tradeoffs." },
-    ],
-    sources: [
-      { label: "Knee osteoarthritis umbrella review", href: "https://pubmed.ncbi.nlm.nih.gov/38444768/" },
-      { label: "Ozone versus corticosteroid review", href: "https://pubmed.ncbi.nlm.nih.gov/38277280/" },
-    ],
-  },
-  {
-    eyebrow: "Risks, Screening, and Follow-Up",
-    title: "Injection safety and ozone-specific handling both matter.",
-    paragraphs: [
-      "Potential concerns include temporary pain or swelling, bruising, bleeding, infection, vasovagal symptoms, reaction in the treated area, injury to nearby structures, and no meaningful improvement. Ozone must not be inhaled, and administration route is a critical safety issue.",
-      "Pregnancy, infection, bleeding risk, medication use, allergies or sensitivities, significant medical conditions, and the proposed anatomical target should be reviewed by the treating clinician. This is not a complete contraindication list.",
-    ],
-    items: [
-      { title: "What might treatment feel like?", description: "Pressure, brief discomfort, or post-procedure soreness may occur; the experience depends on the site and technique." },
-      { title: "What happens afterward?", description: "Instructions should cover expected symptoms, activity, warning signs, and when response will be reassessed." },
-      { title: "Is it a universal solution?", description: "No. Clinical suitability and evidence differ by diagnosis, patient, and procedure." },
-      { title: "Can rehabilitation still matter?", description: "Yes. An injection does not by itself restore strength, movement, or tolerance for daily and athletic demands." },
-    ],
-  },
+  { eyebrow: "Why Ozone Has Generated Interest", title: "A distinctive advanced option with encouraging short-term musculoskeletal research.", paragraphs: ["Medical ozone therapy uses a clinician-prepared oxygen–ozone mixture delivered through a diagnosis-specific procedure. Its potential effects have generated scientific and clinical interest, particularly for knee osteoarthritis and selected pain presentations.", "A 2024 umbrella review found that several reviews reported pain improvement versus placebo and generally low rates of minor adverse events, while the underlying review quality was low. Other recent synthesis suggests ozone and hyaluronic acid can produce similar knee-OA pain control over four to six months. The direction is encouraging for selected applications, even as certainty and comparative superiority continue to mature.", "For an appropriately selected patient, ozone may be attractive as a targeted advanced option considered alongside rehabilitation and other injections. Relief Plus does not present it as universal or promote it for unrelated systemic disease."], items: [{ title: "Clinical interest", description: "Knee osteoarthritis has the clearest current musculoskeletal research base." }, { title: "Non-surgical option", description: "A targeted procedure may appeal to patients exploring advanced care." }, { title: "Short-term potential", description: "Studies report pain improvement in selected groups." }, { title: "Part of a broader plan", description: "Movement and strength may still require rehabilitation." }] },
+  { eyebrow: "Procedure and Candidacy", title: "Route, concentration, target, and technique are clinically important.", paragraphs: ["A controlled oxygen–ozone mixture may be administered to a selected target by a qualified clinician. Concentration, volume, route, equipment, and safety procedures matter, which is why this page does not provide preparation instructions. The experience may include pressure, brief discomfort, or temporary soreness.", "Evidence for one joint or route should not be applied to another, and durability is less certain than short-term improvement. Planned reassessment is therefore important.", "Potential concerns include temporary pain or swelling, bruising, bleeding, infection, vasovagal symptoms, nearby-structure injury, or no meaningful improvement. Ozone must not be inhaled. Pregnancy, infection, bleeding risk, medication use, significant medical conditions, and target anatomy require review."], items: [{ title: "Is it a cure?", description: "No. It is one advanced option with diagnosis-specific potential." }, { title: "Can it help function?", description: "Some knee-OA studies report functional improvement." }, { title: "Why reassess?", description: "Short-term response should translate into meaningful activity progress." }] },
 ];
 
 const triggerPoint: EducationSection[] = [
-  {
-    eyebrow: "From Tender Spot to Clinical Finding",
-    title: "Not every sore muscle contains a relevant trigger point.",
-    paragraphs: [
-      "A trigger point is generally described as a sensitive area within a taut band of skeletal muscle that may reproduce familiar local or referred symptoms. Palpation is only part of the assessment; the clinician should consider whether the finding matches the patient’s pain pattern and functional limitation.",
-      "A trigger-point injection places a small amount of an injectate into the selected muscular site. The exact medication used at Relief Plus is not documented in the project, so this page does not claim a specific anesthetic, steroid, saline, or other formulation. Patients should ask what is proposed and why.",
-      "Dry needling uses a solid filament needle without medication. A trigger-point injection uses a hollow needle to deliver an injectate. Neither choice removes the need to assess the broader problem.",
-    ],
-  },
-  {
-    eyebrow: "Procedure and Evidence",
-    title: "The injection may address a focal pain generator, not every contributor.",
-    paragraphs: [
-      "The visit typically includes confirming the pain pattern, reviewing contraindications, cleaning the area, identifying the target, performing the injection, and monitoring the immediate response. Sensations may include pressure, a brief sting, cramping, or temporary soreness.",
-      "Research comparing injectates and needling approaches is mixed; a systematic review could not identify one injectate composition as clearly superior. That uncertainty supports a focused trial only when the clinical finding and broader plan justify it.",
-    ],
-    sources: [
-      { label: "Trigger-point injection systematic review", href: "https://pubmed.ncbi.nlm.nih.gov/39238525/" },
-      { label: "Clinical review of procedure and risks", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9116734/" },
-    ],
-  },
-  {
-    eyebrow: "Safety and the Mechanical Picture",
-    title: "Relief of a tender point does not explain why it developed.",
-    paragraphs: [
-      "Potential risks include temporary pain, bruising, bleeding, infection, allergic reaction to an injectate, skin or soft-tissue changes, injury to nearby structures, and—when treatment is near the chest—a rare risk of pneumothorax. Infection, bleeding risk, medication use, allergies, pregnancy, anatomy, and ability to safely access the target require review.",
-      "Workload, joint motion, strength, posture tolerance, sleep, stress, movement strategy, and other pain sources may contribute to recurring muscle symptoms. Physical therapy, chiropractic care, exercise, ergonomic changes, or further evaluation may therefore remain important.",
-    ],
-    items: [
-      { title: "Injection or dry needling?", description: "The decision depends on findings, tolerance, injectate considerations, clinician scope, evidence, and patient preference." },
-      { title: "Will one injection solve it?", description: "No outcome or number of procedures can be assumed; response and function should be reassessed." },
-      { title: "What should I report?", description: "Share infection symptoms, bleeding risk, medication use, allergies, pregnancy, prior reactions, and changes in sensation or strength." },
-      { title: "What comes next?", description: "A useful follow-up plan addresses movement or loading contributors when present, rather than focusing only on the tender site." },
-    ],
-  },
+  { eyebrow: "Why a Targeted Injection Can Help", title: "A focused option when a localized muscular pain generator is limiting movement.", paragraphs: ["A clinically relevant trigger point is a sensitive area within a taut band of skeletal muscle that reproduces familiar local or referred symptoms. When that focal pain generator is clear, an injection can deliver treatment directly to the selected site rather than treating the entire region as one problem.", "The practical goal is often to create enough symptom reduction for the patient to turn, reach, sleep, lift, or exercise more comfortably. A 2023 systematic review and meta-analysis of randomized trials found trigger-point injections reduced acute myofascial pain more than medical management alone.", "This makes the procedure especially interesting when localized myofascial pain is holding back movement-based care. Relief Plus can then progress mobility, strength, workload, or rehabilitation."], items: [{ title: "Focused target", description: "The muscular site should reproduce familiar pain." }, { title: "Evidence-based potential", description: "Randomized-trial evidence supports selected acute myofascial presentations." }, { title: "Movement opportunity", description: "Pain reduction may make active rehabilitation easier." }, { title: "Distinct from dry needling", description: "Trigger-point injection uses a hollow needle and injectate." }] },
+  { eyebrow: "Treatment and Follow-Through", title: "Confirm the target, treat it, and address the load around it.", paragraphs: ["The visit includes confirming the pattern, screening, cleaning the area, identifying the target, performing the injection, and monitoring response. The exact injectate used at Relief Plus is not documented, so this page does not claim a specific formulation. Research has not established one injectate as clearly best across chronic neck and back myofascial pain.", "A trigger point can matter without explaining the whole condition. Joint motion, strength, workload, sleep, and other pain sources may influence recurrence, which is why exercise, physical therapy, chiropractic care, or task modification may follow.", "Potential risks include temporary pain, bruising, bleeding, infection, injectate reaction, tissue change, or nearby-structure injury. Treatment near the chest carries a rare pneumothorax risk. Screening includes infection, bleeding risk, medication, allergies, pregnancy, anatomy, and safe target access."], items: [{ title: "Will one injection solve it?", description: "Response varies; durable functional progress is the useful endpoint." }, { title: "Injection or dry needling?", description: "Findings, injectate, preference, evidence, and clinician scope guide the choice." }] },
 ];
 
 export const regenerativeEducation: EducationSection[] = [
-  {
-    id: "cellular-therapy",
-    eyebrow: "Regenerative Medicine Is a Broad Term",
-    title: "The exact product determines the evidence and regulatory questions.",
-    paragraphs: [
-      "“Regenerative medicine” can refer to very different procedures, devices, drugs, biologics, and cellular or tissue-based products. They do not share one regulatory classification or one body of evidence. Regulatory status depends on the specific product, how it is processed, its intended use, and other facts.",
-      "The exact cellular or tissue-based product used by Relief Plus is not documented in this project. Until its identity, source, labeling, intended use, and regulatory documentation are verified, this page does not describe it as FDA approved, FDA cleared, FDA compliant, a Section 361 product, exempt from approval, or as containing stem cells, mesenchymal stem cells, exosomes, or any particular tissue or cell source.",
-      "Cellular or tissue-based therapy should not be presented as regenerating cartilage, repairing discs, reversing arthritis, restoring joints, healing tendons, replacing surgery, or producing predictable pain relief. A transparent consultation should begin with exactly what product is being proposed.",
-    ],
-  },
-  {
-    eyebrow: "Current FDA Patient Guidance",
-    title: "Orthopedic marketing claims require particular care.",
-    paragraphs: [
-      "FDA states that regenerative medicine products marketed as stem-cell, Wharton’s jelly, amniotic, exosome, and similar products have not been FDA-approved for orthopedic conditions such as osteoarthritis, tendonitis, disc disease, back pain, hip pain, knee pain, neck pain, and shoulder pain.",
-      "That statement does not mean every cellular or tissue product is identical or that every use has the same legal status. It means patients and clinicians need product-specific information. If approval is required for the proposed use, patients should be able to verify whether approval exists or whether treatment is being provided under FDA oversight in a clinical investigation.",
-    ],
-    items: [
-      { title: "Product identity", description: "Brand or product name, manufacturer, labeling, lot or traceability information, and what is actually being administered." },
-      { title: "Source and contents", description: "Where it comes from, how it is processed, and what verified documentation says it contains." },
-      { title: "Regulatory basis", description: "The claimed classification, whether approval is required for this use, and the documentation supporting that position." },
-      { title: "Condition-specific evidence", description: "Research relevant to the exact product, route, intended orthopedic use, and patient—not regenerative medicine as a category." },
-    ],
-    sources: [
-      { label: "FDA patient and consumer information", href: "https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/important-patient-and-consumer-information-about-regenerative-medicine-therapies" },
-      { label: "FDA Regenerative Medicine 101", href: "https://www.fda.gov/media/154665/download" },
-    ],
-  },
-  {
-    eyebrow: "Patient Education",
-    title: "Questions to ask about cellular or tissue-based therapies.",
-    items: [
-      { title: "What exactly is the product?", description: "Ask for the exact name, manufacturer, labeling, and a plain-language explanation of what will be administered." },
-      { title: "Where does it come from?", description: "Ask for the verified tissue or cellular source and how source information is documented." },
-      { title: "What does it contain?", description: "Ask which components have been verified and which characteristics have not been established." },
-      { title: "How is it regulated?", description: "Ask for the specific regulatory classification being claimed and the documentation supporting it." },
-      { title: "Does this use require FDA approval?", description: "The answer depends on the product and intended use; request a product-specific explanation." },
-      { title: "If approval is required, is it approved for this use?", description: "Ask to review the relevant FDA approval or, for a clinical investigation, the IND information and FDA oversight documentation." },
-      { title: "What evidence supports my particular use?", description: "Look for evidence matching the exact product, condition, route, and outcome—not a different product under the same broad label." },
-      { title: "What are the known and uncertain risks?", description: "Discuss procedure risks, product risks, uncertainty, adverse-event reporting, and what follow-up is available." },
-      { title: "What alternatives should I consider?", description: "Compare rehabilitation, chiropractic care, medications, other procedures, surgical consultation, watchful waiting, or further evaluation as appropriate." },
-    ],
-  },
-  {
-    eyebrow: "A Careful Advanced-Treatment Framework",
-    title: "Transparency comes before candidacy.",
-    paragraphs: [
-      "A responsible discussion should clarify the diagnosis, the exact proposed product, the treating provider, evidence for the intended use, regulatory documentation, risks, uncertainties, cost, alternatives, and follow-up plan. A consultation should not presume that treatment is appropriate.",
-      "PRP therapy and ozone injection therapy have their own procedures, evidence, risks, and candidacy considerations; they should not be treated as interchangeable with cellular or tissue-based products. Trigger-point injections remain a separate supporting musculoskeletal treatment rather than a featured regenerative option.",
-      "Movement, strength, load tolerance, joint function, and daily goals may still require physical therapy, chiropractic care, activity modification, or another approach. Advanced care should be selected only when it adds a defensible role to that larger plan.",
-    ],
-  },
+  { id: "cellular-therapy", eyebrow: "Why Regenerative Medicine Matters", title: "Advanced biologic and tissue-based approaches are an important area of scientific interest.", paragraphs: ["Patients are understandably interested in treatments designed around biological processes rather than only symptom suppression. Regenerative medicine is a broad, evolving field that includes very different procedures, devices, drugs, biologics, and cellular or tissue-based products.", "Relief Plus approaches that interest with careful optimism: define the diagnosis, understand the goals, review evidence for the exact option, and be transparent about the product proposed. Product-specific clarity turns a broad idea into a responsible candidacy conversation.", "Because the exact cellular or tissue-based product used by Relief Plus is not documented in this project, this page makes no claims about its name, manufacturer, source, contents, regulatory classification, or orthopedic effectiveness."], items: [{ title: "Scientific momentum", description: "Biologic signaling and targeted advanced therapies remain active research areas." }, { title: "Individualized candidacy", description: "The right discussion starts with diagnosis, health context, prior care, and goals." }, { title: "Product transparency", description: "Evidence and regulation depend on the actual product and intended use." }, { title: "Integrated recovery", description: "Advanced care may still pair with movement and rehabilitation." }] },
+  { eyebrow: "Product-Specific Clarity", title: "Different cellular and tissue products do not share one evidence base or regulatory status.", paragraphs: ["Regulatory status depends on the product, processing, intended use, and other facts. Until documentation is verified, this page does not describe a product as FDA approved, FDA cleared, FDA compliant, a Section 361 product, exempt from approval, or as containing stem cells, mesenchymal stem cells, exosomes, or any particular tissue or cell source.", "FDA states that regenerative medicine products marketed as stem-cell, Wharton’s jelly, amniotic, exosome, and similar products have not been FDA-approved for orthopedic conditions such as osteoarthritis, tendonitis, disc disease, and back, hip, knee, neck, or shoulder pain. This does not mean every product is identical; it means patients need exact product and intended-use information.", "Cellular or tissue-based therapy is not presented as regenerating cartilage, repairing discs, reversing arthritis, restoring joints, healing tendons, replacing surgery, or producing predictable pain relief." ] },
+  { eyebrow: "Questions Worth Asking", title: "A transparent consultation should make the proposed product understandable.", items: [{ title: "What exactly is the product?", description: "Ask for name, manufacturer, labeling, and a plain-language explanation." }, { title: "Where does it come from and what does it contain?", description: "Request verified source and content documentation." }, { title: "How is it regulated?", description: "Ask for the claimed classification and documentation." }, { title: "Does this use require FDA approval?", description: "If so, ask whether it is approved or provided under FDA oversight in a clinical investigation." }, { title: "What evidence supports my use?", description: "Look for the exact product, condition, route, and patient population." }, { title: "What are the risks and alternatives?", description: "Compare uncertainties, follow-up, rehabilitation, other procedures, and medical or surgical options." }] },
+  { eyebrow: "Relief Plus Advanced-Care Framework", title: "Careful selection and transparency make advanced options more meaningful.", paragraphs: ["A responsible discussion clarifies the diagnosis, exact product, treating provider, evidence, regulatory documentation, risks, uncertainty, cost, alternatives, and follow-up. The best results start with choosing the right patient and the right problem.", "PRP and ozone have their own procedures and evidence and are not interchangeable with cellular or tissue products. Movement, strength, load tolerance, and daily goals may still require physical therapy, chiropractic care, or activity progression."] },
 ];
 
 export const treatmentEducation: Partial<Record<PillarPageData["path"], EducationSection[]>> = {
-  "/dry-needling-lafayette": dryNeedling,
-  "/class-iv-laser-therapy-lafayette": laser,
-  "/shockwave-therapy-lafayette": shockwave,
-  "/prp-therapy-lafayette": prp,
-  "/ozone-injection-therapy-lafayette": ozone,
-  "/trigger-point-injections-lafayette": triggerPoint,
+  "/dry-needling-lafayette": dryNeedling, "/class-iv-laser-therapy-lafayette": laser,
+  "/shockwave-therapy-lafayette": shockwave, "/prp-therapy-lafayette": prp,
+  "/ozone-injection-therapy-lafayette": ozone, "/trigger-point-injections-lafayette": triggerPoint,
+};
+
+export const treatmentResearch: Partial<Record<PillarPageData["path"], ResearchSource[]>> = {
+  "/dry-needling-lafayette": [
+    { label: "Dry needling clinical-effectiveness umbrella review", href: "https://pubmed.ncbi.nlm.nih.gov/36769852/", note: "Review of 36 systematic reviews addressing pain and physical function." },
+    { label: "Dry versus wet needling systematic review", href: "https://pubmed.ncbi.nlm.nih.gov/36633385/", note: "Randomized-trial review comparing dry needling with injection-based approaches." },
+    { label: "APTA dry needling competencies", href: "https://www.apta.org/contentassets/524be3943be0425c96b09f02165a1d4c/analysiscompetenciesfordryneedlingbypt.pdf", note: "Professional competency and safety framework." },
+  ],
+  "/class-iv-laser-therapy-lafayette": [
+    { label: "High-intensity laser for musculoskeletal disorders", href: "https://pubmed.ncbi.nlm.nih.gov/36836014/", note: "2023 meta-analysis of randomized trials evaluating pain and function." },
+    { label: "High-intensity laser for knee osteoarthritis", href: "https://pubmed.ncbi.nlm.nih.gov/37458008/", note: "Systematic review focused on symptomatic knee osteoarthritis." },
+    { label: "Laser plus exercise for knee osteoarthritis", href: "https://pubmed.ncbi.nlm.nih.gov/34654554/", note: "Review of laser used as an adjunct to rehabilitation exercise." },
+  ],
+  "/shockwave-therapy-lafayette": [
+    { label: "Shockwave versus corticosteroid for plantar fasciitis", href: "https://pubmed.ncbi.nlm.nih.gov/38738305/", note: "2024 meta-analysis of pain and foot-function outcomes." },
+    { label: "Shockwave for plantar fasciopathy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11561739/", note: "Systematic review and meta-regression of efficacy and tolerability." },
+    { label: "Shockwave across tendinopathies", href: "https://pubmed.ncbi.nlm.nih.gov/38659004/", note: "2024 meta-analysis across several tendon and plantar-fascia diagnoses." },
+    { label: "APTA plantar-fasciitis guideline", href: "https://www.orthopt.org/content/s/heel-pain-plantar-fasciitis-revision-2023", note: "Clinical practice guidance for persistent plantar heel pain." },
+  ],
+  "/prp-therapy-lafayette": [
+    { label: "Knee injection network meta-analysis", href: "https://pubmed.ncbi.nlm.nih.gov/38331363/", note: "Randomized-trial synthesis comparing PRP, placebo, and other knee-OA injections." },
+    { label: "PRP versus placebo or corticosteroid in knee OA", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11772150/", note: "Recent meta-analysis evaluating pain and function." },
+    { label: "PRP versus placebo in knee OA", href: "https://pubmed.ncbi.nlm.nih.gov/40653151/", note: "Synthesis illustrating potential shorter-term benefit and uncertainty over durability." },
+    { label: "AAOS orthobiologics FAQ", href: "https://orthoinfo.aaos.org/en/treatment/orthobiologics-faq/", note: "Professional patient education on evidence and questions to ask." },
+  ],
+  "/ozone-injection-therapy-lafayette": [
+    { label: "Ozone for knee OA umbrella review", href: "https://pubmed.ncbi.nlm.nih.gov/38444768/", note: "2024 overview addressing effectiveness, safety, and evidence quality." },
+    { label: "Ozone versus hyaluronic acid meta-analysis", href: "https://pubmed.ncbi.nlm.nih.gov/39579218/", note: "Level I comparison of patient-reported knee-OA outcomes." },
+    { label: "Oxygen–ozone knee-OA randomized-trial review", href: "https://pubmed.ncbi.nlm.nih.gov/31679646/", note: "Systematic review describing short-term pain findings and safety." },
+  ],
+  "/trigger-point-injections-lafayette": [
+    { label: "Trigger-point injections for acute myofascial pain", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10497070/", note: "2023 randomized-trial meta-analysis versus medical management." },
+    { label: "Trigger-point injections for chronic myofascial pain", href: "https://pubmed.ncbi.nlm.nih.gov/39238525/", note: "Systematic review comparing injectates and outcomes." },
+    { label: "Trigger-point injection clinical review", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9116734/", note: "Clinical review of indications, technique, and safety." },
+  ],
+  "/regenerative-cellular-therapy-lafayette": [
+    { label: "FDA patient information on regenerative medicine therapies", href: "https://www.fda.gov/vaccines-blood-biologics/consumers-biologics/important-patient-and-consumer-information-about-regenerative-medicine-therapies", note: "Federal patient guidance on orthopedic claims, approval, and questions to ask." },
+    { label: "FDA Regenerative Medicine 101", href: "https://www.fda.gov/media/154665/download", note: "Overview of product development, clinical trials, and oversight." },
+    { label: "National Academies: Regenerative Medicine Therapies", href: "https://nap.nationalacademies.org/catalog/24913", note: "Scientific and regulatory context for the evolving field." },
+  ],
 };
