@@ -13,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/dry-needling-lafayette", priority: 0.8 },
     { path: "/class-iv-laser-therapy-lafayette", priority: 0.8 },
     { path: "/shockwave-therapy-lafayette", priority: 0.8 },
+    { path: "/chiropractor-carencro-la", priority: 0.9 },
+    { path: "/conditions-we-treat", priority: 0.9 },
+    { path: "/back-pain-lafayette", priority: 0.8 },
+    { path: "/neck-pain-lafayette", priority: 0.8 },
+    { path: "/sciatica-treatment-lafayette", priority: 0.8 },
+    { path: "/herniated-disc-lafayette", priority: 0.8 },
+    { path: "/pinched-nerve-lafayette", priority: 0.8 },
   ] as const;
 
   return routes.map(({ path, priority }) => ({

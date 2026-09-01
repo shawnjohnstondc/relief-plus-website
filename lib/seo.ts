@@ -123,3 +123,63 @@ export function createServiceStructuredData({
     ],
   };
 }
+
+type ConditionStructuredDataInput = ServiceStructuredDataInput & {
+  conditionName: string;
+};
+
+export function createConditionStructuredData({
+  name,
+  conditionName,
+  description,
+  path,
+}: ConditionStructuredDataInput): Record<string, unknown> {
+  const pageUrl = absoluteUrl(path);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": `${pageUrl}#webpage`,
+        name,
+        description,
+        url: pageUrl,
+        about: { "@type": "MedicalCondition", name: conditionName },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Conditions We Treat", item: absoluteUrl("/conditions-we-treat") },
+          { "@type": "ListItem", position: 3, name, item: pageUrl },
+        ],
+      },
+    ],
+  };
+}
+
+export function createConditionsCollectionStructuredData(): Record<string, unknown> {
+  const path = "/conditions-we-treat";
+  const pageUrl = absoluteUrl(path);
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${pageUrl}#webpage`,
+        name: "Conditions We Treat",
+        url: pageUrl,
+        description: "Musculoskeletal conditions evaluated at Relief Plus in Lafayette, Louisiana.",
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Conditions We Treat", item: pageUrl },
+        ],
+      },
+    ],
+  };
+}
