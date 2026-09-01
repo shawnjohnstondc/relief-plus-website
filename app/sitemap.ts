@@ -4,6 +4,15 @@ import { absoluteUrl } from "@/lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { path: "/", priority: 1 },
+    { path: "/about", priority: 0.9 },
+    { path: "/team", priority: 0.8 },
+    { path: "/contact", priority: 0.9 },
+    { path: "/services", priority: 0.9 },
+    { path: "/our-approach", priority: 0.8 },
+    { path: "/faq-lafayette", priority: 0.8 },
+    { path: "/hipaa-notice-of-privacy-practices", priority: 0.3 },
+    { path: "/good-faith-estimate", priority: 0.3 },
+    { path: "/privacy-policy", priority: 0.3 },
     { path: "/chiropractic-adjustments-lafayette", priority: 0.9 },
     { path: "/physical-therapy-lafayette", priority: 0.9 },
     { path: "/regenerative-cellular-therapy-lafayette", priority: 0.9 },

@@ -4,6 +4,15 @@ export const siteConfig = {
   name: "Relief Plus",
   url: "https://www.myreliefplus.com",
   telephone: "+1-337-565-4200",
+  email: "myreliefplus@gmail.com",
+  faxNumber: "+1-337-565-4201",
+  address: {
+    streetAddress: "112 Arabian Dr.",
+    addressLocality: "Lafayette",
+    addressRegion: "LA",
+    postalCode: "70507",
+    addressCountry: "US",
+  },
   defaultTitle:
     "Relief Plus | Chiropractic, Physical Therapy & Regenerative Medicine",
   description:
@@ -54,6 +63,15 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
   name: siteConfig.name,
   url: siteConfig.url,
   telephone: siteConfig.telephone,
+  email: siteConfig.email,
+  faxNumber: siteConfig.faxNumber,
+  address: { "@type": "PostalAddress", ...siteConfig.address },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "07:00", closes: "11:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "12:15", closes: "16:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "08:30", closes: "12:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "13:15", closes: "16:00" },
+  ],
   description: siteConfig.description,
   areaServed: [
     {
@@ -70,6 +88,45 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
     },
   ],
 };
+
+export function createBreadcrumbStructuredData(path: `/${string}`, name: string): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name, item: absoluteUrl(path) },
+    ],
+  };
+}
+
+export function createFaqStructuredData(items: Array<{ question: string; answer: string }>): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+export function createTeamStructuredData(): Record<string, unknown> {
+  const people = [
+    { name: "Shawn D. Johnston", honorificSuffix: "D.C.", jobTitle: "Doctor of Chiropractic" },
+    { name: "Jeanne Saucier", honorificSuffix: "PT", jobTitle: "Physical Therapist" },
+    { name: "Ashton Reed", honorificSuffix: "M.D.", jobTitle: "Medical Doctor" },
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@graph": people.map((person) => ({
+      "@type": "Person",
+      ...person,
+      worksFor: { "@id": `${siteConfig.url}/#medical-business` },
+    })),
+  };
+}
 
 type ServiceStructuredDataInput = {
   name: string;

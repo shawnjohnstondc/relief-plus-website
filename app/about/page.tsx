@@ -1,0 +1,21 @@
+import InfoPageShell from "@/app/components/InfoPageShell";
+import JsonLd from "@/app/components/JsonLd";
+import { createBreadcrumbStructuredData, createPageMetadata } from "@/lib/seo";
+
+const path = "/about" as const;
+export const metadata = createPageMetadata({ title: "About Relief Plus", description: "Learn how Relief Plus brings chiropractic, physical therapy, and regenerative medicine together through individualized, evidence-informed musculoskeletal care.", path });
+
+export default function Page() { return <><JsonLd data={createBreadcrumbStructuredData(path, "About Relief Plus")} /><InfoPageShell path={path} breadcrumbLabel="About" eyebrow="About Relief Plus" title="More ways to help—used with greater intention." description="Relief Plus brings chiropractic, physical therapy, and regenerative medicine together around one purpose: understanding the person in front of us and choosing care that fits." heroPoints={["Three equal clinical pillars", "Individualized examination and patient education", "Function, movement, and long-term capacity"]} sections={[
+  { eyebrow: "Three Clinical Pillars", title: "A broad musculoskeletal clinic with a clear center.", paragraphs: ["Chiropractic addresses musculoskeletal evaluation, joint motion, and movement. Physical therapy develops mobility, strength, coordination, and function. Regenerative medicine provides a careful framework for discussing selected advanced options.", "These pillars can stand independently or work together when the examination supports it. Having access to more tools does not mean using more treatment; it means having more appropriate choices and a better opportunity to select the least complicated plan that can reasonably move care forward."], items: [
+    { title: "Chiropractic", description: "Examination-led joint and musculoskeletal care.", href: "/chiropractic-adjustments-lafayette" },
+    { title: "Physical Therapy", description: "Individualized rehabilitation for movement, strength, and function.", href: "/physical-therapy-lafayette" },
+    { title: "Regenerative Medicine", description: "Advanced options considered with evidence, transparency, and candidacy in mind.", href: "/regenerative-cellular-therapy-lafayette" },
+  ] },
+  { eyebrow: "How We Think", title: "The right treatment for the right patient.", paragraphs: ["A diagnosis gives the clinical conversation a starting point. An individualized examination adds the symptom behavior, neurological and orthopedic findings, movement strategies, neighboring-region contributions, strength, coordination, and task demands that make the plan personal.", "Regional interdependence means the painful area may be influenced by how nearby regions share motion and load. It is a reason to examine broadly when relevant—not a claim that every symptom has one hidden root cause."], items: [
+    { title: "Evidence-informed", description: "Research is considered alongside examination findings, clinical judgment, patient preferences, and practical goals." },
+    { title: "Function-focused", description: "Progress is connected to meaningful movement and activity, not only a score or isolated finding." },
+    { title: "Education-centered", description: "Patients should understand the working diagnosis, plan, options, and what they can do between visits." },
+    { title: "Actively progressive", description: "Hands-on or technology-assisted care should support movement, self-management, and capacity where appropriate." },
+  ] },
+  { eyebrow: "A Thoughtful Toolkit", title: "More options should improve selection—not increase complexity.", paragraphs: ["Some patients may benefit primarily from education and progressive exercise. Others may need chiropractic care, physical therapy, or a carefully selected supporting treatment. Advanced procedures deserve the same diagnosis-led reasoning and a clear explanation of evidence, alternatives, risks, and uncertainty.", "Relief Plus serves patients from Lafayette, Carencro, and across Acadiana with a broad approach to musculoskeletal recovery, function, movement, and quality of life."] },
+]} cta={{ title: "Start with a conversation about what is limiting you.", description: "Call Relief Plus to schedule an evaluation and discuss the most appropriate place to begin." }} /></> }

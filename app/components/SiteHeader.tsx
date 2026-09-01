@@ -60,7 +60,7 @@ export default function SiteHeader({ currentPath }: { currentPath?: string }) {
 
         <nav aria-label="Primary navigation" className="hidden items-center gap-5 text-[13px] font-medium xl:flex">
           {pillars.map(([title, href]) => <Link key={href} href={href} aria-current={currentPath === href ? "page" : undefined} className={`${navLinkClass} ${currentPath === href ? "text-[#9a7428]" : ""}`}>{title}</Link>)}
-          <Dropdown label="Treatments" items={treatments} />
+          <Dropdown label="Treatments" items={treatments} footer={["View All Treatments", "/services"]} />
           <Dropdown label="Conditions" items={conditions} footer={["View All Conditions", "/conditions-we-treat"]} />
           <Link className={navLinkClass} href="/about">About</Link>
           <Link className={navLinkClass} href="/contact">Contact</Link>
@@ -73,9 +73,9 @@ export default function SiteHeader({ currentPath }: { currentPath?: string }) {
           <nav aria-label="Mobile navigation" className="absolute right-0 top-full z-50 mt-3 max-h-[calc(100vh-7rem)] w-[min(22rem,calc(100vw-3rem))] overflow-y-auto rounded-3xl border border-[#12233f]/10 bg-[#f7f5ef] p-5 shadow-2xl">
             <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[.2em] text-[#9a7428]">Primary Care</p>
             {pillars.map(([title, href]) => <Link key={href} href={href} className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">{title}</Link>)}
-            <details className="border-t border-[#12233f]/10 pt-2"><summary className="cursor-pointer list-none px-3 py-3 font-semibold marker:hidden">Treatments <span aria-hidden="true">▾</span></summary><div className="pl-3">{treatments.map(([title, href]) => <Link key={href} href={href} className="block rounded-lg px-3 py-2 text-sm text-[#12233f]/70 hover:bg-white">{title}</Link>)}</div></details>
+            <details className="border-t border-[#12233f]/10 pt-2"><summary className="cursor-pointer list-none px-3 py-3 font-semibold marker:hidden">Treatments <span aria-hidden="true">▾</span></summary><div className="pl-3">{treatments.map(([title, href]) => <Link key={href} href={href} className="block rounded-lg px-3 py-2 text-sm text-[#12233f]/70 hover:bg-white">{title}</Link>)}<Link href="/services" className="block px-3 py-3 text-sm font-semibold text-[#9a7428]">View All Treatments →</Link></div></details>
             <details className="mt-2 border-t border-[#12233f]/10 pt-2"><summary className="cursor-pointer list-none px-3 py-3 font-semibold marker:hidden">Conditions <span aria-hidden="true">▾</span></summary><div className="pl-3">{conditions.map(([title, href]) => <Link key={href} href={href} className="block rounded-lg px-3 py-2 text-sm text-[#12233f]/70 hover:bg-white">{title}</Link>)}<Link href="/conditions-we-treat" className="block px-3 py-3 text-sm font-semibold text-[#9a7428]">View All Conditions →</Link></div></details>
-            <div className="mt-2 border-t border-[#12233f]/10 pt-2"><Link href="/about" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">About</Link><Link href="/contact" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">Contact</Link></div>
+            <div className="mt-2 border-t border-[#12233f]/10 pt-2"><Link href="/about" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">About</Link><Link href="/our-approach" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">Our Approach</Link><Link href="/team" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">Team</Link><Link href="/faq-lafayette" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">FAQ</Link><Link href="/contact" className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">Contact</Link></div>
             <a href="tel:3375654200" className="mt-4 block rounded-full bg-[#12233f] px-5 py-4 text-center text-sm font-semibold text-white">Call 337-565-4200</a>
           </nav>
         </details>
