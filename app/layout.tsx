@@ -1,27 +1,23 @@
 import type { Metadata } from "next";
+import JsonLd from "@/app/components/JsonLd";
+import { medicalBusinessJsonLd, siteConfig } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.myreliefplus.com"),
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
   title: {
-    default:
-      "Relief Plus | Chiropractic, Physical Therapy & Regenerative Medicine",
+    default: siteConfig.defaultTitle,
     template: "%s | Relief Plus",
   },
-  description:
-    "Relief Plus provides chiropractic, physical therapy, and regenerative medicine for patients in Lafayette, Carencro, and Acadiana.",
+  description: siteConfig.description,
   authors: [{ name: "Relief Plus" }],
   creator: "Relief Plus",
   publisher: "Relief Plus",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.myreliefplus.com",
-    siteName: "Relief Plus",
-    title:
-      "Relief Plus | Chiropractic, Physical Therapy & Regenerative Medicine",
-    description:
-      "Chiropractic, physical therapy, and regenerative medicine for Lafayette, Carencro, and the Acadiana community.",
+    siteName: siteConfig.name,
   },
   robots: {
     index: true,
@@ -36,7 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <JsonLd data={medicalBusinessJsonLd} />
+        {children}
+      </body>
     </html>
   );
 }

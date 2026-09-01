@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/seo";
 import ReviewCarousel from "./components/ReviewCarousel";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Chiropractic, Physical Therapy & Regenerative Medicine",
+  description:
+    "Relief Plus provides chiropractic, physical therapy, and regenerative medicine for patients in Lafayette, Carencro, and Acadiana.",
+  path: "/",
+});
 
 const treatments = [
   {
@@ -13,31 +22,31 @@ const treatments = [
     title: "Dry Needling",
     description:
       "Targeted treatment for muscular tension, trigger points, restricted movement, and persistent pain.",
-    href: "/dry-needling",
+    href: "/dry-needling-lafayette",
   },
   {
     title: "Class IV Laser Therapy",
     description:
       "Advanced laser therapy designed to support tissue healing, reduce inflammation, and improve recovery.",
-    href: "/laser-therapy",
+    href: "/class-iv-laser-therapy-lafayette",
   },
   {
     title: "Physical Therapy",
     description:
       "Movement-based rehabilitation designed around your condition, function, and individual goals.",
-    href: "/physical-therapy",
+    href: "/physical-therapy-lafayette",
   },
   {
     title: "Shockwave Therapy",
     description:
       "Non-invasive acoustic wave therapy for stubborn musculoskeletal conditions and chronic soft-tissue pain.",
-    href: "/shockwave-therapy",
+    href: "/shockwave-therapy-lafayette",
   },
   {
     title: "Regenerative Medicine",
     description:
       "Clinically directed regenerative treatment options used as part of an individualized musculoskeletal recovery plan.",
-    href: "/therapeutic-injections",
+    href: "/regenerative-cellular-therapy-lafayette",
   },
 ];
 

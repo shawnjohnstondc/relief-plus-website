@@ -1,7 +1,30 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/hippa-privacy",
+        destination: "/hipaa-notice-of-privacy-practices",
+        statusCode: 301,
+      },
+      {
+        source: "/privacy-policy-3",
+        destination: "/good-faith-estimate",
+        statusCode: 301,
+      },
+      {
+        source: "/faqs-1",
+        destination: "/faq-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/new-dropdown",
+        destination: "/chiropractic-adjustments-lafayette",
+        statusCode: 301,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
