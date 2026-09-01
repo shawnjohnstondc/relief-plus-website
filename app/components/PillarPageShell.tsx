@@ -302,6 +302,23 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </div>
       </section>
 
+      {data.pageSources && (
+        <section className="border-t border-[#12233f]/10 px-6 py-16 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">Selected Clinical Sources</p>
+            <h2 className="mt-4 font-serif text-3xl">Evidence used to inform this patient guide.</h2>
+            <ul className="mt-8 grid gap-4 md:grid-cols-2">
+              {data.pageSources.map((source) => (
+                <li key={source.href} className="rounded-2xl border border-[#12233f]/10 bg-white/50 p-5">
+                  <a href={source.href} target="_blank" rel="noreferrer" className="font-semibold underline decoration-[#b08d3b] underline-offset-4 hover:text-[#9a7428]">{source.label}</a>
+                  <p className="mt-2 text-sm leading-6 text-[#12233f]/60">{source.note}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       <section className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#12233f] px-7 py-14 text-white sm:px-12 lg:flex lg:items-center lg:justify-between lg:px-16 lg:py-16">
           <div className="max-w-2xl">

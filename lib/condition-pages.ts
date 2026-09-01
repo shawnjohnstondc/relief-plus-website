@@ -1,4 +1,12 @@
 import type { PillarPageData } from "./pillar-pages";
+import {
+  backPainClinical,
+  herniatedDiscClinical,
+  neckPainClinical,
+  pinchedNerveClinical,
+  sciaticaClinical,
+  type ConditionClinicalContent,
+} from "./condition-clinical-content";
 
 type ConditionSeed = {
   path: PillarPageData["path"];
@@ -9,6 +17,7 @@ type ConditionSeed = {
   symptoms: Array<{ title: string; description: string }>;
   related: Array<{ title: string; href: string }>;
   care: PillarPageData["relatedServices"];
+  clinical: ConditionClinicalContent;
 };
 
 function createConditionPage(seed: ConditionSeed): PillarPageData {
@@ -27,26 +36,20 @@ function createConditionPage(seed: ConditionSeed): PillarPageData {
     ],
     overviewTitle: `Understanding ${seed.shortName.toLowerCase()} starts with the whole clinical picture.`,
     overviewParagraphs: seed.overview,
-    serviceTitle: "What an evaluation may involve.",
-    serviceSteps: [
-      { title: "History and goals", description: "The discussion covers symptom behavior, onset, prior care, health history, daily demands, and meaningful goals." },
-      { title: "Musculoskeletal examination", description: "The examination may consider movement, strength, joint function, sensation, and other findings relevant to the concern." },
-      { title: "Individual plan", description: "Recommendations depend on the findings and may include care at Relief Plus, monitoring, or referral when another evaluation is appropriate." },
-    ],
+    serviceTitle: seed.clinical.serviceTitle,
+    serviceSteps: seed.clinical.serviceSteps,
     whoTitle: `How ${seed.shortName.toLowerCase()} can affect daily life.`,
-    whoDescription: "Symptoms vary from person to person. These common experiences provide context, but they do not replace an individualized examination.",
+    whoDescription: seed.clinical.whoDescription,
     considerations: seed.symptoms,
     conditionsDescription: `Symptoms can overlap with other musculoskeletal concerns. Explore related pages while remembering that an examination is needed to clarify what may be contributing.`,
     conditions: seed.related,
-    approachDescription: "The Relief Plus approach brings chiropractic, physical therapy, and regenerative medicine together. The appropriate emphasis depends on the condition, examination, goals, and clinical suitability—not on a preset package.",
+    approachDescription: seed.clinical.approachDescription,
     relatedServices: seed.care,
-    faqs: [
-      { question: `Does ${seed.shortName.toLowerCase()} always have the same cause?`, answer: "No. Similar symptoms can arise from different tissues and contributing factors, which is why history and examination matter before selecting care." },
-      { question: "Will I need imaging?", answer: "Not everyone does. The need for imaging or another diagnostic step depends on history, examination findings, symptom behavior, and clinical judgment." },
-      { question: "Which treatment will be recommended?", answer: "Recommendations are individualized. A particular service is considered only when it fits the evaluation, goals, and clinical circumstances." },
-    ],
+    faqs: seed.clinical.faqs,
     ctaTitle: `Take the next step with a ${seed.shortName.toLowerCase()} evaluation.`,
     ctaDescription: "Call Relief Plus to discuss an appointment in Lafayette and a thoughtful path toward movement, function, and recovery.",
+    educationSections: seed.clinical.educationSections,
+    pageSources: seed.clinical.pageSources,
   };
 }
 
@@ -61,6 +64,7 @@ export const backPainPage = createConditionPage({
   symptoms: [{ title: "Aching or stiffness", description: "Symptoms may be local, intermittent, or affected by position." }, { title: "Movement limits", description: "Bending, lifting, sitting, or standing may become difficult." }, { title: "Radiating symptoms", description: "Pain, tingling, or numbness may extend into a leg." }, { title: "Reduced capacity", description: "Work, exercise, sleep, or daily routines may be affected." }],
   related: [{ title: "Sciatica", href: "/sciatica-treatment-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
   care: [chiropractic, pt, { title: "Class IV Laser Therapy", description: "An adjunct considered within an appropriate care plan.", href: "/class-iv-laser-therapy-lafayette" }],
+  clinical: backPainClinical,
 });
 
 export const neckPainPage = createConditionPage({
@@ -70,6 +74,7 @@ export const neckPainPage = createConditionPage({
   symptoms: [{ title: "Stiffness", description: "Turning or positioning the head may feel restricted." }, { title: "Local pain", description: "Aching or sharper discomfort may occur around the neck and upper back." }, { title: "Arm symptoms", description: "Some concerns include tingling, numbness, or discomfort into an arm." }, { title: "Headache pattern", description: "Neck symptoms and certain headache patterns may occur together." }],
   related: [{ title: "Headaches", href: "/headache-treatment-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }],
   care: [chiropractic, pt, dry],
+  clinical: neckPainClinical,
 });
 
 export const sciaticaPage = createConditionPage({
@@ -79,6 +84,7 @@ export const sciaticaPage = createConditionPage({
   symptoms: [{ title: "Radiating pain", description: "Discomfort may travel from the low back or buttock into a leg." }, { title: "Tingling or numbness", description: "Altered sensation may occur along part of the leg or foot." }, { title: "Burning symptoms", description: "Some people describe a hot, electric, or sharp quality." }, { title: "Strength changes", description: "Weakness or reduced control warrants careful evaluation." }],
   related: [{ title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
   care: [chiropractic, pt, dry],
+  clinical: sciaticaClinical,
 });
 
 export const herniatedDiscPage = createConditionPage({
@@ -87,7 +93,8 @@ export const herniatedDiscPage = createConditionPage({
   overview: ["Spinal discs sit between vertebrae and help manage load and movement. A disc finding may or may not explain a person’s symptoms, and imaging findings should be considered alongside the clinical examination.", "Symptoms can be local or travel into an arm or leg and may include pain, numbness, tingling, or weakness. Decisions should reflect symptom behavior and function—not a scan alone."],
   symptoms: [{ title: "Spinal pain", description: "Symptoms may be felt in the neck or lower back." }, { title: "Radiating discomfort", description: "Pain may extend into an arm or leg." }, { title: "Sensation changes", description: "Tingling or numbness can occur in some presentations." }, { title: "Functional limits", description: "Sitting, lifting, walking, or other tasks may be affected." }],
   related: [{ title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Neck Pain", href: "/neck-pain-lafayette" }, { title: "Sciatica", href: "/sciatica-treatment-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
-  care: [chiropractic, pt, { title: "Regenerative Medicine", description: "Advanced options considered only for suitable clinical circumstances.", href: "/regenerative-cellular-therapy-lafayette" }],
+  care: [chiropractic, pt, { title: "Class IV Laser Therapy", description: "A non-invasive adjunct considered only for selected presentations within a broader plan.", href: "/class-iv-laser-therapy-lafayette" }],
+  clinical: herniatedDiscClinical,
 });
 
 export const pinchedNervePage = createConditionPage({
@@ -97,4 +104,5 @@ export const pinchedNervePage = createConditionPage({
   symptoms: [{ title: "Tingling", description: "Pins-and-needles sensations may follow a particular pattern." }, { title: "Numbness", description: "Reduced or altered feeling may affect an arm, hand, leg, or foot." }, { title: "Radiating pain", description: "Symptoms may travel away from the neck or back." }, { title: "Weakness", description: "Strength or control changes deserve prompt clinical attention." }],
   related: [{ title: "Neck Pain", href: "/neck-pain-lafayette" }, { title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Sciatica", href: "/sciatica-treatment-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }],
   care: [chiropractic, pt, dry],
+  clinical: pinchedNerveClinical,
 });

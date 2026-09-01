@@ -47,6 +47,7 @@ export type PillarPageData = {
   ctaTitle: string;
   ctaDescription: string;
   educationSections?: EducationSection[];
+  pageSources?: Array<{ label: string; href: string; note: string }>;
 };
 
 export const chiropracticPage: PillarPageData = {
