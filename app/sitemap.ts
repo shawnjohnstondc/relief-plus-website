@@ -28,6 +28,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/tennis-elbow-lafayette", priority: 0.8 },
     { path: "/achilles-tendinopathy-lafayette", priority: 0.8 },
     { path: "/si-joint-pain-lafayette", priority: 0.8 },
+    { path: "/headache-treatment-lafayette", priority: 0.8 },
+    { path: "/shoulder-pain-lafayette", priority: 0.8 },
+    { path: "/knee-pain-lafayette", priority: 0.8 },
+    { path: "/hip-pain-lafayette", priority: 0.8 },
+    { path: "/plantar-fasciitis-lafayette", priority: 0.8 },
+    { path: "/tendonitis-treatment-lafayette", priority: 0.8 },
+    { path: "/car-accident-injuries-lafayette", priority: 0.8 },
+    { path: "/work-injury-lafayette", priority: 0.8 },
   ] as const;
 
   return routes.map(({ path, priority }) => ({
