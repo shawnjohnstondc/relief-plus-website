@@ -24,3 +24,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.nav-dropdown, .mobile-nav-panel { clip-path: inset(0 0 100% 0 round 1rem); opacity: 0; pointer-events: none; transform-origin: top center; transition: clip-path 200ms ease-out, opacity 180ms ease-out, transform 200ms ease-out; visibility: hidden; }
+.nav-dropdown { transform: translate(-50%, -7px); }
+.nav-dropdown-open { clip-path: inset(0 0 0 0 round 1rem); opacity: 1; pointer-events: auto; transform: translate(-50%, 0); visibility: visible; }
+.mobile-nav-panel { transform: translateY(-7px); }
+.mobile-nav-panel-open { clip-path: inset(0 0 0 0 round 1.5rem); opacity: 1; pointer-events: auto; transform: translateY(0); visibility: visible; }
+
+.reveal-section { opacity: 0; transform: translateY(16px); transition: opacity 480ms ease-out, transform 480ms ease-out; }
+.reveal-section.reveal-visible { opacity: 1; transform: translateY(0); }
+.reveal-section .grid > a, .reveal-section .grid > article { transition: opacity 420ms ease-out, transform 420ms ease-out, border-color 180ms ease-out, background-color 180ms ease-out; }
+.reveal-section:not(.reveal-visible) .grid > a, .reveal-section:not(.reveal-visible) .grid > article { opacity: 0; transform: translateY(12px); }
+.reveal-section.reveal-visible .grid > :is(a, article):nth-child(2) { transition-delay: 55ms; }
+.reveal-section.reveal-visible .grid > :is(a, article):nth-child(3) { transition-delay: 110ms; }
+.reveal-section.reveal-visible .grid > :is(a, article):nth-child(4) { transition-delay: 165ms; }
+.reveal-section.reveal-visible .grid > :is(a, article):nth-child(n+5) { transition-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .nav-dropdown, .mobile-nav-panel, .reveal-section, .reveal-section .grid > a, .reveal-section .grid > article { opacity: 1; transform: none; transition: none; }
+  .nav-dropdown, .mobile-nav-panel { clip-path: none; }
+  .nav-dropdown:not(.nav-dropdown-open), .mobile-nav-panel:not(.mobile-nav-panel-open) { visibility: hidden; pointer-events: none; }
+}

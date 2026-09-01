@@ -7,7 +7,7 @@ export type InfoSection = {
   eyebrow: string;
   title: string;
   paragraphs?: string[];
-  items?: Array<{ title: string; description: string; href?: string }>;
+  items?: Array<{ title: string; description: string; href?: string; portrait?: string; role?: string }>;
 };
 
 type InfoPageShellProps = {
@@ -50,7 +50,7 @@ export default function InfoPageShell({ path, breadcrumbLabel, eyebrow, title, d
             <div>
               {section.paragraphs && <div className={`space-y-5 text-lg leading-8 ${index % 3 === 0 ? "text-white/72" : "text-[#12233f]/70"}`}>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>}
               {section.items && <div className="mt-8 grid gap-4 sm:grid-cols-2">{section.items.map((item) => {
-                const content = <><h3 className="font-serif text-xl">{item.title}</h3><p className={`mt-3 text-sm leading-6 ${index % 3 === 0 ? "text-white/65" : "text-[#12233f]/65"}`}>{item.description}</p>{item.href && <span className={`mt-5 block text-sm font-semibold ${index % 3 === 0 ? "text-[#d5b765]" : "text-[#9a7428]"}`}>Learn more →</span>}</>;
+                const content = <>{item.portrait && <div aria-hidden="true" className={`mb-6 flex aspect-[4/3] items-end rounded-xl p-5 ${index % 3 === 0 ? "bg-[#0d1b30]" : "bg-[#153e35]"}`}><span className="font-serif text-5xl text-[#d5b765]">{item.portrait}</span></div>}{item.role && <p className={`mb-2 text-[10px] font-semibold uppercase tracking-[.2em] ${index % 3 === 0 ? "text-[#d5b765]" : "text-[#9a7428]"}`}>{item.role}</p>}<h3 className="font-serif text-xl">{item.title}</h3><p className={`mt-3 text-sm leading-6 ${index % 3 === 0 ? "text-white/65" : "text-[#12233f]/65"}`}>{item.description}</p>{item.href && <span className={`mt-5 block text-sm font-semibold ${index % 3 === 0 ? "text-[#d5b765]" : "text-[#9a7428]"}`}>Learn more →</span>}</>;
                 const classes = `rounded-2xl border p-6 transition ${index % 3 === 0 ? "border-white/10 bg-white/5" : "border-[#12233f]/10 bg-white/55"}`;
                 return item.href ? <Link key={item.title} href={item.href} className={`${classes} hover:border-[#b08d3b]`}>{content}</Link> : <article key={item.title} className={classes}>{content}</article>;
               })}</div>}

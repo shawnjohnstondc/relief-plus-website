@@ -110,8 +110,9 @@ export const ozonePage: PillarPageData = {
   ],
   overviewTitle: "A distinctive advanced option within a diagnosis-led recovery plan.",
   overviewParagraphs: [
-    "Ozone injection therapy involves a controlled oxygen-ozone mixture placed into a targeted musculoskeletal area. It may be discussed for selected joint, muscle, tendon, ligament, or trigger-point concerns.",
-    "The clinical evidence and suitability can vary by condition. Relief Plus approaches ozone as one possible component of care, not as a cure or a replacement for a complete evaluation and appropriate movement-based treatment.",
+    "Ozone injection therapy uses a controlled oxygen-ozone mixture placed into a specific musculoskeletal target. That ability to focus treatment on an identified joint or soft-tissue problem can be appealing when the diagnosis, examination, and patient goals support an injection-based option.",
+    "Published musculoskeletal research includes improvements in pain and function in selected populations, with knee osteoarthritis representing one of the most meaningful areas of clinical study. Relief Plus considers ozone when its targeted role may help reduce pain or sensitivity enough for a patient to move, rehabilitate, and function more comfortably.",
+    "Clinical experience at Relief Plus supports using ozone as one tool within a broader approach—not as the same answer for every problem. The treatment earns a place in the plan when the diagnosis, patient, alternatives, and intended functional benefit align.",
   ],
   serviceTitle: "What an ozone visit may involve.",
   serviceSteps: [
@@ -133,7 +134,7 @@ export const ozonePage: PillarPageData = {
   ],
   whoTitle: "Who may be evaluated for ozone therapy?",
   whoDescription:
-    "An evaluation may be appropriate for certain persistent musculoskeletal concerns, but it does not mean ozone therapy will be recommended.",
+    "Patients with a defined, persistent musculoskeletal concern may benefit from a conversation about whether a targeted ozone procedure fits their diagnosis, prior response, goals, and broader recovery plan.",
   considerations: [
     { title: "Joint symptoms", description: "Persistent discomfort or limitation involving a specific joint." },
     { title: "Soft-tissue concerns", description: "Selected tendon, ligament, muscle, or trigger-point patterns." },
@@ -182,7 +183,7 @@ export const ozonePage: PillarPageData = {
       answer: "Yes, when appropriate. Rehabilitation may address mobility, strength, movement, and activity tolerance as part of the broader plan.",
     },
   ],
-  ctaTitle: "Discuss ozone therapy without assumptions.",
+  ctaTitle: "Explore whether targeted ozone therapy fits your goals.",
   ctaDescription:
     "Call Relief Plus to schedule an evaluation and discuss whether ozone injection therapy reasonably fits your condition and goals.",
 };

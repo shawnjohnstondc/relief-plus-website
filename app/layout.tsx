@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import JsonLd from "@/app/components/JsonLd";
 import { medicalBusinessJsonLd, siteConfig } from "@/lib/seo";
+import ScrollReveal from "@/app/components/ScrollReveal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <JsonLd data={medicalBusinessJsonLd} />
+        <ScrollReveal />
         {children}
       </body>
     </html>
