@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ReviewCarousel from "./components/ReviewCarousel";
 
 const treatments = [
   {
@@ -287,6 +288,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ReviewCarousel />
 
       {/* DOCTOR / STORY */}
       <section className="px-6 py-24 lg:px-8">
