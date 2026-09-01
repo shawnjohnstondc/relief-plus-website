@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import ReviewCarousel from "./components/ReviewCarousel";
+import BrandMark from "./components/BrandMark";
+import SiteHeader from "./components/SiteHeader";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Chiropractic, Physical Therapy & Regenerative Medicine",
@@ -69,55 +71,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
       {/* HEADER */}
-      <header className="border-b border-[#12233f]/10 bg-[#f7f5ef]/95">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b08d3b] text-lg font-semibold text-[#b08d3b]">
-              R+
-            </div>
-
-            <div>
-              <div className="font-serif text-2xl tracking-tight">
-                Relief <span className="text-[#b08d3b]">+</span>
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-[#12233f]/55">
-                Lafayette · Carencro
-              </div>
-            </div>
-          </Link>
-
-          <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
-            <Link
-              className="hover:text-[#9a7428]"
-              href="/chiropractic-adjustments-lafayette"
-            >
-              Chiropractic
-            </Link>
-            <Link className="hover:text-[#9a7428]" href="#treatments">
-              Treatments
-            </Link>
-            <Link className="hover:text-[#9a7428]" href="#conditions">
-              Conditions
-            </Link>
-            <Link className="hover:text-[#9a7428]" href="/about">
-              About
-            </Link>
-            <Link className="hover:text-[#9a7428]" href="/blog">
-              Resources
-            </Link>
-            <Link className="hover:text-[#9a7428]" href="/contact">
-              Contact
-            </Link>
-          </nav>
-
-          <a
-            href="tel:3375654200"
-            className="rounded-full bg-[#12233f] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1a3156]"
-          >
-            Call 337-565-4200
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HERO */}
       <section className="relative overflow-hidden">
@@ -242,7 +196,7 @@ export default function Home() {
                 href={treatment.href}
                 className="group bg-[#f7f5ef] p-8 transition hover:bg-white"
               >
-                <div className="mb-12 text-sm text-[#b08d3b]">R+</div>
+                <div className="mb-12"><BrandMark className="text-xl" /></div>
 
                 <h3 className="font-serif text-2xl">{treatment.title}</h3>
 
