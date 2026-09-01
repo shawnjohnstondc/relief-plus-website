@@ -6,17 +6,17 @@ Implementation status: no articles, redirects, taxonomy routes, or 410 responses
 
 ## Executive summary
 
-Relief Plus has restored 29 of 63 legacy article URLs. This review classifies the remaining 34 articles by patient usefulness, distinct search intent, topical contribution, cannibalization risk, clinical scope, and dependence on owner or external SEO data.
+Relief Plus has restored 37 of 63 legacy article URLs through Phase 9F. After Phase 9G owner decisions, the remaining 26 articles comprise 12 recommended restores, 11 proposed consolidations, and three rejected articles held for Search Console/backlink review before redirect or retirement.
 
 | Recommendation | Count |
 |---|---:|
-| RESTORE HIGH PRIORITY | 8 |
-| RESTORE LOWER PRIORITY | 10 |
+| RESTORE HIGH PRIORITY | 0 (eight completed in Phase 9F) |
+| RESTORE LOWER PRIORITY | 12 |
 | CONSOLIDATE TO LANDING PAGE | 7 |
 | CONSOLIDATE TO ARTICLE | 4 |
-| HOLD FOR OWNER REVIEW | 5 |
+| HOLD FOR SEARCH CONSOLE / BACKLINK REVIEW | 3 |
 | RETIRE / 410 CANDIDATE | 0 |
-| **Remaining articles** | **34** |
+| **Remaining articles** | **26** |
 
 No redirect or retirement decision is final without the evidence noted below. Crawl status and content similarity are not substitutes for Search Console, backlink, and historical traffic data.
 
@@ -69,27 +69,34 @@ No redirect or retirement decision is final without the evidence noted below. Cr
 | `/blog/treating-plantar-fasciitis-through-dry-needling-efficacy-and-mechanism` | `/blog/the-effectiveness-of-dry-needling-for-plantar-fasciitis-insights-by-dr-shawn-johnston-at-relief-plus` | Same modality-condition question; destination is restored with current evidence and neutral authorship. |
 | `/blog/relieving-tension-headaches-the-chiropractic-approach` | `/blog/understanding-the-difference-tension-headaches-vs-migraines` | Considerable tension-headache overlap; preserve any unique chiropractic evidence before redirecting. |
 
-## Hold for owner review
+## Phase 9G approved restoration topics
 
-| Legacy URL | Issue requiring clarification |
+| Legacy URL | Approved future approach |
 |---|---|
-| `/blog/healing-your-shoulder-why-prolozone-is-a-game-changer-for-ac-joint-injuries` | Confirm whether prolozone is offered, exact procedure, provider, intended uses, and approved terminology. Do not preserve “healing” or “game-changer” claims. |
-| `/blog/unlocking-recovery-how-systemic-ozone-therapy-complements-chiropractic-care` | Confirm whether systemic ozone is offered and its exact route/scope. Musculoskeletal injection evidence cannot support systemic-health claims. |
-| `/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss` | Confirm whether LipoLaser/InvisaRED remains offered, device identity, intended purpose, and whether body-contouring content belongs on the musculoskeletal site. |
-| `/blog/treating-vertigo-with-acupuncture-a-holistic-approach` | Confirm acupuncture service/provider scope. Vertigo requires careful differential and medical escalation; do not imply a generic musculoskeletal cause. |
-| `/blog/unlocking-the-secrets-of-sleep-chiropractic-techniques-for-a-restful-night` | Confirm desired scope. Avoid claims that chiropractic treats insomnia or broadly improves sleep; a narrow pain-and-sleep article may be viable. |
+| `/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss` | Restore after verifying the exact InvisaRED/LipoLaser device and service. Keep body-composition/circumference intent distinct from disease treatment and medical weight loss. |
+| `/blog/treating-vertigo-with-acupuncture-a-holistic-approach` | Restore as careful informational content. Differentiate vertigo diagnoses and referral needs; do not claim acupuncture is offered until verified. |
+
+The established service route is `/invisared-weight-loss-lafayette`. It remains preserved in `migration-map.csv` and should become a distinct wellness/body-composition page after device and service verification—not a forced child of Chiropractic, Physical Therapy, or Regenerative Medicine.
+
+## Not approved for restoration
+
+| Legacy URL | Closest pages reviewed | Recommendation |
+|---|---|---|
+| `/blog/healing-your-shoulder-why-prolozone-is-a-game-changer-for-ac-joint-injuries` | `/shoulder-pain-lafayette`, `/ozone-injection-therapy-lafayette` | Neither page is equivalent to a prolozone/AC-joint article. Hold for Search Console/backlink review before redirect or retirement. Do not preserve the old claims. |
+| `/blog/unlocking-recovery-how-systemic-ozone-therapy-complements-chiropractic-care` | `/ozone-injection-therapy-lafayette`, `/chiropractic-adjustments-lafayette` | Neither destination represents systemic ozone. Hold for data review; do not generalize or transfer systemic-health claims. |
+| `/blog/unlocking-the-secrets-of-sleep-chiropractic-techniques-for-a-restful-night` | `/chiropractic-adjustments-lafayette`, `/our-approach` | No equivalent sleep-treatment destination exists. Hold for data review before redirect or retirement. |
 
 ## Decisions requiring Search Console / backlink data before redirecting
 
-All eleven proposed consolidations require URL-level review of clicks, impressions, ranking queries, backlinks, referral traffic, conversions, and unique content. The four broad local-treatment articles are the most important because they may have historical local rankings despite clear cannibalization. `/blog/team`, `/blog/tag/team`, misspelled tag URLs, and all tag/archive variants also require backlink review before any redirect or retirement.
+All eleven proposed consolidations require URL-level review of clicks, impressions, ranking queries, backlinks, referral traffic, conversions, and unique content. The three rejected articles also require this review before choosing redirect or retirement because no equivalent destination is evident. Fourteen article decisions are therefore data-gated. `/blog/team`, `/blog/tag/team`, misspelled tag URLs, and all tag/archive variants separately require backlink review before any redirect or retirement.
 
 ## Questionable legacy treatment topics
 
-- **Systemic ozone:** hold. Do not generalize knee intra-articular findings to systemic routes or diseases.
-- **Prolozone:** hold for exact service, substance, route, provider, and claims.
+- **Systemic ozone:** not approved for restoration. Do not generalize knee intra-articular findings to systemic routes or diseases.
+- **Prolozone:** not approved for restoration; do not preserve old procedure or healing claims elsewhere.
 - **Regenerative cellular products:** no remaining standalone article in this 34-article set. Continue the existing product-specific owner-clarification requirement.
-- **LipoLaser/InvisaRED:** hold for device and current service confirmation; do not imply targeted permanent fat loss without support.
-- **Acupuncture/vertigo:** hold for service scope and a medically responsible vertigo framework.
+- **LipoLaser/InvisaRED:** approved future topic; verify the exact device/service and use realistic body-composition framing.
+- **Acupuncture/vertigo:** approved informational restoration; service availability remains unverified and must not be implied.
 - **Trigger-point injections:** lower-priority restore; distinguish muscular/myofascial targets from nerve-root or joint treatment.
 
 ## Taxonomy recommendations
@@ -112,6 +119,6 @@ Existing historical articles adequately cover spine, headache, dry needling, pla
 
 TMJ and headache classification already have strong restored coverage; additional generic posts would add limited value before these gaps.
 
-## Recommended Phase 9F build batch
+## Recommended next migration batch
 
-Build the eight high-priority restores listed above. If pregnancy content cannot receive appropriate scope review, replace it in the batch with `/blog/the-healing-touch-manual-therapy-techniques-for-soft-tissue-mobilization`. Do not implement redirects during the build batch. In parallel, obtain Search Console and backlink exports for all eleven proposed consolidation sources and their destinations.
+Restore the ten lower-priority articles listed above plus `/blog/treating-vertigo-with-acupuncture-a-holistic-approach`, using a careful diagnosis-specific educational scope. Defer `/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss` until the exact device/service is verified, then coordinate it with the future `/invisared-weight-loss-lafayette` page to avoid intent conflict. Do not implement redirects during the build batch. In parallel, obtain Search Console and backlink exports for the eleven consolidation sources, the three rejected articles, and their possible destinations.

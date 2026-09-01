@@ -12,7 +12,15 @@ Phase 9E reconciled the 63 legacy article URLs against the 29 articles restored 
 
 The proposed consolidations are planning decisions only. No redirect should be implemented until Search Console landing-page performance, external backlinks, historical organic traffic, and unique source content have been reviewed. The four local-commercial articles remain strong consolidation candidates because their titles and core intent compete directly with current landing pages, but that evidence gate still applies.
 
-Systemic ozone, prolozone, LipoLaser/InvisaRED, acupuncture/vertigo, and broad chiropractic-for-sleep content remain on hold pending confirmation of current service scope and acceptable claims. The detailed URL-level rationale, topical-gap analysis, taxonomy recommendations, and Phase 9F recommendation are in `BLOG-REMAINING-TRIAGE.md`; redirect candidates are summarized in `blog-consolidation-plan.csv`.
+Phase 9G owner decisions supersede the earlier hold language. InvisaRED/LipoLaser remains part of the future content strategy, and the acupuncture-for-vertigo article is approved for careful informational restoration. Prolozone for AC-joint injuries, systemic ozone plus chiropractic, and chiropractic-for-sleep are not approved for restoration. Their URLs remain data-gated redirect-versus-retirement decisions because no genuinely equivalent destination currently exists. Details are in `BLOG-REMAINING-TRIAGE.md` and `blog-consolidation-plan.csv`.
+
+### Phase 9G owner decisions
+
+- Preserve `/invisared-weight-loss-lafayette` as a distinct wellness/body-composition route after verifying the exact device, service, intended outcomes, and evidence. Do not force it into the three clinical pillars or characterize it as medical weight-loss treatment.
+- Restore `/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss` only after the same device/service verification. Use realistic circumference/body-composition expectations and no guaranteed fat-loss or disease-treatment claims.
+- Restore `/blog/treating-vertigo-with-acupuncture-a-holistic-approach` as diagnosis-aware education. Distinguish vertigo from nonspecific dizziness, include medical and neurological referral guidance, and do not claim Relief Plus provides acupuncture until verified.
+- Do not restore the prolozone, systemic-ozone, or chiropractic-and-sleep articles. Do not carry their old claims into other pages.
+- No automatic redirects are approved. The three rejected URLs require Search Console and backlink review before redirect or retirement.
 
 ## Executive summary
 
@@ -138,8 +146,8 @@ These five must not remain 404s at launch. Their exact legacy paths are preserve
 10. `/blog/knee-pain-treatment-in-lafayette-la-causes-solutions-and-when-to-get-help` — CONSOLIDATE after data review.
 11. `/blog/car-accident-injury-treatment-in-lafayette-la-what-to-do-immediately-and-why-waiting-can-make-it-worse` — UPGRADE to calm, useful post-collision decision guidance.
 12. `/blog/the-safest-approach-to-cervical-spine-manipulation-reducing-risks-and-enhancing-health` — UPGRADE safety language and sources.
-13. `/blog/healing-your-shoulder-why-prolozone-is-a-game-changer-for-ac-joint-injuries` — UPGRADE evidence, product/service scope, uncertainty, and title.
-14. `/blog/unlocking-recovery-how-systemic-ozone-therapy-complements-chiropractic-care` — UPGRADE after owner confirmation of service scope and reviewer.
+13. `/blog/healing-your-shoulder-why-prolozone-is-a-game-changer-for-ac-joint-injuries` — DO NOT RESTORE; hold URL for backlink/Search Console review.
+14. `/blog/unlocking-recovery-how-systemic-ozone-therapy-complements-chiropractic-care` — DO NOT RESTORE; hold URL for backlink/Search Console review.
 15. `/blog/headache-relief-in-lafayette-la-when-its-coming-from-your-neck-and-what-actually-helps` — UPGRADE to narrower cervicogenic-headache education.
 
 ## Phase 9B build order
@@ -147,7 +155,7 @@ These five must not remain 404s at launch. Their exact legacy paths are preserve
 1. Build `/blog` with stable metadata, H1, canonical, cluster navigation, featured resources, latest articles, and links to core services and conditions.
 2. Restore the five currently linked URLs, preserving original publication dates and importing unique legacy material.
 3. Process the four direct commercial-intent consolidations: preserve useful information, review external data, and request redirect approval separately.
-4. Upgrade high-risk clinical/promotional treatment articles, especially cervical manipulation, prolozone, systemic ozone, PRP, injection, and “recover faster” claims.
+4. Upgrade approved high-risk clinical treatment articles; exclude rejected prolozone, systemic-ozone, and chiropractic-for-sleep content.
 5. Restore high-value narrow symptom articles across the spine, shoulder, lower-extremity, TMJ/headache, and injury clusters.
 6. Restore functional rehabilitation and treatment-education articles after owner confirmation of scope and author/reviewer assignment.
 7. Implement taxonomy behavior last: curated cluster navigation on `/blog`, noindex thin archives, and only approved misspelling redirects.
@@ -199,7 +207,7 @@ Do not assign bylines from topic assumptions. If an individual assignment is una
 3. Confirm whether a separate reviewer is required for injections, ozone, PRP, cellular/tissue products, pregnancy, neurological red flags, or manipulation safety.
 4. Confirm that current role descriptions and credentials may appear with bylines.
 5. Confirm an editorial owner and review cadence.
-6. Confirm whether acupuncture, systemic ozone, prolozone, and LipoLaser/InvisaRED remain offered and which verified practitioner may review those topics.
+6. Confirm the exact InvisaRED/LipoLaser device and service, and confirm whether Relief Plus offers acupuncture. Systemic ozone, prolozone, and chiropractic-for-sleep articles are not approved for restoration.
 7. Confirm whether article URLs naming Dr. Johnston reflect real authorship or only title wording.
 
 ## Date handling
