@@ -56,6 +56,105 @@ export function createPageMetadata({
   };
 }
 
+type ArticleMetadataInput = PageMetadataInput & {
+  datePublished: string;
+  dateModified: string;
+};
+
+export function createArticleMetadata({
+  title,
+  description,
+  path,
+  datePublished,
+  dateModified,
+}: ArticleMetadataInput): Metadata {
+  return {
+    ...createPageMetadata({ title, description, path }),
+    openGraph: {
+      type: "article",
+      locale: "en_US",
+      url: absoluteUrl(path),
+      siteName: siteConfig.name,
+      title,
+      description,
+      publishedTime: datePublished,
+      modifiedTime: dateModified,
+      authors: [siteConfig.name],
+    },
+  };
+}
+
+type BlogPostingStructuredDataInput = ArticleMetadataInput & {
+  headline: string;
+};
+
+export function createBlogPostingStructuredData({
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified,
+}: BlogPostingStructuredDataInput): Record<string, unknown> {
+  const pageUrl = absoluteUrl(path);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${pageUrl}#article`,
+        headline,
+        description,
+        url: pageUrl,
+        mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+        datePublished,
+        dateModified,
+        author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+        publisher: { "@id": `${siteConfig.url}/#medical-business` },
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: headline,
+        isPartOf: { "@id": `${absoluteUrl("/blog")}#webpage` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Patient Education", item: absoluteUrl("/blog") },
+          { "@type": "ListItem", position: 3, name: headline, item: pageUrl },
+        ],
+      },
+    ],
+  };
+}
+
+export function createBlogCollectionStructuredData(): Record<string, unknown> {
+  const pageUrl = absoluteUrl("/blog");
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${pageUrl}#webpage`,
+        name: "Relief Plus Patient Education",
+        description: "Evidence-informed articles about movement, musculoskeletal conditions, and treatment decisions.",
+        url: pageUrl,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Patient Education", item: pageUrl },
+        ],
+      },
+    ],
+  };
+}
+
 export const medicalBusinessJsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
