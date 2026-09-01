@@ -14,6 +14,15 @@ type FaqItem = {
   answer: string;
 };
 
+export type EducationSection = {
+  id?: string;
+  eyebrow: string;
+  title: string;
+  paragraphs?: string[];
+  items?: ContentItem[];
+  sources?: Array<{ label: string; href: string }>;
+};
+
 export type PillarPageData = {
   path: `/${string}`;
   breadcrumbLabel: string;
@@ -37,6 +46,7 @@ export type PillarPageData = {
   faqs: FaqItem[];
   ctaTitle: string;
   ctaDescription: string;
+  educationSections?: EducationSection[];
 };
 
 export const chiropracticPage: PillarPageData = {
@@ -296,9 +306,9 @@ export const regenerativePage: PillarPageData = {
       href: "/ozone-injection-therapy-lafayette",
     },
     {
-      title: "Trigger Point Injections",
-      description: "A supporting treatment considered for appropriate muscular pain patterns.",
-      href: "/trigger-point-injections-lafayette",
+      title: "Regenerative Cellular Therapy",
+      description: "Patient education about product identity, evidence, regulation, and informed questions.",
+      href: "/regenerative-cellular-therapy-lafayette#cellular-therapy",
     },
   ],
   faqs: [

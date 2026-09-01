@@ -253,6 +253,55 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </div>
       </section>
 
+      {data.educationSections?.map((section, sectionIndex) => (
+        <section
+          key={section.title}
+          id={section.id}
+          className={`px-6 py-24 lg:px-8 ${
+            sectionIndex % 2 === 0 ? "bg-[#f7f5ef]" : "bg-[#e8e5dc]"
+          }`}
+        >
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.75fr_1.25fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+                {section.eyebrow}
+              </p>
+              <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
+                {section.title}
+              </h2>
+            </div>
+            <div>
+              {section.paragraphs && (
+                <div className="space-y-5 text-lg leading-8 text-[#12233f]/70">
+                  {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                </div>
+              )}
+              {section.items && (
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {section.items.map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-[#12233f]/10 bg-white/55 p-6">
+                      <h3 className="font-serif text-xl">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#12233f]/65">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              )}
+              {section.sources && (
+                <div className="mt-8 border-t border-[#12233f]/10 pt-5 text-sm text-[#12233f]/60">
+                  <span className="font-semibold text-[#12233f]/75">Evidence sources: </span>
+                  {section.sources.map((source, index) => (
+                    <span key={source.href}>
+                      {index > 0 && " · "}
+                      <a className="underline decoration-[#b08d3b] underline-offset-4 hover:text-[#9a7428]" href={source.href} target="_blank" rel="noreferrer">{source.label}</a>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      ))}
+
       <section className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">

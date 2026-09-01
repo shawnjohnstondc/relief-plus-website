@@ -2,6 +2,7 @@ import JsonLd from "./JsonLd";
 import PillarPageShell from "./PillarPageShell";
 import type { PillarPageData } from "@/lib/pillar-pages";
 import { createServiceStructuredData } from "@/lib/seo";
+import { treatmentEducation } from "@/lib/treatment-education";
 
 export default function SupportingTreatmentPage({
   data,
@@ -17,7 +18,7 @@ export default function SupportingTreatmentPage({
           path: data.path,
         })}
       />
-      <PillarPageShell data={data} />
+      <PillarPageShell data={{ ...data, educationSections: treatmentEducation[data.path] }} />
     </>
   );
 }
