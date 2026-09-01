@@ -6,6 +6,14 @@ Phase: 9A planning only
 
 Sources: `migration-map.csv`, `SEO-MIGRATION-PLAN.md`, the August 30, 2026 Screaming Frog crawl, the accessible live Relief Plus blog, and the current 42-route rebuild.
 
+## Phase 9E remaining-inventory triage
+
+Phase 9E reconciled the 63 legacy article URLs against the 29 articles restored through Phase 9D. The remaining 34 articles are classified as eight high-priority restores, ten lower-priority restores, seven proposed landing-page consolidations, four proposed article-to-article consolidations, and five owner-review holds. No article is currently recommended for a 410.
+
+The proposed consolidations are planning decisions only. No redirect should be implemented until Search Console landing-page performance, external backlinks, historical organic traffic, and unique source content have been reviewed. The four local-commercial articles remain strong consolidation candidates because their titles and core intent compete directly with current landing pages, but that evidence gate still applies.
+
+Systemic ozone, prolozone, LipoLaser/InvisaRED, acupuncture/vertigo, and broad chiropractic-for-sleep content remain on hold pending confirmation of current service scope and acceptable claims. The detailed URL-level rationale, topical-gap analysis, taxonomy recommendations, and Phase 9F recommendation are in `BLOG-REMAINING-TRIAGE.md`; redirect candidates are summarized in `blog-consolidation-plan.csv`.
+
 ## Executive summary
 
 The crawl contains **80 blog-related URLs**: one blog hub, 63 article URLs, eight tag URLs, seven parameter/archive variants, and two direct 404 URLs. No blog redirect was present in the crawl.
