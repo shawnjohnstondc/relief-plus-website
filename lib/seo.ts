@@ -70,3 +70,56 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
     },
   ],
 };
+
+type ServiceStructuredDataInput = {
+  name: string;
+  description: string;
+  path: `/${string}`;
+};
+
+export function createServiceStructuredData({
+  name,
+  description,
+  path,
+}: ServiceStructuredDataInput): Record<string, unknown> {
+  const pageUrl = absoluteUrl(path);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}#service`,
+        name,
+        description,
+        url: pageUrl,
+        provider: {
+          "@id": `${siteConfig.url}/#medical-business`,
+        },
+        areaServed: [
+          "Lafayette, Louisiana",
+          "Carencro, Louisiana",
+          "Acadiana",
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: absoluteUrl("/"),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
+}
