@@ -111,3 +111,9 @@ Before switching the route:
 ## Current blockers and decision
 
 The continuity route is prepared but the staff application is **not yet approved for cutover**. A public-site cutover is architecturally possible only after an authorized user proves the environment-gated proxy through a preview deployment, or a fully secured replacement passes the acceptance tests above. DNS must not be changed while `LEGACY_TIMECARD_ORIGIN` is unset or while the route has not passed functional and authorization testing.
+
+## Native application owner override
+
+The approved long-term route model is `/time-card` for employee login/clock functions and `/time-card/admin` for the authenticated administrative payroll dashboard. `/employee` is not the primary employee route. The existing Supabase PostgreSQL project is the presumptive source of truth and historical records must be preserved in place when its schema and security model are verified.
+
+The detailed pre-implementation architecture, preservation assessment, security controls, migration sequence, and owner-information requirements are recorded in `seo-planning/NATIVE-TIME-CARD-MIGRATION-ARCHITECTURE.md`. Native implementation remains gated on authorized Supabase schema/RLS/procedure inspection, historical inventory, backup/rollback verification, payroll-rule confirmation, and a safe non-production test environment. Real PINs must never be committed or supplied through an insecure project artifact.

@@ -10,6 +10,8 @@ The rebuilt public application is technically strong: the production build passe
 
 The migration as a whole is not ready for DNS cutover. Of the 117 original crawl URLs, 89 currently have launch-ready behavior and 27 public legacy URLs still require an approved response or legacy-origin preservation. Phase 10B prepared an environment-gated `/time-card` continuity proxy, but authorized functional, authorization, RLS, and record-continuity testing remains required.
 
+Phase 10C prepared preview-only exact-path continuity for 23 of the 27 public unresolved URLs. The registry excludes `/cart` and the three owner-rejected articles, uses no wildcard, and remains disabled unless `LEGACY_PUBLIC_ORIGIN` is configured. Local testing found a Squarespace `429` burst limit, so this mechanism is not yet approved for production traffic.
+
 ## B. Public-website verdict
 
 # **NOT READY FOR PUBLIC-SITE CUTOVER**
@@ -31,6 +33,7 @@ The live Squarespace page contains a client-side Supabase application with passw
    - 1 preserved InvisaRED service URL, `/invisared-weight-loss-lafayette`, not yet built.
    - 7 blog tag archives plus `/blog/team` and `/blog/tag/team` awaiting data review.
    - `/cart`, whose retirement/noindex decision remains unapproved.
+   Phase 10C can temporarily preserve 23 of these exact paths in a configured preview, but it does not resolve their final migration decisions and has not passed origin-capacity testing.
 2. **Staff utility acceptance:** `/time-card` returns the legacy application with `200` when the verified origin is configured and fails closed with `503` when it is absent. Before DNS changes, an authorized user must validate authentication, ordinary and administrative actions, permissions/RLS, sessions, and record continuity through a preview deployment. The inherited legacy HTML still exposes four staff account identifiers anonymously.
 3. **Cutover environment not verified:** the production Vercel project, environment configuration, stable legacy origin, domain attachment, HTTPS/canonical-host behavior, CDN/firewall behavior, and rollback controls have not been tested because deployment and DNS changes were out of scope.
 
