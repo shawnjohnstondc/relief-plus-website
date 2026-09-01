@@ -8,7 +8,7 @@ Scope: audit only; no website code, content, routes, redirects, or design were c
 
 The current rebuild has a strong technical foundation. A clean production webpack build generated 42 indexable content routes plus the expected metadata and error routes. The sampled local production pages scored 99–100 for mobile performance, 100 for desktop performance, 100 for Best Practices, and 100 for Lighthouse SEO. Every sitemap route has a unique title and description, a self-referencing canonical, one H1, crawlable server-rendered content, and syntactically valid JSON-LD.
 
-The site is not launch-ready yet. The most important blockers are seven public internal links to routes that do not exist in this build, including `/blog` and `/time-card`; the latter also conflicts with the prior decision not to promote that private utility publicly. The HIPAA Notice and Good Faith Estimate are owner-approved source content and should be preserved faithfully. The Website Privacy Policy reflects the site’s current functionality and should be revisited if future data-collection integrations are added. The shared header produces two repeatable accessibility failures, and the shared footer does not show the verified clinic name, address, and phone.
+At the time of the original audit, the most important blockers included six public blog destinations that did not exist in the build. `/time-card` was also unresolved, but the owner has since classified it as an intentional internal staff utility rather than a public SEO destination. Its protected implementation and access controls remain a launch requirement. The HIPAA Notice and Good Faith Estimate are owner-approved source content and should be preserved faithfully. The Website Privacy Policy reflects the site’s current functionality and should be revisited if future data-collection integrations are added. The original audit also identified shared accessibility and footer NAP issues that were addressed in Phase 8B.
 
 There is no field Core Web Vitals data for this build. The excellent numbers below are controlled lab measurements and must not be represented as a real-user Core Web Vitals pass. The public Vercel preview URL was not available in the project, so this audit did not test a deployed preview, production redirects, TLS, host consolidation, edge caching, firewall rules, or live crawler access.
 
@@ -27,10 +27,21 @@ The approved targeted remediation pass corrected the shared accessibility and lo
 Intentionally deferred:
 
 - `/blog` and five linked legacy article routes remain linked for Phase 9 restoration. Every exact destination is present in `migration-map.csv` as a preserved legacy URL.
-- `/time-card` remains unbuilt and is linked only as the subtle “Staff” utility in the homepage footer. It is not in primary patient navigation; future work must restrict and noindex it.
+- `/time-card` remains unbuilt and is linked only as the subtle “Staff” utility in the homepage footer. It is an intentional internal utility—not a broken public SEO destination—and its eventual implementation must be protected, emit `noindex, nofollow`, and remain excluded from the sitemap and public schema.
 - Live Vercel/CDN firewall checks, deployed host redirects, Search Console, and real-user Core Web Vitals remain post-deployment work.
 - The HIPAA Notice and Good Faith Estimate are **OWNER-APPROVED SOURCE CONTENT; PRESERVE FAITHFULLY**. Phase 8B did not alter their substantive wording.
 - The Website Privacy Policy is treated as the operational policy for the site’s current functionality. Review and update it if analytics, forms, cookies, embedded maps, advertising pixels, or other third-party data collection are added later; those absent future integrations do not block the current launch.
+
+## `/time-card` owner clarification — September 1, 2026
+
+`/time-card` is an intentional internal staff utility for employee clock-in and clock-out, not a patient-facing SEO destination. Future audits must track it separately from broken public links.
+
+- Preserve the exact `/time-card` route and the existing visually discreet `Staff` footer link only.
+- Do not add the route to primary navigation or to services, about, contact, blog, condition, or treatment navigation.
+- Require page-level `noindex, nofollow`; exclude the route from `sitemap.xml` and do not attach LocalBusiness, MedicalWebPage, Service, or other public SEO schema.
+- Preserve staff functionality and any existing authentication/access controls. Do not expose employee data or clock records in public HTML or unprotected APIs.
+- The current Next.js rebuild has **no `/time-card` route, authentication/protection, clock-in functionality, or protected record API**. The protected implementation must be supplied and verified before launch. A public placeholder must not be created simply to clear a crawl result.
+- The current sitemap implementation already excludes `/time-card`. Until the protected route is implemented, audits should report it as **intentional staff utility — implementation/security pending**, not as a broken public SEO destination.
 
 ## Method and limitations
 
@@ -125,7 +136,7 @@ None detected in the generated corpus. This does not supersede the P0 launch blo
 
 | URL / source | Problem |
 |---|---|
-| `/` | Links to unbuilt `/blog` and `/time-card`. `/time-card` is explicitly not intended for public promotion and should eventually be noindexed/restricted. |
+| `/` | At audit time, linked to unbuilt `/blog`. It also contains the permitted discreet `Staff` link to `/time-card`; classify that separately as an intentional staff utility whose protected implementation remains pending. |
 | `/tmj-treatment-lafayette` | Links to two unbuilt legacy articles: `/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la` and `/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care`. |
 | `/frozen-shoulder-lafayette` | Links to unbuilt `/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion`. |
 | `/tennis-elbow-lafayette` | Links to unbuilt `/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus` and `/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1`. |
@@ -245,7 +256,7 @@ The services and conditions hubs provide broad discovery, and shared navigation 
 
 Priority improvements:
 
-- Remove or replace the public `/time-card` link; do not use the main site to confer authority on an internal utility.
+- Keep only the visually discreet `Staff` footer link to `/time-card`; do not add the utility to public navigation or content hubs. Verify authentication, `noindex, nofollow`, sitemap exclusion, and absence of public staff data before launch.
 - Build/restore approved blog URLs before retaining their contextual links, or temporarily remove links without redirecting valuable legacy URLs casually.
 - Link `/chiropractor-carencro-la` naturally from `/contact`, `/about`, or verified service-area copy.
 - Add relevant contextual links to the four low-inbound diagnosis pages; avoid stuffing every condition into global navigation.
@@ -270,7 +281,7 @@ Reduced motion is respected. No automated issue was found for missing alt text, 
 
 | Affected URL/file | Recommendation | Expected benefit | Risk | Difficulty |
 |---|---|---|---|---|
-| `/`, `/tmj-treatment-lafayette`, `/frozen-shoulder-lafayette`, `/tennis-elbow-lafayette`; source page/components and blog routes | Resolve all seven links to unbuilt destinations. Preserve valuable blog URLs by building them or making an approved migration decision; remove the public `/time-card` promotion and restrict/noindex that utility when built. | Eliminates user/crawler 404 paths and protects preserved URL strategy | Medium: careless URL changes can lose SEO equity | Medium |
+| `/`, `/tmj-treatment-lafayette`, `/frozen-shoulder-lafayette`, `/tennis-elbow-lafayette`; source page/components and blog routes | Resolve the six public blog destinations identified by the original audit. Track `/time-card` separately as an intentional utility and require secure implementation plus `noindex, nofollow` before launch. | Eliminates public user/crawler 404 paths, protects preserved URLs, and keeps staff data private | Medium: careless URL changes can lose SEO equity or expose utility functionality | Medium |
 | Deployed domain/Vercel | Verify every sitemap URL, four redirects, error routes, HTTPS, www consolidation, canonical response, robots, sitemap, icons, and CDN/firewall behavior on the actual deployment. | Prevents environment-only crawl/index failures | Low if audit-only; medium if edge config changes | Medium |
 
 ### P1 — high value before launch

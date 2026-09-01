@@ -45,7 +45,7 @@ Priority is an implementation sequence, not permission to remove lower-priority 
 - Consolidate `/faqs-1` into `/faq-lafayette` only after comparing content, traffic, and backlinks.
 - Review whether tag archives deserve preservation, noindexing, or consolidation.
 - Determine whether `/cart` and the Invisa-RED content remain part of the future business offering.
-- Preserve `/time-card` only as a restricted, noindex staff utility.
+- Preserve `/time-card` as an intentional internal staff utility used for employee clock-in and clock-out. Keep the exact route, apply `noindex, nofollow`, exclude it from XML sitemaps and public SEO schema, and require appropriate authentication/access controls before launch. It must not appear in primary navigation or patient-facing service, about, contact, blog, condition, or treatment navigation. A visually discreet staff-only footer link may remain.
 
 ## Pre-build work
 
@@ -67,6 +67,15 @@ Priority is an implementation sequence, not permission to remove lower-priority 
 - Provide a production robots file that allows intended pages and excludes non-public utilities.
 - Preserve internal links to canonical destinations rather than relying on redirects.
 - Keep the three primary clinical pillars consistent without erasing established condition/service relevance.
+
+### `/time-card` staff utility policy
+
+- **Route:** Preserve exactly `/time-card`; do not rename or redirect it as part of the public-site migration.
+- **Purpose:** Employee clock-in/clock-out only. It is not a patient-facing page and must not contain promotional or clinical content.
+- **Discovery:** Keep it out of primary navigation, public content hubs, XML sitemaps, and public structured data. The existing discreet `Staff` footer link may remain.
+- **Indexing:** Emit page-level `noindex, nofollow`. Future audits must classify it as an intentional internal utility, not a broken public SEO destination, and verify both the metadata directive and sitemap exclusion.
+- **Security:** Preserve existing authentication and access controls when the staff implementation is migrated. Do not render employee information or clock records into public page source and do not expose records through an unprotected API.
+- **Current implementation status:** The Next.js rebuild does not currently contain the `/time-card` route, authentication/protection, clock-in functionality, or a protected time-record API. The legacy/protected implementation and its access-control requirements must be supplied and verified before launch. Do not create a public placeholder merely to return a `200` response.
 
 ## Approved future condition-page architecture
 

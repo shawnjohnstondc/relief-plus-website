@@ -24,7 +24,6 @@
     "orphanRoutes": ["/chiropractor-carencro-la"],
     "brokenInternalDestinations": [
       "/blog",
-      "/time-card",
       "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
       "/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care",
       "/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion",
@@ -99,13 +98,26 @@
     "orphanRoutesAfter": [],
     "brokenInternalDestinationsAfter": [
       "/blog",
-      "/time-card",
       "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
       "/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care",
       "/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion",
       "/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus",
       "/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1"
     ],
+    "intentionalUtilityRoutes": {
+      "/time-card": {
+        "purpose": "staff clock-in and clock-out",
+        "publicSeoDestination": false,
+        "keepExactRoute": true,
+        "footerLinkPermitted": "discreet staff-only link",
+        "requiredRobotsMetadata": "noindex, nofollow",
+        "includedInSitemap": false,
+        "publicSchemaPermitted": false,
+        "routeImplemented": false,
+        "authenticationVerified": false,
+        "launchRequirement": "Supply and verify protected staff functionality; do not expose employee data or clock records in public HTML or unprotected APIs."
+      }
+    },
     "legalStatus": {
       "hipaaNotice": "owner-approved source content; preserve faithfully",
       "goodFaithEstimate": "owner-approved source content; preserve faithfully",
