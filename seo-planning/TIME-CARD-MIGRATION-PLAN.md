@@ -1,7 +1,7 @@
 # Relief Plus `/time-card` Migration Plan
 
 Date: September 1, 2026  
-Status: **SEPARATE STAFF APPLICATION — NOT READY FOR CUTOVER**
+Status: **CONTINUITY ROUTE PREPARED — AUTHORIZATION/DATA REVIEW NOT COMPLETE**
 
 ## Owner requirement
 
@@ -15,7 +15,8 @@ Preserve `https://www.myreliefplus.com/time-card` as a staff-only clock-in/clock
 - The client references employee, pay-rate, and time-entry data plus database procedures for clock actions and administrative adjustments.
 - The live HTML contains four staff account identifiers and public client configuration. No service-role marker was found in the inspected HTML. Public client configuration can be legitimate only when Row Level Security and authorization policies are correctly enforced; those policies could not be inspected from the public page.
 - The current page has no robots meta directive. It is therefore not currently implementing the approved `noindex, nofollow` policy.
-- This repository contains no `/time-card` route, authentication implementation, Supabase schema/migrations, RLS policies, database procedures, environment configuration, or employee/time-entry data.
+- At the start of Phase 10B, this repository contained no `/time-card` route. It still contains no replacement authentication implementation, Supabase schema/migrations, RLS policies, database procedures, employee credentials, or employee/time-entry data; the new route is a continuity proxy only.
+- Squarespace exposes the same application at the stable system hostname `https://harp-tangerine-s9zs.squarespace.com/time-card`. A read-only request returned `200` and the same time-card form/application markers without redirecting to the public domain. The page configuration still declares `https://www.myreliefplus.com` as its base URL, so end-to-end proxy behavior must be tested before cutover.
 
 No form was submitted, no login was attempted, and no employee records were queried during this review.
 
@@ -57,7 +58,26 @@ Requirements:
 - Restrict cache behavior so authenticated or personalized content is never stored in a shared public cache.
 - Monitor the route independently from the marketing site.
 
-Next.js supports external rewrites as a proxy while retaining the visible URL. This should not be configured until the stable legacy origin and full functional test are available.
+Next.js supports external rewrites as a proxy while retaining the visible URL. Phase 10B tested that approach, then rejected it for this route because the upstream response did not retain the required indexing and cache headers in the local production test.
+
+### Prepared Next.js continuity configuration
+
+The first external-rewrite test returned the correct legacy page but did not retain the required indexing/cache headers. It was therefore replaced with a narrow server-side route proxy at `app/time-card/route.ts`:
+
+- Set server environment variable `LEGACY_TIMECARD_ORIGIN` to the approved HTTPS legacy origin to enable the proxy.
+- The value is normalized to its origin and must not point to `myreliefplus.com` or `www.myreliefplus.com`, preventing an obvious proxy loop.
+- `/time-card` receives `X-Robots-Tag: noindex, nofollow`, a matching robots meta tag, `Cache-Control: private, no-store, max-age=0`, and `Referrer-Policy: same-origin` whether or not the proxy is enabled.
+- If the environment variable is absent, the route returns `503` instead of presenting a fake time-clock interface. If the upstream fails, it returns `502`; neither response exposes configuration or staff data.
+- The proxy retrieves only the anonymous legacy HTML. The existing browser application continues to authenticate directly with Supabase; the Next.js route does not accept staff credentials or query time records.
+- The route remains absent from the sitemap and public structured data.
+
+Candidate staging value:
+
+```text
+LEGACY_TIMECARD_ORIGIN=https://harp-tangerine-s9zs.squarespace.com
+```
+
+Do not add the variable to production until an authorized user validates login, ordinary clock-in/out, administrative permissions, sign-out, session behavior, and record continuity through a preview deployment. The origin is not a secret; staff credentials and privileged Supabase keys remain secret and must never be committed. The legacy anonymous HTML still exposes four staff account identifiers, so this proxy is continuity protection—not the final security remediation.
 
 ### Preferred long-term option: secured staff application
 
@@ -90,5 +110,4 @@ Before switching the route:
 
 ## Current blockers and decision
 
-The staff application is **not ready** to move or be replaced. A public-site cutover is architecturally possible only if `/time-card` is first proven to work through a stable legacy-origin proxy, or a fully secured replacement passes the acceptance tests above. DNS must not be changed while the route would resolve to the current Next.js `404`.
-
+The continuity route is prepared but the staff application is **not yet approved for cutover**. A public-site cutover is architecturally possible only after an authorized user proves the environment-gated proxy through a preview deployment, or a fully secured replacement passes the acceptance tests above. DNS must not be changed while `LEGACY_TIMECARD_ORIGIN` is unset or while the route has not passed functional and authorization testing.

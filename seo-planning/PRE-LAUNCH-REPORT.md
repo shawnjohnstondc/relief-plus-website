@@ -8,7 +8,7 @@ Environment: local Next.js 16.3.3 production webpack build
 
 The rebuilt public application is technically strong: the production build passes, all 90 intended sitemap URLs return `200`, metadata and structured data validate, every route has internal discovery, all 47 restored articles pass, all four approved redirects are one-hop `301 → 200`, mobile layouts pass automated checks, and Lighthouse remains excellent.
 
-The migration as a whole is not ready for DNS cutover. Of the 117 original crawl URLs, 89 currently have launch-ready behavior and 27 public legacy URLs still require an approved response or legacy-origin preservation. The separate `/time-card` staff application also has no route in the rebuild and cannot be allowed to become a `404` when the domain moves.
+The migration as a whole is not ready for DNS cutover. Of the 117 original crawl URLs, 89 currently have launch-ready behavior and 27 public legacy URLs still require an approved response or legacy-origin preservation. Phase 10B prepared an environment-gated `/time-card` continuity proxy, but authorized functional, authorization, RLS, and record-continuity testing remains required.
 
 ## B. Public-website verdict
 
@@ -18,9 +18,9 @@ This verdict reflects unresolved legacy URL behavior and cutover routing—not a
 
 ## C. `/time-card` verdict
 
-**SEPARATE STAFF APPLICATION — NOT READY FOR CUTOVER.**
+**SEPARATE STAFF APPLICATION — CONTINUITY PREPARED; AUTHORIZED ACCEPTANCE TEST PENDING.**
 
-The live Squarespace page contains a client-side Supabase application with password authentication, time-entry/pay-rate data access, and administrative procedures. The rebuild contains none of its source, backend schema, RLS policies, protected routing, or historical data. See `TIME-CARD-MIGRATION-PLAN.md`.
+The live Squarespace page contains a client-side Supabase application with password authentication, time-entry/pay-rate data access, and administrative procedures. The rebuild now has a narrow server route that proxies anonymous legacy HTML from the verified Squarespace system origin only when `LEGACY_TIMECARD_ORIGIN` is configured. It contains no credentials, database access, backend schema, RLS policies, or historical data. See `TIME-CARD-MIGRATION-PLAN.md`.
 
 ## D. P0 launch blockers
 
@@ -31,7 +31,7 @@ The live Squarespace page contains a client-side Supabase application with passw
    - 1 preserved InvisaRED service URL, `/invisared-weight-loss-lafayette`, not yet built.
    - 7 blog tag archives plus `/blog/team` and `/blog/tag/team` awaiting data review.
    - `/cart`, whose retirement/noindex decision remains unapproved.
-2. **Staff utility continuity:** `/time-card` returns `404` in the rebuild. Before DNS changes, either validate a stable external rewrite to the existing application or complete a secured replacement.
+2. **Staff utility acceptance:** `/time-card` returns the legacy application with `200` when the verified origin is configured and fails closed with `503` when it is absent. Before DNS changes, an authorized user must validate authentication, ordinary and administrative actions, permissions/RLS, sessions, and record continuity through a preview deployment. The inherited legacy HTML still exposes four staff account identifiers anonymously.
 3. **Cutover environment not verified:** the production Vercel project, environment configuration, stable legacy origin, domain attachment, HTTPS/canonical-host behavior, CDN/firewall behavior, and rollback controls have not been tested because deployment and DNS changes were out of scope.
 
 Resolving P0 does not require implementing the 11 consolidation redirects prematurely. A stable legacy-origin fallback can preserve those responses until data decisions are approved.
@@ -69,7 +69,7 @@ Resolving P0 does not require implementing the 11 consolidation redirects premat
 | Taxonomy/team routes awaiting data review | 9 | Pending |
 | Required preserved/future-restored pages not built | 3 | Not ready |
 | `/cart` owner decision | 1 | Pending |
-| `/time-card` protected utility | 1 | Separately not ready |
+| `/time-card` protected utility | 1 | Continuity prepared; authorized acceptance pending |
 
 The four approved redirects passed:
 
@@ -87,7 +87,7 @@ The four approved redirects passed:
 - Sitemap URLs: 90
 - Reachable public HTML pages: 90
 - Public broken links: 0
-- Separate intentional utility failure: `/time-card` (`404` in rebuild)
+- Separate utility route: `/time-card` returns `200` through the configured legacy proxy, or fail-closed `503` when unconfigured; it remains outside the public sitemap corpus.
 - Orphan sitemap routes: 0
 - Missing or duplicate required metadata detected: 0
 - H1 or heading-hierarchy failures detected: 0
@@ -149,7 +149,7 @@ These decisions are not content-build blockers by themselves, but their legacy U
 
 ## L. Security and privacy review
 
-The public Next.js repository contains no application API routes, committed environment files, obvious secret/key files, tracked crawl CSV, or detected credential patterns. No employee data or time-card code exists in the rebuild.
+The public Next.js repository contains no public data APIs, committed environment files, obvious secret/key files, tracked crawl CSV, or detected credential patterns. The `/time-card` route retrieves anonymous legacy HTML only; it does not accept staff credentials or query employee/time records. No employee records or time-card backend code exist in the rebuild.
 
 The live time-card HTML exposes staff account identifiers and a public Supabase client configuration. No privileged service-role marker was detected, but the actual RLS and database authorization model is unknown. This requires authorized review before preserving or migrating the application.
 
@@ -164,7 +164,7 @@ Do not begin until every P0 item has an owner-approved disposition.
 3. Build the three approved missing preserved/restoration URLs or configure a tested legacy-origin fallback.
 4. Decide `/cart` and taxonomy/team URL behavior.
 5. Approve and configure any data-supported one-hop redirects; leave unapproved consolidations untouched.
-6. Establish a stable legacy staff-app origin or complete the secured `/time-card` replacement.
+6. Configure the verified stable staff-app origin in a non-production deployment or complete the secured `/time-card` replacement.
 7. Verify `/time-card` authentication, authorization, record continuity, `noindex, nofollow`, cache behavior, sitemap exclusion, and rollback.
 8. Create the final Git checkpoint; verify the intended commit and clean worktree.
 9. Verify the Vercel production project, build command, Node version, environment settings, access controls, and deployment ownership.
@@ -189,10 +189,9 @@ If a major issue appears:
 
 1. Stop content/config changes and record the failing URLs and timestamps.
 2. If isolated, roll back the Vercel deployment or route only the affected path to the stable legacy origin.
-3. For `/time-card`, immediately restore its tested legacy-origin rewrite; do not attempt data repair in the public application.
+3. For `/time-card`, immediately restore its tested legacy-origin proxy or prior deployment; do not attempt data repair in the public application.
 4. If sitewide, restore the recorded DNS configuration to the old origin.
 5. Purge or bypass affected caches and verify HTTPS/host behavior.
 6. Re-crawl priority pages, all approved redirects, and `/time-card` after rollback.
 7. Reconcile any time entries created during the incident window from authoritative database/audit records.
 8. Document the cause and require a new acceptance test before attempting cutover again.
-
