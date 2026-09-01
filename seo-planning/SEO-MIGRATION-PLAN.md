@@ -68,6 +68,47 @@ Priority is an implementation sequence, not permission to remove lower-priority 
 - Preserve internal links to canonical destinations rather than relying on redirects.
 - Keep the three primary clinical pillars consistent without erasing established condition/service relevance.
 
+## Approved future condition-page architecture
+
+The following routes are **NEW / APPROVED FUTURE CONDITION PAGE** destinations. They were not found as legacy landing-page URLs in the August 30, 2026 crawl and must not receive redirects unless a later backlink, Search Console, or content audit identifies a genuinely equivalent legacy URL. Do not add them to the sitemap until substantive, indexable pages exist.
+
+All eight pages must follow the established Relief Plus condition-page clinical standard: patient-friendly education; individualized examination; conservative functional reasoning about movement, muscular coordination, breathing and trunk control, three-dimensional regional interaction, load tolerance, and task-specific function; calm referral guidance; and treatment selected from findings rather than diagnosis alone. These concepts are clinical reasoning lenses, not proof of causation. Public copy must not imply certification by or affiliation with Janda, DNS, the Prague School, Gary Gray, Gray Institute, or Applied Functional Science without verified owner documentation.
+
+| Recommended order | Approved route | Page role | Known crawl/content overlap | Cannibalization control |
+|---:|---|---|---|---|
+| 1 | `/knee-osteoarthritis-lafayette` | Diagnosis-specific knee osteoarthritis page | Preserved broad `/knee-pain-lafayette`; blog article `/blog/can-ozone-injections-help-your-knee-osteoarthritis-a-modern-approach-to-pain-management` | Keep the broad knee page symptom/region-led; make this page diagnosis-led and evidence-focused. Preserve the blog as an ozone-specific article and link it contextually rather than duplicating its angle. |
+| 2 | `/rotator-cuff-pain-lafayette` | Rotator cuff tendinopathy/tear differential and load-tolerance page | Preserved broad `/shoulder-pain-lafayette`; preserved `/tendonitis-treatment-lafayette`; blog article `/blog/understanding-scapular-dyskinesis-the-hidden-culprit-behind-shoulder-pain` | Keep shoulder pain broad, this page cuff-specific, and the scapular article educational. Avoid claiming scapular movement is the singular cause. |
+| 3 | `/tmj-treatment-lafayette` | TMJ/jaw-pain clinical landing page | Two indexable articles: `/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la` and `/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care`; secondary overlap with neck/headache content | Make the landing page the durable service/condition destination. Keep the articles informational and narrower; review titles, H1s, canonicals, and internal links so they support rather than compete with the landing page. |
+| 4 | `/frozen-shoulder-lafayette` | Adhesive capsulitis diagnosis page | Preserved broad `/shoulder-pain-lafayette`; article `/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion`; tag `/blog/tag/frozen+shoulder` pending taxonomy review | Keep the landing page diagnostic and comprehensive, the blog exercise-focused, and the broad shoulder page regional. Review the tag archive separately before deciding indexation. |
+| 5 | `/hip-bursitis-lafayette` | Hip Bursitis / Greater Trochanteric Pain Syndrome page | Preserved broad `/hip-pain-lafayette`; no exact legacy landing page or directly titled blog article found | Explain GTPS and gluteal tendon involvement so the page is narrower than the broad hip page. Link both directions. |
+| 6 | `/tennis-elbow-lafayette` | Lateral elbow tendinopathy page | Preserved `/tendonitis-treatment-lafayette`; two articles: `/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus` and `/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1` | Make the landing page diagnosis and progressive-loading focused. Keep each article modality-specific, soften outdated claims during rebuild, and point both to the canonical landing page. |
+| 7 | `/achilles-tendinopathy-lafayette` | Midportion/insertional Achilles tendinopathy page | Preserved `/tendonitis-treatment-lafayette`; no exact legacy landing page or directly titled blog article found | Differentiate midportion and insertional presentations. Keep the general tendon page broad and link it to this lower-limb diagnosis page. |
+| 8 | `/si-joint-pain-lafayette` | SI-region pain and SI-joint differential page | Preserved `/back-pain-lafayette` and `/hip-pain-lafayette`; no exact legacy landing page or directly titled blog article found | Lead with SI-region pain versus confirmed SI-joint pain. Avoid duplicating general back/hip content or claiming the pelvis is “out.” Link to both broad pages where clinically relevant. |
+
+### Approved page-specific scope
+
+- **TMJ / jaw pain:** jaw motion and muscular load, clenching, cervical/thoracic/rib-cage relationships where relevant, breathing and resting jaw position, headache overlap, chewing tolerance, and dental or oral-maxillofacial collaboration. Do not claim jaw realignment.
+- **SI joint pain:** SI-region differential, gait, single-leg loading, hip/trunk contribution, rotation, force transfer, transitions, lifting, and conservative pregnancy/postpartum context when supported. Do not claim pelvic misalignment.
+- **Frozen shoulder:** active and passive motion loss, movement compensation, daily function, variable natural history, relevant medical associations, and referral/imaging considerations. Do not claim manipulation instantly breaks adhesions.
+- **Rotator cuff pain:** tendinopathy versus tear, traumatic versus gradual onset, shoulder/scapular/thoracic contribution, cervical screening, strength, endurance, overhead load, and referral criteria. PRP belongs only in a careful diagnosis/evidence/candidacy discussion.
+- **Tennis elbow:** lateral elbow tendinopathy, grip and wrist-extensor demand, work/sport exposure, regional screening, and progressive loading rather than indefinite rest.
+- **Achilles tendinopathy:** midportion versus insertional presentation, calf/ankle/foot contribution, gait and running load, load spikes, progressive loading, stretching limitations, and rupture warning signs.
+- **Knee osteoarthritis:** imaging versus symptoms and function, strength, walking, stairs, sit-to-stand, hip/ankle contribution, nonjudgmental load management, movement confidence, flare planning, and appropriate orthopedic consultation. Do not promise cartilage regrowth or surgery avoidance.
+- **Hip bursitis / GTPS:** explain why lateral hip pain is not always an isolated inflamed bursa; address gluteal tendon and compression sensitivity, walking, stairs, single-leg stance, sleep, lumbar screening, and progressive loading.
+
+### Internal-link and launch requirements
+
+1. Build or finalize the relevant broad regional page before, or in the same release as, its diagnosis-specific child page.
+2. Link `/shoulder-pain-lafayette` to frozen shoulder and rotator cuff pain; link both diagnosis pages back to the shoulder page.
+3. Link `/knee-pain-lafayette` to knee osteoarthritis and link the diagnosis page back.
+4. Link `/hip-pain-lafayette` to Hip Bursitis / GTPS and link the diagnosis page back.
+5. Link `/tendonitis-treatment-lafayette` contextually to rotator cuff, tennis elbow, and Achilles tendinopathy without making the broad tendon page a duplicate list of child-page copy.
+6. Review every overlapping blog title, H1, primary intent, canonical, and internal-link target before publishing these pages. Preserve valuable articles; do not redirect them merely because a landing page now exists.
+7. Use Lafayette in the canonical slug and natural copy; mention Carencro and Acadiana naturally. Do not create duplicate Carencro pages.
+8. Add sitemap entries only when each page is complete, canonical, indexable, and returns 200.
+
+No slug changes are recommended before implementation. `/hip-bursitis-lafayette` is concise and recognizable; the public H1 and copy should pair it with “Greater Trochanteric Pain Syndrome” for clinical accuracy.
+
 ## Pre-launch validation
 
 - Crawl the staging build with JavaScript rendering enabled.
