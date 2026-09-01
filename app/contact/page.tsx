@@ -10,6 +10,7 @@ export default function Page() { return <><JsonLd data={createBreadcrumbStructur
     { title: "Address", description: "112 Arabian Dr.\nLafayette, LA 70507" },
     { title: "Email", description: "myreliefplus@gmail.com" },
     { title: "Referral Fax", description: "(337) 565-4201" },
+    { title: "Care for patients in Carencro", description: "Learn more about Relief Plus care for patients traveling from the Carencro area.", href: "/chiropractor-carencro-la" },
   ], paragraphs: ["Please do not use ordinary email for urgent concerns or assume it is a secure way to transmit medical information. Call the clinic for scheduling and instructions about records or referrals."] },
   { eyebrow: "Published Hours", title: "Current hours listed by the clinic.", items: [
     { title: "Monday & Wednesday", description: "7:00 AM–11:00 AM and 12:15 PM–4:00 PM" },

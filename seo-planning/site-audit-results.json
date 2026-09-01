@@ -1,0 +1,117 @@
+{
+  "auditDate": "2026-09-01",
+  "branch": "website-v1",
+  "commit": "8c72451",
+  "environment": "local Next.js production webpack build",
+  "fieldDataAvailable": false,
+  "deployedPreviewTested": false,
+  "build": {
+    "passed": true,
+    "contentRoutesInSitemap": 42,
+    "generatedStaticRoutesIncludingSpecialRoutes": 49
+  },
+  "crawl": {
+    "routesChecked": 42,
+    "missingTitles": 0,
+    "duplicateTitles": 0,
+    "missingDescriptions": 0,
+    "duplicateDescriptions": 0,
+    "missingCanonicals": 0,
+    "routesWithoutExactlyOneH1": 0,
+    "headingLevelSkips": 0,
+    "sitemapOmissions": 0,
+    "jsonLdParseErrors": 0,
+    "orphanRoutes": ["/chiropractor-carencro-la"],
+    "brokenInternalDestinations": [
+      "/blog",
+      "/time-card",
+      "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
+      "/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care",
+      "/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion",
+      "/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus",
+      "/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1"
+    ]
+  },
+  "lighthouse": {
+    "version": "13.4.1",
+    "runs": 24,
+    "mobile": {
+      "performanceRange": [99, 100],
+      "accessibility": 96,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpSecondsRange": [0.8, 0.9],
+      "lcpSecondsRange": [1.5, 2.0],
+      "tbtMillisecondsRange": [5, 9],
+      "cls": 0,
+      "speedIndexSecondsRange": [0.8, 0.9]
+    },
+    "desktop": {
+      "performance": 100,
+      "accessibility": 96,
+      "bestPractices": 100,
+      "seo": 100,
+      "fcpSecondsRange": [0.2, 0.2],
+      "lcpSecondsRange": [0.4, 0.5],
+      "tbtMilliseconds": 0,
+      "cls": 0,
+      "speedIndexSecondsRange": [0.2, 0.2]
+    },
+    "pages": [
+      "home",
+      "chiropractic-adjustments-lafayette",
+      "physical-therapy-lafayette",
+      "regenerative-cellular-therapy-lafayette",
+      "dry-needling-lafayette",
+      "shockwave-therapy-lafayette",
+      "knee-osteoarthritis-lafayette",
+      "tmj-treatment-lafayette",
+      "car-accident-injuries-lafayette",
+      "about",
+      "contact",
+      "services"
+    ],
+    "automatedAccessibilityFailures": [
+      "color-contrast",
+      "label-content-name-mismatch"
+    ],
+    "inpMeasured": false
+  },
+  "internalScores": {
+    "performance": 96,
+    "technicalSeo": 87,
+    "contentQuality": 85,
+    "localSeo": 82,
+    "structuredData": 90,
+    "accessibility": 88,
+    "googleSearchReadiness": 86,
+    "chatGptSearchReadiness": 88
+  },
+  "phase8bRemediation": {
+    "date": "2026-09-01",
+    "representativeLighthouseRuns": 8,
+    "accessibilityScoreBefore": 96,
+    "accessibilityScoreAfter": 100,
+    "performanceScoreAfterRange": [99, 100],
+    "colorContrastFailureCleared": true,
+    "labelContentNameFailureCleared": true,
+    "carencroInboundSources": ["/", "/contact"],
+    "orphanRoutesAfter": [],
+    "brokenInternalDestinationsAfter": [
+      "/blog",
+      "/time-card",
+      "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
+      "/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care",
+      "/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion",
+      "/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus",
+      "/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1"
+    ],
+    "legalStatus": {
+      "hipaaNotice": "owner-approved source content; preserve faithfully",
+      "goodFaithEstimate": "owner-approved source content; preserve faithfully",
+      "websitePrivacyPolicy": "operational for current functionality; update if future data collection or third-party integrations are added",
+      "currentLaunchBlockedByLegalReview": false
+    },
+    "fieldDataAvailable": false
+  }
+}

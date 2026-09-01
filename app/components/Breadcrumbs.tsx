@@ -6,7 +6,7 @@ type BreadcrumbsProps = {
 
 export default function Breadcrumbs({ currentPage }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-[#12233f]/55">
+    <nav aria-label="Breadcrumb" className="text-sm text-[#12233f]/70">
       <ol className="flex flex-wrap items-center gap-2">
         <li>
           <Link href="/" className="transition hover:text-[#9a7428]">

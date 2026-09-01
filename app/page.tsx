@@ -77,7 +77,7 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.08fr_.92fr] lg:px-8">
           <div className="max-w-3xl">
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7428]">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.28em] text-[#82601f]">
               Chiropractic · Physical Therapy · Regenerative Medicine
             </p>
 
@@ -113,7 +113,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-7 text-sm text-[#12233f]/60">
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-7 text-sm text-[#12233f]/70">
               <span>Evidence-informed care</span>
               <span>Individualized treatment</span>
               <span>Advanced recovery options</span>
@@ -233,7 +233,7 @@ export default function Home() {
 
             <Link
               href="/conditions-we-treat"
-              className="mt-8 inline-block text-sm font-semibold text-[#9a7428]"
+              className="mt-8 inline-block text-sm font-semibold text-[#82601f]"
             >
               View all conditions →
             </Link>
@@ -261,7 +261,7 @@ export default function Home() {
             <div className="flex h-full items-center justify-center p-10 text-center">
               <div>
                 <p className="font-serif text-3xl">Doctor / clinic image</p>
-                <p className="mt-3 text-sm text-[#12233f]/55">
+                <p className="mt-3 text-sm text-[#12233f]/70">
                   We’ll use your real photography here.
                 </p>
               </div>
@@ -343,7 +343,7 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                 Explore
               </p>
               <div className="mt-5 space-y-3 text-sm">
@@ -365,7 +365,7 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                 Patient Information
               </p>
               <div className="mt-5 space-y-3 text-sm">
@@ -386,14 +386,17 @@ export default function Home() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/55">
                 Contact
               </p>
               <div className="mt-5 space-y-3 text-sm text-white/75">
-                <p>Lafayette / Carencro, Louisiana</p>
+                <p>Relief Plus</p>
+                <p>112 Arabian Dr.<br />Lafayette, LA 70507</p>
+                <p><Link href="/chiropractor-carencro-la">Serving Lafayette and the Carencro area</Link></p>
                 <p>
-                  <a href="tel:3375654200">337-565-4200</a>
+                  <a href="tel:3375654200">(337) 565-4200</a>
                 </p>
+                <p><a href="mailto:myreliefplus@gmail.com">myreliefplus@gmail.com</a></p>
                 <p>
                   <Link href="/contact">Contact Relief Plus</Link>
                 </p>
@@ -401,12 +404,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-7 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
             <p>© 2026 Relief Plus. All rights reserved.</p>
 
             <Link
               href="/time-card"
-              className="text-white/25 transition hover:text-white/60"
+              className="text-white/55 transition hover:text-white/75"
             >
               Staff
             </Link>

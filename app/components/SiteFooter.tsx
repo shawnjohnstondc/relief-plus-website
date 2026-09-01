@@ -4,10 +4,11 @@ import BrandMark from "./BrandMark";
 export default function SiteFooter() {
   return (
     <footer className="bg-[#0d1b30] px-6 py-12 text-white lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1.15fr]">
         <div>
           <div className="flex items-center gap-3"><BrandMark /><span className="font-serif text-3xl">Relief <span className="text-[#d5b765]">+</span></span></div>
-          <p className="mt-4 max-w-sm text-sm leading-6 text-white/55">Chiropractic · Physical Therapy · Regenerative Medicine</p>
+          <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">Chiropractic · Physical Therapy · Regenerative Medicine</p>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">Serving Lafayette, Carencro, and Acadiana.</p>
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#d5b765]">Explore</p>
@@ -26,6 +27,15 @@ export default function SiteFooter() {
             <Link href="/good-faith-estimate" className="hover:text-white">Good Faith Estimate</Link>
             <Link href="/privacy-policy" className="hover:text-white">Website Privacy Policy</Link>
           </div>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#d5b765]">Contact</p>
+          <address className="mt-4 grid gap-3 text-sm not-italic leading-6 text-white/70">
+            <span>Relief Plus</span>
+            <span>112 Arabian Dr.<br />Lafayette, LA 70507</span>
+            <a href="tel:3375654200" className="hover:text-white">(337) 565-4200</a>
+            <a href="mailto:myreliefplus@gmail.com" className="break-all hover:text-white">myreliefplus@gmail.com</a>
+          </address>
         </div>
       </div>
     </footer>

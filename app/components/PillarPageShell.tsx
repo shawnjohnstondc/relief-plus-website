@@ -33,7 +33,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
 
           <div className="mt-12 grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9a7428]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#82601f]">
                 {data.eyebrow}
               </p>
               <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
@@ -101,7 +101,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       <section id="what-to-expect" className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Understanding Your Care
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -128,7 +128,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       <section className="bg-[#e8e5dc] px-6 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Individualized Evaluation
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -155,7 +155,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       <section className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Conditions Commonly Evaluated
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -223,7 +223,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         >
           <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.75fr_1.25fr]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
                 {section.eyebrow}
               </p>
               <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -265,7 +265,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       <section className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Related Care
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -279,7 +279,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       <section className="bg-[#e8e5dc] px-6 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Common Questions
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -305,7 +305,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
       {data.pageSources && (
         <section className="border-t border-[#12233f]/10 px-6 py-16 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">{data.sourcesEyebrow ?? "Selected Clinical Sources"}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">{data.sourcesEyebrow ?? "Selected Clinical Sources"}</p>
             <h2 className="mt-4 font-serif text-3xl">{data.sourcesTitle ?? "Evidence used to inform this patient guide."}</h2>
             <ul className="mt-8 grid gap-4 md:grid-cols-2">
               {data.pageSources.map((source) => (
