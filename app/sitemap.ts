@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/blog-posts";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,11 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/good-faith-estimate", priority: 0.3 },
     { path: "/privacy-policy", priority: 0.3 },
     { path: "/blog", priority: 0.8 },
-    { path: "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la", priority: 0.6 },
-    { path: "/blog/treating-temporomandibular-joint-dysfunction-with-conservative-care", priority: 0.6 },
-    { path: "/blog/frozen-shoulder-effective-exercises-for-regaining-your-range-of-motion", priority: 0.6 },
-    { path: "/blog/discover-the-power-of-prp-therapy-for-tennis-elbow-at-relief-plus", priority: 0.6 },
-    { path: "/blog/dry-needling-a-game-changer-in-treating-tennis-elbow-at-relief-plus-with-dr-shawn-johnston-1", priority: 0.6 },
     { path: "/chiropractic-adjustments-lafayette", priority: 0.9 },
     { path: "/physical-therapy-lafayette", priority: 0.9 },
     { path: "/regenerative-cellular-therapy-lafayette", priority: 0.9 },
@@ -53,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/work-injury-lafayette", priority: 0.8 },
   ] as const;
 
-  return routes.map(({ path, priority }) => ({
+  return [...routes, ...blogPosts.map(({ path }) => ({ path, priority: 0.6 }))].map(({ path, priority }) => ({
     url: absoluteUrl(path),
     changeFrequency: "monthly",
     priority,

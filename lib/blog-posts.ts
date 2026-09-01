@@ -20,7 +20,9 @@ export type BlogPost = {
 
 const updated = "2026-09-01T09:00:00-05:00";
 
-export const blogPosts: BlogPost[] = [
+import { phaseNineCBlogPosts } from "./phase-nine-c-blog-posts";
+
+const phaseNineBBlogPosts: BlogPost[] = [
   {
     slug: "why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
     path: "/blog/why-your-jaw-hurts-tmj-pain-guide-for-lafayette-la",
@@ -164,5 +166,7 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+export const blogPosts: BlogPost[] = [...phaseNineBBlogPosts, ...phaseNineCBlogPosts];
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));
