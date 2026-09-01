@@ -21,6 +21,7 @@ export type BlogPost = {
 const updated = "2026-09-01T09:00:00-05:00";
 
 import { phaseNineCBlogPosts } from "./phase-nine-c-blog-posts";
+import { phaseNineDBlogPosts } from "./phase-nine-d-blog-posts";
 
 const phaseNineBBlogPosts: BlogPost[] = [
   {
@@ -167,6 +168,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
   },
 ];
 
-export const blogPosts: BlogPost[] = [...phaseNineBBlogPosts, ...phaseNineCBlogPosts];
+export const blogPosts: BlogPost[] = [...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts];
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));
