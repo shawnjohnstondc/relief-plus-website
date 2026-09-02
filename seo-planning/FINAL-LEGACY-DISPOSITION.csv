@@ -1,0 +1,28 @@
+legacy_url,launch_action,destination,status_code,reason,launch_blocker
+/invisared-weight-loss-lafayette,KEEP REBUILT PAGE,,200,"Owner confirmed the established service should be rebuilt. The page preserves its exact route with conservative wellness/body-contouring and circumference-focused language and no unverified device or outcome claims.",NO
+/cart,RETIRE OBSOLETE UTILITY,,410,"Owner confirmed ecommerce/cart functionality is obsolete. A direct 410 retires the URL without a misleading redirect.",NO
+/blog/car-accident-injury-treatment-in-lafayette-la-what-to-do-immediately-and-why-waiting-can-make-it-worse,ONE-HOP 301 IMPLEMENTED,/car-accident-injuries-lafayette,301,"Substantially duplicates the stronger retained car-accident condition page.",NO
+/blog/whiplash-treatment-in-lafayette-la-symptoms-causes-and-how-to-recover-faster,ONE-HOP 301 IMPLEMENTED,/car-accident-injuries-lafayette,301,"The retained injury page is the closest genuine equivalent and includes whiplash evaluation context.",NO
+/blog/shoulder-pain-treatment-in-lafayette-la-why-it-wont-go-away-and-what-actually-helps,ONE-HOP 301 IMPLEMENTED,/shoulder-pain-lafayette,301,"Substantially duplicates the stronger retained shoulder-pain page.",NO
+/blog/knee-pain-treatment-in-lafayette-la-causes-solutions-and-when-to-get-help,ONE-HOP 301 IMPLEMENTED,/knee-pain-lafayette,301,"Substantially duplicates the stronger retained knee-pain page.",NO
+/blog/sciatica-treatment-in-lafayette-la-how-to-get-relief-fast-and-what-actually-works,ONE-HOP 301 IMPLEMENTED,/sciatica-treatment-lafayette,301,"Substantially duplicates the stronger retained sciatica page.",NO
+/blog/when-to-see-a-chiropractor-in-lafayette-la-signs-you-shouldnt-ignore,ONE-HOP 301 IMPLEMENTED,/chiropractic-adjustments-lafayette,301,"The chiropractic pillar is the closest genuine retained equivalent.",NO
+/blog/back-pain-treatment-in-lafayette-la-what-actually-works-and-why-most-treatments-fail,ONE-HOP 301 IMPLEMENTED,/back-pain-lafayette,301,"Substantially duplicates the stronger retained back-pain page.",NO
+/blog/beyond-the-adjustment-why-carencros-industrial-athletes-trust-relief-plus-for-total-recovery,ONE-HOP 301 IMPLEMENTED,/blog/the-carencro-commute-and-the-industrial-athlete-is-your-job-winning-the-war-on-your-spine,301,"Substantially overlaps the retained Carencro industrial-worker article.",NO
+/blog/rediscovering-primal-movement-patterns-for-modern-wellness,ONE-HOP 301 IMPLEMENTED,/blog/unlocking-the-bodys-potential-the-science-of-natural-movement,301,"Substantially overlaps the retained natural-movement article.",NO
+/blog/relieving-tension-headaches-the-chiropractic-approach,ONE-HOP 301 IMPLEMENTED,/blog/understanding-the-difference-tension-headaches-vs-migraines,301,"Substantially overlaps the retained headache-classification article.",NO
+/blog/treating-plantar-fasciitis-through-dry-needling-efficacy-and-mechanism,ONE-HOP 301 IMPLEMENTED,/blog/the-effectiveness-of-dry-needling-for-plantar-fasciitis-insights-by-dr-shawn-d-johnston-at-relief-plus,301,"Substantially overlaps the retained evidence-balanced dry-needling article.",NO
+/blog/healing-your-shoulder-why-prolozone-is-a-game-changer-for-ac-joint-injuries,RETIRE REJECTED ARTICLE,,410,"Owner rejected restoration and no genuinely equivalent page preserves its claims.",NO
+/blog/unlocking-recovery-how-systemic-ozone-therapy-complements-chiropractic-care,RETIRE REJECTED ARTICLE,,410,"Owner rejected restoration and its clinical/marketing claims must not be preserved elsewhere.",NO
+/blog/unlocking-the-secrets-of-sleep-chiropractic-techniques-for-a-restful-night,RETIRE REJECTED ARTICLE,,410,"Owner rejected restoration and no genuinely equivalent retained page exists.",NO
+/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss,RETIRE FOR CURRENT LAUNCH,,404,"Owner has not prioritized this weak legacy article. A future evidence-informed article may reuse the exact URL.",NO
+/blog/treating-vertigo-with-acupuncture-a-holistic-approach,RETIRE FOR CURRENT LAUNCH,,404,"Owner has not prioritized this article. A future diagnosis-specific educational restoration may reuse the exact URL.",NO
+/blog/team,RETIRE THIN ARCHIVE,,410,"This is a non-article taxonomy artifact; the real Team page is /team, but a redirect could misrepresent legacy intent.",NO
+/blog/tag/vertigo,RETIRE THIN TAG,,410,"Thin tag archive is excluded from the sitemap and should not be recreated solely for preservation.",NO
+/blog/tag/accupunture,RETIRE THIN TAG,,410,"Misspelled thin tag archive should not be recreated solely for preservation.",NO
+/blog/tag/dizzines,RETIRE THIN TAG,,410,"Misspelled thin tag archive should not be recreated solely for preservation.",NO
+/blog/tag/carencro,RETIRE THIN TAG,,410,"Thin geographic tag archive is unnecessary because retained local pages and articles serve the intent.",NO
+/blog/tag/frozen+shoulder,RETIRE THIN TAG,,410,"Thin tag archive is unnecessary because the retained condition page and article serve the intent.",NO
+/blog/tag/chiropractor,RETIRE THIN TAG,,410,"Thin tag archive is unnecessary because the retained chiropractic pillar serves the intent.",NO
+/blog/tag/team,RETIRE THIN TAG,,410,"Thin tag archive should not be recreated solely for preservation.",NO
+/blog/tag/range+of+motion,RETIRE THIN TAG,,410,"Thin tag archive should not be recreated solely for preservation.",NO

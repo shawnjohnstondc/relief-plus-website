@@ -35,7 +35,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+supabase/.temp/
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local SEO crawl exports
+/seo-planning/screaming-frog-current.csv

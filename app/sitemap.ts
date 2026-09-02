@@ -1,0 +1,59 @@
+import type { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/blog-posts";
+import { absoluteUrl } from "@/lib/seo";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = [
+    { path: "/", priority: 1 },
+    { path: "/about", priority: 0.9 },
+    { path: "/team", priority: 0.8 },
+    { path: "/contact", priority: 0.9 },
+    { path: "/services", priority: 0.9 },
+    { path: "/our-approach", priority: 0.8 },
+    { path: "/faq-lafayette", priority: 0.8 },
+    { path: "/hipaa-notice-of-privacy-practices", priority: 0.3 },
+    { path: "/good-faith-estimate", priority: 0.3 },
+    { path: "/privacy-policy", priority: 0.3 },
+    { path: "/blog", priority: 0.8 },
+    { path: "/chiropractic-adjustments-lafayette", priority: 0.9 },
+    { path: "/physical-therapy-lafayette", priority: 0.9 },
+    { path: "/regenerative-cellular-therapy-lafayette", priority: 0.9 },
+    { path: "/prp-therapy-lafayette", priority: 0.8 },
+    { path: "/ozone-injection-therapy-lafayette", priority: 0.8 },
+    { path: "/trigger-point-injections-lafayette", priority: 0.8 },
+    { path: "/dry-needling-lafayette", priority: 0.8 },
+    { path: "/class-iv-laser-therapy-lafayette", priority: 0.8 },
+    { path: "/shockwave-therapy-lafayette", priority: 0.8 },
+    { path: "/invisared-weight-loss-lafayette", priority: 0.7 },
+    { path: "/chiropractor-carencro-la", priority: 0.9 },
+    { path: "/conditions-we-treat", priority: 0.9 },
+    { path: "/back-pain-lafayette", priority: 0.8 },
+    { path: "/neck-pain-lafayette", priority: 0.8 },
+    { path: "/sciatica-treatment-lafayette", priority: 0.8 },
+    { path: "/herniated-disc-lafayette", priority: 0.8 },
+    { path: "/pinched-nerve-lafayette", priority: 0.8 },
+    { path: "/knee-osteoarthritis-lafayette", priority: 0.8 },
+    { path: "/rotator-cuff-pain-lafayette", priority: 0.8 },
+    { path: "/tmj-treatment-lafayette", priority: 0.8 },
+    { path: "/frozen-shoulder-lafayette", priority: 0.8 },
+    { path: "/hip-bursitis-lafayette", priority: 0.8 },
+    { path: "/tennis-elbow-lafayette", priority: 0.8 },
+    { path: "/achilles-tendinopathy-lafayette", priority: 0.8 },
+    { path: "/si-joint-pain-lafayette", priority: 0.8 },
+    { path: "/headache-treatment-lafayette", priority: 0.8 },
+    { path: "/shoulder-pain-lafayette", priority: 0.8 },
+    { path: "/knee-pain-lafayette", priority: 0.8 },
+    { path: "/hip-pain-lafayette", priority: 0.8 },
+    { path: "/plantar-fasciitis-lafayette", priority: 0.8 },
+    { path: "/tendonitis-treatment-lafayette", priority: 0.8 },
+    { path: "/car-accident-injuries-lafayette", priority: 0.8 },
+    { path: "/work-injury-lafayette", priority: 0.8 },
+    { path: "/sports-injuries-lafayette", priority: 0.8 },
+  ] as const;
+
+  return [...routes, ...blogPosts.map(({ path }) => ({ path, priority: 0.6 }))].map(({ path, priority }) => ({
+    url: absoluteUrl(path),
+    changeFrequency: "monthly",
+    priority,
+  }));
+}
