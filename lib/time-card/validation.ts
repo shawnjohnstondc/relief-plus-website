@@ -42,3 +42,16 @@ export const voidEntrySchema = z.object({
 });
 
 export const periodSchema = z.iso.date();
+
+export const payRateSchema = z.object({
+  employeeId: z.string().uuid(),
+  hourlyRateCents: z.number().int().positive().max(100_000),
+  effectiveDate: z.iso.date(),
+  reason: z.string().trim().min(3).max(500),
+});
+
+export const adminClockSchema = z.object({
+  employeeId: z.string().uuid(),
+  intent: z.enum(["in", "out"]),
+  reason: z.string().trim().max(500).optional(),
+});

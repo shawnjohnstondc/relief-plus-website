@@ -3,7 +3,7 @@ import {
   PAY_PERIOD_LENGTH_DAYS,
   TIME_CARD_TIME_ZONE,
 } from "./constants";
-import type { PayPeriod, PayrollTotals } from "./types";
+import type { EmployeePayRate, GrossPayEstimate, PaidTimeEntry, PayPeriod, PayrollTotals, TimeEntry } from "./types";
 
 const DAY_MS = 86_400_000;
 
@@ -83,6 +83,51 @@ export function elapsedWholeMinutes(clockIn: Date, clockOut: Date) {
 export function decimalHours(minutes: number) {
   if (!Number.isInteger(minutes)) throw new Error("Payroll minutes must be integers.");
   return (minutes / 60).toFixed(2);
+}
+
+export function dollarsToCents(value: string) {
+  const match = /^(\d{1,4})(?:\.(\d{1,2}))?$/.exec(value.trim());
+  if (!match) throw new Error("Enter a valid hourly rate with no more than two decimal places.");
+  const cents = Number(match[1]) * 100 + Number((match[2] ?? "").padEnd(2, "0"));
+  if (!Number.isSafeInteger(cents) || cents < 1 || cents > 100_000) throw new Error("Hourly rate is outside the supported range.");
+  return cents;
+}
+
+export function hoursToMinutes(value: string) {
+  if (!/^[+-]?(?:\d+|\d*\.\d+)$/.test(value.trim())) throw new Error("Enter a valid number of hours.");
+  const minutes = Number(value) * 60;
+  if (!Number.isSafeInteger(minutes) || minutes === 0 || Math.abs(minutes) > 24 * 60) throw new Error("Hours must convert to whole, non-zero minutes within 24 hours.");
+  return minutes;
+}
+
+export function currencyFromCents(cents: number) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(cents / 100);
+}
+
+function rateForDate(rates: EmployeePayRate[], date: string) {
+  return rates.filter((rate) => rate.effectiveDate <= date).sort((a, b) => b.effectiveDate.localeCompare(a.effectiveDate))[0];
+}
+
+export function estimateGrossPay(entries: TimeEntry[], paid: PaidTimeEntry[], rates: EmployeePayRate[]): GrossPayEstimate {
+  let centMinutes = 0;
+  const missing = new Set<string>();
+  for (const entry of entries) {
+    if (!entry.clockOut) continue;
+    const start = new Date(entry.clockIn);
+    const minutes = elapsedWholeMinutes(start, new Date(entry.clockOut));
+    for (let offset = 0; offset < minutes; offset += 1) {
+      const date = localDateForInstant(new Date(start.getTime() + offset * 60_000));
+      const rate = rateForDate(rates, date);
+      if (rate) centMinutes += rate.hourlyRateCents;
+      else missing.add(date);
+    }
+  }
+  for (const item of paid) {
+    const rate = rateForDate(rates, item.payrollDate);
+    if (rate) centMinutes += item.minutes * rate.hourlyRateCents;
+    else if (item.minutes) missing.add(item.payrollDate);
+  }
+  return { cents: missing.size ? null : Math.round(centMinutes / 60), missingRateDates: [...missing].sort() };
 }
 
 export function chicagoLocalDateTimeToInstant(value: string) {

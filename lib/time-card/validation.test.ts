@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { adjustmentSchema, loginSchema, manualPunchSchema, paidHolidaySchema } from "./validation";
+import { adjustmentSchema, adminClockSchema, loginSchema, manualPunchSchema, paidHolidaySchema, payRateSchema } from "./validation";
 
 describe("server input validation", () => {
   it("normalizes login identifiers", () => expect(loginSchema.parse({ loginIdentifier: " Lisa-Bernard ", pin: "1234" }).loginIdentifier).toBe("lisa-bernard"));
@@ -12,5 +12,11 @@ describe("server input validation", () => {
   });
   it("requires positive holiday minutes and at least one employee", () => {
     expect(paidHolidaySchema.safeParse({ employeeIds: [], payrollDate: "2026-09-01", minutes: 480, note: "Labor Day", reason: "Paid holiday" }).success).toBe(false);
+  });
+  it("validates effective-dated rates and administrative clock intent", () => {
+    const employeeId = "5ac8b4df-a17f-4bcb-b29d-e5c13f916e53";
+    expect(payRateSchema.safeParse({ employeeId, hourlyRateCents: 1975, effectiveDate: "2026-09-01", reason: "Annual review" }).success).toBe(true);
+    expect(adminClockSchema.safeParse({ employeeId, intent: "in" }).success).toBe(true);
+    expect(adminClockSchema.safeParse({ employeeId, intent: "pause" }).success).toBe(false);
   });
 });

@@ -2,8 +2,8 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import type Postgres from "postgres";
 import { timeCardDatabase } from "./database";
-import { elapsedWholeMinutes, payrollTotals } from "./payroll";
-import type { PaidTimeEntry, PayPeriod, PayrollTotals, TimeCardRole, TimeCardUser, TimeEntry } from "./types";
+import { elapsedWholeMinutes, estimateGrossPay, localDateForInstant, payrollTotals } from "./payroll";
+import type { EmployeePayRate, PaidTimeEntry, PayPeriod, PayrollTotals, TimeCardRole, TimeCardUser, TimeEntry } from "./types";
 
 export async function listActiveEmployees() {
   return timeCardDatabase()<TimeCardUser[]>`
@@ -113,9 +113,46 @@ export function totalsFor(entries: TimeEntry[], paid: PaidTimeEntry[], now = new
 export async function adminPayroll(period: PayPeriod) {
   const employees = await listActiveEmployees();
   return Promise.all(employees.map(async (employee) => {
-    const [entries, paid] = await Promise.all([employeeEntries(employee.id, period), paidEntries(employee.id, period)]);
-    return { employee, entries, paid, totals: totalsFor(entries, paid), openPunch: entries.find((entry) => !entry.clockOut) ?? await openPunch(employee.id) };
+    const [entries, paid, rates] = await Promise.all([employeeEntries(employee.id, period), paidEntries(employee.id, period), employeePayRates(employee.id)]);
+    return { employee, entries, paid, rates, currentRate: rateEffectiveOn(rates, localDateForInstant(new Date())), gross: estimateGrossPay(entries, paid, rates), totals: totalsFor(entries, paid), openPunch: entries.find((entry) => !entry.clockOut) ?? await openPunch(employee.id) };
   }));
+}
+
+export async function employeePayRates(employeeId: string) {
+  return timeCardDatabase()<EmployeePayRate[]>`select id, employee_id, hourly_rate_cents, effective_date::text, created_at from employee_pay_rates where employee_id = ${employeeId} and voided_at is null order by effective_date desc`;
+}
+
+export function rateEffectiveOn(rates: EmployeePayRate[], date: string) {
+  return rates.find((rate) => rate.effectiveDate <= date) ?? null;
+}
+
+export async function setEmployeePayRate(input: { actorId: string; employeeId: string; hourlyRateCents: number; effectiveDate: string; reason: string }) {
+  return timeCardDatabase().begin(async (tx) => {
+    await assertHourlyEmployee(tx, input.employeeId);
+    const before = (await tx<EmployeePayRate[]>`select id, employee_id, hourly_rate_cents, effective_date::text, created_at from employee_pay_rates where employee_id = ${input.employeeId} and effective_date = ${input.effectiveDate}::date and voided_at is null for update`)[0];
+    if (before) await tx`update employee_pay_rates set voided_at = now(), voided_by = ${input.actorId}, void_reason = ${input.reason} where id = ${before.id}`;
+    const after = (await tx<EmployeePayRate[]>`insert into employee_pay_rates (employee_id, hourly_rate_cents, effective_date, created_by) values (${input.employeeId}, ${input.hourlyRateCents}, ${input.effectiveDate}, ${input.actorId}) returning id, employee_id, hourly_rate_cents, effective_date::text, created_at`)[0];
+    await insertAudit(tx, { ...input, action: "SET_PAY_RATE", entityType: "employee_pay_rate", entityId: after.id, before, after });
+    return after;
+  });
+}
+
+export async function adminClockEmployee(input: { actorId: string; employeeId: string; intent: "in" | "out"; reason?: string }) {
+  return timeCardDatabase().begin(async (tx) => {
+    await assertHourlyEmployee(tx, input.employeeId);
+    const open = (await tx<TimeEntry[]>`select id, employee_id, clock_in, clock_out, source, note, voided_at from time_entries where employee_id = ${input.employeeId} and clock_out is null and voided_at is null limit 1 for update`)[0];
+    const reason = input.reason?.trim() || `Administrative clock ${input.intent}`;
+    if (input.intent === "in") {
+      if (open) throw new Error("Employee is already clocked in.");
+      const after = (await tx<TimeEntry[]>`insert into time_entries (employee_id, clock_in, source, note, created_by) values (${input.employeeId}, now(), 'ADMIN', ${reason}, ${input.actorId}) returning id, employee_id, clock_in, clock_out, source, note, voided_at`)[0];
+      await insertAudit(tx, { ...input, action: "ADMIN_CLOCK_IN", entityType: "time_entry", entityId: after.id, after, reason });
+      return after;
+    }
+    if (!open) throw new Error("Employee is already clocked out.");
+    const after = (await tx<TimeEntry[]>`update time_entries set clock_out = now(), note = coalesce(note, ${reason}) where id = ${open.id} returning id, employee_id, clock_in, clock_out, source, note, voided_at`)[0];
+    await insertAudit(tx, { ...input, action: "ADMIN_CLOCK_OUT", entityType: "time_entry", entityId: after.id, before: open, after, reason });
+    return after;
+  });
 }
 
 async function insertAudit(tx: Postgres.TransactionSql, input: { actorId: string; employeeId: string; action: string; entityType: string; entityId: string; before?: unknown; after?: unknown; reason: string }) {

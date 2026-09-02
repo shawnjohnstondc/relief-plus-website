@@ -10,6 +10,6 @@ export async function GET(request: Request) {
   let period;
   try { period = raw ? payPeriodForDate(raw) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
   const payroll = await adminPayroll(period);
-  const body = payrollCsv(period, payroll.map((row) => ({ name: row.employee.name, totals: row.totals })));
+  const body = payrollCsv(period, payroll.map((row) => ({ name: row.employee.name, totals: row.totals, grossCents: row.gross.cents })));
   return new Response(body, { headers: { "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": `attachment; filename="relief-plus-payroll-${period.start}.csv"`, "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow" } });
 }

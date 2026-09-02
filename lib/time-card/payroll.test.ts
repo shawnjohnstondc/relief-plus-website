@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   decimalHours,
+  dollarsToCents,
+  estimateGrossPay,
+  hoursToMinutes,
   chicagoLocalDateTimeToInstant,
   elapsedWholeMinutes,
   payPeriodForDate,
@@ -50,6 +53,33 @@ describe("exact-minute payroll calculations", () => {
       adjustmentMinutes: -30,
       totalPaidMinutes: 2_850,
     });
+  });
+});
+
+describe("rates and estimated gross pay", () => {
+  it("parses currency and signed hours without floating-point storage", () => {
+    expect(dollarsToCents("19.75")).toBe(1975);
+    expect(hoursToMinutes("-0.50")).toBe(-30);
+    expect(() => dollarsToCents("19.999")).toThrow();
+  });
+
+  it("segments gross pay across effective-dated rates", () => {
+    const employeeId = "5ac8b4df-a17f-4bcb-b29d-e5c13f916e53";
+    const rates = [
+      { id: "1", employeeId, hourlyRateCents: 1000, effectiveDate: "2026-09-01", createdAt: new Date() },
+      { id: "2", employeeId, hourlyRateCents: 1200, effectiveDate: "2026-09-02", createdAt: new Date() },
+    ];
+    const entries = [
+      { id: "e1", employeeId, clockIn: new Date("2026-09-01T14:00:00Z"), clockOut: new Date("2026-09-01T15:00:00Z"), source: "EMPLOYEE" as const, note: null, voidedAt: null },
+      { id: "e2", employeeId, clockIn: new Date("2026-09-02T14:00:00Z"), clockOut: new Date("2026-09-02T15:00:00Z"), source: "EMPLOYEE" as const, note: null, voidedAt: null },
+    ];
+    expect(estimateGrossPay(entries, [], rates)).toEqual({ cents: 2200, missingRateDates: [] });
+  });
+
+  it("does not present a knowingly inaccurate gross estimate when a rate is missing", () => {
+    const employeeId = "5ac8b4df-a17f-4bcb-b29d-e5c13f916e53";
+    const entries = [{ id: "e1", employeeId, clockIn: new Date("2026-09-01T14:00:00Z"), clockOut: new Date("2026-09-01T15:00:00Z"), source: "EMPLOYEE" as const, note: null, voidedAt: null }];
+    expect(estimateGrossPay(entries, [], [])).toEqual({ cents: null, missingRateDates: ["2026-09-01"] });
   });
 });
 

@@ -57,7 +57,9 @@ body {
 }
 
 /* Private staff utility */
-.time-card-app { min-height: 100vh; background: linear-gradient(155deg, #f7f5ef 0%, #f0ede3 100%); color: #12233f; }
+.time-card-app { min-height: 100vh; background: linear-gradient(155deg, #f7f5ef 0%, #f0ede3 100%); color: #12233f; overflow-x: clip; }
+.time-card-app, .time-card-app * { box-sizing: border-box; }
+.time-card-app * { min-width: 0; }
 .time-card-shell { width: min(100% - 2rem, 72rem); margin: 0 auto; padding: max(1rem, env(safe-area-inset-top)) 0 4rem; }
 .time-card-login { min-height: 100vh; display: grid; place-items: center; }
 .time-card-card, .time-card-hero-card { border: 1px solid rgba(18,35,63,.12); border-radius: 1.5rem; background: rgba(255,255,255,.76); box-shadow: 0 18px 50px rgba(18,35,63,.07); }
@@ -72,7 +74,7 @@ body {
 .time-card-muted { color: #566274; }
 .time-card-form { display: grid; gap: 1rem; }
 .time-card-form label, .time-card-form legend { display: grid; gap: .42rem; color: #263752; font-size: .85rem; font-weight: 700; }
-.time-card-form input, .time-card-form select { width: 100%; min-height: 3rem; border: 1px solid #a9b0b8; border-radius: .8rem; background: #fff; color: #12233f; font: inherit; padding: .7rem .85rem; box-sizing: border-box; }
+.time-card-form input, .time-card-form select { width: 100%; min-height: 3rem; border: 1px solid #a9b0b8; border-radius: .8rem; background: #fff; color: #12233f; font-family: inherit; font-size: 1rem; padding: .7rem .85rem; box-sizing: border-box; }
 .time-card-form input:focus, .time-card-form select:focus, .time-card-app button:focus-visible, .time-card-app a:focus-visible, .time-card-app summary:focus-visible { outline: 3px solid rgba(176,141,59,.42); outline-offset: 2px; }
 .time-card-button, .time-card-small-button, .time-card-clock-button, .time-card-danger-button { min-height: 3rem; border: 0; border-radius: .85rem; padding: .75rem 1.1rem; background: #12233f; color: white; cursor: pointer; font: inherit; font-weight: 700; text-align: center; text-decoration: none; }
 .time-card-security-note { margin: 1.25rem 0 0; color: #667181; font-size: .76rem; text-align: center; }
@@ -81,7 +83,9 @@ body {
 .time-card-alert-success { border: 1px solid #56806a; background: #edf7f0; color: #204f36; }
 .time-card-alert-warning { border: 1px solid #ad8129; background: #fff8e6; color: #65460d; }
 .time-card-topbar { display: flex; align-items: center; justify-content: space-between; min-height: 4rem; margin-bottom: 1rem; }
-.time-card-text-button { border: 0; background: transparent; color: #12233f; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.time-card-text-button, .time-card-return-link { display: inline-flex; align-items: center; min-height: 2.75rem; border: 0; background: transparent; color: #12233f; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.time-card-utilities { display: flex; align-items: center; justify-content: flex-end; gap: .65rem; flex-wrap: wrap; }
+.time-card-return-link { font-size: .85rem; padding: .35rem .25rem; }
 .time-card-hero-card { padding: clamp(1.5rem, 5vw, 3rem); text-align: center; }
 .time-card-live-clock { display: grid; margin: 1.5rem 0; }
 .time-card-live-clock time { font-variant-numeric: tabular-nums; font-size: clamp(2.6rem, 12vw, 5rem); font-weight: 750; letter-spacing: -.04em; }
@@ -136,9 +140,16 @@ body {
 .time-card-paid-list { margin: 1rem 1.25rem 1.25rem; border-top: 1px solid rgba(18,35,63,.12); padding-top: 1rem; }
 .time-card-paid-list article { display: grid; grid-template-columns: 1fr auto; gap: .25rem 1rem; padding: .5rem 0; }
 .time-card-paid-list small { grid-column: 1 / -1; color: #667181; }
+.time-card-detail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin: 0 1.25rem 1rem; }
+.time-card-detail-grid div { border: 1px solid rgba(18,35,63,.1); border-radius: .8rem; padding: .75rem; }
+.time-card-detail-grid dt { color: #667181; font-size: .72rem; }
+.time-card-detail-grid dd { margin: .25rem 0 0; font-weight: 750; font-variant-numeric: tabular-nums; }
+.time-card-admin-entries small { color: #667181; }
 
 @media (max-width: 760px) {
   .time-card-shell { width: min(100% - 1rem, 72rem); }
+  .time-card-topbar { align-items: flex-start; gap: .5rem; }
+  .time-card-utilities { gap: .25rem; }
   .time-card-stat-grid, .time-card-payroll-grid, .time-card-tools-grid, .time-card-holiday { grid-template-columns: 1fr; }
   .time-card-holiday > * { grid-column: auto !important; }
   .time-card-admin-heading { align-items: flex-start; }
@@ -146,7 +157,20 @@ body {
   .time-card-period-nav a { font-size: 0; }
   .time-card-period-nav a::first-letter { font-size: 1rem; }
   .time-card-section-title { flex-direction: column; }
-  .time-card-admin-entries article { align-items: flex-start; }
+  .time-card-admin-entries article { align-items: stretch; flex-direction: column; }
   .time-card-audit article { grid-template-columns: 1fr; gap: .3rem; }
-  .time-card-edit-grid { min-width: calc(100vw - 4rem); }
+  .time-card-edit-grid { width: 100%; min-width: 0; }
+  .time-card-detail-grid { grid-template-columns: repeat(2, 1fr); margin-inline: .75rem; }
+  .time-card-admin-heading { flex-direction: column; }
+  .time-card-export { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 390px) {
+  .time-card-shell { width: min(100% - .75rem, 72rem); }
+  .time-card-topbar { flex-direction: column; }
+  .time-card-utilities { width: 100%; justify-content: space-between; }
+  .time-card-hero-card { padding: 1.25rem .8rem; }
+  .time-card-live-clock time { font-size: clamp(2.35rem, 15vw, 3.4rem); }
+  .time-card-detail-grid { grid-template-columns: 1fr; }
+  .time-card-period-nav { gap: .35rem; }
 }

@@ -3,11 +3,11 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { authenticate } from "@/lib/time-card/auth";
-import { currentPayPeriod, chicagoLocalDateTimeToInstant, payPeriodForDate } from "@/lib/time-card/payroll";
-import { addManualPunch, addPaidHolidayForEmployees, addPaidTime, clockIn, clockOut, correctPunch, voidPunch } from "@/lib/time-card/repository";
+import { currentPayPeriod, chicagoLocalDateTimeToInstant, dollarsToCents, hoursToMinutes, payPeriodForDate } from "@/lib/time-card/payroll";
+import { addManualPunch, addPaidHolidayForEmployees, addPaidTime, adminClockEmployee, clockIn, clockOut, correctPunch, setEmployeePayRate, voidPunch } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
 import { getSession, revokeCurrentSession } from "@/lib/time-card/session";
-import { adjustmentSchema, correctionSchema, loginSchema, manualPunchSchema, paidHolidaySchema, periodSchema, voidEntrySchema } from "@/lib/time-card/validation";
+import { adjustmentSchema, adminClockSchema, correctionSchema, loginSchema, manualPunchSchema, paidHolidaySchema, payRateSchema, periodSchema, voidEntrySchema } from "@/lib/time-card/validation";
 
 function messageUrl(path: string, type: "error" | "success", message: string) {
   return `${path}?${type}=${encodeURIComponent(message)}`;
@@ -108,11 +108,39 @@ export async function addAdjustmentAction(formData: FormData) {
   const session = await adminSession();
   const period = periodSchema.catch(currentPayPeriod().start).parse(formData.get("period"));
   const employeeId = String(formData.get("employeeId") || "");
-  const parsed = adjustmentSchema.safeParse({ employeeId, payrollDate: formData.get("payrollDate"), minutes: Number(formData.get("minutes")), reason: formData.get("reason") });
-  if (!parsed.success) adminRedirect(period, "error", "Enter a date, non-zero minutes, and a reason.", employeeId);
+  let minutes = 0;
+  try { minutes = hoursToMinutes(String(formData.get("hours") || "")); } catch { /* validation below */ }
+  const parsed = adjustmentSchema.safeParse({ employeeId, payrollDate: formData.get("payrollDate"), minutes, reason: formData.get("reason") });
+  if (!parsed.success) adminRedirect(period, "error", "Enter signed hours that convert to whole minutes, a date, and a reason.", employeeId);
   if (parsed.data.payrollDate < period || parsed.data.payrollDate > payPeriodForDate(period).end) adminRedirect(period, "error", "The adjustment date must be within the selected pay period.", employeeId);
   try { await addPaidTime({ actorId: session.userId, employeeId, type: "ADJUSTMENT", payrollDate: parsed.data.payrollDate, minutes: parsed.data.minutes, note: parsed.data.reason, reason: parsed.data.reason }); }
   catch { adminRedirect(period, "error", "Unable to add the adjustment. Confirm the employee and try again.", employeeId); }
   revalidatePath("/time-card/admin");
   adminRedirect(period, "success", "Adjustment added and audited.", employeeId);
+}
+
+export async function setPayRateAction(formData: FormData) {
+  const session = await adminSession();
+  const period = periodSchema.catch(currentPayPeriod().start).parse(formData.get("period"));
+  const employeeId = String(formData.get("employeeId") || "");
+  let hourlyRateCents = 0;
+  try { hourlyRateCents = dollarsToCents(String(formData.get("hourlyRate") || "")); } catch { /* validation below */ }
+  const parsed = payRateSchema.safeParse({ employeeId, hourlyRateCents, effectiveDate: formData.get("effectiveDate"), reason: formData.get("reason") });
+  if (!parsed.success) adminRedirect(period, "error", "Enter a valid hourly rate, effective date, and reason.", employeeId);
+  try { await setEmployeePayRate({ actorId: session.userId, ...parsed.data }); }
+  catch { adminRedirect(period, "error", "Unable to save the pay rate. Confirm the employee and try again.", employeeId); }
+  revalidatePath("/time-card/admin");
+  adminRedirect(period, "success", "Hourly rate saved with effective-date history and audit record.", employeeId);
+}
+
+export async function adminClockAction(formData: FormData) {
+  const session = await adminSession();
+  const period = periodSchema.catch(currentPayPeriod().start).parse(formData.get("period"));
+  const employeeId = String(formData.get("employeeId") || "");
+  const parsed = adminClockSchema.safeParse({ employeeId, intent: formData.get("intent"), reason: formData.get("reason") || undefined });
+  if (!parsed.success) adminRedirect(period, "error", "The administrative clock request was invalid.", employeeId);
+  try { await adminClockEmployee({ actorId: session.userId, ...parsed.data }); }
+  catch (error) { adminRedirect(period, "error", error instanceof Error ? error.message : "Unable to update the employee clock.", employeeId); }
+  revalidatePath("/time-card/admin");
+  adminRedirect(period, "success", `Administrative clock ${parsed.data.intent} recorded using server time and audited.`, employeeId);
 }

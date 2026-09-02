@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import LiveClock from "./LiveClock";
 import { clockAction, loginAction, logoutAction } from "./actions";
 import { currentPayPeriod, decimalHours, elapsedWholeMinutes, localDateForInstant } from "@/lib/time-card/payroll";
@@ -19,6 +20,7 @@ export default async function TimeCardPage({ searchParams }: { searchParams: Pro
     const users = await listActiveUsersForLogin();
     return <main className="time-card-shell time-card-login">
       <section className="time-card-card time-card-auth-card">
+        <Link className="time-card-return-link" href="/">← Back to Relief Plus</Link>
         <div className="time-card-brand"><span>R</span><b>+</b></div>
         <p className="time-card-eyebrow">Relief Plus staff</p>
         <h1>Time Card</h1>
@@ -42,7 +44,7 @@ export default async function TimeCardPage({ searchParams }: { searchParams: Pro
   const todayMinutes = entries.filter((entry) => localDateForInstant(new Date(entry.clockIn)) === today).reduce((sum, entry) => sum + elapsedWholeMinutes(new Date(entry.clockIn), entry.clockOut ? new Date(entry.clockOut) : now), 0);
 
   return <main className="time-card-shell">
-    <header className="time-card-topbar"><div><p className="time-card-eyebrow">Relief Plus</p><strong>Employee Time Card</strong></div><form action={logoutAction}><button className="time-card-text-button">Sign out</button></form></header>
+    <header className="time-card-topbar"><div><p className="time-card-eyebrow">Relief Plus</p><strong>Employee Time Card</strong></div><div className="time-card-utilities"><Link className="time-card-return-link" href="/">← Back to Relief Plus</Link><form action={logoutAction}><button className="time-card-text-button">Sign out</button></form></div></header>
     <section className="time-card-hero-card">
       <p className="time-card-muted">{dateFormatter.format(now)}</p>
       <h1>Hello, {session.firstName}</h1>

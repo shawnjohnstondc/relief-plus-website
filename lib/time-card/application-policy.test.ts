@@ -33,6 +33,18 @@ describe("server authority and secret boundaries", () => {
     expect(repository).toMatch(/set clock_out = now\(\)/);
   });
 
+  it("uses database now() and an admin audit event for administrative clock mutations", () => {
+    const repository = read("lib/time-card/repository.ts");
+    expect(repository).toContain("ADMIN_CLOCK_IN");
+    expect(repository).toContain("ADMIN_CLOCK_OUT");
+    expect(repository).toMatch(/values \(\$\{input\.employeeId\}, now\(\), 'ADMIN'/);
+  });
+
+  it("provides semantic return links without coupling them to sign out", () => {
+    expect(read("app/time-card/page.tsx")).toContain('href="/">← Back to Relief Plus</Link>');
+    expect(read("app/time-card/admin/page.tsx")).toContain('href="/">← Back to Relief Plus</Link>');
+  });
+
   it("keeps runtime secrets in a server-only module without NEXT_PUBLIC variables", () => {
     const config = read("lib/time-card/config.ts");
     expect(config).toContain('import "server-only"');

@@ -49,3 +49,16 @@ export type PaidTimeEntry = {
   minutes: number;
   note: string;
 };
+
+export type EmployeePayRate = {
+  id: string;
+  employeeId: string;
+  hourlyRateCents: number;
+  effectiveDate: string;
+  createdAt: Date;
+};
+
+export type GrossPayEstimate = {
+  cents: number | null;
+  missingRateDates: string[];
+};
