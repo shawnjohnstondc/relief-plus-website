@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import type Postgres from "postgres";
 import { timeCardDatabase } from "./database";
 import { elapsedWholeMinutes, estimateGrossPay, localDateForInstant, payrollTotals } from "./payroll";
+import type { HistoricalPayrollSummary } from "./historical-payroll";
 import type { EmployeePayRate, PaidTimeEntry, PayPeriod, PayrollTotals, TimeCardRole, TimeCardUser, TimeEntry } from "./types";
 
 export async function listActiveEmployees() {
@@ -227,5 +228,20 @@ export async function auditHistory(employeeId?: string) {
     from audit_logs a join time_card_users actor on actor.id = a.actor_id left join time_card_users employee on employee.id = a.employee_id
     where (${employeeId ?? null}::uuid is null or a.employee_id = ${employeeId ?? null}::uuid)
     order by a.created_at desc limit 100
+  `;
+}
+
+export async function historicalPayrollSummaries() {
+  return timeCardDatabase()<HistoricalPayrollSummary[]>`
+    select summary.id, summary.employee_id, employee.name as employee_name,
+      summary.pay_period_start::text, summary.pay_period_end::text,
+      summary.worked_hundredths, summary.holiday_hundredths,
+      summary.adjustment_hundredths, summary.total_paid_hundredths,
+      summary.hourly_rate_cents, summary.estimated_gross_cents,
+      summary.source, batch.source_file, summary.imported_at
+    from historical_payroll_summaries summary
+    join time_card_users employee on employee.id = summary.employee_id
+    join historical_payroll_import_batches batch on batch.id = summary.import_batch_id
+    order by summary.pay_period_start desc, employee.name
   `;
 }

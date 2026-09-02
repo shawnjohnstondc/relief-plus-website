@@ -2,7 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { addAdjustmentAction, addHolidayAction, addMissedTimeAction, adminClockAction, correctPunchAction, logoutAction, setPayRateAction, voidPunchAction } from "../actions";
 import { currencyFromCents, currentPayPeriod, decimalHours, elapsedWholeMinutes, localDateForInstant, payPeriodForDate, shiftPayPeriod } from "@/lib/time-card/payroll";
-import { adminPayroll, auditHistory } from "@/lib/time-card/repository";
+import { formatHundredths } from "@/lib/time-card/historical-payroll";
+import { adminPayroll, auditHistory, historicalPayrollSummaries } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
 import { getSession } from "@/lib/time-card/session";
 
@@ -21,7 +22,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const params = await searchParams;
   let period;
   try { period = params.period ? payPeriodForDate(params.period) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
-  const [payroll, audit] = await Promise.all([adminPayroll(period), auditHistory(params.employee)]);
+  const [payroll, audit, historical] = await Promise.all([adminPayroll(period), auditHistory(params.employee), historicalPayrollSummaries()]);
   const selected = payroll.find((row) => row.employee.id === params.employee) ?? payroll[0];
   const previous = shiftPayPeriod(period, -1);
   const next = shiftPayPeriod(period, 1);
@@ -51,6 +52,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </section>
     </>}
     <form action={addHolidayAction} className="time-card-card time-card-form time-card-holiday"><h2>Add paid holiday</h2><input type="hidden" name="period" value={period.start}/><fieldset><legend>Employees</legend>{payroll.map((row) => <label className="time-card-checkbox" key={row.employee.id}><input type="checkbox" name="employeeIds" value={row.employee.id}/>{row.employee.name}</label>)}</fieldset><label>Date<input type="date" name="payrollDate" min={period.start} max={period.end} required/></label><label>Paid minutes<input type="number" name="minutes" min="1" max="1440" step="1" defaultValue="480" required/></label><label>Holiday name<input name="note" maxLength={200} required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Add holiday</button></form>
+    {historical.length > 0 && <section className="time-card-card time-card-historical"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Payroll history</p><h2>Imported Historical Summaries</h2></div><span>{historical.length} records</span></div><p className="time-card-muted">These totals were imported from the previous system. They are summary records only and do not contain or create clock punches.</p><div className="time-card-historical-list">{historical.map((item) => <article key={item.id}><div><strong>{item.employeeName}</strong><span>{item.payPeriodStart} – {item.payPeriodEnd}</span><small>Imported Historical Summary · {item.sourceFile}</small></div><dl><div><dt>Worked</dt><dd>{formatHundredths(item.workedHundredths)}</dd></div><div><dt>Holiday</dt><dd>{formatHundredths(item.holidayHundredths)}</dd></div><div><dt>Adjustment</dt><dd>{formatHundredths(item.adjustmentHundredths)}</dd></div><div><dt>Total paid</dt><dd>{formatHundredths(item.totalPaidHundredths)}</dd></div><div><dt>Rate</dt><dd>{currencyFromCents(item.hourlyRateCents)}</dd></div><div><dt>Est. gross</dt><dd>{currencyFromCents(item.estimatedGrossCents)}</dd></div></dl></article>)}</div></section>}
     <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Immutable history</p><h2>Audit trail</h2></div></div><div className="time-card-audit">{audit.map((item) => <article key={item.id}><strong>{item.action.replaceAll("_", " ")}</strong><span>{item.employeeName ?? "System"} · by {item.actorName}</span><p>{item.reason}</p><time>{new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }).format(new Date(item.createdAt))}</time></article>)}{audit.length === 0 && <p className="time-card-muted">No administrative changes recorded.</p>}</div></section>
   </main>;
 }
