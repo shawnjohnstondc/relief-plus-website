@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { addAdjustmentAction, addHolidayAction, addMissedTimeAction, adminClockAction, correctPunchAction, logoutAction, setPayRateAction, voidPunchAction } from "../actions";
 import { currencyFromCents, currentPayPeriod, decimalHours, elapsedWholeMinutes, localDateForInstant, payPeriodForDate, shiftPayPeriod } from "@/lib/time-card/payroll";
-import { formatHundredths } from "@/lib/time-card/historical-payroll";
+import { formatHundredths, type HistoricalPayrollSummary } from "@/lib/time-card/historical-payroll";
 import { adminPayroll, auditHistory, historicalPayrollSummaries } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
 import { getSession } from "@/lib/time-card/session";
@@ -15,7 +15,27 @@ function localInput(date: Date) {
   return `${values.year}-${values.month}-${values.day}T${values.hour}:${values.minute}`;
 }
 
-export default async function AdminPage({ searchParams }: { searchParams: Promise<{ period?: string; employee?: string; error?: string; success?: string }> }) {
+function HistoricalPayrollPanel({ items, selectedId, period, employeeId }: { items: HistoricalPayrollSummary[]; selectedId?: string; period: string; employeeId: string }) {
+  if (items.length === 0) return null;
+  const selectedIndex = Math.max(0, items.findIndex((item) => item.id === selectedId));
+  const item = items[selectedIndex];
+  const newer = items[selectedIndex - 1];
+  const older = items[selectedIndex + 1];
+  const hrefFor = (history: HistoricalPayrollSummary) => `?period=${period}&employee=${employeeId}&history=${history.id}`;
+
+  return <section className="time-card-card time-card-historical" aria-labelledby="historical-payroll-heading">
+    <div className="time-card-section-title"><div><p className="time-card-eyebrow">Payroll history</p><h2 id="historical-payroll-heading">Imported Historical Summary</h2></div><span>{items.length} periods</span></div>
+    <p className="time-card-muted">These totals were imported from the previous system. They are summary records only and do not contain or create clock-in or clock-out punches.</p>
+    <nav className="time-card-period-nav" aria-label="Imported historical pay period">
+      {older ? <Link href={hrefFor(older)}>← Older</Link> : <span aria-hidden="true" />}
+      <div><strong>{item.payPeriodStart} – {item.payPeriodEnd}</strong><span>Imported historical pay period</span></div>
+      {newer ? <Link href={hrefFor(newer)}>→ Newer</Link> : <span aria-hidden="true" />}
+    </nav>
+    <div className="time-card-historical-list"><article><div><strong>{item.employeeName}</strong><span>{item.payPeriodStart} – {item.payPeriodEnd}</span><small>Imported Historical Summary · {item.sourceFile}</small></div><dl><div><dt>Worked hours</dt><dd>{formatHundredths(item.workedHundredths)}</dd></div><div><dt>Holiday hours</dt><dd>{formatHundredths(item.holidayHundredths)}</dd></div><div><dt>Adjustment</dt><dd>{formatHundredths(item.adjustmentHundredths)}</dd></div><div><dt>Total paid hours</dt><dd>{formatHundredths(item.totalPaidHundredths)}</dd></div><div><dt>Historical hourly rate</dt><dd>{currencyFromCents(item.hourlyRateCents)}</dd></div><div><dt>Historical estimated gross</dt><dd>{currencyFromCents(item.estimatedGrossCents)}</dd></div></dl></article></div>
+  </section>;
+}
+
+export default async function AdminPage({ searchParams }: { searchParams: Promise<{ period?: string; employee?: string; history?: string; error?: string; success?: string }> }) {
   const session = await getSession();
   if (!session) redirect("/time-card");
   requireRole(session, "ADMIN");
@@ -24,6 +44,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   try { period = params.period ? payPeriodForDate(params.period) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
   const [payroll, audit, historical] = await Promise.all([adminPayroll(period), auditHistory(params.employee), historicalPayrollSummaries()]);
   const selected = payroll.find((row) => row.employee.id === params.employee) ?? payroll[0];
+  const selectedHistorical = selected ? historical.filter((item) => item.employeeId === selected.employee.id) : [];
   const previous = shiftPayPeriod(period, -1);
   const next = shiftPayPeriod(period, 1);
   const now = new Date();
@@ -38,6 +59,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     <nav className="time-card-period-nav" aria-label="Pay period"><Link href={`?period=${previous.start}`}>← Previous</Link><div><strong>{period.start} – {period.end}</strong><span>14-day pay period</span></div><Link href={`?period=${next.start}`}>Next →</Link></nav>
     {payroll.some((row) => row.openPunch) && <section className="time-card-alert time-card-alert-warning"><strong>Open punch warning</strong><span>{payroll.filter((row) => row.openPunch).map((row) => row.employee.name).join(", ")} currently {payroll.filter((row) => row.openPunch).length === 1 ? "has" : "have"} an open punch.</span></section>}
     <section className="time-card-payroll-grid">{payroll.map((row) => <Link key={row.employee.id} className={`time-card-card time-card-employee-card ${selected?.employee.id === row.employee.id ? "is-selected" : ""}`} href={`?period=${period.start}&employee=${row.employee.id}`}><div><h2>{row.employee.name}</h2>{row.openPunch && <span className="time-card-open-badge">Open punch</span>}</div><dl><div><dt>Worked</dt><dd>{decimalHours(row.totals.workedMinutes)}</dd></div><div><dt>Holiday</dt><dd>{decimalHours(row.totals.holidayMinutes)}</dd></div><div><dt>Adjustments</dt><dd>{decimalHours(row.totals.adjustmentMinutes)}</dd></div><div className="total"><dt>Total paid</dt><dd>{decimalHours(row.totals.totalPaidMinutes)}</dd></div><div><dt>Hourly rate</dt><dd>{row.currentRate ? currencyFromCents(row.currentRate.hourlyRateCents) : "Not set"}</dd></div><div><dt>Est. gross</dt><dd>{row.gross.cents === null ? "Rate needed" : currencyFromCents(row.gross.cents)}</dd></div></dl></Link>)}</section>
+    {selected && <HistoricalPayrollPanel items={selectedHistorical} selectedId={params.history} period={period.start} employeeId={selected.employee.id} />}
     {selected && <>
       <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Employee detail</p><h2>{selected.employee.name}</h2></div><span>{selected.entries.length} punches</span></div>
         <dl className="time-card-detail-grid"><div><dt>Status</dt><dd>{selected.openPunch ? "Clocked in" : "Clocked out"}</dd></div><div><dt>Current rate</dt><dd>{selected.currentRate ? `${currencyFromCents(selected.currentRate.hourlyRateCents)}/hr` : "Not set"}</dd></div><div><dt>Today</dt><dd>{decimalHours(todayMinutes)}</dd></div><div><dt>Worked</dt><dd>{decimalHours(selected.totals.workedMinutes)}</dd></div><div><dt>Holiday</dt><dd>{decimalHours(selected.totals.holidayMinutes)}</dd></div><div><dt>Adjustment</dt><dd>{decimalHours(selected.totals.adjustmentMinutes)}</dd></div><div><dt>Total paid</dt><dd>{decimalHours(selected.totals.totalPaidMinutes)}</dd></div><div><dt>Estimated gross</dt><dd>{selected.gross.cents === null ? "Set rates for all paid dates" : currencyFromCents(selected.gross.cents)}</dd></div></dl>
@@ -52,7 +74,6 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </section>
     </>}
     <form action={addHolidayAction} className="time-card-card time-card-form time-card-holiday"><h2>Add paid holiday</h2><input type="hidden" name="period" value={period.start}/><fieldset><legend>Employees</legend>{payroll.map((row) => <label className="time-card-checkbox" key={row.employee.id}><input type="checkbox" name="employeeIds" value={row.employee.id}/>{row.employee.name}</label>)}</fieldset><label>Date<input type="date" name="payrollDate" min={period.start} max={period.end} required/></label><label>Paid minutes<input type="number" name="minutes" min="1" max="1440" step="1" defaultValue="480" required/></label><label>Holiday name<input name="note" maxLength={200} required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Add holiday</button></form>
-    {historical.length > 0 && <section className="time-card-card time-card-historical"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Payroll history</p><h2>Imported Historical Summaries</h2></div><span>{historical.length} records</span></div><p className="time-card-muted">These totals were imported from the previous system. They are summary records only and do not contain or create clock punches.</p><div className="time-card-historical-list">{historical.map((item) => <article key={item.id}><div><strong>{item.employeeName}</strong><span>{item.payPeriodStart} – {item.payPeriodEnd}</span><small>Imported Historical Summary · {item.sourceFile}</small></div><dl><div><dt>Worked</dt><dd>{formatHundredths(item.workedHundredths)}</dd></div><div><dt>Holiday</dt><dd>{formatHundredths(item.holidayHundredths)}</dd></div><div><dt>Adjustment</dt><dd>{formatHundredths(item.adjustmentHundredths)}</dd></div><div><dt>Total paid</dt><dd>{formatHundredths(item.totalPaidHundredths)}</dd></div><div><dt>Rate</dt><dd>{currencyFromCents(item.hourlyRateCents)}</dd></div><div><dt>Est. gross</dt><dd>{currencyFromCents(item.estimatedGrossCents)}</dd></div></dl></article>)}</div></section>}
     <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Immutable history</p><h2>Audit trail</h2></div></div><div className="time-card-audit">{audit.map((item) => <article key={item.id}><strong>{item.action.replaceAll("_", " ")}</strong><span>{item.employeeName ?? "System"} · by {item.actorName}</span><p>{item.reason}</p><time>{new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }).format(new Date(item.createdAt))}</time></article>)}{audit.length === 0 && <p className="time-card-muted">No administrative changes recorded.</p>}</div></section>
   </main>;
 }
