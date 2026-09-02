@@ -119,8 +119,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative pb-24 sm:pb-28 lg:pb-20">
-            <div className="relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[430px] lg:min-h-[560px]">
+          <div className="relative pb-32 sm:pb-28 lg:pb-20">
+            <div className="relative min-h-[380px] overflow-hidden rounded-[2rem] sm:min-h-[430px] lg:min-h-[560px]">
               <Image
                 src="/relief-plus-hero-wide.webp"
                 alt="Shawn D. Johnston, D.C., owner of Relief Plus"

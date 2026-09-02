@@ -3,18 +3,6 @@ import type { NextConfig } from "next";
 const publicHosts = new Set(["myreliefplus.com", "www.myreliefplus.com"]);
 
 const legacyContinuityPaths = [
-  "/invisared-weight-loss-lafayette",
-  "/blog/car-accident-injury-treatment-in-lafayette-la-what-to-do-immediately-and-why-waiting-can-make-it-worse",
-  "/blog/whiplash-treatment-in-lafayette-la-symptoms-causes-and-how-to-recover-faster",
-  "/blog/shoulder-pain-treatment-in-lafayette-la-why-it-wont-go-away-and-what-actually-helps",
-  "/blog/knee-pain-treatment-in-lafayette-la-causes-solutions-and-when-to-get-help",
-  "/blog/sciatica-treatment-in-lafayette-la-how-to-get-relief-fast-and-what-actually-works",
-  "/blog/when-to-see-a-chiropractor-in-lafayette-la-signs-you-shouldnt-ignore",
-  "/blog/back-pain-treatment-in-lafayette-la-what-actually-works-and-why-most-treatments-fail",
-  "/blog/beyond-the-adjustment-why-carencros-industrial-athletes-trust-relief-plus-for-total-recovery",
-  "/blog/rediscovering-primal-movement-patterns-for-modern-wellness",
-  "/blog/relieving-tension-headaches-the-chiropractic-approach",
-  "/blog/treating-plantar-fasciitis-through-dry-needling-efficacy-and-mechanism",
   "/blog/lipolaser-understanding-the-effectiveness-of-targeted-fat-loss",
   "/blog/treating-vertigo-with-acupuncture-a-holistic-approach",
   "/blog/team",
@@ -69,6 +57,61 @@ const nextConfig: NextConfig = {
       {
         source: "/new-dropdown",
         destination: "/chiropractic-adjustments-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/car-accident-injury-treatment-in-lafayette-la-what-to-do-immediately-and-why-waiting-can-make-it-worse",
+        destination: "/car-accident-injuries-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/whiplash-treatment-in-lafayette-la-symptoms-causes-and-how-to-recover-faster",
+        destination: "/car-accident-injuries-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/shoulder-pain-treatment-in-lafayette-la-why-it-wont-go-away-and-what-actually-helps",
+        destination: "/shoulder-pain-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/knee-pain-treatment-in-lafayette-la-causes-solutions-and-when-to-get-help",
+        destination: "/knee-pain-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/sciatica-treatment-in-lafayette-la-how-to-get-relief-fast-and-what-actually-works",
+        destination: "/sciatica-treatment-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/when-to-see-a-chiropractor-in-lafayette-la-signs-you-shouldnt-ignore",
+        destination: "/chiropractic-adjustments-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/back-pain-treatment-in-lafayette-la-what-actually-works-and-why-most-treatments-fail",
+        destination: "/back-pain-lafayette",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/beyond-the-adjustment-why-carencros-industrial-athletes-trust-relief-plus-for-total-recovery",
+        destination: "/blog/the-carencro-commute-and-the-industrial-athlete-is-your-job-winning-the-war-on-your-spine",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/rediscovering-primal-movement-patterns-for-modern-wellness",
+        destination: "/blog/unlocking-the-bodys-potential-the-science-of-natural-movement",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/relieving-tension-headaches-the-chiropractic-approach",
+        destination: "/blog/understanding-the-difference-tension-headaches-vs-migraines",
+        statusCode: 301,
+      },
+      {
+        source: "/blog/treating-plantar-fasciitis-through-dry-needling-efficacy-and-mechanism",
+        destination: "/blog/the-effectiveness-of-dry-needling-for-plantar-fasciitis-insights-by-dr-shawn-d-johnston-at-relief-plus",
         statusCode: 301,
       },
     ];

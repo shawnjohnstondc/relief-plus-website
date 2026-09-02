@@ -5,7 +5,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  applicationName: siteConfig.name,
+  applicationName: "Relief +",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "Relief +",
+    statusBarStyle: "default",
+  },
   title: {
     default: siteConfig.defaultTitle,
     template: "%s | Relief Plus",

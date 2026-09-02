@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/dry-needling-lafayette", priority: 0.8 },
     { path: "/class-iv-laser-therapy-lafayette", priority: 0.8 },
     { path: "/shockwave-therapy-lafayette", priority: 0.8 },
+    { path: "/invisared-weight-loss-lafayette", priority: 0.7 },
     { path: "/chiropractor-carencro-la", priority: 0.9 },
     { path: "/conditions-we-treat", priority: 0.9 },
     { path: "/back-pain-lafayette", priority: 0.8 },

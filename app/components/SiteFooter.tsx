@@ -1,12 +1,11 @@
 import Link from "next/link";
-import BrandMark from "./BrandMark";
 
 export default function SiteFooter() {
   return (
     <footer className="bg-[#0d1b30] px-6 py-12 text-white lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1.15fr]">
         <div>
-          <div className="flex items-center gap-3"><BrandMark /><span className="font-serif text-3xl">Relief <span className="text-[#d5b765]">+</span></span></div>
+          <p className="font-serif text-3xl tracking-tight text-[#f7f5ef]">Relief <span className="text-[#d5b765]">+</span></p>
           <p className="mt-4 max-w-sm text-sm leading-6 text-white/70">Chiropractic · Physical Therapy · Regenerative Medicine</p>
           <p className="mt-3 max-w-sm text-sm leading-6 text-white/70">Serving Lafayette, Carencro, and Acadiana.</p>
         </div>

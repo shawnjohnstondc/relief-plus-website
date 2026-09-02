@@ -33,11 +33,11 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
           <Breadcrumbs currentPage={data.breadcrumbLabel} />
 
           <div className="mt-12 grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
-            <div className="max-w-3xl">
+            <div className="min-w-0 max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#82601f]">
                 {data.eyebrow}
               </p>
-              <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-6 break-words font-serif text-5xl leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
                 {data.h1}
               </h1>
               <p className="mt-8 max-w-2xl text-lg leading-8 text-[#12233f]/70">
@@ -59,7 +59,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
               </div>
             </div>
 
-            <aside className="overflow-hidden rounded-[2rem] bg-[#153e35] text-white">
+            <aside className="min-w-0 overflow-hidden rounded-[2rem] bg-[#153e35] text-white">
               {data.featureImage && (
                 <figure>
                   <div className="relative aspect-[4/5] overflow-hidden">
@@ -104,15 +104,15 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
 
       <section className="bg-[#12233f] px-6 py-24 text-white lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr]">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d5b765]">
               Why This Approach Matters
             </p>
-            <h2 className="mt-5 font-serif text-4xl leading-tight sm:text-5xl">
+            <h2 className="mt-5 break-words font-serif text-4xl leading-tight sm:text-5xl">
               {data.overviewTitle}
             </h2>
           </div>
-          <div className="max-w-2xl space-y-6 text-lg leading-8 text-white/72">
+          <div className="min-w-0 max-w-2xl space-y-6 break-words text-lg leading-8 text-white/72">
             {data.overviewParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}

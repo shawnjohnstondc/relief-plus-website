@@ -26,15 +26,51 @@ export default function SiteHeader({ currentPath }: { currentPath?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileMenu, setMobileMenu] = useState<MenuName | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+  const mobilePanelRef = useRef<HTMLElement>(null);
   const baseId = useId();
 
   useEffect(() => {
     function outside(event: PointerEvent) { if (!headerRef.current?.contains(event.target as Node)) { setDesktopMenu(null); setMobileOpen(false); setMobileMenu(null); } }
-    function escape(event: KeyboardEvent) { if (event.key === "Escape") { setDesktopMenu(null); setMobileOpen(false); setMobileMenu(null); } }
+    function escape(event: KeyboardEvent) { if (event.key === "Escape") { setDesktopMenu(null); setMobileOpen(false); setMobileMenu(null); mobileButtonRef.current?.focus(); } }
     document.addEventListener("pointerdown", outside);
     document.addEventListener("keydown", escape);
     return () => { document.removeEventListener("pointerdown", outside); document.removeEventListener("keydown", escape); };
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    function trapFocus(event: KeyboardEvent) {
+      if (event.key !== "Tab" || !mobilePanelRef.current || !mobileButtonRef.current) return;
+      const focusable = [
+        mobileButtonRef.current,
+        ...mobilePanelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]):not([tabindex="-1"])',
+        ),
+      ];
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener("keydown", trapFocus);
+    window.requestAnimationFrame(() => {
+      mobilePanelRef.current?.querySelector<HTMLElement>("a, button")?.focus();
+    });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", trapFocus);
+    };
+  }, [mobileOpen]);
 
   const closeAll = () => { setDesktopMenu(null); setMobileOpen(false); setMobileMenu(null); };
   const navLinkClass = "transition hover:text-[#9a7428] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b08d3b]";
@@ -43,6 +79,6 @@ export default function SiteHeader({ currentPath }: { currentPath?: string }) {
     <Link href="/" onClick={closeAll} className="flex shrink-0 items-center gap-3"><BrandMark /><span><span className="block font-serif text-2xl tracking-tight">Relief <span className="text-[#b08d3b]">+</span></span><span className="block text-[10px] uppercase tracking-[.22em] text-[#12233f]/70">Lafayette · Carencro</span></span></Link>
     <nav aria-label="Primary navigation" className="hidden items-center gap-5 text-[13px] font-medium xl:flex">{pillars.map(([title, href]) => <Link key={href} href={href} onClick={closeAll} aria-current={currentPath === href ? "page" : undefined} className={`${navLinkClass} ${currentPath === href ? "text-[#9a7428]" : ""}`}>{title}</Link>)}<DesktopDropdown label="Treatments" items={treatments} footer={["View All Treatments", "/services"]} open={desktopMenu === "treatments"} id={`${baseId}-treatments-desktop`} onToggle={() => setDesktopMenu(desktopMenu === "treatments" ? null : "treatments")} onNavigate={closeAll} /><DesktopDropdown label="Conditions" items={conditions} footer={["View All Conditions", "/conditions-we-treat"]} open={desktopMenu === "conditions"} id={`${baseId}-conditions-desktop`} onToggle={() => setDesktopMenu(desktopMenu === "conditions" ? null : "conditions")} onNavigate={closeAll} /><Link className={navLinkClass} href="/about" onClick={closeAll}>About</Link><Link className={navLinkClass} href="/contact" onClick={closeAll}>Contact</Link></nav>
     <a href="tel:3375654200" className="hidden shrink-0 rounded-full bg-[#12233f] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1a3156] sm:block">Call to Schedule</a>
-    <div className="relative xl:hidden"><button type="button" aria-expanded={mobileOpen} aria-controls={`${baseId}-mobile-panel`} onClick={() => { setMobileOpen(!mobileOpen); setDesktopMenu(null); if (mobileOpen) setMobileMenu(null); }} className="rounded-full border border-[#12233f]/15 px-4 py-3 text-sm font-semibold">Menu</button><nav id={`${baseId}-mobile-panel`} aria-label="Mobile navigation" aria-hidden={!mobileOpen} className={`mobile-nav-panel absolute right-0 top-full z-50 mt-3 max-h-[calc(100vh-7rem)] w-[min(22rem,calc(100vw-3rem))] overflow-y-auto rounded-3xl border border-[#12233f]/10 bg-[#f7f5ef] p-5 shadow-2xl ${mobileOpen ? "mobile-nav-panel-open" : ""}`}><p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[.2em] text-[#9a7428]">Primary Care</p>{pillars.map(([title, href]) => <Link key={href} href={href} onClick={closeAll} tabIndex={mobileOpen ? 0 : -1} className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">{title}</Link>)}<MobileSubmenu label="Treatments" items={treatments} footer={["View All Treatments", "/services"]} open={mobileMenu === "treatments"} id={`${baseId}-treatments-mobile`} onToggle={() => setMobileMenu(mobileMenu === "treatments" ? null : "treatments")} onNavigate={closeAll} /><MobileSubmenu label="Conditions" items={conditions} footer={["View All Conditions", "/conditions-we-treat"]} open={mobileMenu === "conditions"} id={`${baseId}-conditions-mobile`} onToggle={() => setMobileMenu(mobileMenu === "conditions" ? null : "conditions")} onNavigate={closeAll} /><div className="mt-2 border-t border-[#12233f]/10 pt-2">{[["About", "/about"], ["Our Approach", "/our-approach"], ["Team", "/team"], ["FAQ", "/faq-lafayette"], ["Contact", "/contact"]].map(([title, href]) => <Link key={href} href={href} onClick={closeAll} tabIndex={mobileOpen ? 0 : -1} className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">{title}</Link>)}</div><a href="tel:3375654200" tabIndex={mobileOpen ? 0 : -1} className="mt-4 block rounded-full bg-[#12233f] px-5 py-4 text-center text-sm font-semibold text-white">Call 337-565-4200</a></nav></div>
+    <div className="relative xl:hidden"><button ref={mobileButtonRef} type="button" aria-expanded={mobileOpen} aria-controls={`${baseId}-mobile-panel`} onClick={() => { setMobileOpen(!mobileOpen); setDesktopMenu(null); if (mobileOpen) setMobileMenu(null); }} className="rounded-full border border-[#12233f]/15 px-4 py-3 text-sm font-semibold transition-colors hover:border-[#b08d3b] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#b08d3b]">Menu</button><button type="button" aria-label="Close navigation" aria-hidden={!mobileOpen} tabIndex={-1} onClick={closeAll} className={`mobile-nav-backdrop fixed inset-0 z-40 xl:hidden ${mobileOpen ? "mobile-nav-backdrop-open" : ""}`} /><nav ref={mobilePanelRef} id={`${baseId}-mobile-panel`} aria-label="Mobile navigation" aria-hidden={!mobileOpen} className={`mobile-nav-panel absolute right-0 top-full z-50 mt-3 max-h-[calc(100vh-7rem)] w-[min(22rem,calc(100vw-3rem))] overflow-y-auto rounded-3xl border border-[#12233f]/10 bg-[#f7f5ef] p-5 shadow-2xl ${mobileOpen ? "mobile-nav-panel-open" : ""}`}><p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-[.2em] text-[#9a7428]">Primary Care</p>{pillars.map(([title, href]) => <Link key={href} href={href} onClick={closeAll} tabIndex={mobileOpen ? 0 : -1} className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">{title}</Link>)}<MobileSubmenu label="Treatments" items={treatments} footer={["View All Treatments", "/services"]} open={mobileMenu === "treatments"} id={`${baseId}-treatments-mobile`} onToggle={() => setMobileMenu(mobileMenu === "treatments" ? null : "treatments")} onNavigate={closeAll} /><MobileSubmenu label="Conditions" items={conditions} footer={["View All Conditions", "/conditions-we-treat"]} open={mobileMenu === "conditions"} id={`${baseId}-conditions-mobile`} onToggle={() => setMobileMenu(mobileMenu === "conditions" ? null : "conditions")} onNavigate={closeAll} /><div className="mt-2 border-t border-[#12233f]/10 pt-2">{[["About", "/about"], ["Our Approach", "/our-approach"], ["Team", "/team"], ["FAQ", "/faq-lafayette"], ["Contact", "/contact"]].map(([title, href]) => <Link key={href} href={href} onClick={closeAll} tabIndex={mobileOpen ? 0 : -1} className="block rounded-xl px-3 py-3 font-semibold hover:bg-white">{title}</Link>)}</div><a href="tel:3375654200" tabIndex={mobileOpen ? 0 : -1} className="mt-4 block rounded-full bg-[#12233f] px-5 py-4 text-center text-sm font-semibold text-white">Call 337-565-4200</a></nav></div>
   </div></header></>;
 }
