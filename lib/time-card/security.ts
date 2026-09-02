@@ -36,6 +36,24 @@ export function hashSessionToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }
 
+export function signSessionToken(token: string, secret: string) {
+  if (secret.length < 32) throw new Error("Session HMAC secret is too short.");
+  return createHmac("sha256", secret).update(token).digest("base64url");
+}
+
+export function serializeSessionToken(token: string, secret: string) {
+  return `${token}.${signSessionToken(token, secret)}`;
+}
+
+export function parseSessionToken(value: string, secret: string) {
+  const separator = value.lastIndexOf(".");
+  if (separator < 1) return null;
+  const token = value.slice(0, separator);
+  const signature = value.slice(separator + 1);
+  const expected = signSessionToken(token, secret);
+  return constantTimeEqual(signature, expected) ? token : null;
+}
+
 export function keyedIdentifierHash(value: string, secret: string) {
   if (secret.length < 32) throw new Error("Login HMAC secret is too short.");
   return createHmac("sha256", secret).update(value).digest("hex");

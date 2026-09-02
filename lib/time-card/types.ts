@@ -22,3 +22,30 @@ export type PayrollTotals = {
   adjustmentMinutes: number;
   totalPaidMinutes: number;
 };
+
+export type TimeCardUser = {
+  id: string;
+  loginIdentifier: string;
+  name: string;
+  role: TimeCardRole;
+  active: boolean;
+};
+
+export type TimeEntry = {
+  id: string;
+  employeeId: string;
+  clockIn: Date;
+  clockOut: Date | null;
+  source: "EMPLOYEE" | "ADMIN";
+  note: string | null;
+  voidedAt: Date | null;
+};
+
+export type PaidTimeEntry = {
+  id: string;
+  employeeId: string;
+  type: "HOLIDAY" | "ADJUSTMENT";
+  payrollDate: string;
+  minutes: number;
+  note: string;
+};

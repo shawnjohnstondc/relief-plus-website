@@ -11,10 +11,14 @@ export function loginLockoutUntil(
   policy = DEFAULT_LOGIN_POLICY,
 ) {
   const windowStart = now.getTime() - policy.windowMinutes * 60_000;
+  const latestSuccess = attempts
+    .filter((attempt) => attempt.succeeded && attempt.attemptedAt <= now)
+    .reduce((latest, attempt) => Math.max(latest, attempt.attemptedAt.getTime()), 0);
   const failures = attempts.filter(
     (attempt) =>
       !attempt.succeeded &&
       attempt.attemptedAt.getTime() >= windowStart &&
+      attempt.attemptedAt.getTime() > latestSuccess &&
       attempt.attemptedAt <= now,
   );
 

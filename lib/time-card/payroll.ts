@@ -85,6 +85,35 @@ export function decimalHours(minutes: number) {
   return (minutes / 60).toFixed(2);
 }
 
+export function chicagoLocalDateTimeToInstant(value: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(value);
+  if (!match) throw new Error("Expected a local date and time.");
+  const [, year, month, day, hour, minute] = match.map(Number);
+  const requestedUtc = Date.UTC(year, month - 1, day, hour, minute);
+  let candidate = requestedUtc;
+  for (let index = 0; index < 3; index += 1) {
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: TIME_CARD_TIME_ZONE,
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    }).formatToParts(new Date(candidate));
+    const values = Object.fromEntries(parts.map((part) => [part.type, Number(part.value)]));
+    const representedUtc = Date.UTC(values.year, values.month - 1, values.day, values.hour, values.minute);
+    candidate += requestedUtc - representedUtc;
+  }
+  const result = new Date(candidate);
+  const verification = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TIME_CARD_TIME_ZONE,
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).formatToParts(result);
+  const verified = Object.fromEntries(verification.map((part) => [part.type, part.value]));
+  if (`${verified.year}-${verified.month}-${verified.day}T${verified.hour}:${verified.minute}` !== value) {
+    throw new Error("That local time does not exist because of a daylight-saving transition.");
+  }
+  return result;
+}
+
 export function payrollTotals(
   workedMinutes: number,
   holidayMinutes: number,

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import JsonLd from "@/app/components/JsonLd";
-import { medicalBusinessJsonLd, siteConfig } from "@/lib/seo";
+import { siteConfig } from "@/lib/seo";
 import ScrollReveal from "@/app/components/ScrollReveal";
 import "./globals.css";
 
@@ -42,7 +41,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <JsonLd data={medicalBusinessJsonLd} />
         <ScrollReveal />
         {children}
       </body>

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   decimalHours,
+  chicagoLocalDateTimeToInstant,
   elapsedWholeMinutes,
   payPeriodForDate,
   payrollTotals,
@@ -27,6 +28,19 @@ describe("exact-minute payroll calculations", () => {
         new Date("2026-09-01T17:15:00.000Z"),
       ),
     ).toBe(255);
+  });
+
+  it("floors incomplete elapsed minutes without rounding punches", () => {
+    expect(elapsedWholeMinutes(new Date("2026-09-01T13:00:00Z"), new Date("2026-09-01T13:14:59Z"))).toBe(14);
+  });
+
+  it("converts America/Chicago administrative times across standard and daylight time", () => {
+    expect(chicagoLocalDateTimeToInstant("2026-01-15T09:00").toISOString()).toBe("2026-01-15T15:00:00.000Z");
+    expect(chicagoLocalDateTimeToInstant("2026-09-01T09:00").toISOString()).toBe("2026-09-01T14:00:00.000Z");
+  });
+
+  it("rejects a nonexistent spring-forward local time", () => {
+    expect(() => chicagoLocalDateTimeToInstant("2026-03-08T02:30")).toThrow("does not exist");
   });
 
   it("keeps worked, holiday, and signed adjustments separate", () => {
@@ -61,5 +75,9 @@ describe("14-calendar-day pay periods", () => {
     const current = payPeriodForDate("2026-09-01");
     expect(shiftPayPeriod(current, -1).start).toBe("2026-08-10");
     expect(shiftPayPeriod(current, 1).start).toBe("2026-09-07");
+  });
+
+  it("supports periods before the anchor", () => {
+    expect(payPeriodForDate("2026-08-09")).toEqual({ start: "2026-07-27", end: "2026-08-09", index: -1 });
   });
 });

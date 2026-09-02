@@ -12,3 +12,7 @@ export const DEFAULT_SESSION_POLICY = {
   idleMinutes: 30,
   absoluteHours: 12,
 } as const;
+
+export const EMPLOYEE_SESSION_HOURS = 12;
+export const ADMIN_SESSION_HOURS = 4;
+export const TIME_CARD_SESSION_COOKIE = "__Secure-relief-plus-time-card";

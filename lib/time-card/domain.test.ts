@@ -85,4 +85,26 @@ describe("database-backed login policy", () => {
       "2026-09-01T15:15:00.000Z",
     );
   });
+
+  it("does not lock after four failures", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const failures = Array.from({ length: 4 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - index * 60_000) }));
+    expect(loginLockoutUntil(failures, now)).toBeNull();
+  });
+
+  it("ignores failures outside the rolling window", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const failures = Array.from({ length: 5 }, () => ({ succeeded: false, attemptedAt: new Date("2026-09-01T14:44:59Z") }));
+    expect(loginLockoutUntil(failures, now)).toBeNull();
+  });
+
+  it("resets the failure sequence after a successful login", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const attempts = [
+      ...Array.from({ length: 5 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - (10 - index) * 60_000) })),
+      { succeeded: true, attemptedAt: new Date(now.getTime() - 4 * 60_000) },
+      { succeeded: false, attemptedAt: new Date(now.getTime() - 60_000) },
+    ];
+    expect(loginLockoutUntil(attempts, now)).toBeNull();
+  });
 });

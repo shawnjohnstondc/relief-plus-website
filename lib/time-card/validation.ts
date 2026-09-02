@@ -31,3 +31,14 @@ export const adjustmentSchema = z.object({
   minutes: z.number().int().refine((value) => value !== 0),
   reason: z.string().trim().min(3).max(500),
 });
+
+export const correctionSchema = manualPunchSchema.extend({
+  entryId: z.string().uuid(),
+});
+
+export const voidEntrySchema = z.object({
+  entryId: z.string().uuid(),
+  reason: z.string().trim().min(3).max(500),
+});
+
+export const periodSchema = z.iso.date();

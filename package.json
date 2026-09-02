@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "time-card:initialize": "node scripts/initialize-time-card.mjs"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.2.0",

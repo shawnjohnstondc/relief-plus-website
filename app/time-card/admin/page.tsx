@@ -1,0 +1,50 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { addAdjustmentAction, addHolidayAction, addMissedTimeAction, correctPunchAction, logoutAction, voidPunchAction } from "../actions";
+import { currentPayPeriod, decimalHours, payPeriodForDate, shiftPayPeriod } from "@/lib/time-card/payroll";
+import { adminPayroll, auditHistory } from "@/lib/time-card/repository";
+import { requireRole } from "@/lib/time-card/security";
+import { getSession } from "@/lib/time-card/session";
+
+export const dynamic = "force-dynamic";
+
+function localInput(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}T${values.hour}:${values.minute}`;
+}
+
+export default async function AdminPage({ searchParams }: { searchParams: Promise<{ period?: string; employee?: string; error?: string; success?: string }> }) {
+  const session = await getSession();
+  if (!session) redirect("/time-card");
+  requireRole(session, "ADMIN");
+  const params = await searchParams;
+  let period;
+  try { period = params.period ? payPeriodForDate(params.period) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
+  const [payroll, audit] = await Promise.all([adminPayroll(period), auditHistory(params.employee)]);
+  const selected = payroll.find((row) => row.employee.id === params.employee) ?? payroll[0];
+  const previous = shiftPayPeriod(period, -1);
+  const next = shiftPayPeriod(period, 1);
+
+  return <main className="time-card-shell time-card-admin">
+    <header className="time-card-topbar"><div><p className="time-card-eyebrow">Relief Plus</p><strong>Payroll Administration</strong></div><form action={logoutAction}><button className="time-card-text-button">Sign out</button></form></header>
+    <section className="time-card-admin-heading"><div><p className="time-card-eyebrow">Administrator</p><h1>Payroll overview</h1><p className="time-card-muted">Signed in as {session.name}</p></div><a className="time-card-button time-card-export" href={`/time-card/admin/export?period=${period.start}`}>Export CSV</a></section>
+    {params.error && <p className="time-card-alert time-card-alert-error" role="alert">{params.error}</p>}
+    {params.success && <p className="time-card-alert time-card-alert-success" role="status">{params.success}</p>}
+    <nav className="time-card-period-nav" aria-label="Pay period"><Link href={`?period=${previous.start}`}>← Previous</Link><div><strong>{period.start} – {period.end}</strong><span>14-day pay period</span></div><Link href={`?period=${next.start}`}>Next →</Link></nav>
+    {payroll.some((row) => row.openPunch) && <section className="time-card-alert time-card-alert-warning"><strong>Open punch warning</strong><span>{payroll.filter((row) => row.openPunch).map((row) => row.employee.name).join(", ")} currently {payroll.filter((row) => row.openPunch).length === 1 ? "has" : "have"} an open punch.</span></section>}
+    <section className="time-card-payroll-grid">{payroll.map((row) => <Link key={row.employee.id} className={`time-card-card time-card-employee-card ${selected?.employee.id === row.employee.id ? "is-selected" : ""}`} href={`?period=${period.start}&employee=${row.employee.id}`}><div><h2>{row.employee.name}</h2>{row.openPunch && <span className="time-card-open-badge">Open punch</span>}</div><dl><div><dt>Worked</dt><dd>{decimalHours(row.totals.workedMinutes)}</dd></div><div><dt>Holiday</dt><dd>{decimalHours(row.totals.holidayMinutes)}</dd></div><div><dt>Adjustments</dt><dd>{decimalHours(row.totals.adjustmentMinutes)}</dd></div><div className="total"><dt>Total paid</dt><dd>{decimalHours(row.totals.totalPaidMinutes)}</dd></div></dl></Link>)}</section>
+    {selected && <>
+      <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Employee detail</p><h2>{selected.employee.name}</h2></div><span>{selected.entries.length} punches</span></div>
+        <div className="time-card-admin-entries">{selected.entries.map((entry) => <article key={entry.id}><div><strong>{new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", weekday: "short", month: "short", day: "numeric" }).format(new Date(entry.clockIn))}</strong><span>{localInput(new Date(entry.clockIn)).replace("T", " ")} – {entry.clockOut ? localInput(new Date(entry.clockOut)).replace("T", " ") : "OPEN"}</span></div>{entry.clockOut && <details><summary>Edit</summary><div className="time-card-edit-grid"><form action={correctPunchAction} className="time-card-form compact"><input type="hidden" name="period" value={period.start}/><input type="hidden" name="employeeId" value={selected.employee.id}/><input type="hidden" name="entryId" value={entry.id}/><label>Clock in<input type="datetime-local" name="clockIn" defaultValue={localInput(new Date(entry.clockIn))} required/></label><label>Clock out<input type="datetime-local" name="clockOut" defaultValue={localInput(new Date(entry.clockOut))} required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Save correction</button></form><form action={voidPunchAction} className="time-card-form compact"><input type="hidden" name="period" value={period.start}/><input type="hidden" name="employeeId" value={selected.employee.id}/><input type="hidden" name="entryId" value={entry.id}/><label>Required void reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-danger-button">Void punch</button></form></div></details>}</article>)}</div>
+        {selected.paid.length > 0 && <div className="time-card-paid-list"><h3>Paid time and adjustments</h3>{selected.paid.map((entry) => <article key={entry.id}><span>{entry.payrollDate} · {entry.type === "HOLIDAY" ? "Holiday" : "Adjustment"}</span><strong>{decimalHours(entry.minutes)} hours</strong><small>{entry.note}</small></article>)}</div>}
+      </section>
+      <section className="time-card-tools-grid">
+        <form action={addMissedTimeAction} className="time-card-card time-card-form"><h2>Add missed time</h2><input type="hidden" name="period" value={period.start}/><input type="hidden" name="employeeId" value={selected.employee.id}/><label>Clock in<input type="datetime-local" name="clockIn" required/></label><label>Clock out<input type="datetime-local" name="clockOut" required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Add time</button></form>
+        <form action={addAdjustmentAction} className="time-card-card time-card-form"><h2>Manual adjustment</h2><input type="hidden" name="period" value={period.start}/><input type="hidden" name="employeeId" value={selected.employee.id}/><label>Payroll date<input type="date" name="payrollDate" min={period.start} max={period.end} required/></label><label>Minutes (+ or −)<input type="number" name="minutes" step="1" required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Add adjustment</button></form>
+      </section>
+    </>}
+    <form action={addHolidayAction} className="time-card-card time-card-form time-card-holiday"><h2>Add paid holiday</h2><input type="hidden" name="period" value={period.start}/><fieldset><legend>Employees</legend>{payroll.map((row) => <label className="time-card-checkbox" key={row.employee.id}><input type="checkbox" name="employeeIds" value={row.employee.id}/>{row.employee.name}</label>)}</fieldset><label>Date<input type="date" name="payrollDate" min={period.start} max={period.end} required/></label><label>Paid minutes<input type="number" name="minutes" min="1" max="1440" step="1" defaultValue="480" required/></label><label>Holiday name<input name="note" maxLength={200} required/></label><label>Required reason<input name="reason" minLength={3} maxLength={500} required/></label><button className="time-card-small-button">Add holiday</button></form>
+    <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Immutable history</p><h2>Audit trail</h2></div></div><div className="time-card-audit">{audit.map((item) => <article key={item.id}><strong>{item.action.replaceAll("_", " ")}</strong><span>{item.employeeName ?? "System"} · by {item.actorName}</span><p>{item.reason}</p><time>{new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }).format(new Date(item.createdAt))}</time></article>)}{audit.length === 0 && <p className="time-card-muted">No administrative changes recorded.</p>}</div></section>
+  </main>;
+}
