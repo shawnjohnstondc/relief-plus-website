@@ -1,7 +1,13 @@
 # Relief Plus `/time-card` Migration Plan
 
 Date: September 1, 2026  
-Status: **CONTINUITY ROUTE PREPARED — AUTHORIZATION/DATA REVIEW NOT COMPLETE**
+Status: **LEGACY ROLLBACK PRESERVED — CLEAN NATIVE BUILD AUTHORIZED**
+
+## Superseding owner decision
+
+Historical time-card/payroll records do not need to be migrated. Stop legacy Supabase database discovery and leave the old Squarespace/Supabase system unchanged as a temporary rollback option. The native `/time-card` and `/time-card/admin` application will use a new, independent Supabase/PostgreSQL system from its approved go-live date forward.
+
+The exact clean schema, server/session architecture, environment contract, implementation sequence, and remaining owner decisions are documented in `seo-planning/NATIVE-TIME-CARD-IMPLEMENTATION-PLAN.md`.
 
 ## Owner requirement
 
@@ -114,6 +120,6 @@ The continuity route is prepared but the staff application is **not yet approved
 
 ## Native application owner override
 
-The approved long-term route model is `/time-card` for employee login/clock functions and `/time-card/admin` for the authenticated administrative payroll dashboard. `/employee` is not the primary employee route. The existing Supabase PostgreSQL project is the presumptive source of truth and historical records must be preserved in place when its schema and security model are verified.
+The approved long-term route model is `/time-card` for employee login/clock functions and `/time-card/admin` for the authenticated administrative payroll dashboard. `/employee` is not the primary employee route. The earlier historical-preservation assumption is superseded: the legacy project remains untouched for rollback only and is not the source of truth for the new native system.
 
-The detailed pre-implementation architecture, preservation assessment, security controls, migration sequence, and owner-information requirements are recorded in `seo-planning/NATIVE-TIME-CARD-MIGRATION-ARCHITECTURE.md`. Native implementation remains gated on authorized Supabase schema/RLS/procedure inspection, historical inventory, backup/rollback verification, payroll-rule confirmation, and a safe non-production test environment. Real PINs must never be committed or supplied through an insecure project artifact.
+The current pre-implementation plan is recorded in `seo-planning/NATIVE-TIME-CARD-IMPLEMENTATION-PLAN.md`. Native implementation remains gated on correctness-affecting owner decisions, creation of the new preview Supabase environment, and secure secret configuration. Real PINs must never be committed or supplied through an insecure project artifact.

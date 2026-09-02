@@ -1,7 +1,13 @@
 # Native Time Card Database Discovery
 
 Date: September 1, 2026  
-Status: **LOCAL DISCOVERY COMPLETE — AUTHORIZED SUPABASE ACCESS REQUIRED**
+Status: **CLOSED BY OWNER DECISION — HISTORICAL DATA WILL NOT BE MIGRATED**
+
+## Owner decision superseding discovery
+
+The owner confirmed that historical time-card/payroll data does not need to be preserved. Discovery or migration of the legacy Supabase database is no longer required. The legacy Squarespace/Supabase application must remain unchanged as a temporary rollback option while a new, independent native system is built and tested.
+
+The clean-system design and remaining decisions are documented in `seo-planning/NATIVE-TIME-CARD-IMPLEMENTATION-PLAN.md`. Nothing in this earlier discovery record authorizes access to or modification of the legacy database.
 
 ## Purpose
 

@@ -1,7 +1,13 @@
 # Native Time-Card Migration Architecture
 
 Date: September 1, 2026  
-Status: **ARCHITECTURE COMPLETE — DATA AND SECURITY VERIFICATION REQUIRED BEFORE IMPLEMENTATION**
+Status: **SUPERSEDED FOR DATA MIGRATION — LEGACY SYSTEM RETAINED ONLY AS ROLLBACK**
+
+## Owner decision superseding historical preservation
+
+The owner confirmed that historical payroll/time-entry records do not need to be migrated. The legacy Squarespace/Supabase application will remain untouched as a temporary rollback option, while the native application uses a new clean Supabase/PostgreSQL system from its approved go-live date forward.
+
+The current implementation architecture is documented in `seo-planning/NATIVE-TIME-CARD-IMPLEMENTATION-PLAN.md`. The security principles in this document remain applicable, but its historical-data discovery and preservation gate no longer controls implementation.
 
 ## Scope and fixed route requirements
 
