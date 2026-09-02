@@ -224,6 +224,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CLINIC IN MOTION */}
+      <section className="px-6 pb-24 lg:px-8">
+        <figure className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-[#12233f]/10 bg-white/50 shadow-[0_18px_50px_rgba(18,35,63,0.08)]">
+          <div className="relative aspect-[4/5] min-h-[420px] sm:aspect-[16/10] lg:aspect-[16/8]">
+            <Image
+              src="/relief-plus-active-clinic-hallway.png"
+              alt="Patients and clinic staff moving through the Relief Plus hallway"
+              fill
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="object-cover object-center"
+            />
+          </div>
+          <figcaption className="flex flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <span className="font-serif text-xl text-[#12233f]">Care in motion at Relief Plus</span>
+            <span className="text-sm text-[#12233f]/60">Serving Lafayette, Carencro, and Acadiana</span>
+          </figcaption>
+        </figure>
+      </section>
+
       {/* CONDITIONS */}
       <section id="conditions" className="bg-[#e8e5dc] px-6 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.75fr_1.25fr]">
@@ -269,7 +288,7 @@ export default function Home() {
 
       {/* DOCTOR / STORY */}
       <section className="px-6 py-24 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[.72fr_.72fr_1.1fr] lg:gap-12">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
               A Different Kind of Clinic
@@ -280,6 +299,21 @@ export default function Home() {
             </h2>
 
           </div>
+
+          <figure className="overflow-hidden rounded-[2rem] border border-[#12233f]/10 bg-white/55">
+            <div className="relative aspect-[4/5]">
+              <Image
+                src="/dr-shawn-johnston-patient-consultation.png"
+                alt="Shawn D. Johnston, D.C., listening to a patient during a consultation at Relief Plus"
+                fill
+                sizes="(min-width: 1024px) 27vw, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <figcaption className="px-5 py-4 text-sm leading-6 text-[#12233f]/62">
+              Individualized care begins with listening, examination, and clear patient education.
+            </figcaption>
+          </figure>
 
           <div>
             <p className="text-lg leading-8 text-[#12233f]/68">

@@ -6,6 +6,7 @@ type Input = {
   functionTitle: string; functionDescription: string; functions: PillarPageData["considerations"];
   related: PillarPageData["conditions"]; approach: string; therapies: PillarLink[];
   sections: NonNullable<PillarPageData["educationSections"]>; faqs: PillarPageData["faqs"]; sources: NonNullable<PillarPageData["pageSources"]>;
+  featureImage?: PillarPageData["featureImage"];
 };
 
 function createPage(input: Input): PillarPageData {
@@ -19,6 +20,7 @@ function createPage(input: Input): PillarPageData {
     conditionsDescription: "Related guides clarify overlapping diagnoses and symptom patterns. An examination is still needed to identify which findings matter for the individual patient.",
     conditions: input.related, approachDescription: input.approach, relatedServices: input.therapies,
     educationSections: input.sections, faqs: input.faqs, pageSources: input.sources,
+    featureImage: input.featureImage,
     ctaTitle: `Start with an individualized ${input.name.toLowerCase()} evaluation.`,
     ctaDescription: "Call Relief Plus in Lafayette to discuss symptoms, function, and an appropriate next step for care in Carencro and across Acadiana.",
   };
@@ -200,6 +202,11 @@ export const workInjuryPage = createPage({
   path: "/work-injury-lafayette", name: "Work Injuries", eyebrow: "Work Injury Rehabilitation in Lafayette, Louisiana", h1: "Work injury care designed around the actual demands of the job.",
   title: "Work Injury Treatment in Lafayette, LA", description: "Work injury treatment in Lafayette, LA with job-specific physical therapy, chiropractic, progressive rehabilitation, and individualized care at Relief Plus.",
   hero: "Work symptoms may follow one event or build as exposure exceeds current capacity. Relief Plus evaluates the diagnosis alongside lifting, reaching, carrying, repetition, standing, walking, and sustained-position demands.",
+  featureImage: {
+    src: "/work-injury-consultation-lafayette.png",
+    alt: "Shawn D. Johnston, D.C., using a spine model to explain a work-related injury",
+    caption: "Clear education can help connect examination findings with work demands and a practical recovery plan.",
+  },
   overviewTitle: "The same diagnosis can create different barriers in different jobs.", overview: ["A shoulder condition affects an overhead electrician differently from an office worker. Back symptoms during lifting differ from symptoms during prolonged driving. Job title alone is not enough; force, frequency, duration, environment, and recovery define exposure.", "Ergonomics can help, but posture is not blamed as the one cause. Rehabilitation focuses on restoring capacity and using practical modifications while the worker progresses."],
   examTitle: "The examination connects tissue findings with essential job functions.",
   exam: [{ title: "Clarify injury and diagnosis", description: "Sudden event versus cumulative onset, symptoms, prior care, medical restrictions, and relevant red flags guide the clinical differential." }, { title: "Define job demand", description: "Loads, heights, carrying distance, repetition, pushing, pulling, standing, walking, tools, and shift duration make the target specific." }, { title: "Measure functional capacity", description: "Mobility, strength, endurance, balance, lifting, reaching, carrying, and task simulation may be assessed within safe clinical limits." }],

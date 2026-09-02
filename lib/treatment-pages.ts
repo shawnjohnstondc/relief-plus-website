@@ -108,6 +108,11 @@ export const ozonePage: PillarPageData = {
     "Diagnosis-specific selection and transparent evidence review",
     "Integration with rehabilitation or other care when appropriate",
   ],
+  featureImage: {
+    src: "/ozone-therapy-preparation-relief-plus.png",
+    alt: "Ozone generator with a sterile drape and prepared clinical supplies at Relief Plus",
+    caption: "The ozone system and clinical supplies are prepared before a selected procedure; this image does not show an injection being performed.",
+  },
   overviewTitle: "A distinctive advanced option within a diagnosis-led recovery plan.",
   overviewParagraphs: [
     "Ozone injection therapy uses a controlled oxygen-ozone mixture placed into a specific musculoskeletal target. That ability to focus treatment on an identified joint or soft-tissue problem can be appealing when the diagnosis, examination, and patient goals support an injection-based option.",
@@ -291,6 +296,11 @@ export const dryNeedlingPage: PillarPageData = {
     "Often paired with movement or rehabilitation strategies",
     "Selected according to tolerance, goals, and appropriateness",
   ],
+  featureImage: {
+    src: "/dry-needling-shoulder-relief-plus.png",
+    alt: "Shawn D. Johnston, D.C., performing dry needling for a patient’s shoulder at Relief Plus",
+    caption: "Dry needling may be considered for selected muscular pain and movement limitations after evaluation.",
+  },
   overviewTitle: "A focused technique can create a useful window for active recovery.",
   overviewParagraphs: [
     "Dry needling uses a thin, solid filament needle placed into selected muscular or connective-tissue areas identified during an examination. No medication is injected.",
@@ -381,6 +391,11 @@ export const laserPage: PillarPageData = {
     "Used as a supporting modality rather than a guaranteed solution",
     "Considered alongside movement and function when appropriate",
   ],
+  featureImage: {
+    src: "/class-iv-laser-therapy-relief-plus.png",
+    alt: "Shawn D. Johnston, D.C., providing Class IV laser therapy to a patient’s upper shoulder and lower neck area",
+    caption: "Both clinician and patient wear laser safety eyewear during treatment.",
+  },
   overviewTitle: "Photobiomodulation can help selected patients participate more comfortably in recovery.",
   overviewParagraphs: [
     "Class IV laser therapy is a form of photobiomodulation, a term used for the application of specific wavelengths of light to tissue. The device is applied externally over a selected musculoskeletal area.",

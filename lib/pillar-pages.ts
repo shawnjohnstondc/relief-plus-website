@@ -50,6 +50,12 @@ export type PillarPageData = {
   pageSources?: Array<{ label: string; href: string; note: string }>;
   sourcesEyebrow?: string;
   sourcesTitle?: string;
+  featureImage?: {
+    src: `/${string}`;
+    alt: string;
+    caption?: string;
+    objectPosition?: string;
+  };
 };
 
 export const chiropracticPage: PillarPageData = {
@@ -164,6 +170,11 @@ export const physicalTherapyPage: PillarPageData = {
     "Exercise and progression matched to individual goals",
     "Coordination with other care when clinically appropriate",
   ],
+  featureImage: {
+    src: "/physical-therapy-reformer-relief-plus.png",
+    alt: "Patient performing a controlled reformer exercise at Relief Plus",
+    caption: "Rehabilitation can progress mobility, strength, control, and confidence around the activities that matter.",
+  },
   overviewTitle: "Recovery requires a plan that can progress with you.",
   overviewParagraphs: [
     "Musculoskeletal rehabilitation is not simply a list of exercises. It begins with understanding what a person needs to do, what is currently limited, and which physical factors may be contributing to that limitation.",
@@ -258,6 +269,11 @@ export const regenerativePage: PillarPageData = {
     "Evidence and product details translated into a clear patient discussion",
     "Treatment coordinated with movement and rehabilitation when appropriate",
   ],
+  featureImage: {
+    src: "/ozone-therapy-preparation-relief-plus.png",
+    alt: "Ozone generator with a sterile drape and prepared clinical supplies at Relief Plus",
+    caption: "Advanced options begin with careful preparation, a defined clinical purpose, and an informed patient discussion.",
+  },
   overviewTitle: "Advanced options can add value when the science, product, and patient align.",
   overviewParagraphs: [
     "Regenerative medicine refers to a group of advanced treatment options being explored for selected musculoskeletal concerns. The field’s scientific momentum makes it an important conversation for some patients, while its breadth makes product-specific evidence essential.",

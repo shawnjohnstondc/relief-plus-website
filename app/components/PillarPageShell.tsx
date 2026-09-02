@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Breadcrumbs from "./Breadcrumbs";
 import RelatedServices from "./RelatedServices";
 import type { PillarPageData } from "@/lib/pillar-pages";
@@ -58,7 +59,27 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
               </div>
             </div>
 
-            <aside className="rounded-[2rem] bg-[#153e35] p-8 text-white sm:p-10">
+            <aside className="overflow-hidden rounded-[2rem] bg-[#153e35] text-white">
+              {data.featureImage && (
+                <figure>
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={data.featureImage.src}
+                      alt={data.featureImage.alt}
+                      fill
+                      sizes="(min-width: 1024px) 36vw, 100vw"
+                      className="object-cover"
+                      style={{ objectPosition: data.featureImage.objectPosition ?? "center" }}
+                    />
+                  </div>
+                  {data.featureImage.caption && (
+                    <figcaption className="border-b border-white/15 px-8 py-5 text-sm leading-6 text-white/72 sm:px-10">
+                      {data.featureImage.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+              <div className="p-8 sm:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d5b765]">
                 Care at Relief Plus
               </p>
@@ -74,6 +95,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
                     {point}
                   </div>
                 ))}
+              </div>
               </div>
             </aside>
           </div>
