@@ -47,6 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/tendonitis-treatment-lafayette", priority: 0.8 },
     { path: "/car-accident-injuries-lafayette", priority: 0.8 },
     { path: "/work-injury-lafayette", priority: 0.8 },
+    { path: "/sports-injuries-lafayette", priority: 0.8 },
   ] as const;
 
   return [...routes, ...blogPosts.map(({ path }) => ({ path, priority: 0.6 }))].map(({ path, priority }) => ({

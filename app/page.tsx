@@ -53,19 +53,18 @@ const treatments = [
 ];
 
 const conditions = [
-  "Neck Pain",
-  "Back Pain",
-  "Sciatica",
-  "Headaches",
-  "Shoulder Pain",
-  "Knee Pain",
-  "Hip Pain",
-  "Herniated Discs",
-  "Pinched Nerves",
-  "Car Accident Injuries",
-  "Sports Injuries",
-  "Work Injuries",
-];
+  { title: "Back Pain", href: "/back-pain-lafayette" },
+  { title: "Sciatica", href: "/sciatica-treatment-lafayette" },
+  { title: "Headaches", href: "/headache-treatment-lafayette" },
+  { title: "Shoulder Pain", href: "/shoulder-pain-lafayette" },
+  { title: "Knee Pain", href: "/knee-pain-lafayette" },
+  { title: "Hip Pain", href: "/hip-pain-lafayette" },
+  { title: "Herniated Discs", href: "/herniated-disc-lafayette" },
+  { title: "Pinched Nerves", href: "/pinched-nerve-lafayette" },
+  { title: "Car Accident Injuries", href: "/car-accident-injuries-lafayette" },
+  { title: "Sports Injuries", href: "/sports-injuries-lafayette" },
+  { title: "Work Injuries", href: "/work-injury-lafayette" },
+] as const;
 
 export default function Home() {
   return (
@@ -120,22 +119,34 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[430px] lg:min-h-[560px]">
-            <Image
-              src="/relief-plus-hero-wide.webp"
-              alt="Shawn D. Johnston, D.C., owner of Relief Plus"
-              fill
-              priority
-              sizes="(min-width: 1024px) 43vw, 100vw"
-              className="object-cover object-center"
-            />
+          <div className="relative pb-24 sm:pb-28 lg:pb-20">
+            <div className="relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[430px] lg:min-h-[560px]">
+              <Image
+                src="/relief-plus-hero-wide.webp"
+                alt="Shawn D. Johnston, D.C., owner of Relief Plus"
+                fill
+                priority
+                sizes="(min-width: 1024px) 43vw, 100vw"
+                className="object-cover object-center"
+              />
 
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent px-8 pb-8 pt-24 text-white">
-              <p className="text-xs uppercase tracking-[0.25em]">Serving</p>
-              <p className="mt-2 font-serif text-xl">
+              <div className="absolute left-5 top-5 rounded-full border border-white/20 bg-[#12233f]/75 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm sm:left-7 sm:top-7">
                 Lafayette · Carencro · Acadiana
-              </p>
+              </div>
             </div>
+
+            <blockquote className="absolute bottom-0 left-3 right-3 z-10 rounded-[1.5rem] border border-[#12233f]/10 bg-[#f7f5ef]/95 px-6 py-6 shadow-[0_16px_40px_rgba(18,35,63,0.12)] backdrop-blur-sm sm:left-8 sm:right-8 sm:px-8 sm:py-7 lg:left-10 lg:right-[-2rem]">
+              <span aria-hidden="true" className="block font-serif text-4xl leading-none text-[#9a7428]">“</span>
+              <p className="-mt-2 font-serif text-[1.35rem] leading-snug text-[#12233f] sm:text-[1.6rem]">
+                The goal isn’t more treatment. It’s finding the right treatment for the person in front of us.
+              </p>
+              <footer className="mt-4 border-t border-[#12233f]/10 pt-3">
+                <cite className="not-italic">
+                  <span className="block text-sm font-semibold text-[#12233f]">Shawn D. Johnston, D.C.</span>
+                  <span className="mt-1 block text-[10px] uppercase tracking-[0.18em] text-[#82601f]">Owner, Relief Plus</span>
+                </cite>
+              </footer>
+            </blockquote>
           </div>
         </div>
       </section>
@@ -241,12 +252,14 @@ export default function Home() {
 
           <div className="grid gap-x-8 sm:grid-cols-2">
             {conditions.map((condition) => (
-              <div
-                key={condition}
-                className="border-b border-[#12233f]/15 py-5 font-serif text-xl"
+              <Link
+                key={condition.href}
+                href={condition.href}
+                className="group flex min-h-16 cursor-pointer items-center justify-between gap-4 border-b border-[#12233f]/15 px-2 py-4 font-serif text-xl transition-colors duration-200 ease-out hover:bg-[#f7f5ef]/55 hover:text-[#82601f] focus-visible:rounded-lg focus-visible:bg-[#f7f5ef]/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#82601f] sm:px-3"
               >
-                {condition}
-              </div>
+                <span>{condition.title}</span>
+                <span aria-hidden="true" className="shrink-0 text-base text-[#82601f] transition-transform duration-200 ease-out group-hover:translate-x-1">→</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -256,33 +269,8 @@ export default function Home() {
 
       {/* DOCTOR / STORY */}
       <section className="px-6 py-24 lg:px-8">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
-          <div className="relative pb-4 lg:pb-24">
-            <div className="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-[#d9ddd7]">
-              <Image
-                src="/relief-plus-hero-wide.webp"
-                alt="Shawn D. Johnston, D.C., owner of Relief Plus"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover object-center"
-              />
-            </div>
-
-            <blockquote className="relative z-10 mx-3 -mt-12 rounded-[1.5rem] border border-[#12233f]/10 bg-[#f7f5ef]/95 px-6 py-6 shadow-[0_20px_55px_rgba(18,35,63,0.14)] backdrop-blur-sm sm:mx-8 sm:px-8 sm:py-7 lg:absolute lg:-bottom-2 lg:left-8 lg:right-[-3rem] lg:mx-0 lg:mt-0">
-              <span aria-hidden="true" className="block font-serif text-4xl leading-none text-[#9a7428]">“</span>
-              <p className="-mt-2 font-serif text-[1.45rem] leading-snug text-[#12233f] sm:text-[1.7rem]">
-                The goal isn’t more treatment. It’s finding the right treatment for the person in front of us.
-              </p>
-              <footer className="mt-5 border-t border-[#12233f]/10 pt-4">
-                <cite className="not-italic">
-                  <span className="block text-sm font-semibold text-[#12233f]">Shawn D. Johnston, D.C.</span>
-                  <span className="mt-1 block text-xs uppercase tracking-[0.18em] text-[#82601f]">Owner, Relief Plus</span>
-                </cite>
-              </footer>
-            </blockquote>
-          </div>
-
-          <div className="lg:pl-8">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-20">
+          <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#9a7428]">
               A Different Kind of Clinic
             </p>
@@ -291,7 +279,10 @@ export default function Home() {
               Care should feel personal.
             </h2>
 
-            <p className="mt-7 text-lg leading-8 text-[#12233f]/68">
+          </div>
+
+          <div>
+            <p className="text-lg leading-8 text-[#12233f]/68">
               Relief Plus was built around a simple idea: patients deserve
               thoughtful care, clear communication, and treatment options that
               are selected because they fit the patient — not because every
