@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import JsonLd from "@/app/components/JsonLd";
 import { medicalBusinessJsonLd, siteConfig } from "@/lib/seo";
 import ScrollReveal from "@/app/components/ScrollReveal";
@@ -24,6 +24,14 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#f7f5ef",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

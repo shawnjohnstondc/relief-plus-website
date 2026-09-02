@@ -75,13 +75,13 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.08fr_.92fr] lg:px-8">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-10 sm:py-14 lg:min-h-[690px] lg:grid-cols-[1.08fr_.92fr] lg:gap-14 lg:px-8 lg:py-20">
           <div className="max-w-3xl">
-            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.28em] text-[#82601f]">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#82601f] sm:mb-6 sm:text-xs sm:tracking-[0.28em]">
               Chiropractic · Physical Therapy · Regenerative Medicine
             </p>
 
-            <h1 className="max-w-4xl font-serif text-5xl leading-[1.02] tracking-[-0.035em] text-[#12233f] sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-4xl font-serif text-[2.65rem] leading-[1.02] tracking-[-0.035em] text-[#12233f] sm:text-6xl lg:text-7xl">
               Move better.
               <br />
               Feel stronger.
@@ -89,7 +89,7 @@ export default function Home() {
               <span className="text-[#9a7428]">Live with less pain.</span>
             </h1>
 
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-[#12233f]/70">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[#12233f]/70 sm:mt-8 sm:text-lg sm:leading-8">
               Relief Plus brings chiropractic care, physical therapy, and
               regenerative medicine together in one integrated clinic. We
               combine evidence-informed care with advanced treatment options
@@ -97,7 +97,7 @@ export default function Home() {
               support long-term recovery.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
               <a
                 href="tel:3375654200"
                 className="rounded-full bg-[#12233f] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#1a3156]"
@@ -113,17 +113,17 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-7 text-sm text-[#12233f]/70">
+            <div className="mt-9 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/70 sm:mt-12 sm:pt-7">
               <span>Evidence-informed care</span>
               <span>Individualized treatment</span>
               <span>Advanced recovery options</span>
             </div>
           </div>
 
-          <div className="relative min-h-[430px] overflow-hidden rounded-[2rem] lg:min-h-[560px]">
+          <div className="relative min-h-[360px] overflow-hidden rounded-[2rem] sm:min-h-[430px] lg:min-h-[560px]">
             <Image
               src="/relief-plus-hero-wide.webp"
-              alt="Relief Plus chiropractic, physical therapy, and regenerative medicine in Lafayette and Carencro, Louisiana"
+              alt="Shawn D. Johnston, D.C., owner of Relief Plus"
               fill
               priority
               sizes="(min-width: 1024px) 43vw, 100vw"
@@ -257,15 +257,29 @@ export default function Home() {
       {/* DOCTOR / STORY */}
       <section className="px-6 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-2">
-          <div className="aspect-[5/4] rounded-[2rem] bg-[#d9ddd7]">
-            <div className="flex h-full items-center justify-center p-10 text-center">
-              <div>
-                <p className="font-serif text-3xl">Doctor / clinic image</p>
-                <p className="mt-3 text-sm text-[#12233f]/70">
-                  We’ll use your real photography here.
-                </p>
-              </div>
+          <div className="relative pb-4 lg:pb-24">
+            <div className="relative aspect-[5/4] overflow-hidden rounded-[2rem] bg-[#d9ddd7]">
+              <Image
+                src="/relief-plus-hero-wide.webp"
+                alt="Shawn D. Johnston, D.C., owner of Relief Plus"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-center"
+              />
             </div>
+
+            <blockquote className="relative z-10 mx-3 -mt-12 rounded-[1.5rem] border border-[#12233f]/10 bg-[#f7f5ef]/95 px-6 py-6 shadow-[0_20px_55px_rgba(18,35,63,0.14)] backdrop-blur-sm sm:mx-8 sm:px-8 sm:py-7 lg:absolute lg:-bottom-2 lg:left-8 lg:right-[-3rem] lg:mx-0 lg:mt-0">
+              <span aria-hidden="true" className="block font-serif text-4xl leading-none text-[#9a7428]">“</span>
+              <p className="-mt-2 font-serif text-[1.45rem] leading-snug text-[#12233f] sm:text-[1.7rem]">
+                The goal isn’t more treatment. It’s finding the right treatment for the person in front of us.
+              </p>
+              <footer className="mt-5 border-t border-[#12233f]/10 pt-4">
+                <cite className="not-italic">
+                  <span className="block text-sm font-semibold text-[#12233f]">Shawn D. Johnston, D.C.</span>
+                  <span className="mt-1 block text-xs uppercase tracking-[0.18em] text-[#82601f]">Owner, Relief Plus</span>
+                </cite>
+              </footer>
+            </blockquote>
           </div>
 
           <div className="lg:pl-8">
