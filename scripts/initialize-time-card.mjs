@@ -2,10 +2,12 @@ import process from "node:process";
 import readline from "node:readline";
 import postgres from "postgres";
 import { hash } from "@node-rs/argon2";
+import { assertTimeCardConfirmation, prepareTimeCardOperatorTarget } from "../lib/time-card/operator-target.ts";
 
-const databaseUrl = process.env.TIME_CARD_DATABASE_URL;
-if (!databaseUrl) throw new Error("TIME_CARD_DATABASE_URL is required.");
+const operator = prepareTimeCardOperatorTarget({ args: process.argv.slice(2), environment: process.env, action: "initialize" });
+if (operator.remaining.length) throw new Error("Usage: npm run time-card:initialize -- --target preview|production");
 if (!process.stdin.isTTY) throw new Error("Initialization requires a private interactive terminal.");
+process.stdout.write(`Validated ${operator.target} target: Supabase project ${operator.redactedProjectRef}.\n`);
 
 const users = [
   { loginIdentifier: "lisa-bernard", name: "Lisa Bernard", role: "EMPLOYEE" },
@@ -37,8 +39,8 @@ function secretPrompt(prompt) {
   });
 }
 
-const confirmation = await ask("Initialize the NEW Relief Plus Preview time-card database? Type INITIALIZE PREVIEW: ");
-if (confirmation !== "INITIALIZE PREVIEW") throw new Error("Confirmation did not match. Nothing was changed.");
+const confirmation = await ask(`Initialize the NEW Relief Plus ${operator.target} time-card database? Type ${operator.confirmationPhrase}: `);
+assertTimeCardConfirmation({ target: operator.target, action: "initialize", confirmation });
 
 const prepared = [];
 for (const user of users) {
@@ -48,7 +50,7 @@ for (const user of users) {
   prepared.push({ ...user, pinHash: await hash(pin, { algorithm: 2, memoryCost: 19_456, timeCost: 2, parallelism: 1, outputLen: 32 }) });
 }
 
-const sql = postgres(databaseUrl, { max: 1, prepare: false, ssl: "require", transform: postgres.camel });
+const sql = postgres(operator.databaseUrl, { max: 1, prepare: false, ssl: "require", transform: postgres.camel });
 try {
   await sql.begin(async (tx) => {
     const state = await tx`select value from app_settings where key = 'initialization_complete' for update`;

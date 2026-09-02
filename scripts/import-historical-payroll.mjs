@@ -5,6 +5,7 @@ import process from "node:process";
 import readline from "node:readline/promises";
 import postgres from "postgres";
 import { expectedGrossCents, parseHistoricalPayrollCsv } from "../lib/time-card/historical-payroll.ts";
+import { assertTimeCardConfirmation, prepareTimeCardOperatorTarget } from "../lib/time-card/operator-target.ts";
 
 const EXPECTED_FILES = new Set([
   "Relief-Plus-Payroll-2026-07-30-to-2026-08-12.csv",
@@ -14,12 +15,13 @@ const EXPECTED_FILES = new Set([
 const EXPECTED_EMPLOYEES = new Set(["Lisa Bernard", "Jeanne Saucier", "Kelci Richard"]);
 const SOURCE = "Relief Plus legacy time-card CSV export";
 
-const mode = process.argv[2];
-const filePaths = process.argv.slice(3);
+const operator = prepareTimeCardOperatorTarget({ args: process.argv.slice(2), environment: process.env, action: "import-history" });
+const mode = operator.remaining[0];
+const filePaths = operator.remaining.slice(1);
 if (!new Set(["--dry-run", "--import"]).has(mode) || filePaths.length !== 3) {
-  throw new Error("Usage: npm run time-card:import-history -- --dry-run|--import <three approved CSV paths>");
+  throw new Error("Usage: npm run time-card:import-history -- --target preview|production --dry-run|--import <three approved CSV paths>");
 }
-if (!process.env.TIME_CARD_DATABASE_URL) throw new Error("TIME_CARD_DATABASE_URL is required.");
+process.stdout.write(`Validated ${operator.target} target: Supabase project ${operator.redactedProjectRef}.\n`);
 
 const files = await Promise.all(filePaths.map(async (filePath) => {
   const sourceFile = path.basename(filePath);
@@ -49,7 +51,15 @@ for (const row of rows) {
   ratesByEmployee.set(row.employeeName, row.hourlyRateCents);
 }
 
-const sql = postgres(process.env.TIME_CARD_DATABASE_URL, { max: 1, prepare: false, ssl: "require", transform: postgres.camel });
+if (mode === "--import") {
+  if (!process.stdin.isTTY) throw new Error("Import requires a private interactive terminal.");
+  const prompt = readline.createInterface({ input: process.stdin, output: process.stdout });
+  const confirmation = await prompt.question(`Import 9 historical summary rows into the ${operator.target} database? Type ${operator.confirmationPhrase}: `);
+  prompt.close();
+  assertTimeCardConfirmation({ target: operator.target, action: "import-history", confirmation });
+}
+
+const sql = postgres(operator.databaseUrl, { max: 1, prepare: false, ssl: "require", transform: postgres.camel });
 try {
   const users = await sql`select id, name, role, login_identifier from time_card_users where active = true`;
   const admin = users.find((user) => user.role === "ADMIN" && user.loginIdentifier === "shawn-d-johnston");
@@ -84,12 +94,6 @@ try {
     process.stdout.write("Dry run complete. No database records were changed.\n");
     process.exitCode = 0;
   } else {
-    if (!process.stdin.isTTY) throw new Error("Import requires a private interactive terminal.");
-    const prompt = readline.createInterface({ input: process.stdin, output: process.stdout });
-    const confirmation = await prompt.question("Import 9 historical summary rows into the Preview database? Type IMPORT HISTORICAL SUMMARIES: ");
-    prompt.close();
-    if (confirmation !== "IMPORT HISTORICAL SUMMARIES") throw new Error("Confirmation did not match. Nothing was changed.");
-
     const result = await sql.begin(async (tx) => {
       let inserted = 0;
       let skipped = 0;
