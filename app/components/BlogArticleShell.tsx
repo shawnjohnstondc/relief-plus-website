@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BlogPost } from "@/lib/blog-posts";
+import type { BlogParagraph, BlogPost } from "@/lib/blog-posts";
 import { createBlogPostingStructuredData } from "@/lib/seo";
 import JsonLd from "./JsonLd";
 import SiteFooter from "./SiteFooter";
@@ -11,6 +11,15 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
   timeZone: "America/Chicago",
 });
+
+function RichText({ content }: { content: BlogParagraph }) {
+  if (typeof content === "string") return content;
+  return content.map((part, index) => typeof part === "string"
+    ? <span key={`${part}-${index}`}>{part}</span>
+    : part.href.startsWith("/")
+      ? <Link key={`${part.href}-${index}`} href={part.href} className="font-medium text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{part.text}</Link>
+      : <a key={`${part.href}-${index}`} href={part.href} target="_blank" rel="noreferrer" className="font-medium text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{part.text}</a>);
+}
 
 export default function BlogArticleShell({ post }: { post: BlogPost }) {
   return (
@@ -66,19 +75,49 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
             </div>
             <div className="mt-12 space-y-14">
               {post.sections.map((section) => (
-                <section key={section.heading}>
+                <section key={section.heading} className={section.clinicalPerspective ? "rounded-2xl border border-[#b08d3b]/30 bg-white/60 p-6 sm:p-8" : undefined}>
+                  {section.clinicalPerspective && <p className="mb-3 text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Clinical perspective</p>}
                   <h2 className="font-serif text-3xl tracking-tight sm:text-4xl">{section.heading}</h2>
                   <div className="mt-5 space-y-5 text-[1.05rem] leading-8 text-[#12233f]/78">
-                    {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    {section.paragraphs.map((paragraph, index) => <p key={index}><RichText content={paragraph} /></p>)}
                   </div>
                   {section.bullets && (
                     <ul className="mt-6 grid gap-3 pl-5 text-[1.02rem] leading-7 text-[#12233f]/75 marker:text-[#82601f]">
-                      {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                      {section.bullets.map((bullet, index) => <li key={index}><RichText content={bullet} /></li>)}
                     </ul>
                   )}
                 </section>
               ))}
             </div>
+
+            {post.comparison && (
+              <section className="mt-16" aria-labelledby="clinical-comparison-heading">
+                <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Clinical decision-making</p>
+                <h2 id="clinical-comparison-heading" className="mt-3 font-serif text-3xl tracking-tight sm:text-4xl">{post.comparison.heading}</h2>
+                <p className="mt-5 text-[1.05rem] leading-8 text-[#12233f]/78">{post.comparison.introduction}</p>
+                <div className="mt-8 grid gap-5 md:grid-cols-2">
+                  {post.comparison.columns.map((column, index) => (
+                    <div key={column.title} className={`rounded-[1.75rem] border p-6 sm:p-8 ${index === 0 ? "border-[#153e35]/20 bg-[#153e35] text-white" : "border-[#12233f]/10 bg-white/65"}`}>
+                      <h3 className="font-serif text-2xl">{column.title}</h3>
+                      <ul className={`mt-5 grid gap-3 pl-5 text-sm leading-6 marker:text-[#b08d3b] ${index === 0 ? "text-white/80" : "text-[#12233f]/75"}`}>
+                        {column.items.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 rounded-2xl border-l-4 border-[#b08d3b] bg-white/60 p-5 text-sm leading-6 text-[#12233f]/72">{post.comparison.disclaimer}</p>
+              </section>
+            )}
+
+            {post.reviewedBy && (
+              <section className="mt-16 rounded-[2rem] bg-[#12233f] p-7 text-white sm:p-9" aria-labelledby="clinical-review-heading">
+                <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#d5b765]">Clinical review</p>
+                <h2 id="clinical-review-heading" className="mt-3 font-serif text-3xl">Clinically reviewed by <Link href={post.reviewedBy.href} className="underline decoration-[#d5b765] underline-offset-4">{post.reviewedBy.name}</Link></h2>
+                <p className="mt-3 text-sm font-semibold text-[#d5b765]">Founder, Relief Plus · Practicing since 2008</p>
+                {post.reviewNote && <p className="mt-5 max-w-3xl leading-7 text-white/75">{post.reviewNote}</p>}
+                <Link href={post.reviewedBy.href} className="mt-6 inline-flex min-h-11 items-center rounded-full border border-white/25 px-5 py-2 text-sm font-semibold hover:border-[#d5b765] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d5b765]">Meet Dr. Johnston →</Link>
+              </section>
+            )}
 
             <section className="mt-16 border-t border-[#12233f]/10 pt-10" aria-labelledby="sources-heading">
               <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Selected evidence</p>
@@ -91,7 +130,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-sm leading-6 text-[#12233f]/65">This article provides general education and is not a diagnosis or a substitute for individualized medical advice. Treatment suitability depends on examination findings, health history, goals, and clinical judgment.</p>
+              <p className="mt-8 text-sm leading-6 text-[#12233f]/65">{post.disclaimer ?? "This article provides general education and is not a diagnosis or a substitute for individualized medical advice. Treatment suitability depends on examination findings, health history, goals, and clinical judgment."}</p>
             </section>
           </article>
 
