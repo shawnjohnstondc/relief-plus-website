@@ -25,6 +25,7 @@ export default function SiteFooter() {
             <Link href="/hipaa-notice-of-privacy-practices" className="hover:text-white">HIPAA Notice</Link>
             <Link href="/good-faith-estimate" className="hover:text-white">Good Faith Estimate</Link>
             <Link href="/privacy-policy" className="hover:text-white">Website Privacy Policy</Link>
+            <Link href="/clinical-standards-editorial-review" className="hover:text-white">Clinical Standards</Link>
           </div>
         </div>
         <div>

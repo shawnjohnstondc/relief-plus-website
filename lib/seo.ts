@@ -79,13 +79,16 @@ export function createArticleMetadata({
       description,
       publishedTime: datePublished,
       modifiedTime: dateModified,
-      authors: [siteConfig.name],
+      authors: ["Relief Plus Editorial"],
     },
   };
 }
 
 type BlogPostingStructuredDataInput = ArticleMetadataInput & {
   headline: string;
+  author?: { name: string; href: `/${string}` };
+  reviewedBy?: { name: string; href: `/${string}` };
+  lastReviewed?: string;
 };
 
 export function createBlogPostingStructuredData({
@@ -94,6 +97,9 @@ export function createBlogPostingStructuredData({
   path,
   datePublished,
   dateModified,
+  author,
+  reviewedBy,
+  lastReviewed,
 }: BlogPostingStructuredDataInput): Record<string, unknown> {
   const pageUrl = absoluteUrl(path);
 
@@ -109,7 +115,11 @@ export function createBlogPostingStructuredData({
         mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
         datePublished,
         dateModified,
-        author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+        author: author
+          ? { "@type": "Person", name: author.name, url: absoluteUrl(author.href), "@id": `${absoluteUrl(author.href)}#person` }
+          : { "@type": "Organization", name: "Relief Plus Editorial", url: absoluteUrl("/clinical-standards-editorial-review") },
+        ...(reviewedBy ? { reviewedBy: { "@type": "Person", name: reviewedBy.name, url: absoluteUrl(reviewedBy.href), "@id": `${absoluteUrl(reviewedBy.href)}#person` } } : {}),
+        ...(lastReviewed ? { lastReviewed } : {}),
         publisher: { "@id": `${siteConfig.url}/#medical-business` },
       },
       {
@@ -172,6 +182,7 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "13:15", closes: "16:00" },
   ],
   description: siteConfig.description,
+  founder: { "@id": `${absoluteUrl("/dr-shawn-johnston-dc")}#person` },
   areaServed: [
     {
       "@type": "City",
@@ -213,17 +224,92 @@ export function createFaqStructuredData(items: Array<{ question: string; answer:
 
 export function createTeamStructuredData(): Record<string, unknown> {
   const people = [
-    { name: "Shawn D. Johnston", honorificSuffix: "D.C.", jobTitle: "Doctor of Chiropractic" },
-    { name: "Jeanne Saucier", honorificSuffix: "PT", jobTitle: "Physical Therapist" },
-    { name: "Ashton Reed", honorificSuffix: "M.D.", jobTitle: "Medical Doctor" },
+    { "@id": `${absoluteUrl("/dr-shawn-johnston-dc")}#person`, name: "Shawn D. Johnston", honorificSuffix: "D.C.", jobTitle: "Doctor of Chiropractic and Founder", url: absoluteUrl("/dr-shawn-johnston-dc"), relationship: "worksFor" },
+    { "@id": `${absoluteUrl("/team")}#jeanne-saucier`, name: "Jeanne Saucier", honorificSuffix: "PT", jobTitle: "Physical Therapist", relationship: "worksFor" },
+    { "@id": `${absoluteUrl("/dr-ashton-reed-md")}#person`, name: "Ashton Reed", honorificSuffix: "MD", jobTitle: "Internal Medicine Physician", url: absoluteUrl("/dr-ashton-reed-md"), relationship: "affiliation" },
   ];
   return {
     "@context": "https://schema.org",
-    "@graph": people.map((person) => ({
+    "@graph": people.map(({ relationship, ...person }) => ({
       "@type": "Person",
       ...person,
-      worksFor: { "@id": `${siteConfig.url}/#medical-business` },
+      [relationship]: { "@id": `${siteConfig.url}/#medical-business` },
     })),
+  };
+}
+
+type ProviderProfileStructuredDataInput = {
+  path: "/dr-shawn-johnston-dc" | "/dr-ashton-reed-md";
+  name: string;
+  honorificSuffix: string;
+  jobTitle: string;
+  description: string;
+  image: `/${string}`;
+  relationship: "worksFor" | "affiliation";
+  alumniOf?: string[];
+  memberOf?: string[];
+};
+
+export function createProviderProfileStructuredData({
+  path,
+  name,
+  honorificSuffix,
+  jobTitle,
+  description,
+  image,
+  relationship,
+  alumniOf = [],
+  memberOf = [],
+}: ProviderProfileStructuredDataInput): Record<string, unknown> {
+  const pageUrl = absoluteUrl(path);
+  const person: Record<string, unknown> = {
+    "@type": "Person",
+    "@id": `${pageUrl}#person`,
+    name,
+    honorificSuffix,
+    jobTitle,
+    description,
+    url: pageUrl,
+    image: absoluteUrl(image),
+    [relationship]: { "@id": `${siteConfig.url}/#medical-business` },
+  };
+
+  if (alumniOf.length) {
+    person.alumniOf = alumniOf.map((organization) => ({
+      "@type": "EducationalOrganization",
+      name: organization,
+    }));
+  }
+
+  if (memberOf.length) {
+    person.memberOf = memberOf.map((organization) => ({
+      "@type": "Organization",
+      name: organization,
+    }));
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": `${pageUrl}#profile-page`,
+        url: pageUrl,
+        name: `${name}, ${honorificSuffix}`,
+        description,
+        mainEntity: { "@id": `${pageUrl}#person` },
+      },
+      person,
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "About Relief Plus", item: absoluteUrl("/about") },
+          { "@type": "ListItem", position: 3, name: `${name}, ${honorificSuffix}`, item: pageUrl },
+        ],
+      },
+    ],
   };
 }
 

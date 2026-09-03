@@ -23,6 +23,9 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
           path: post.path,
           datePublished: post.datePublished,
           dateModified: post.dateModified,
+          author: post.author,
+          reviewedBy: post.reviewedBy,
+          lastReviewed: post.lastReviewed,
         })}
       />
       <SiteHeader currentPath={post.path} />
@@ -43,7 +46,9 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
             <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">{post.title}</h1>
             <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/75">{post.summary}</p>
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/65">
-              <span>By Relief Plus Editorial</span>
+              {post.author ? <span>Written by <Link href={post.author.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.author.name}</Link></span> : <span>By <Link href="/clinical-standards-editorial-review" className="underline decoration-[#b08d3b] underline-offset-4">Relief Plus Editorial</Link></span>}
+              {post.reviewedBy && <span>Reviewed by <Link href={post.reviewedBy.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.reviewedBy.name}</Link></span>}
+              {post.lastReviewed && <span>Last reviewed <time dateTime={post.lastReviewed}>{dateFormatter.format(new Date(post.lastReviewed))}</time></span>}
               <span>Published <time dateTime={post.datePublished}>{dateFormatter.format(new Date(post.datePublished))}</time></span>
               <span>Updated <time dateTime={post.dateModified}>{dateFormatter.format(new Date(post.dateModified))}</time></span>
               <span>{post.readTime}</span>

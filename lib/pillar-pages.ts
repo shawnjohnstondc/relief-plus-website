@@ -121,6 +121,11 @@ export const chiropracticPage: PillarPageData = {
     "Chiropractic stands alongside physical therapy and regenerative medicine at Relief Plus. Depending on the examination and goals, one pillar may lead the plan or multiple services may work together over time.",
   relatedServices: [
     {
+      title: "Meet Dr. Johnston",
+      description: "Learn about the Relief Plus founder’s background and approach to chiropractic care.",
+      href: "/dr-shawn-johnston-dc",
+    },
+    {
       title: "Physical Therapy",
       description: "Progressive rehabilitation focused on mobility, strength, and function.",
       href: "/physical-therapy-lafayette",
@@ -314,6 +319,11 @@ export const regenerativePage: PillarPageData = {
   approachDescription:
     "Regenerative medicine does not replace a complete musculoskeletal approach. Chiropractic care, physical therapy, activity modification, or other options may be more appropriate, or may be coordinated as part of a broader plan.",
   relatedServices: [
+    {
+      title: "Meet Dr. Reed",
+      description: "Learn about physician oversight and medical decision-making in the regenerative medicine program.",
+      href: "/dr-ashton-reed-md",
+    },
     {
       title: "PRP Therapy",
       description: "A separate advanced treatment page for patients exploring PRP as a possible option.",

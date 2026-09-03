@@ -13,6 +13,9 @@ export type BlogPost = {
   datePublished: string;
   dateModified: string;
   readTime: string;
+  author?: { name: string; href: `/${string}` };
+  reviewedBy?: { name: string; href: `/${string}` };
+  lastReviewed?: string;
   sections: BlogSection[];
   related: BlogLink[];
   sources: BlogSource[];

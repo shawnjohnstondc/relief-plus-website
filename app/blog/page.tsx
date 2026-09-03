@@ -48,6 +48,7 @@ export default function BlogPage() {
             <p className="text-xs font-semibold uppercase tracking-[.28em] text-[#82601f]">Relief Plus Journal</p>
             <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">Patient education for clearer care decisions.</h1>
             <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/72">Explore practical, evidence-informed guidance about pain, movement, rehabilitation, and advanced treatment options. These resources support—not replace—an individualized examination.</p>
+            <Link href="/clinical-standards-editorial-review" className="mt-6 inline-block text-sm font-semibold text-[#82601f] underline decoration-[#b08d3b] underline-offset-4">How Relief Plus creates and reviews health information →</Link>
           </div>
         </div>
       </section>
