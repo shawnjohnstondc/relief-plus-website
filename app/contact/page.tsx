@@ -6,9 +6,9 @@ const path = "/contact" as const;
 export const metadata = createPageMetadata({ title: "Contact Relief Plus in Lafayette, LA", description: "Call Relief Plus at 337-565-4200 or visit 112 Arabian Dr., Lafayette, LA 70507 for chiropractic, physical therapy, and musculoskeletal care.", path });
 export default function Page() { return <><JsonLd data={createBreadcrumbStructuredData(path, "Contact Relief Plus")} /><InfoPageShell path={path} breadcrumbLabel="Contact" eyebrow="Contact Relief Plus" title="Start with a phone call." description="Relief Plus provides phone-based scheduling for patients in Lafayette, Carencro, and throughout Acadiana. No online booking or medical-information form is used on this site." heroPoints={["Call (337) 565-4200", "112 Arabian Dr., Lafayette, LA 70507", "Fax referrals to (337) 565-4201"]} sections={[
   { eyebrow: "Clinic Information", title: "Call or visit Relief Plus.", items: [
-    { title: "Phone", description: "(337) 565-4200" },
-    { title: "Address", description: "112 Arabian Dr.\nLafayette, LA 70507" },
-    { title: "Email", description: "myreliefplus@gmail.com" },
+    { title: "Phone", description: "(337) 565-4200", href: "tel:+13375654200", actionLabel: "Call Relief Plus" },
+    { title: "Address", description: "112 Arabian Dr.\nLafayette, LA 70507", href: "https://www.google.com/maps/dir/?api=1&destination=112%20Arabian%20Dr.%2C%20Lafayette%2C%20LA%2070507", actionLabel: "Get directions" },
+    { title: "Email", description: "myreliefplus@gmail.com", href: "mailto:myreliefplus@gmail.com", actionLabel: "Email Relief Plus" },
     { title: "Referral Fax", description: "(337) 565-4201" },
     { title: "Care for patients in Carencro", description: "Learn more about Relief Plus care for patients traveling from the Carencro area.", href: "/chiropractor-carencro-la" },
   ], paragraphs: ["Please do not use ordinary email for urgent concerns or assume it is a secure way to transmit medical information. Call the clinic for scheduling and instructions about records or referrals."] },

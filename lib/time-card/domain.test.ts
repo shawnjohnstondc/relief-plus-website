@@ -6,7 +6,7 @@ import {
   buildAuditEntry,
   holidayDuplicateKey,
 } from "./domain";
-import { loginLockoutUntil } from "./rate-limit";
+import { loginLockoutUntil, storedLoginLockIsCurrent } from "./rate-limit";
 import type { SessionIdentity } from "./types";
 
 const employee: SessionIdentity = {
@@ -75,36 +75,63 @@ describe("administrative payroll safety", () => {
 });
 
 describe("database-backed login policy", () => {
-  it("temporarily locks after five recent failures", () => {
+  it("temporarily delays after eight recent failures", () => {
     const now = new Date("2026-09-01T15:00:00Z");
-    const failures = Array.from({ length: 5 }, (_, index) => ({
+    const failures = Array.from({ length: 8 }, (_, index) => ({
       succeeded: false,
       attemptedAt: new Date(now.getTime() - index * 60_000),
     }));
     expect(loginLockoutUntil(failures, now)?.toISOString()).toBe(
-      "2026-09-01T15:15:00.000Z",
+      "2026-09-01T15:02:00.000Z",
     );
   });
 
-  it("does not lock after four failures", () => {
+  it("does not delay after a first invalid login", () => {
     const now = new Date("2026-09-01T15:00:00Z");
-    const failures = Array.from({ length: 4 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - index * 60_000) }));
+    const failures = [{ succeeded: false, attemptedAt: now }];
+    expect(loginLockoutUntil(failures, now)).toBeNull();
+  });
+
+  it("does not delay after seven failures", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const failures = Array.from({ length: 7 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - index * 60_000) }));
     expect(loginLockoutUntil(failures, now)).toBeNull();
   });
 
   it("ignores failures outside the rolling window", () => {
     const now = new Date("2026-09-01T15:00:00Z");
-    const failures = Array.from({ length: 5 }, () => ({ succeeded: false, attemptedAt: new Date("2026-09-01T14:44:59Z") }));
+    const failures = Array.from({ length: 8 }, () => ({ succeeded: false, attemptedAt: new Date("2026-09-01T14:44:59Z") }));
     expect(loginLockoutUntil(failures, now)).toBeNull();
   });
 
   it("resets the failure sequence after a successful login", () => {
     const now = new Date("2026-09-01T15:00:00Z");
     const attempts = [
-      ...Array.from({ length: 5 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - (10 - index) * 60_000) })),
+      ...Array.from({ length: 8 }, (_, index) => ({ succeeded: false, attemptedAt: new Date(now.getTime() - (13 - index) * 60_000) })),
       { succeeded: true, attemptedAt: new Date(now.getTime() - 4 * 60_000) },
       { succeeded: false, attemptedAt: new Date(now.getTime() - 60_000) },
     ];
     expect(loginLockoutUntil(attempts, now)).toBeNull();
+  });
+
+  it("does not let stale historical failures block a valid login", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const stale = Array.from({ length: 20 }, () => ({ succeeded: false, attemptedAt: new Date("2026-08-31T15:00:00Z") }));
+    expect(loginLockoutUntil(stale, now)).toBeNull();
+  });
+
+  it("honors only a short current account lock", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    expect(storedLoginLockIsCurrent(new Date("2026-09-01T15:01:00Z"), now)).toBe(true);
+    expect(storedLoginLockIsCurrent(new Date("2026-09-01T15:15:00Z"), now)).toBe(false);
+    expect(storedLoginLockIsCurrent(new Date("2026-09-01T14:59:00Z"), now)).toBe(false);
+  });
+
+  it("keeps failure histories isolated by account", () => {
+    const now = new Date("2026-09-01T15:00:00Z");
+    const employeeAFailures = Array.from({ length: 8 }, () => ({ succeeded: false, attemptedAt: now }));
+    const employeeBFailures: Array<{ succeeded: boolean; attemptedAt: Date }> = [];
+    expect(loginLockoutUntil(employeeAFailures, now)).not.toBeNull();
+    expect(loginLockoutUntil(employeeBFailures, now)).toBeNull();
   });
 });

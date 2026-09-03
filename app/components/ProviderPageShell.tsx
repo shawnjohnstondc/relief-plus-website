@@ -104,7 +104,7 @@ export default function ProviderPageShell({
       <section className="px-6 py-20 lg:px-8">
         <div className="mx-auto max-w-7xl rounded-[2rem] bg-[#12233f] px-8 py-14 text-white sm:px-12 lg:flex lg:items-center lg:justify-between">
           <div className="max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[.25em] text-[#d5b765]">Contact Relief Plus</p><h2 className="mt-4 font-serif text-4xl sm:text-5xl">Start with a conversation about what is limiting you.</h2><p className="mt-5 text-lg leading-8 text-white/70">Call the clinic to discuss the appropriate place to begin. Relief Plus does not use online scheduling.</p></div>
-          <a href="tel:3375654200" className="mt-8 inline-block rounded-full bg-[#d5b765] px-7 py-4 text-sm font-semibold text-[#12233f] lg:mt-0">Call (337) 565-4200</a>
+          <a href="tel:+13375654200" className="mt-8 inline-block rounded-full bg-[#d5b765] px-7 py-4 text-sm font-semibold text-[#12233f] lg:mt-0">Call (337) 565-4200</a>
         </div>
       </section>
       <SiteFooter />

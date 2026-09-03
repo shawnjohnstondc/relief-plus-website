@@ -98,7 +98,7 @@ export default function Home() {
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
               <a
-                href="tel:3375654200"
+                href="tel:+13375654200"
                 className="rounded-full bg-[#12233f] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#1a3156]"
               >
                 Call to Schedule
@@ -359,7 +359,7 @@ export default function Home() {
           </div>
 
           <a
-            href="tel:3375654200"
+            href="tel:+13375654200"
             className="mt-8 inline-block rounded-full bg-[#d5b765] px-7 py-4 text-sm font-semibold text-[#12233f] lg:mt-0"
           >
             Call 337-565-4200
@@ -430,10 +430,10 @@ export default function Home() {
               </p>
               <div className="mt-5 space-y-3 text-sm text-white/75">
                 <p>Relief Plus</p>
-                <p>112 Arabian Dr.<br />Lafayette, LA 70507</p>
+                <p><a href="https://www.google.com/maps/dir/?api=1&destination=112%20Arabian%20Dr.%2C%20Lafayette%2C%20LA%2070507" aria-label="Get directions to Relief Plus at 112 Arabian Drive in Lafayette">112 Arabian Dr.<br />Lafayette, LA 70507</a></p>
                 <p><Link href="/chiropractor-carencro-la">Serving Lafayette and the Carencro area</Link></p>
                 <p>
-                  <a href="tel:3375654200">(337) 565-4200</a>
+                  <a href="tel:+13375654200" aria-label="Call Relief Plus at 337-565-4200">(337) 565-4200</a>
                 </p>
                 <p><a href="mailto:myreliefplus@gmail.com">myreliefplus@gmail.com</a></p>
                 <p>

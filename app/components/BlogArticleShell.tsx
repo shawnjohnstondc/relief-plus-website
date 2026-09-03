@@ -150,7 +150,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
             <div className="rounded-[2rem] border border-[#12233f]/10 bg-white/55 p-7">
               <h2 className="font-serif text-2xl">A question about your symptoms?</h2>
               <p className="mt-3 text-sm leading-6 text-[#12233f]/70">A conversation can help you understand whether an evaluation at Relief Plus is an appropriate next step.</p>
-              <a href="tel:3375654200" className="mt-6 inline-block rounded-full bg-[#12233f] px-5 py-3 text-sm font-semibold text-white">Call (337) 565-4200</a>
+              <a href="tel:+13375654200" className="mt-6 inline-block rounded-full bg-[#12233f] px-5 py-3 text-sm font-semibold text-white">Call (337) 565-4200</a>
             </div>
           </aside>
         </div>

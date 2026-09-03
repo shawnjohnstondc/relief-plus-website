@@ -4,8 +4,8 @@ export const PAY_PERIOD_LENGTH_DAYS = 14;
 
 export const DEFAULT_LOGIN_POLICY = {
   windowMinutes: 15,
-  maximumAttempts: 5,
-  lockoutMinutes: 15,
+  maximumAttempts: 8,
+  lockoutMinutes: 2,
 } as const;
 
 export const DEFAULT_SESSION_POLICY = {

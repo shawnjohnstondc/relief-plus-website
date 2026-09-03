@@ -33,8 +33,8 @@ export default function SiteFooter() {
           <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#d5b765]">Contact</p>
           <address className="mt-4 grid gap-3 text-sm not-italic leading-6 text-white/70">
             <span>Relief Plus</span>
-            <span>112 Arabian Dr.<br />Lafayette, LA 70507</span>
-            <a href="tel:3375654200" className="hover:text-white">(337) 565-4200</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=112%20Arabian%20Dr.%2C%20Lafayette%2C%20LA%2070507" className="hover:text-white" aria-label="Get directions to Relief Plus at 112 Arabian Drive in Lafayette"><span>112 Arabian Dr.<br />Lafayette, LA 70507</span></a>
+            <a href="tel:+13375654200" className="hover:text-white" aria-label="Call Relief Plus at 337-565-4200">(337) 565-4200</a>
             <a href="mailto:myreliefplus@gmail.com" className="break-all hover:text-white">myreliefplus@gmail.com</a>
           </address>
         </div>

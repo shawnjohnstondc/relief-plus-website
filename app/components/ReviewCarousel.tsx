@@ -44,6 +44,7 @@ export default function ReviewCarousel() {
   const [isHovered, setIsHovered] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
   const [wasManuallyControlled, setWasManuallyControlled] = useState(false);
+  const [expandedReview, setExpandedReview] = useState<number | null>(null);
   const prefersReducedMotion = useSyncExternalStore(
     subscribeToReducedMotion,
     getReducedMotionPreference,
@@ -66,7 +67,9 @@ export default function ReviewCarousel() {
 
   function showReview(index: number) {
     setWasManuallyControlled(true);
-    setCurrentReview((index + reviews.length) % reviews.length);
+    const nextReview = (index + reviews.length) % reviews.length;
+    setExpandedReview(null);
+    setCurrentReview(nextReview);
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -121,18 +124,12 @@ export default function ReviewCarousel() {
             className="grid px-7 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14"
             aria-live={isPaused ? "polite" : "off"}
           >
-            {reviews.map((review, index) => {
-              const isCurrent = index === currentReview;
-
-              return (
+            {[reviews[currentReview]].map((review) => (
                 <article
                   key={review}
-                  className={`col-start-1 row-start-1 flex flex-col justify-between transition-opacity duration-300 motion-reduce:transition-none ${
-                    isCurrent ? "opacity-100" : "pointer-events-none opacity-0"
-                  }`}
-                  aria-label={`Review ${index + 1} of ${reviews.length}`}
+                  className="flex flex-col"
+                  aria-label={`Review ${currentReview + 1} of ${reviews.length}`}
                   aria-roledescription="slide"
-                  aria-hidden={!isCurrent}
                 >
                   <div>
                     <div
@@ -141,9 +138,19 @@ export default function ReviewCarousel() {
                     >
                       “
                     </div>
-                    <blockquote className="mt-1 max-w-5xl font-serif text-xl leading-8 text-white/90 sm:text-2xl sm:leading-9">
+                    <blockquote className={`mt-1 max-w-5xl font-serif text-xl leading-8 text-white/90 sm:text-2xl sm:leading-9 ${reviews[currentReview].length > 400 && expandedReview !== currentReview ? "line-clamp-6" : ""}`}>
                       {review}
                     </blockquote>
+                    {review.length > 400 && (
+                      <button
+                        type="button"
+                        className="mt-5 min-h-11 rounded-full border border-white/20 px-5 text-sm font-semibold text-white transition hover:border-[#d5b765] hover:text-[#d5b765] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d5b765]"
+                        aria-expanded={expandedReview === currentReview}
+                        onClick={() => setExpandedReview(expandedReview === currentReview ? null : currentReview)}
+                      >
+                        {expandedReview === currentReview ? "Show less" : "Read full review"}
+                      </button>
+                    )}
                   </div>
 
                   <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -159,8 +166,7 @@ export default function ReviewCarousel() {
                     </span>
                   </div>
                 </article>
-              );
-            })}
+            ))}
           </div>
 
           <div className="flex items-center justify-between border-t border-white/10 px-7 py-5 sm:px-10 lg:px-14">

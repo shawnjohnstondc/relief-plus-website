@@ -1,22 +1,26 @@
 import "server-only";
-import { loginLockoutUntil } from "./rate-limit";
-import { findLoginUser, lockUser, recentLoginAttempts, recordLoginAttempt } from "./repository";
+import { loginLockoutUntil, storedLoginLockIsCurrent } from "./rate-limit";
+import { clearUserLoginState, findLoginUser, lockUser, recentLoginAttempts, recordLoginAttempt } from "./repository";
 import { verifyPin } from "./security";
 import { createDatabaseSession, requestLoginFingerprint } from "./session";
 
-const GENERIC_LOGIN_ERROR = "The selected name or PIN was not recognized.";
+const GENERIC_LOGIN_ERROR = "That PIN wasn't recognized. Please try again.";
+const TEMPORARY_DELAY_ERROR = "Please wait a moment and try again.";
 
 export async function authenticate(loginIdentifier: string, pin: string) {
   const fingerprint = await requestLoginFingerprint(loginIdentifier);
   const attempts = await recentLoginAttempts(fingerprint.loginKeyHash, fingerprint.ipHash);
-  const beforeLookupLockout = loginLockoutUntil(attempts, new Date());
-  if (beforeLookupLockout && beforeLookupLockout > new Date()) {
-    return { ok: false as const, message: "Too many attempts. Please wait 15 minutes and try again." };
+  const now = new Date();
+  const attemptLockout = loginLockoutUntil(attempts, now);
+  if (attemptLockout && attemptLockout > now) {
+    return { ok: false as const, message: TEMPORARY_DELAY_ERROR };
   }
 
   const user = await findLoginUser(loginIdentifier);
-  if (user?.lockedUntil && new Date(user.lockedUntil) > new Date()) {
-    return { ok: false as const, message: "Too many attempts. Please wait 15 minutes and try again." };
+  if (user?.lockedUntil && storedLoginLockIsCurrent(new Date(user.lockedUntil), now)) {
+    return { ok: false as const, message: TEMPORARY_DELAY_ERROR };
+  } else if (user?.lockedUntil) {
+    await clearUserLoginState(user.id);
   }
 
   const valid = Boolean(user && await verifyPin(user.pinHash, pin));
@@ -25,7 +29,7 @@ export async function authenticate(loginIdentifier: string, pin: string) {
     const updated = [...attempts, { succeeded: false, attemptedAt: new Date() }];
     const lockedUntil = loginLockoutUntil(updated, new Date());
     if (lockedUntil && user) await lockUser(user.id, lockedUntil);
-    return { ok: false as const, message: lockedUntil ? "Too many attempts. Please wait 15 minutes and try again." : GENERIC_LOGIN_ERROR };
+    return { ok: false as const, message: lockedUntil ? TEMPORARY_DELAY_ERROR : GENERIC_LOGIN_ERROR };
   }
 
   await createDatabaseSession(user.id, user.role);

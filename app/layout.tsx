@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Relief Plus" }],
   creator: "Relief Plus",
   publisher: "Relief Plus",
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

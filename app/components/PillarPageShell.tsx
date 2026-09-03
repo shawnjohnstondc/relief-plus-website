@@ -45,7 +45,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <a
-                  href="tel:3375654200"
+                  href="tel:+13375654200"
                   className="rounded-full bg-[#12233f] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#1a3156]"
                 >
                   Call to Schedule
@@ -355,7 +355,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
             </p>
           </div>
           <a
-            href="tel:3375654200"
+            href="tel:+13375654200"
             className="mt-8 inline-block rounded-full bg-[#d5b765] px-7 py-4 text-sm font-semibold text-[#12233f] lg:mt-0"
           >
             Call 337-565-4200

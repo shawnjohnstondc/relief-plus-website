@@ -26,3 +26,13 @@ export function loginLockoutUntil(
   const latest = Math.max(...failures.map((attempt) => attempt.attemptedAt.getTime()));
   return new Date(latest + policy.lockoutMinutes * 60_000);
 }
+
+export function storedLoginLockIsCurrent(
+  lockedUntil: Date | null,
+  now: Date,
+  policy = DEFAULT_LOGIN_POLICY,
+) {
+  if (!lockedUntil || lockedUntil <= now) return false;
+  const longestCurrentLock = now.getTime() + policy.lockoutMinutes * 60_000;
+  return lockedUntil.getTime() <= longestCurrentLock;
+}

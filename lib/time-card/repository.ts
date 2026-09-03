@@ -29,9 +29,10 @@ export async function findLoginUser(loginIdentifier: string) {
 }
 
 export async function recentLoginAttempts(loginKeyHash: string, ipHash: string) {
+  void ipHash;
   return timeCardDatabase()<Array<{ succeeded: boolean; attemptedAt: Date }>>`
     select succeeded, attempted_at from login_attempts
-    where login_key_hash = ${loginKeyHash} and ip_hash = ${ipHash}
+    where login_key_hash = ${loginKeyHash}
       and attempted_at >= now() - interval '15 minutes'
     order by attempted_at desc
   `;
@@ -51,6 +52,14 @@ export async function recordLoginAttempt(input: { loginKeyHash: string; ipHash: 
 
 export async function lockUser(userId: string, lockedUntil: Date) {
   await timeCardDatabase()`update time_card_users set locked_until = ${lockedUntil} where id = ${userId}`;
+}
+
+export async function clearUserLoginState(userId: string) {
+  await timeCardDatabase()`
+    update time_card_users
+    set locked_until = null, failed_login_count = 0, last_failed_login_at = null
+    where id = ${userId}
+  `;
 }
 
 export async function openPunch(employeeId: string) {
