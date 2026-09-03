@@ -59,7 +59,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
               {post.reviewedBy && <span>Reviewed by <Link href={post.reviewedBy.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.reviewedBy.name}</Link></span>}
               {post.lastReviewed && <span>Last reviewed <time dateTime={post.lastReviewed}>{dateFormatter.format(new Date(post.lastReviewed))}</time></span>}
               <span>Published <time dateTime={post.datePublished}>{dateFormatter.format(new Date(post.datePublished))}</time></span>
-              <span>Updated <time dateTime={post.dateModified}>{dateFormatter.format(new Date(post.dateModified))}</time></span>
+              {post.dateModified && <span>Updated <time dateTime={post.dateModified}>{dateFormatter.format(new Date(post.dateModified))}</time></span>}
               <span>{post.readTime}</span>
             </div>
           </div>
@@ -73,6 +73,12 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
               <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Key takeaway</p>
               <p className="mt-3 text-lg leading-8">{post.summary}</p>
             </div>
+            {post.scopeNote && (
+              <aside className="mt-6 rounded-2xl border border-[#12233f]/10 bg-[#e8e5dc] p-6" aria-label="Scope of care">
+                <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Scope of care</p>
+                <p className="mt-3 leading-7 text-[#12233f]/75">{post.scopeNote}</p>
+              </aside>
+            )}
             <div className="mt-12 space-y-14">
               {post.sections.map((section) => (
                 <section key={section.heading} className={section.clinicalPerspective ? "rounded-2xl border border-[#b08d3b]/30 bg-white/60 p-6 sm:p-8" : undefined}>

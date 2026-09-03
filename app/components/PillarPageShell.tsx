@@ -102,6 +102,39 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </div>
       </section>
 
+      {data.provider && (
+        <section className="border-y border-[#12233f]/10 bg-white/45 px-6 py-10 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">Your Provider</p>
+              <p className="mt-3 leading-7 text-[#12233f]/70">{data.provider.description}</p>
+            </div>
+            <Link href={data.provider.href} className="inline-flex min-h-11 shrink-0 items-center font-semibold underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">
+              Meet {data.provider.name} →
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {data.answerBlock && (
+        <section className="px-6 py-20 lg:px-8" aria-labelledby="treatment-answer-heading">
+          <div className="mx-auto max-w-7xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">Treatment at a Glance</p>
+            <h2 id="treatment-answer-heading" className="mt-5 max-w-3xl font-serif text-4xl tracking-tight sm:text-5xl">What the treatment may support—and what it does not prove.</h2>
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              <article className="rounded-[1.75rem] bg-[#153e35] p-7 text-white sm:p-8">
+                <h3 className="font-serif text-2xl">{data.answerBlock.supportedTitle}</h3>
+                <p className="mt-4 leading-7 text-white/72">{data.answerBlock.supportedText}</p>
+              </article>
+              <article className="rounded-[1.75rem] border border-[#12233f]/10 bg-white/60 p-7 sm:p-8">
+                <h3 className="font-serif text-2xl">{data.answerBlock.limitsTitle}</h3>
+                <p className="mt-4 leading-7 text-[#12233f]/68">{data.answerBlock.limitsText}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-[#12233f] px-6 py-24 text-white lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <div className="min-w-0">
@@ -337,6 +370,14 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {data.showClinicalStandardsLink && (
+        <section className="border-t border-[#12233f]/10 px-6 py-10 lg:px-8">
+          <div className="mx-auto max-w-7xl text-sm leading-6 text-[#12233f]/65">
+            <Link href="/clinical-standards-editorial-review" className="font-semibold text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">Learn how Relief Plus reviews clinical evidence and treatment information →</Link>
           </div>
         </section>
       )}

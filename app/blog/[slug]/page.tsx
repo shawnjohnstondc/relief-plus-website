@@ -24,7 +24,7 @@ export async function generateMetadata({
     description: post.description,
     path: post.path,
     datePublished: post.datePublished,
-    dateModified: post.dateModified,
+    ...(post.dateModified ? { dateModified: post.dateModified } : {}),
   });
 }
 

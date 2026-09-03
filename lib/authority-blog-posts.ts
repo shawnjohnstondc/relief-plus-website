@@ -25,7 +25,14 @@ export const authorityBlogPosts: BlogPost[] = [
     author: { name: "Relief Plus Editorial", href: "/clinical-standards-editorial-review" },
     reviewedBy: { name: "Shawn D. Johnston, D.C.", href: "/dr-shawn-johnston-dc" },
     lastReviewed: "2026-09-03T09:00:00-05:00",
+    scopeNote: "Relief Plus does not perform lumbar epidural steroid injections. Dr. Johnston evaluates and treats musculoskeletal patients and may coordinate or refer for an outside injection or surgical consultation when appropriate.",
     sections: [
+      {
+        heading: "Can an epidural make a herniated disc go away?",
+        paragraphs: [
+          "No. An epidural steroid injection primarily aims to reduce inflammation around an irritated spinal nerve. It does not remove a herniated disc, push disc material back into place, or mechanically decompress the nerve. Any symptom improvement should be interpreted alongside neurological findings, function, and the broader care plan.",
+        ],
+      },
       {
         heading: "First, what is a lumbar epidural steroid injection?",
         paragraphs: [

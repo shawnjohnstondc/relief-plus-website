@@ -58,7 +58,7 @@ export function createPageMetadata({
 
 type ArticleMetadataInput = PageMetadataInput & {
   datePublished: string;
-  dateModified: string;
+  dateModified?: string;
 };
 
 export function createArticleMetadata({
@@ -78,7 +78,7 @@ export function createArticleMetadata({
       title,
       description,
       publishedTime: datePublished,
-      modifiedTime: dateModified,
+      ...(dateModified ? { modifiedTime: dateModified } : {}),
       authors: ["Relief Plus Editorial"],
     },
   };
@@ -114,7 +114,7 @@ export function createBlogPostingStructuredData({
         url: pageUrl,
         mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
         datePublished,
-        dateModified,
+        ...(dateModified ? { dateModified } : {}),
         author: author
           ? { "@type": "Person", name: author.name, url: absoluteUrl(author.href), "@id": `${absoluteUrl(author.href)}#person` }
           : { "@type": "Organization", name: "Relief Plus Editorial", url: absoluteUrl("/clinical-standards-editorial-review") },
@@ -197,6 +197,15 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
       name: "Acadiana",
     },
   ],
+};
+
+export const websiteJsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteConfig.url}/#website`,
+  name: siteConfig.name,
+  url: siteConfig.url,
+  publisher: { "@id": `${siteConfig.url}/#medical-business` },
 };
 
 export function createBreadcrumbStructuredData(path: `/${string}`, name: string): Record<string, unknown> {

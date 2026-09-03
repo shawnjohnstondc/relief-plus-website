@@ -13,11 +13,12 @@ export type BlogPost = {
   category: string;
   summary: string;
   datePublished: string;
-  dateModified: string;
+  dateModified?: string;
   readTime: string;
   author?: { name: string; href: `/${string}` };
   reviewedBy?: { name: string; href: `/${string}` };
   lastReviewed?: string;
+  scopeNote?: string;
   sections: BlogSection[];
   comparison?: {
     heading: string;
@@ -31,7 +32,6 @@ export type BlogPost = {
   sources: BlogSource[];
 };
 
-const updated = "2026-09-01T09:00:00-05:00";
 
 import { phaseNineCBlogPosts } from "./phase-nine-c-blog-posts";
 import { phaseNineDBlogPosts } from "./phase-nine-d-blog-posts";
@@ -49,7 +49,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
     category: "TMJ & Headache",
     summary: "Jaw symptoms can come from the joint, the chewing muscles, or several factors together. A careful evaluation helps distinguish common, self-limiting symptoms from problems that deserve targeted care.",
     datePublished: "2026-08-04T11:22:10-05:00",
-    dateModified: updated,
     readTime: "7 min read",
     sections: [
       { heading: "The jaw is more than a hinge", paragraphs: ["The temporomandibular joints connect the lower jaw to the skull. They work with the chewing muscles, teeth, nerves, and neck every time you speak, chew, swallow, or yawn. Temporomandibular disorders, often shortened to TMD, are a group of conditions affecting this system rather than one single diagnosis.", "Symptoms may include pain in the jaw or temple, tenderness in the chewing muscles, limited or painful opening, locking, or painful clicking. Painless clicking is common and, by itself, usually does not require treatment."] },
@@ -76,7 +75,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
     category: "TMJ & Headache",
     summary: "For many temporomandibular disorders, care begins with reversible strategies. The plan should match the dominant joint, muscle, dental, and behavioral findings rather than apply the same treatment to every jaw complaint.",
     datePublished: "2024-03-19T08:41:04-05:00",
-    dateModified: updated,
     readTime: "8 min read",
     sections: [
       { heading: "Why conservative care usually comes first", paragraphs: ["TMD describes a diverse group of jaw-joint and chewing-muscle conditions. Many cases improve over time, and national guidance recommends beginning with treatments that are conservative and reversible. This means avoiding permanent changes to the teeth, bite, or joint as an automatic first step.", "Conservative does not mean passive. It means choosing the least invasive reasonable option, monitoring response, and escalating only when the diagnosis and clinical course support it."] },
@@ -105,7 +103,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
     category: "Shoulder & Upper Extremity",
     summary: "Frozen shoulder rehabilitation is not a contest to force range back quickly. Movement selection and intensity should reflect pain, stiffness, stage, health history, and response over time.",
     datePublished: "2024-04-03T09:34:15-05:00",
-    dateModified: updated,
     readTime: "8 min read",
     sections: [
       { heading: "What frozen shoulder means", paragraphs: ["Frozen shoulder, or adhesive capsulitis, typically involves a gradual loss of both active motion and motion when someone else moves the shoulder. Reaching overhead, behind the back, or out to the side may become painful and restricted. The course can be prolonged and varies considerably between people.", "A stiff shoulder is not automatically frozen shoulder. Rotator cuff problems, arthritis, recent injury, cervical conditions, and other disorders can create overlapping symptoms, so an examination matters before choosing an exercise plan."] },
@@ -133,7 +130,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
     category: "Advanced Treatment Education",
     summary: "Platelet-rich plasma may be discussed for selected cases of persistent lateral elbow tendinopathy, but it is not a guaranteed solution. Diagnosis, treatment history, goals, evidence uncertainty, risks, cost, and alternatives all matter.",
     datePublished: "2024-03-15T12:11:50-05:00",
-    dateModified: updated,
     readTime: "9 min read",
     sections: [
       { heading: "First, confirm the problem", paragraphs: ["Tennis elbow usually refers to lateral elbow tendinopathy: pain near the outer elbow associated with gripping and loading the wrist-extensor tendons. Similar pain can come from the neck, a nerve, the joint, trauma, or another condition. An injection discussion should follow an examination rather than substitute for one.", "Symptoms can persist when the demands of work, sport, or daily life repeatedly exceed current tendon capacity, or when a loading plan is too little, too much, or difficult to sustain. Duration alone does not prove irreversible damage. Most care plans begin with education and progressive loading. Activity may need modification, but complete rest can reduce capacity. The aim is to find a tolerable level and gradually rebuild strength."] },
@@ -162,7 +158,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
     category: "Treatment Education",
     summary: "Dry needling can be considered as an adjunct for selected lateral elbow presentations. It does not replace diagnosis, load management, or progressive exercise, and a short-term response is not a guarantee of lasting recovery.",
     datePublished: "2024-03-14T15:45:54-05:00",
-    dateModified: updated,
     readTime: "8 min read",
     sections: [
       { heading: "Tennis elbow is a load-related problem", paragraphs: ["Lateral elbow tendinopathy commonly causes pain near the outer elbow during gripping, lifting, tool use, or racquet sports. Symptoms reflect how the tendon and surrounding system are tolerating load; they are not simply a muscle knot that must be released.", "An examination may assess the elbow, wrist, grip, neck, and neurological findings. This helps distinguish tendinopathy from nerve irritation, joint problems, trauma, and referred pain."] },

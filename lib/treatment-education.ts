@@ -1,6 +1,7 @@
 import type { EducationSection, PillarPageData } from "./pillar-pages";
 
 type ResearchSource = { label: string; href: string; note: string };
+type TreatmentAnswerBlock = NonNullable<PillarPageData["answerBlock"]>;
 
 const dryNeedling: EducationSection[] = [
   { eyebrow: "Why This Treatment Gets Our Attention", title: "A focused way to reduce muscular sensitivity and make movement easier.", paragraphs: ["Dry needling gives the clinician direct access to selected muscular and trigger-point presentations using a thin, solid filament needle, without injecting medication. For the right patient, a short-term reduction in pain or guarding can make it easier to turn, reach, walk, train, or begin the exercise that builds lasting capacity.", "A 2023 umbrella review found short-term pain reduction across body regions and reported that dry needling can add value when combined with physical-therapy interventions. Functional findings were more variable, so Relief Plus connects symptom change to a meaningful movement goal rather than treating soreness as success.", "That makes dry needling especially useful as a bridge: creating a more comfortable window for mobility work, physical therapy, chiropractic care, or progressive loading."], items: [{ title: "Direct and targeted", description: "Muscular findings should reproduce the patient’s familiar pattern." }, { title: "Useful before active care", description: "Reduced sensitivity may improve tolerance for exercise and movement progression." }, { title: "No injected medication", description: "The technique is distinct from trigger-point injection." }, { title: "Diagnosis still leads", description: "A muscle can contribute to pain without being the whole condition." }] },
@@ -43,6 +44,39 @@ export const treatmentEducation: Partial<Record<PillarPageData["path"], Educatio
   "/dry-needling-lafayette": dryNeedling, "/class-iv-laser-therapy-lafayette": laser,
   "/shockwave-therapy-lafayette": shockwave, "/prp-therapy-lafayette": prp,
   "/ozone-injection-therapy-lafayette": ozone, "/trigger-point-injections-lafayette": triggerPoint,
+};
+
+export const treatmentAnswerBlocks: Partial<Record<PillarPageData["path"], TreatmentAnswerBlock>> = {
+  "/prp-therapy-lafayette": {
+    supportedTitle: "What PRP may be used for",
+    supportedText: "PRP may be discussed for selected joint, tendon, or soft-tissue concerns after the diagnosis, prior care, health context, and goals are reviewed. Research is most developed for certain diagnoses, including knee osteoarthritis, and rehabilitation may remain part of the plan.",
+    limitsTitle: "What PRP does not prove or guarantee",
+    limitsText: "PRP is prepared from the patient’s own blood and is not the same as stem-cell or cellular therapy. Improvement does not prove cartilage regrowth, structural repair, or guaranteed avoidance of surgery, and evidence from one diagnosis should not be generalized to every condition.",
+  },
+  "/ozone-injection-therapy-lafayette": {
+    supportedTitle: "What ozone may be used for",
+    supportedText: "A controlled oxygen–ozone mixture may be considered for a selected musculoskeletal target after diagnosis and candidacy review. Knee osteoarthritis currently has the clearest musculoskeletal research base, with studies reporting possible short-term pain and function improvement in selected groups.",
+    limitsTitle: "What ozone does not prove or guarantee",
+    limitsText: "Evidence for one diagnosis, joint, or injection route does not establish benefit for every condition or form of ozone treatment. Ozone is not presented as a universal treatment, cartilage-regrowth procedure, systemic cure, or substitute for appropriate rehabilitation and medical care.",
+  },
+  "/class-iv-laser-therapy-lafayette": {
+    supportedTitle: "What laser therapy may support",
+    supportedText: "Class IV laser may be used as a non-invasive adjunct for symptom and function improvement in selected musculoskeletal conditions. A useful response can make strengthening, mobility work, or rehabilitation more comfortable while the underlying condition and functional goals guide the plan.",
+    limitsTitle: "What laser therapy does not prove or guarantee",
+    limitsText: "Photobiomodulation mechanisms and symptom improvement do not prove tissue regeneration or complete elimination of inflammation. Laser does not repair a herniated disc, mechanically decompress a nerve, or guarantee healing, and treatment parameters and diagnosis materially affect the evidence.",
+  },
+  "/shockwave-therapy-lafayette": {
+    supportedTitle: "What shockwave may be used for",
+    supportedText: "Shockwave may be considered for persistent plantar heel pain and selected tendinopathies, often alongside a progressive loading plan. Evidence and suitability vary by diagnosis, symptom duration, anatomy, and equipment, so a confirmed clinical target should guide its use.",
+    limitsTitle: "What shockwave does not prove or guarantee",
+    limitsText: "Shockwave is not appropriate for every tendon disorder or every stage of injury. It does not break away scar tissue, guarantee new tissue growth, replace exercise automatically, or establish that every painful tendon or plantar-fascia presentation is a candidate.",
+  },
+  "/regenerative-cellular-therapy-lafayette": {
+    supportedTitle: "What a cellular-product discussion should address",
+    supportedText: "A responsible consultation should identify the exact product, diagnosis, intended use, evidence, regulatory documentation, risks, alternatives, cost, and follow-up. Because products differ, candidacy and any evidence must be evaluated for the specific product and proposed orthopedic use.",
+    limitsTitle: "What cellular products do not prove or guarantee",
+    limitsText: "This page does not represent these products as FDA-approved orthopedic stem-cell therapies or claim that they regenerate cartilage, repair discs, reverse arthritis, heal tendons, replace surgery, or provide predictable relief. Product source, contents, and regulatory status require exact documentation.",
+  },
 };
 
 export const treatmentResearch: Partial<Record<PillarPageData["path"], ResearchSource[]>> = {

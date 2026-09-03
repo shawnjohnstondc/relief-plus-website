@@ -1,6 +1,5 @@
 import type { BlogPost } from "./blog-posts";
 
-const updated = "2026-09-01T09:00:00-05:00";
 
 export const phaseNineCBlogPosts: BlogPost[] = [
   {
@@ -10,7 +9,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     seoTitle: "Why Your Neck Hurts After Sleep | Relief Plus",
     description: "Explore why neck pain can feel worse after sleep, how position and daily load may contribute, and when persistent morning symptoms deserve evaluation.",
     category: "Spine & Chiropractic", summary: "Morning neck pain rarely has one universal cause. Sleep position, pillow support, the previous day’s load, joint and muscle sensitivity, and nerve symptoms all help shape the right next step.",
-    datePublished: "2026-05-19T11:02:48-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2026-05-19T11:02:48-05:00", readTime: "7 min read",
     sections: [
       { heading: "Sleep may reveal sensitivity rather than create it", paragraphs: ["A neck can feel stiff after hours in one position, but the pillow is not always the whole explanation. Training, desk work, driving, stress-related muscle tension, or a recent increase in activity may leave the system more sensitive before bedtime. Sleep then becomes the longest period without changing position.", "Pain on waking does not reliably identify a damaged structure. The useful question is how symptoms behave across positions, movement, and the rest of the day."] },
       { heading: "Position and support are individual", paragraphs: ["A pillow should help the head feel supported without forcing the neck far into flexion, extension, or side-bending. Side sleepers often need enough height to fill the shoulder-to-head space; back sleepers may prefer less. Stomach sleeping requires sustained rotation and can bother some people, but no position is automatically wrong for everyone.", "Small experiments are more informative than buying a succession of products: change one variable, give it several nights, and notice morning comfort and sleep quality."] },
@@ -30,7 +29,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Why Your Hands May Go Numb at Night", seoTitle: "Nighttime Hand Numbness: Common Patterns | Relief Plus",
     description: "Learn how wrist, elbow, neck, and sleeping positions can contribute to nighttime hand numbness and which symptoms warrant prompt evaluation.",
     category: "Spine & Nerve", summary: "The location of numbness, positions that provoke it, and accompanying weakness can help distinguish irritation at the wrist, elbow, neck, or more than one site.",
-    datePublished: "2026-07-28T11:21:11-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2026-07-28T11:21:11-05:00", readTime: "7 min read",
     sections: [
       { heading: "The pattern matters", paragraphs: ["Thumb, index, and middle-finger symptoms may suggest median-nerve irritation at the wrist, while ring- and little-finger symptoms can relate to the ulnar nerve near the elbow. Neck-related nerve irritation may travel through a broader arm pattern and occur with neck or shoulder symptoms. These are clues, not a self-diagnosis."] },
       { heading: "Why nighttime can be different", paragraphs: ["Sleeping with wrists bent, elbows tightly flexed, or an arm overhead can increase pressure or tension around a sensitive nerve. Fluid shifts and reduced position changes may also matter. Repositioning can help, but recurring symptoms deserve attention to the full nerve pathway and daily gripping, keyboard, tool, or training load."] },
@@ -50,7 +49,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "When a Headache May Be Related to the Neck", seoTitle: "When Headache and Neck Pain Are Related | Relief Plus",
     description: "Understand cervicogenic headache clues, why neck pain does not prove the diagnosis, and how examination guides conservative care and referral.",
     category: "Headache", summary: "Some headaches are attributed to a neck disorder, but neck tenderness is also common during migraine and tension-type headache. Classification and examination matter before treatment.",
-    datePublished: "2026-04-07T10:52:11-05:00", dateModified: updated, readTime: "8 min read",
+    datePublished: "2026-04-07T10:52:11-05:00", readTime: "8 min read",
     sections: [
       { heading: "Neck pain does not settle the diagnosis", paragraphs: ["A cervicogenic headache is a secondary headache attributed to a cervical disorder. Features may include reduced neck motion, headache reproduced by neck movement or pressure, and pain that begins around the upper neck. Yet migraine and tension-type headache can also include neck discomfort, so location alone is not enough."] },
       { heading: "History comes first", paragraphs: ["A clinician may ask about onset, frequency, duration, sensitivity to light or sound, nausea, aura, medication use, trauma, sleep, and neurological symptoms. The examination may assess neck movement, strength, coordination, neurological status, and whether familiar head pain changes with relevant tests."] },
@@ -73,7 +72,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Tension-Type Headache vs. Migraine: Useful Differences", seoTitle: "Tension Headache vs. Migraine: Key Differences | Relief Plus",
     description: "Compare common tension-type headache and migraine features, understand overlap, and learn when a new headache pattern needs medical attention.",
     category: "Headache", summary: "Tension-type headache and migraine can overlap, and neither can be diagnosed from one symptom. Pattern, associated features, frequency, and change over time guide appropriate care.",
-    datePublished: "2024-03-30T09:58:00-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2024-03-30T09:58:00-05:00", readTime: "7 min read",
     sections: [
       { heading: "Typical patterns—not rigid rules", paragraphs: ["Tension-type headache is often described as pressing or tightening, commonly on both sides, and usually is not aggravated by routine activity. Migraine more often includes moderate or severe pain, may be one-sided or pulsating, and can worsen with activity. Nausea and sensitivity to light or sound are more characteristic of migraine."] },
       { heading: "Overlap is common", paragraphs: ["People can experience more than one headache type. Neck pain, muscle tenderness, stress, disrupted sleep, and concentration difficulty can occur across categories. Aura affects some people with migraine but is not required. A symptom checklist is useful preparation for an appointment, not a substitute for diagnosis."] },
@@ -93,7 +92,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Cervical Manipulation: Benefits, Risks, and Clinical Judgment", seoTitle: "Cervical Manipulation: Benefits and Risks | Relief Plus",
     description: "A balanced explanation of cervical manipulation, expected benefits, uncommon but serious risks, screening limits, alternatives, and shared decisions.",
     category: "Chiropractic Education", summary: "No procedure is risk-free. Cervical manipulation is one option for selected patients; examination, informed discussion, patient preference, technique choice, and alternatives all matter.",
-    datePublished: "2024-05-15T15:33:49-05:00", dateModified: updated, readTime: "9 min read",
+    datePublished: "2024-05-15T15:33:49-05:00", readTime: "9 min read",
     sections: [
       { heading: "What the treatment is—and is not", paragraphs: ["Cervical manipulation applies a controlled, quick movement to a neck joint. It may be considered within care for some mechanical neck pain or cervicogenic headache presentations. It does not realign bones, guarantee improved health, or treat every cause of neck pain."] },
       { heading: "Potential benefits", paragraphs: ["Clinical guidelines include manipulation among several options, commonly alongside exercise, education, and other manual approaches. Some patients experience short-term improvements in pain or movement. Benefits should be judged against meaningful activities and sustained through an active plan."] },
@@ -113,7 +112,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Cervical Traction: When It May Fit Neck and Arm Care", seoTitle: "Cervical Traction for Neck and Arm Symptoms | Relief Plus",
     description: "Learn what cervical traction does, where evidence is most relevant, why response varies, and how it may fit alongside exercise and rehabilitation.",
     category: "Spine & Chiropractic", summary: "Traction may be considered for selected neck-related arm symptoms, but average research effects are mixed and it should not replace neurological assessment or active rehabilitation.",
-    datePublished: "2024-05-01T10:21:42-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2024-05-01T10:21:42-05:00", readTime: "7 min read",
     sections: [
       { heading: "What traction does", paragraphs: ["Cervical traction applies a graded pulling force to the neck manually or with a device. The aim is to modify symptoms or loading temporarily—not to permanently separate joints, put a disc back in place, or prove a diagnosis."] },
       { heading: "Where it may be considered", paragraphs: ["Research is most relevant to cervical radicular presentations, where neck-related nerve irritation produces arm pain or neurological symptoms. Reviews suggest traction added to rehabilitation can improve some pain outcomes, but evidence quality and diagnostic criteria vary; another review found average changes were statistically detectable but not clinically meaningful."] },
@@ -129,7 +128,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Ozone Injections for Knee Osteoarthritis: What the Evidence Says", seoTitle: "Ozone Injections for Knee Osteoarthritis | Relief Plus",
     description: "A balanced review of ozone injections for knee osteoarthritis, including possible short-term benefits, evidence limitations, candidacy, and alternatives.",
     category: "Advanced Treatment Education", summary: "Intra-articular ozone has shown possible short-term symptom benefit in knee osteoarthritis studies, but review quality is limited and it has not been shown to regrow cartilage or reverse arthritis.",
-    datePublished: "2026-07-02T15:22:16-05:00", dateModified: updated, readTime: "9 min read",
+    datePublished: "2026-07-02T15:22:16-05:00", readTime: "9 min read",
     sections: [
       { heading: "Start with the knee, not the injection", paragraphs: ["Knee osteoarthritis can involve pain, stiffness, reduced capacity, and variable imaging findings. Symptoms are influenced by joint sensitivity, strength, sleep, health, activity, and load. Examination should clarify the presentation and goals before any procedure is discussed."] },
       { heading: "What is being studied", paragraphs: ["Research on musculoskeletal ozone commonly evaluates an oxygen–ozone gas mixture injected into the knee joint. Evidence from that route and condition should not be generalized to systemic ozone, other injection locations, or broad health claims."] },
@@ -145,7 +144,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Shockwave and Dry Needling for Runner’s Knee: Where They May Fit", seoTitle: "Shockwave and Dry Needling for Runner’s Knee | Relief Plus",
     description: "Learn why runner’s knee requires load and movement assessment and how shockwave or dry needling may—or may not—fit beside active rehabilitation.",
     category: "Knee & Lower Extremity", summary: "Combining two modalities does not automatically produce a better result. Runner’s knee care begins with diagnosis, training-load review, strength, coordination, and a progressive return to running.",
-    datePublished: "2024-03-31T08:38:00-05:00", dateModified: updated, readTime: "8 min read",
+    datePublished: "2024-03-31T08:38:00-05:00", readTime: "8 min read",
     sections: [
       { heading: "Runner’s knee is a broad label", paragraphs: ["Front-of-knee pain during running, stairs, squatting, or prolonged sitting is often called patellofemoral pain, but tendon, joint, referred, or traumatic problems can resemble it. The first task is to identify the likely presentation and current load tolerance."] },
       { heading: "Look beyond one joint", paragraphs: ["Hip and trunk control, knee strength, ankle and foot options, cadence, terrain, footwear changes, and recent training volume may influence how load is distributed. No single movement pattern is automatically faulty; relevance depends on symptoms, task, and whether a change improves tolerance."] },
@@ -161,7 +160,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Why Your Lower Back May Hurt When Sitting", seoTitle: "Why Lower-Back Pain Can Worsen With Sitting | Relief Plus",
     description: "Understand why sitting can aggravate some lower-back pain, why posture is only one factor, and how movement and load experiments guide care.",
     category: "Back & Spine", summary: "Sitting-related back pain is influenced by duration, position, task demands, sensitivity, movement variability, and overall capacity—not one universally bad posture.",
-    datePublished: "2026-05-12T11:01:47-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2026-05-12T11:01:47-05:00", readTime: "7 min read",
     sections: [
       { heading: "Duration often matters more than perfection", paragraphs: ["Any position held long enough can become uncomfortable. Slouching is not automatically damaging, and sitting upright all day can also become tiring. A useful setup lets you vary position and focus on the task rather than brace constantly."] },
       { heading: "Symptoms can behave differently", paragraphs: ["Some people feel localized stiffness; others notice leg symptoms or pain that changes with repeated bending, standing, or walking. Clinicians may assess whether symptoms centralize toward the back or peripheralize farther into the leg when clinically relevant, along with neurological findings."] },
@@ -177,7 +176,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Lumbar Disc-Related Pain: More Than a Tight Back", seoTitle: "Lumbar Disc-Related Pain and Symptom Behavior | Relief Plus",
     description: "Learn how disc-related back symptoms may behave, why imaging is not the whole diagnosis, and how neurological findings and movement guide care.",
     category: "Back & Spine", summary: "Disc findings are common on imaging and do not automatically explain pain. Symptom behavior, neurological status, function, and change over time are more useful than a scan label alone.",
-    datePublished: "2026-03-26T10:40:33-05:00", dateModified: updated, readTime: "8 min read",
+    datePublished: "2026-03-26T10:40:33-05:00", readTime: "8 min read",
     sections: [
       { heading: "A disc is not a slipped object", paragraphs: ["Spinal discs adapt to load and can develop age-related findings. Terms such as bulge or degeneration can sound alarming, but similar findings occur in people without pain. A diagnosis should connect the history, examination, and imaging only when imaging is indicated."] },
       { heading: "Symptom behavior offers clues", paragraphs: ["Sitting, bending, coughing, lifting, standing, or walking may affect symptoms differently. Repeated movement may centralize leg symptoms toward the back or peripheralize them farther down the limb. These findings may be assessed when relevant; they are not mandatory tests for every patient."] },
@@ -193,7 +192,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Scapular Dyskinesis: A Finding, Not a Verdict", seoTitle: "Scapular Dyskinesis and Shoulder Pain | Relief Plus",
     description: "Understand scapular dyskinesis, why altered shoulder-blade motion can occur with or without pain, and how rehabilitation focuses on useful function.",
     category: "Shoulder & Upper Extremity", summary: "Shoulder-blade movement can be relevant, but visible asymmetry is common and does not prove the cause of pain. The key is whether modifying movement changes symptoms or function.",
-    datePublished: "2024-04-20T11:12:00-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2024-04-20T11:12:00-05:00", readTime: "7 min read",
     sections: [
       { heading: "What the term describes", paragraphs: ["Scapular dyskinesis describes altered or asymmetric shoulder-blade motion. It is an observation, not a disease by itself. It can appear in people with shoulder pain and in people who have no symptoms, so it should not automatically be labeled the hidden culprit."] },
       { heading: "The shoulder works as a region", paragraphs: ["The shoulder blade, upper arm, rib cage, neck, and trunk coordinate during reaching, throwing, lifting, and carrying. Strength, fatigue, pain, task speed, breathing, and individual anatomy can all change the visible pattern."] },
@@ -209,7 +208,7 @@ export const phaseNineCBlogPosts: BlogPost[] = [
     title: "Why Your Hip May Hurt When You Walk", seoTitle: "Why Hip Pain Can Appear While Walking | Relief Plus",
     description: "Explore common hip-pain patterns during walking, neighboring-joint contributions, load tolerance, and signs that warrant medical evaluation.",
     category: "Hip & Lower Extremity", summary: "Walking-related hip pain can arise from the joint, tendons, muscles, back, or other sources. Location and symptom behavior guide evaluation more reliably than one generic exercise.",
-    datePublished: "2026-06-23T11:17:57-05:00", dateModified: updated, readTime: "7 min read",
+    datePublished: "2026-06-23T11:17:57-05:00", readTime: "7 min read",
     sections: [
       { heading: "Location helps organize possibilities", paragraphs: ["Groin or front-of-hip pain may suggest a hip-joint or flexor presentation. Outer-hip pain may involve the gluteal tendons or greater-trochanteric region. Buttock or radiating symptoms may relate to the back, sacroiliac region, or other tissues. These patterns overlap and require examination."] },
       { heading: "Walking is a whole-body task", paragraphs: ["Stride length, speed, hills, footwear, fatigue, trunk control, hip strength, ankle motion, and the recent change in walking volume all affect load. A neighboring joint does not need to be visibly abnormal to change what the hip must tolerate."] },

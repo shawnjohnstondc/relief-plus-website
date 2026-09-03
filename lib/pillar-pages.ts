@@ -56,6 +56,18 @@ export type PillarPageData = {
     caption?: string;
     objectPosition?: string;
   };
+  provider?: {
+    name: string;
+    href: `/${string}`;
+    description: string;
+  };
+  answerBlock?: {
+    supportedTitle: string;
+    supportedText: string;
+    limitsTitle: string;
+    limitsText: string;
+  };
+  showClinicalStandardsLink?: boolean;
 };
 
 export const chiropracticPage: PillarPageData = {

@@ -2,7 +2,7 @@ import JsonLd from "./JsonLd";
 import PillarPageShell from "./PillarPageShell";
 import type { PillarPageData } from "@/lib/pillar-pages";
 import { createServiceStructuredData } from "@/lib/seo";
-import { treatmentEducation, treatmentResearch } from "@/lib/treatment-education";
+import { treatmentAnswerBlocks, treatmentEducation, treatmentResearch } from "@/lib/treatment-education";
 
 export default function SupportingTreatmentPage({
   data,
@@ -22,6 +22,14 @@ export default function SupportingTreatmentPage({
         data={{
           ...data,
           educationSections: treatmentEducation[data.path],
+          answerBlock: treatmentAnswerBlocks[data.path],
+          showClinicalStandardsLink: [
+            "/prp-therapy-lafayette",
+            "/ozone-injection-therapy-lafayette",
+            "/trigger-point-injections-lafayette",
+            "/class-iv-laser-therapy-lafayette",
+            "/shockwave-therapy-lafayette",
+          ].includes(data.path),
           pageSources: treatmentResearch[data.path],
           sourcesEyebrow: "Selected Research",
           sourcesTitle: "Research informing this treatment guide.",

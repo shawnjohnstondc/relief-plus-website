@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { createPageMetadata } from "@/lib/seo";
+import { createPageMetadata, websiteJsonLd } from "@/lib/seo";
+import JsonLd from "./components/JsonLd";
 import ReviewCarousel from "./components/ReviewCarousel";
 import BrandMark from "./components/BrandMark";
 import SiteHeader from "./components/SiteHeader";
@@ -69,6 +70,7 @@ const conditions = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
+      <JsonLd data={websiteJsonLd} />
       {/* HEADER */}
       <SiteHeader />
 
