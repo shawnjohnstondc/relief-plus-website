@@ -225,7 +225,7 @@ export function createFaqStructuredData(items: Array<{ question: string; answer:
 export function createTeamStructuredData(): Record<string, unknown> {
   const people = [
     { "@id": `${absoluteUrl("/dr-shawn-johnston-dc")}#person`, name: "Shawn D. Johnston", honorificSuffix: "D.C.", jobTitle: "Doctor of Chiropractic and Founder", url: absoluteUrl("/dr-shawn-johnston-dc"), relationship: "worksFor" },
-    { "@id": `${absoluteUrl("/team")}#jeanne-saucier`, name: "Jeanne Saucier", honorificSuffix: "PT", jobTitle: "Physical Therapist", relationship: "worksFor" },
+    { "@id": `${absoluteUrl("/jeanne-saucier-pt")}#person`, name: "Jeanne L. Saucier", honorificSuffix: "PT", jobTitle: "Physical Therapist", url: absoluteUrl("/jeanne-saucier-pt"), relationship: "worksFor" },
     { "@id": `${absoluteUrl("/dr-ashton-reed-md")}#person`, name: "Ashton Reed", honorificSuffix: "MD", jobTitle: "Internal Medicine Physician", url: absoluteUrl("/dr-ashton-reed-md"), relationship: "affiliation" },
   ];
   return {
@@ -239,7 +239,7 @@ export function createTeamStructuredData(): Record<string, unknown> {
 }
 
 type ProviderProfileStructuredDataInput = {
-  path: "/dr-shawn-johnston-dc" | "/dr-ashton-reed-md";
+  path: "/dr-shawn-johnston-dc" | "/dr-ashton-reed-md" | "/jeanne-saucier-pt";
   name: string;
   honorificSuffix: string;
   jobTitle: string;

@@ -225,6 +225,11 @@ export const physicalTherapyPage: PillarPageData = {
     "Physical therapy may stand alone or work alongside chiropractic care when joint motion, strength, movement control, and activity tolerance all need attention. Advanced regenerative options remain a separate consideration based on clinical appropriateness.",
   relatedServices: [
     {
+      title: "Meet Jeanne Saucier, PT",
+      description: "Physical therapy at Relief Plus is provided by Jeanne Saucier, PT. Learn about her education, clinical background, and approach to progressive rehabilitation.",
+      href: "/jeanne-saucier-pt",
+    },
+    {
       title: "Chiropractic Care",
       description: "Musculoskeletal care focused on joint motion, movement, and function.",
       href: "/chiropractic-adjustments-lafayette",

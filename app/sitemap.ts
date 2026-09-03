@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services", priority: 0.9 },
     { path: "/our-approach", priority: 0.8 },
     { path: "/dr-shawn-johnston-dc", priority: 0.8 },
+    { path: "/jeanne-saucier-pt", priority: 0.8 },
     { path: "/dr-ashton-reed-md", priority: 0.7 },
     { path: "/clinical-standards-editorial-review", priority: 0.6 },
     { path: "/faq-lafayette", priority: 0.8 },
