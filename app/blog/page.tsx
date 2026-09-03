@@ -7,7 +7,7 @@ import { blogPosts } from "@/lib/blog-posts";
 import { createBlogCollectionStructuredData, createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Patient Education | Relief Plus",
+  title: "Patient Education",
   description: "Explore evidence-informed Relief Plus articles about musculoskeletal conditions, movement, rehabilitation, and treatment decisions.",
   path: "/blog",
 });
