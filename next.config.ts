@@ -60,6 +60,11 @@ const nextConfig: NextConfig = {
         statusCode: 301,
       },
       {
+        source: "/sciatica-lafayette",
+        destination: "/sciatica-treatment-lafayette",
+        statusCode: 301,
+      },
+      {
         source: "/blog/car-accident-injury-treatment-in-lafayette-la-what-to-do-immediately-and-why-waiting-can-make-it-worse",
         destination: "/car-accident-injuries-lafayette",
         statusCode: 301,
