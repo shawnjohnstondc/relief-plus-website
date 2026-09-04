@@ -176,10 +176,8 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
   faxNumber: siteConfig.faxNumber,
   address: { "@type": "PostalAddress", ...siteConfig.address },
   openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "07:00", closes: "11:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "12:15", closes: "16:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "08:30", closes: "12:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "13:15", closes: "16:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "07:00", closes: "16:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Thursday"], opens: "08:30", closes: "16:00" },
   ],
   description: siteConfig.description,
   founder: { "@id": `${absoluteUrl("/dr-shawn-johnston-dc")}#person` },
