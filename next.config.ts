@@ -40,6 +40,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/home",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
         source: "/hippa-privacy",
         destination: "/hipaa-notice-of-privacy-practices",
         statusCode: 301,
