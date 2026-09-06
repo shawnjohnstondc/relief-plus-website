@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./time-card.css";
 
 export const metadata: Metadata = {
   title: "Staff Time Card",
