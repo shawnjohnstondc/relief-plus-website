@@ -87,6 +87,7 @@ export function createArticleMetadata({
 type BlogPostingStructuredDataInput = ArticleMetadataInput & {
   headline: string;
   author?: { name: string; href: `/${string}` };
+  contributor?: { name: string; href: `/${string}`; role: string };
   reviewedBy?: { name: string; href: `/${string}` };
   lastReviewed?: string;
 };
@@ -98,6 +99,7 @@ export function createBlogPostingStructuredData({
   datePublished,
   dateModified,
   author,
+  contributor,
   reviewedBy,
   lastReviewed,
 }: BlogPostingStructuredDataInput): Record<string, unknown> {
@@ -116,8 +118,11 @@ export function createBlogPostingStructuredData({
         datePublished,
         ...(dateModified ? { dateModified } : {}),
         author: author
-          ? { "@type": "Person", name: author.name, url: absoluteUrl(author.href), "@id": `${absoluteUrl(author.href)}#person` }
+          ? author.name === "Relief Plus Editorial"
+            ? { "@type": "Organization", name: author.name, url: absoluteUrl(author.href) }
+            : { "@type": "Person", name: author.name, url: absoluteUrl(author.href), "@id": `${absoluteUrl(author.href)}#person` }
           : { "@type": "Organization", name: "Relief Plus Editorial", url: absoluteUrl("/clinical-standards-editorial-review") },
+        ...(contributor ? { contributor: { "@type": "Person", name: contributor.name, url: absoluteUrl(contributor.href), "@id": `${absoluteUrl(contributor.href)}#person`, description: contributor.role } } : {}),
         ...(reviewedBy ? { reviewedBy: { "@type": "Person", name: reviewedBy.name, url: absoluteUrl(reviewedBy.href), "@id": `${absoluteUrl(reviewedBy.href)}#person` } } : {}),
         ...(lastReviewed ? { lastReviewed } : {}),
         publisher: { "@id": `${siteConfig.url}/#medical-business` },

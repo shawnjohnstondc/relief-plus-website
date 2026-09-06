@@ -1,8 +1,8 @@
 export type BlogLink = { title: string; href: string; description: string };
 export type BlogInline = string | { text: string; href: string };
 export type BlogParagraph = string | BlogInline[];
-export type BlogSection = { heading: string; paragraphs: BlogParagraph[]; bullets?: BlogParagraph[]; clinicalPerspective?: boolean };
-export type BlogSource = { title: string; organization: string; href: string };
+export type BlogSection = { heading: string; paragraphs: BlogParagraph[]; bullets?: BlogParagraph[]; numbered?: BlogParagraph[]; clinicalPerspective?: boolean };
+export type BlogSource = { id?: string; title: string; organization: string; href: string };
 
 export type BlogPost = {
   slug: string;
@@ -16,6 +16,7 @@ export type BlogPost = {
   dateModified?: string;
   readTime: string;
   author?: { name: string; href: `/${string}` };
+  contributor?: { name: string; href: `/${string}`; role: string };
   reviewedBy?: { name: string; href: `/${string}` };
   lastReviewed?: string;
   scopeNote?: string;
@@ -38,6 +39,7 @@ import { phaseNineDBlogPosts } from "./phase-nine-d-blog-posts";
 import { phaseNineFBlogPosts } from "./phase-nine-f-blog-posts";
 import { phaseNineHBlogPosts } from "./phase-nine-h-blog-posts";
 import { authorityBlogPosts } from "./authority-blog-posts";
+import { bowhuntingShoulderBlogPost } from "./bowhunting-shoulder-blog-post";
 
 const phaseNineBBlogPosts: BlogPost[] = [
   {
@@ -179,6 +181,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
   },
 ];
 
-export const blogPosts: BlogPost[] = [...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts];
+export const blogPosts: BlogPost[] = [bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts];
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));

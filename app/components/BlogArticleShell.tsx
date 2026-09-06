@@ -18,6 +18,8 @@ function RichText({ content }: { content: BlogParagraph }) {
     ? <span key={`${part}-${index}`}>{part}</span>
     : part.href.startsWith("/")
       ? <Link key={`${part.href}-${index}`} href={part.href} className="font-medium text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{part.text}</Link>
+      : part.href.startsWith("#")
+        ? <a key={`${part.href}-${index}`} href={part.href} className="font-medium text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{part.text}</a>
       : <a key={`${part.href}-${index}`} href={part.href} target="_blank" rel="noreferrer" className="font-medium text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{part.text}</a>);
 }
 
@@ -33,6 +35,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
           datePublished: post.datePublished,
           dateModified: post.dateModified,
           author: post.author,
+          contributor: post.contributor,
           reviewedBy: post.reviewedBy,
           lastReviewed: post.lastReviewed,
         })}
@@ -56,6 +59,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
             <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/75">{post.summary}</p>
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/65">
               {post.author ? <span>Written by <Link href={post.author.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.author.name}</Link></span> : <span>By <Link href="/clinical-standards-editorial-review" className="underline decoration-[#b08d3b] underline-offset-4">Relief Plus Editorial</Link></span>}
+              {post.contributor && <span>{post.contributor.role}: <Link href={post.contributor.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.contributor.name}</Link></span>}
               {post.reviewedBy && <span>Reviewed by <Link href={post.reviewedBy.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.reviewedBy.name}</Link></span>}
               {post.lastReviewed && <span>Last reviewed <time dateTime={post.lastReviewed}>{dateFormatter.format(new Date(post.lastReviewed))}</time></span>}
               <span>Published <time dateTime={post.datePublished}>{dateFormatter.format(new Date(post.datePublished))}</time></span>
@@ -91,6 +95,11 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                     <ul className="mt-6 grid gap-3 pl-5 text-[1.02rem] leading-7 text-[#12233f]/75 marker:text-[#82601f]">
                       {section.bullets.map((bullet, index) => <li key={index}><RichText content={bullet} /></li>)}
                     </ul>
+                  )}
+                  {section.numbered && (
+                    <ol className="mt-6 grid list-decimal gap-4 pl-6 text-[1.02rem] leading-7 text-[#12233f]/75 marker:font-semibold marker:text-[#82601f]">
+                      {section.numbered.map((item, index) => <li key={index}><RichText content={item} /></li>)}
+                    </ol>
                   )}
                 </section>
               ))}
@@ -130,7 +139,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
               <h2 id="sources-heading" className="mt-3 font-serif text-3xl">Sources and further reading</h2>
               <ul className="mt-6 space-y-4 text-sm leading-6 text-[#12233f]/70">
                 {post.sources.map((source) => (
-                  <li key={source.href}>
+                  <li key={source.href} id={source.id} className="scroll-mt-6">
                     <a href={source.href} target="_blank" rel="noreferrer" className="font-semibold text-[#12233f] underline decoration-[#b08d3b] underline-offset-4 hover:text-[#82601f]">{source.title}</a>
                     <span className="block">{source.organization}</span>
                   </li>
