@@ -11,6 +11,7 @@ export default function Page() { return <><JsonLd data={createBreadcrumbStructur
     { title: "Regenerative Medicine", description: "Selected options are considered under Dr. Ashton Reed’s medical oversight, with discussion of evidence, risks, and alternatives.", href: "/regenerative-cellular-therapy-lafayette" },
   ], paragraphs: ["You may need one service or benefit from clinicians working together. Each recommendation should have a clear purpose; not every patient sees every provider."] },
   { eyebrow: "Supporting Treatments", title: "What the supporting treatments involve.", items: [
+    { title: "Spinal Decompression", description: "Table-based traction, with an explanation of the evidence, limits, and alternatives before a treatment decision.", href: "/spinal-decompression-lafayette" },
     { title: "Dry Needling", description: "May reduce selected muscular sensitivity and create a more comfortable window for movement.", href: "/dry-needling-lafayette" },
     { title: "Class IV Laser Therapy", description: "Light applied from outside the body may help some pain and soft-tissue problems. Results vary.", href: "/class-iv-laser-therapy-lafayette" },
     { title: "Shockwave Therapy", description: "Sound-wave energy delivered through an applicator may help selected persistent tendon or heel pain.", href: "/shockwave-therapy-lafayette" },

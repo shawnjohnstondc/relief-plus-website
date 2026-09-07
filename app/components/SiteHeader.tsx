@@ -7,7 +7,7 @@ import JsonLd from "./JsonLd";
 import { medicalBusinessJsonLd } from "@/lib/seo";
 
 const pillars = [["Chiropractic", "/chiropractic-adjustments-lafayette"], ["Physical Therapy", "/physical-therapy-lafayette"], ["Regenerative Medicine", "/regenerative-cellular-therapy-lafayette"]] as const;
-const treatments = [["Dry Needling", "/dry-needling-lafayette"], ["Class IV Laser Therapy", "/class-iv-laser-therapy-lafayette"], ["Shockwave Therapy", "/shockwave-therapy-lafayette"], ["PRP Therapy", "/prp-therapy-lafayette"], ["Ozone Injection Therapy", "/ozone-injection-therapy-lafayette"], ["Trigger Point Injections", "/trigger-point-injections-lafayette"]] as const;
+const treatments = [["Spinal Decompression", "/spinal-decompression-lafayette"], ["Dry Needling", "/dry-needling-lafayette"], ["Class IV Laser Therapy", "/class-iv-laser-therapy-lafayette"], ["Shockwave Therapy", "/shockwave-therapy-lafayette"], ["PRP Therapy", "/prp-therapy-lafayette"], ["Ozone Injection Therapy", "/ozone-injection-therapy-lafayette"], ["Trigger Point Injections", "/trigger-point-injections-lafayette"]] as const;
 const conditions = [["Back Pain", "/back-pain-lafayette"], ["Neck Pain", "/neck-pain-lafayette"], ["Sciatica", "/sciatica-treatment-lafayette"], ["Herniated Disc", "/herniated-disc-lafayette"], ["Pinched Nerve", "/pinched-nerve-lafayette"]] as const;
 type MenuName = "treatments" | "conditions";
 

@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/prp-therapy-lafayette", priority: 0.8 },
     { path: "/ozone-injection-therapy-lafayette", priority: 0.8 },
     { path: "/trigger-point-injections-lafayette", priority: 0.8 },
+    { path: "/spinal-decompression-lafayette", priority: 0.8 },
     { path: "/dry-needling-lafayette", priority: 0.8 },
     { path: "/class-iv-laser-therapy-lafayette", priority: 0.8 },
     { path: "/shockwave-therapy-lafayette", priority: 0.8 },
