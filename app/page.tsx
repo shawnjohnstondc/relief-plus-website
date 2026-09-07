@@ -18,37 +18,37 @@ const treatments = [
   {
     title: "Chiropractic Care",
     description:
-      "Personalized chiropractic care focused on restoring motion, reducing pain, and helping you move and function better.",
+      "Dr. Shawn D. Johnston, D.C., assesses joint and movement problems and uses adjustments when they fit your needs.",
     href: "/chiropractic-adjustments-lafayette",
   },
   {
     title: "Dry Needling",
     description:
-      "Targeted treatment for muscular tension, trigger points, restricted movement, and persistent pain.",
+      "Thin needles, without injected medicine, may help selected muscle pain as part of a movement and exercise plan.",
     href: "/dry-needling-lafayette",
   },
   {
     title: "Class IV Laser Therapy",
     description:
-      "Advanced laser therapy designed to support tissue healing, reduce inflammation, and improve recovery.",
+      "Light applied from outside the body may help some pain and soft-tissue problems. Benefits vary by condition.",
     href: "/class-iv-laser-therapy-lafayette",
   },
   {
     title: "Physical Therapy",
     description:
-      "Movement-based rehabilitation designed around your condition, function, and individual goals.",
+      "Jeanne Saucier, PT, guides exercises and movement practice to help you rebuild strength for daily life, work, or sport.",
     href: "/physical-therapy-lafayette",
   },
   {
     title: "Shockwave Therapy",
     description:
-      "Non-invasive acoustic wave therapy for stubborn musculoskeletal conditions and chronic soft-tissue pain.",
+      "Sound-wave treatment may help certain persistent tendon and heel problems alongside exercise and activity changes.",
     href: "/shockwave-therapy-lafayette",
   },
   {
     title: "Regenerative Medicine",
     description:
-      "Clinically directed regenerative treatment options used as part of an individualized musculoskeletal recovery plan.",
+      "Selected treatment options are considered under Dr. Ashton Reed’s medical oversight, with a discussion of evidence, risks, and alternatives.",
     href: "/regenerative-cellular-therapy-lafayette",
   },
 ];
@@ -91,11 +91,10 @@ export default function Home() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-[#12233f]/70 sm:mt-8 sm:text-lg sm:leading-8">
-              Relief Plus brings chiropractic care, physical therapy, and
-              regenerative medicine together in one integrated clinic. We
-              combine evidence-informed care with advanced treatment options
-              to help identify the source of pain, restore function, and
-              support long-term recovery.
+              Back, neck, or joint pain making your day harder? We help adults
+              across Lafayette, Carencro, and Acadiana understand their symptoms
+              and explore chiropractic care, physical therapy, or selected
+              regenerative treatments. Call our Lafayette clinic to arrange a visit.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
@@ -115,9 +114,9 @@ export default function Home() {
             </div>
 
             <div className="mt-9 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/70 sm:mt-12 sm:pt-7">
-              <span>Evidence-informed care</span>
-              <span>Individualized treatment</span>
-              <span>Advanced recovery options</span>
+              <span>Start with an examination</span>
+              <span>Understand your options</span>
+              <span>Plan your next step</span>
             </div>
           </div>
 
@@ -161,22 +160,21 @@ export default function Home() {
               Relief Plus
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight sm:text-5xl">
-              More than simply treating where it hurts.
+              What is pain keeping you from doing?
             </h2>
           </div>
 
           <div className="max-w-2xl">
             <p className="text-lg leading-8 text-white/72">
-              Pain can affect the way you work, sleep, exercise, care for your
-              family, and enjoy everyday life. Our approach starts with finding
-              out what is limiting you and building care around your individual
-              needs.
+              Maybe you cannot sit through a workday, lift your child comfortably,
+              or enjoy a walk without pain. Tell us what has changed and what
+              you want to get back to. Those details help guide the examination.
             </p>
 
             <p className="mt-6 text-lg leading-8 text-white/72">
-              Chiropractic, physical therapy, and regenerative medicine work
-              together as the three pillars of our approach, with each care
-              plan shaped around what can meaningfully support your recovery.
+              We ask how symptoms began, what eases or worsens them, and what
+              care you have already tried. Then we explain what the findings
+              may mean, which options fit, and whether further medical care is needed.
             </p>
           </div>
         </div>
@@ -191,14 +189,14 @@ export default function Home() {
             </p>
 
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
-              Care built around the person,
-              <br className="hidden sm:block" /> not just the diagnosis.
+              Understand your care options.
             </h2>
 
             <p className="mt-6 text-lg leading-8 text-[#12233f]/65">
-              Different problems require different tools. We combine
-              examination, hands-on care, rehabilitation, and advanced
-              treatment options to create a plan that makes sense for you.
+              You do not need to choose a treatment before your visit.
+              Chiropractic, physical therapy, and regenerative medicine serve
+              different needs. Your examination helps determine whether one
+              service or coordinated care is useful.
             </p>
           </div>
 
@@ -313,23 +311,22 @@ export default function Home() {
               />
             </div>
             <figcaption className="px-5 py-4 text-sm leading-6 text-[#12233f]/62">
-              Individualized care begins with listening, examination, and clear patient education.
+              A visit begins with listening, an examination, and a clear explanation of your options.
             </figcaption>
           </figure>
 
           <div>
             <p className="text-lg leading-8 text-[#12233f]/68">
-              Relief Plus was built around a simple idea: patients deserve
-              thoughtful care, clear communication, and treatment options that
-              are selected because they fit the patient — not because every
-              patient receives the same routine.
+              Your visit should leave you with a clearer understanding of the
+              problem and the next step. We explain why a treatment is being
+              considered, what its limits are, and what progress could look like
+              in the activities that matter to you.
             </p>
 
             <p className="mt-5 text-lg leading-8 text-[#12233f]/68">
-              Our goal is to provide an environment where chiropractic,
-              physical therapy, and regenerative medicine work together
-              without losing the personal relationship at the center of good
-              healthcare.
+              You can ask questions, discuss other options, or decline a
+              treatment. As care progresses, changes in your symptoms and
+              daily activities help us decide whether to continue or adjust the plan.
             </p>
 
             <Link

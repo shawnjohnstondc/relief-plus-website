@@ -14,22 +14,22 @@ export const metadata: Metadata = createPageMetadata({
 
 const clusters = [
   { title: "Spine & Chiropractic", description: "Back, neck, nerve, and movement education.", href: "/chiropractic-adjustments-lafayette" },
-  { title: "Rehabilitation & Function", description: "Mobility, strength, and progressive return to activity.", href: "/physical-therapy-lafayette" },
-  { title: "Shoulder & Upper Extremity", description: "Shoulder, elbow, and tendon concerns.", href: "/shoulder-pain-lafayette" },
-  { title: "Knee, Hip & Lower Extremity", description: "Joint, tendon, and lower-extremity movement concerns.", href: "/knee-pain-lafayette" },
+  { title: "Rehabilitation & Function", description: "Ways to rebuild movement and strength for daily life.", href: "/physical-therapy-lafayette" },
+  { title: "Shoulder, Elbow & Hand", description: "Shoulder, elbow, and tendon concerns.", href: "/shoulder-pain-lafayette" },
+  { title: "Hip, Knee & Foot", description: "Pain with walking, stairs, running, or standing.", href: "/knee-pain-lafayette" },
   { title: "TMJ & Headache", description: "Jaw function, head pain, and conservative care.", href: "/tmj-treatment-lafayette" },
-  { title: "Advanced Treatment Education", description: "Candidacy, evidence, uncertainties, and alternatives.", href: "/regenerative-cellular-therapy-lafayette" },
+  { title: "Advanced Treatment Education", description: "Who a treatment may suit, what evidence shows, and other options.", href: "/regenerative-cellular-therapy-lafayette" },
   { title: "Injury & Recovery", description: "Education for returning to function after an injury.", href: "/car-accident-injuries-lafayette" },
   { title: "Treatments", description: "Browse the current Relief Plus treatment options.", href: "/services" },
   { title: "All Conditions", description: "Browse the musculoskeletal concerns evaluated at Relief Plus.", href: "/conditions-we-treat" },
 ] as const;
 
-const latest = [...blogPosts].sort((a, b) => Date.parse(b.datePublished) - Date.parse(a.datePublished));
+const latest = [...blogPosts].sort((a, b) => Date.parse(b.datePublished) - Date.parse(a.datePublished)).slice(0, 6);
 const articleClusters = [
   { title: "Back, Neck & Spine", categories: ["Back & Spine", "Spine & Chiropractic", "Spine & Nerve", "Chiropractic Education"] },
   { title: "Headache & TMJ", categories: ["Headache", "TMJ & Headache"] },
-  { title: "Shoulder & Upper Extremity", categories: ["Shoulder & Upper Extremity"] },
-  { title: "Knee, Hip & Lower Extremity", categories: ["Knee & Lower Extremity", "Hip & Lower Extremity"] },
+  { title: "Shoulder, Elbow & Hand", categories: ["Shoulder & Upper Extremity"] },
+  { title: "Hip, Knee & Foot", categories: ["Knee & Lower Extremity", "Hip & Lower Extremity"] },
   { title: "Treatments & Advanced Options", categories: ["Advanced Treatment Education", "Treatment Education"] },
   { title: "Injury, Work & Recovery", categories: ["Injury & Recovery", "Work & Function"] },
   { title: "Physical Therapy & Rehabilitation", categories: ["Rehabilitation & Function", "Movement & Function"] },
@@ -46,8 +46,8 @@ export default function BlogPage() {
           <nav aria-label="Breadcrumb" className="text-sm text-[#12233f]/65"><Link href="/" className="hover:text-[#82601f]">Home</Link><span aria-hidden="true" className="mx-2">/</span><span aria-current="page">Patient Education</span></nav>
           <div className="mt-12 max-w-4xl">
             <p className="text-xs font-semibold uppercase tracking-[.28em] text-[#82601f]">Relief Plus Journal</p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">Patient education for clearer care decisions.</h1>
-            <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/72">Explore practical, evidence-informed guidance about pain, movement, rehabilitation, and advanced treatment options. These resources support—not replace—an individualized examination.</p>
+            <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">Understand your pain. Know your options.</h1>
+            <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/72">Find answers about symptoms, everyday movement, and treatment choices. Browse by topic or start with a question that sounds like yours. These articles can help you prepare for a visit; they cannot diagnose your symptoms.</p>
             <Link href="/clinical-standards-editorial-review" className="mt-6 inline-block text-sm font-semibold text-[#82601f] underline decoration-[#b08d3b] underline-offset-4">How Relief Plus creates and reviews health information →</Link>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[.25em] text-[#82601f]">Browse the journal</p><h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">Articles organized around patient questions.</h2></div>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {articleClusters.map((cluster) => <section key={cluster.title} className="rounded-[2rem] border border-[#12233f]/10 bg-white/55 p-7 sm:p-9"><h3 className="font-serif text-3xl">{cluster.title}</h3><div className="mt-6 divide-y divide-[#12233f]/10">{cluster.posts.map((post) => <Link key={post.path} href={post.path} className="block py-4 first:pt-0"><span className="font-medium leading-6">{post.title}</span><span className="mt-2 block text-sm text-[#82601f]">Read article →</span></Link>)}</div></section>)}
+            {articleClusters.map((cluster) => <section key={cluster.title} className="rounded-[2rem] border border-[#12233f]/10 bg-white/55 p-7 sm:p-9"><h3 className="font-serif text-3xl">{cluster.title}</h3><div className="mt-6 divide-y divide-[#12233f]/10">{cluster.posts.map((post) => <Link key={post.path} href={post.path} className="block py-4 first:pt-0"><span className="font-medium leading-6">{post.title}</span><span className="mt-2 block text-sm leading-6 text-[#12233f]/70">{post.description}</span><span className="mt-2 block text-sm text-[#82601f]">Read article →</span></Link>)}</div></section>)}
           </div>
         </div>
       </section>

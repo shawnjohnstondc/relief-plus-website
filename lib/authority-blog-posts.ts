@@ -12,15 +12,17 @@ const fdaSafety = "https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/014
 
 export const authorityBlogPosts: BlogPost[] = [
   {
+    nextStep: "If you are weighing an epidural, discuss your leg symptoms, strength changes, treatment response, and imaging with your care team.",
+    takeaway: "An epidural steroid injection may calm inflammation around a spinal nerve. It does not remove a herniated disc or take physical pressure off the nerve.",
     slug: "when-does-an-epidural-steroid-injection-work-for-sciatica",
     path: "/blog/when-does-an-epidural-steroid-injection-work-for-sciatica",
     title: "When Does an Epidural Steroid Injection Work Best for Sciatica?",
     seoTitle: "When Does an Epidural Steroid Injection Work Best for Sciatica? | Relief Plus",
     description: "Dr. Shawn Johnston explains when lumbar epidural steroid injections tend to help sciatica, how inflammation differs from mechanical nerve compression, and why therapy before an injection can matter.",
     category: "Spine & Nerve",
-    summary: "An epidural steroid injection may reduce inflammatory irritation around a spinal nerve, but it does not remove a disc herniation or mechanically decompress the nerve. The examination, symptom behavior, neurological status, imaging, goals, and response to care all shape how useful an injection may be.",
+    summary: "Pain travels from your back into your leg, and an epidural injection has come up as an option. What could it change? Here, Dr. Johnston explains when an injection may help and why the nerve examination matters.",
     datePublished: "2026-09-03T09:00:00-05:00",
-    dateModified: "2026-09-03T09:00:00-05:00",
+    dateModified: "2026-09-07T12:00:00-05:00",
     readTime: "15 min read",
     author: { name: "Relief Plus Editorial", href: "/clinical-standards-editorial-review" },
     reviewedBy: { name: "Shawn D. Johnston, D.C.", href: "/dr-shawn-johnston-dc" },

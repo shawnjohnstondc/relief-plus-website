@@ -4,12 +4,12 @@ export const sportsInjuriesPage: PillarPageData = {
   path: "/sports-injuries-lafayette",
   breadcrumbLabel: "Sports Injuries",
   eyebrow: "Sports Injury Care in Lafayette, Louisiana",
-  h1: "Sports injury care built around diagnosis, movement, and the demands of your sport.",
+  h1: "Sports injury care for a return to the activity you enjoy.",
   seoTitle: "Sports Injury Treatment in Lafayette, LA",
   seoDescription:
     "Sports injury treatment in Lafayette, LA with functional evaluation, physical therapy, chiropractic, load management, and individualized return-to-sport planning.",
   heroDescription:
-    "Relief Plus evaluates acute and gradual-onset sports injuries for athletes in Lafayette, Carencro, and across Acadiana. The goal is to understand the diagnosis, the athlete, and the forces their activity requires—not simply quiet the painful area.",
+    "A sudden ankle injury and tendon pain that builds during training need different plans. We assess what happened, what you can do now, and the demands of your sport, then explain the steps toward a return to activity.",
   heroPoints: [
     "Diagnosis and injury behavior guide the plan",
     "Sport-specific movement and load are evaluated when appropriate",

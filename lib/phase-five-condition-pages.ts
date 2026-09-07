@@ -33,9 +33,9 @@ function page(input: PageInput): PillarPageData {
     seoDescription: input.description,
     heroDescription: input.hero,
     heroPoints: [
-      "Diagnosis and functional contributors are considered separately",
-      "Movement is assessed in the context of meaningful tasks",
-      "Treatment is selected from findings, goals, and clinical suitability",
+      "Find out what may explain your symptoms",
+      "Check the movements that are difficult for you",
+      "Discuss options, limits, and next steps",
     ],
     overviewTitle: input.overviewTitle,
     overviewParagraphs: input.overview,
@@ -52,9 +52,9 @@ function page(input: PageInput): PillarPageData {
     educationSections: input.sections,
     faqs: input.faqs,
     pageSources: input.sources,
-    ctaTitle: `Begin with an individualized ${input.name.toLowerCase()} evaluation.`,
+    ctaTitle: `Talk with us about ${input.name.toLowerCase()}.`,
     ctaDescription:
-      "Call Relief Plus in Lafayette to discuss your symptoms, functional goals, and an appropriate next step for care in Acadiana.",
+      "Call our Lafayette clinic to arrange an assessment. Bring questions about the activities you find difficult and the treatments you have already tried.",
   };
 }
 
@@ -69,14 +69,14 @@ export const kneeOsteoarthritisPage = page({
   path: "/knee-osteoarthritis-lafayette",
   name: "Knee Osteoarthritis",
   eyebrow: "Knee Osteoarthritis Care in Lafayette, Louisiana",
-  h1: "Knee osteoarthritis care focused on capacity, confidence, and function.",
+  h1: "Knee osteoarthritis care for walking, stairs, and daily life.",
   title: "Knee Osteoarthritis Treatment in Lafayette, LA",
   description: "Knee osteoarthritis treatment in Lafayette, LA with individualized physical therapy, progressive exercise, and evidence-informed options at Relief Plus.",
-  hero: "Knee osteoarthritis is more than an X-ray phrase. Relief Plus evaluates symptoms, strength, movement confidence, walking and daily function for patients from Lafayette, Carencro, and across Acadiana.",
+  hero: "Knee arthritis can make a short walk or getting up from a chair harder. Your X-ray is only part of the picture. We assess your symptoms, strength, and movement to build a plan around what you want to do.",
   overviewTitle: "Osteoarthritis does not reduce a knee to “bone on bone.”",
   overview: [
-    "Osteoarthritis involves changes across the joint, including cartilage, bone and other tissues, but an image does not tell us how much a person can do or how much pain they will feel. People with similar X-rays can have very different symptoms, walking tolerance and goals.",
-    "A useful plan therefore addresses the diagnosis and the person’s current capacity. Strength, load tolerance, sleep, prior injuries, health factors, activity patterns and confidence with movement may all influence function without being treated as a single cause.",
+    "Osteoarthritis changes several parts of a joint, including cartilage and bone. But an X-ray does not tell us how much pain you feel or how well you can walk. Two people with similar images may have very different abilities.",
+    "Your plan considers both the arthritis and daily life. Strength, sleep, past injuries, health, and how much activity you can manage may all affect comfort and movement. No one factor explains every case.",
   ],
   examTitle: "A knee OA examination connects symptoms with real-world tasks.",
   exam: [
@@ -125,10 +125,10 @@ export const kneeOsteoarthritisPage = page({
 });
 
 export const rotatorCuffPage = page({
-  path: "/rotator-cuff-pain-lafayette", name: "Rotator Cuff Pain", eyebrow: "Rotator Cuff Care in Lafayette, Louisiana", h1: "Rotator cuff pain care built around diagnosis, load, and shoulder function.", title: "Rotator Cuff Pain Treatment in Lafayette, LA", description: "Rotator cuff pain treatment in Lafayette, LA with diagnosis-focused evaluation, progressive rehabilitation, and individualized care at Relief Plus.",
-  hero: "Rotator cuff pain may reflect tendinopathy, a partial or full-thickness tear, another shoulder condition, or pain referred from elsewhere. Relief Plus connects the diagnosis to reaching, lifting, work, sport, and daily function.",
+  path: "/rotator-cuff-pain-lafayette", name: "Rotator Cuff Pain", eyebrow: "Rotator Cuff Care in Lafayette, Louisiana", h1: "Rotator cuff pain: help with reaching and lifting.", title: "Rotator Cuff Pain Treatment in Lafayette, LA", description: "Rotator cuff pain treatment in Lafayette, LA with diagnosis-focused evaluation, progressive rehabilitation, and individualized care at Relief Plus.",
+  hero: "Reaching a shelf, lifting at work, or getting comfortable at night may hurt when the rotator cuff is irritated. We check shoulder movement and strength, consider other causes, and look for injuries that need imaging or specialist care.",
   overviewTitle: "Painful weakness does not identify the diagnosis by itself.",
-  overview: ["The rotator cuff is a group of muscles and tendons that contributes to shoulder rotation, elevation and control. Tendinopathy and tears can overlap in symptoms, while imaging findings may also exist without explaining all of a person’s pain.", "Gradual symptoms with repeated overhead demand call for a different level of concern than sudden weakness after a fall or forceful injury. Age, onset, night symptoms, strength, motion and task tolerance help determine whether rehabilitation, imaging or orthopedic input should be considered."],
+  overview: ["The rotator cuff is a group of muscles and tendons that helps you lift, turn, and control your arm. Tendon pain and tears can feel similar. A scan finding may not explain all of your pain.", "Pain that builds with repeated overhead work differs from sudden weakness after a fall or forceful injury. We consider how it started, night symptoms, strength, and movement to decide whether rehabilitation, imaging, or an orthopedic opinion should come first."],
   examTitle: "The examination separates cuff findings from overlapping sources.",
   exam: [{ title: "History and differential", description: "We compare gradual or traumatic onset, pain behavior, night symptoms, medical history and signs of frozen shoulder, instability, arthritis, cervical referral or another condition." }, { title: "Shoulder capacity", description: "Active and passive motion, resisted testing, endurance and task-specific reaching or lifting may help characterize the presentation." }, { title: "Regional screen", description: "Scapular movement, thoracic motion, rib-cage strategy and the cervical spine may be assessed when relevant without assigning one universal cause." }],
   dailyTitle: "Rotator cuff symptoms often show up under specific demand.", dailyDescription: "The useful question is not only whether an arm hurts, but which direction, load, duration and speed exceed current tolerance.",
@@ -149,10 +149,10 @@ export const rotatorCuffPage = page({
 });
 
 export const tmjPage = page({
-  path: "/tmj-treatment-lafayette", name: "TMJ and Jaw Pain", eyebrow: "TMJ and Jaw Pain Care in Lafayette, Louisiana", h1: "TMJ and jaw pain care without assumptions about “alignment.”", title: "TMJ and Jaw Pain Treatment in Lafayette, LA", description: "TMJ and jaw pain treatment in Lafayette, LA with conservative evaluation, physical therapy, education, and coordinated care at Relief Plus.",
-  hero: "Temporomandibular disorders can involve the jaw joints, chewing muscles, or both. Relief Plus evaluates jaw motion and load alongside the neck, breathing, headaches, and daily tasks such as eating and speaking.",
+  path: "/tmj-treatment-lafayette", name: "TMJ and Jaw Pain", eyebrow: "TMJ and Jaw Pain Care in Lafayette, Louisiana", h1: "TMJ care for painful chewing, opening, or jaw movement.", title: "TMJ and Jaw Pain Treatment in Lafayette, LA", description: "TMJ and jaw pain treatment in Lafayette, LA with conservative evaluation, physical therapy, education, and coordinated care at Relief Plus.",
+  hero: "A sore jaw can make meals and conversation uncomfortable. We assess the jaw joints and chewing muscles, along with relevant neck or headache symptoms, and explain when dental or medical care may be needed.",
   overviewTitle: "TMJ names the joint; TMD describes a group of possible disorders.",
-  overview: ["Jaw pain is not one diagnosis. Symptoms may arise mainly from the chewing muscles, the temporomandibular joint, disc-related mechanics, or overlapping pain conditions. Clicking without pain is common and does not automatically require treatment.", "A conservative evaluation considers pain location, opening and closing, locking, chewing tolerance, clenching or other load, trauma, headache overlap and dental factors. Treatment does not aim to realign the jaw or permanently change the bite."],
+  overview: ["Jaw pain can come from the chewing muscles, jaw joint, the small disc inside it, or overlapping pain conditions. Clicking without pain is common and does not automatically need treatment.", "We ask about pain, locking, chewing, clenching, injury, headaches, and dental concerns. We check opening and closing without aiming to realign your jaw or permanently change your bite."],
   examTitle: "A jaw examination distinguishes joint, muscle, and referred patterns.",
   exam: [{ title: "Listen to the history", description: "We review onset, trauma, locking, joint noise, headaches, clenching, chewing demands, dental care and symptoms that may require collaboration." }, { title: "Observe function", description: "Comfortable opening, closing path, side-to-side motion, tenderness and chewing tolerance may be assessed without forcing irritable movement." }, { title: "Screen connected regions", description: "Cervical and upper thoracic movement, rib-cage strategy, breathing and relevant neurological findings may be considered when they affect the presentation." }],
   dailyTitle: "Jaw symptoms may change with load, habit, and recovery.", dailyDescription: "Eating, yawning, prolonged speaking, sleep and periods of clenching may expose different joint and muscular demands.",
@@ -173,10 +173,10 @@ export const tmjPage = page({
 });
 
 export const frozenShoulderPage = page({
-  path: "/frozen-shoulder-lafayette", name: "Frozen Shoulder", eyebrow: "Frozen Shoulder Care in Lafayette, Louisiana", h1: "Frozen shoulder care paced to motion, irritability, and daily function.", title: "Frozen Shoulder Treatment in Lafayette, LA", description: "Frozen shoulder treatment in Lafayette, LA with individualized physical therapy, progressive mobility, and conservative care at Relief Plus.",
-  hero: "Frozen shoulder, or adhesive capsulitis, typically involves meaningful loss of both active and passive shoulder motion. Relief Plus evaluates irritability, motion, compensation, health context, and the daily activities most affected.",
+  path: "/frozen-shoulder-lafayette", name: "Frozen Shoulder", eyebrow: "Frozen Shoulder Care in Lafayette, Louisiana", h1: "Frozen shoulder care at a pace your shoulder can manage.", title: "Frozen Shoulder Treatment in Lafayette, LA", description: "Frozen shoulder treatment in Lafayette, LA with individualized physical therapy, progressive mobility, and conservative care at Relief Plus.",
+  hero: "Putting on a shirt or reaching behind your back may become difficult with frozen shoulder, also called adhesive capsulitis. We check how far you can move your arm yourself and with gentle assistance, then plan movement around your pain and stiffness.",
   overviewTitle: "Frozen shoulder is distinct from ordinary shoulder stiffness or rotator cuff pain.",
-  overview: ["Adhesive capsulitis is characterized by pain and restricted movement at the shoulder joint. The limitation is present when the person moves the arm and when an examiner gently assesses passive motion, although the exact pattern and irritability can vary.", "Recovery time is variable. A thoughtful plan respects symptom sensitivity while preserving useful activity and progressively restoring motion and strength. Care does not rely on a claim that adhesions can simply be “broken up.”"],
+  overview: ["Frozen shoulder causes pain and restricted shoulder movement. Motion is limited both when you move your own arm and when an examiner gently moves it for you. How much it hurts and how easily it flares can vary.", "Recovery time varies. Care aims to keep useful activity while gradually building movement and strength at a manageable pace. It does not rely on forcing or “breaking up” adhesions."],
   examTitle: "The examination confirms a capsular pattern and screens alternatives.",
   exam: [{ title: "Compare active and passive motion", description: "Range and symptom behavior are assessed in multiple directions, with attention to external rotation and function rather than forcing end range." }, { title: "Screen other diagnoses", description: "Rotator cuff injury, arthritis, cervical referral, fracture and other shoulder disorders may require a different pathway." }, { title: "Understand context", description: "Onset, stage, sleep, prior injury, diabetes or other relevant health factors, goals and response to movement guide decisions." }],
   dailyTitle: "Loss of motion changes ordinary self-care and sleep.", dailyDescription: "The functional pattern often matters more to the patient than a degree measurement alone.",
@@ -197,10 +197,10 @@ export const frozenShoulderPage = page({
 });
 
 export const hipBursitisPage = page({
-  path: "/hip-bursitis-lafayette", name: "Hip Bursitis / Greater Trochanteric Pain Syndrome", eyebrow: "Lateral Hip Pain Care in Lafayette, Louisiana", h1: "Hip Bursitis / Greater Trochanteric Pain Syndrome care built around load tolerance.", title: "Hip Bursitis & GTPS Treatment in Lafayette, LA", description: "Hip bursitis and greater trochanteric pain syndrome treatment in Lafayette, LA with progressive rehabilitation and individualized care at Relief Plus.",
-  hero: "Pain at the outside of the hip is not always an isolated inflamed bursa. Greater trochanteric pain syndrome can involve gluteal tendons and compression sensitivity, requiring a broader look at walking, stairs, sleep, and single-leg loading.",
+  path: "/hip-bursitis-lafayette", name: "Hip Bursitis / Greater Trochanteric Pain Syndrome", eyebrow: "Lateral Hip Pain Care in Lafayette, Louisiana", h1: "Care for pain on the outside of your hip.", title: "Hip Bursitis & GTPS Treatment in Lafayette, LA", description: "Hip bursitis and greater trochanteric pain syndrome treatment in Lafayette, LA with progressive rehabilitation and individualized care at Relief Plus.",
+  hero: "Lying on your side, climbing stairs, or walking may hurt with hip bursitis or greater trochanteric pain syndrome (GTPS). The nearby buttock tendons can also be involved. We assess the likely source before choosing exercises or treatment.",
   overviewTitle: "“Hip bursitis” is familiar language, but GTPS often describes the clinical picture more accurately.",
-  overview: ["The greater trochanter is the bony area at the outside of the upper thigh. Nearby bursae and the gluteus medius and minimus tendons can contribute to lateral hip pain. Research increasingly recognizes gluteal tendinopathy as an important part of many GTPS presentations.", "Diagnosis still requires care. Lumbar referral, hip-joint conditions, fracture, nerve symptoms and other problems can mimic lateral hip pain. Tenderness over the side of the hip is informative but not sufficient by itself."],
+  overview: ["The bony area on the outside of your upper thigh is called the greater trochanter. Nearby fluid-filled sacs, called bursae, and buttock tendons can contribute to pain there. Many cases of GTPS involve those tendons rather than an inflamed bursa alone.", "Back, hip-joint, nerve, and injury-related problems can feel similar. Tenderness on the side of your hip is one clue, but it is not enough to confirm the diagnosis."],
   examTitle: "The examination tests lateral-hip load and screens common mimics.",
   exam: [{ title: "Locate and characterize pain", description: "We review tenderness, side-lying symptoms, walking and stair response, onset, trauma, health history and irritability." }, { title: "Assess tendon demand", description: "Selected resisted hip tests, single-leg loading and gait may help determine whether the gluteal tendon region is involved." }, { title: "Screen hip and lumbar sources", description: "Hip-joint motion, lumbar movement, neurological findings and other tests may be used when clinically relevant." }],
   dailyTitle: "Compression and single-leg demand often reveal the pattern.", dailyDescription: "A diagnosis should explain why ordinary positions and tasks are provocative—not just where the area is tender.",
@@ -221,10 +221,10 @@ export const hipBursitisPage = page({
 });
 
 export const tennisElbowPage = page({
-  path: "/tennis-elbow-lafayette", name: "Tennis Elbow", eyebrow: "Tennis Elbow Care in Lafayette, Louisiana", h1: "Tennis elbow care for grip, work, sport, and tendon capacity.", title: "Tennis Elbow Treatment in Lafayette, LA", description: "Tennis elbow treatment in Lafayette, LA with progressive tendon loading, physical therapy, and selected adjuncts at Relief Plus.",
-  hero: "Tennis elbow, or lateral elbow tendinopathy, often reflects sensitivity to gripping and wrist-extensor load—not necessarily playing tennis. Relief Plus evaluates the elbow within the demands of work, sport, and the full upper limb.",
+  path: "/tennis-elbow-lafayette", name: "Tennis Elbow", eyebrow: "Tennis Elbow Care in Lafayette, Louisiana", h1: "Tennis elbow care for a more comfortable grip.", title: "Tennis Elbow Treatment in Lafayette, LA", description: "Tennis elbow treatment in Lafayette, LA with progressive tendon loading, physical therapy, and selected adjuncts at Relief Plus.",
+  hero: "Lifting a pan, gripping tools, or carrying groceries can hurt with tennis elbow—even if you never play tennis. We assess the tendon, nearby joints, and relevant nerve symptoms, then help you build back toward the tasks you need.",
   overviewTitle: "A tendon can become load-sensitive without being torn or permanently damaged.",
-  overview: ["Lateral elbow tendinopathy commonly produces pain near the outer elbow with gripping, lifting or resisted wrist extension. Symptoms may follow a change in work, tools, training or repeated hand use, but no single exposure explains every case.", "Pain at the outer elbow can also come from a joint, nerve, neck or another tendon. Diagnosis matters before selecting exercise or a modality, especially when symptoms are atypical, include numbness or follow significant trauma."],
+  overview: ["Tennis elbow usually hurts near the outer elbow when you grip, lift, or raise your wrist against resistance. The medical term is lateral elbow tendinopathy. It may follow changes in work, tools, or training, but no single activity explains every case.", "A joint, nerve, neck problem, or another tendon can cause similar pain. We assess the cause before choosing exercise or another treatment, especially if you have numbness, unusual symptoms, or a significant injury."],
   examTitle: "The examination links elbow findings to the grip demands that matter.",
   exam: [{ title: "Reproduce the pattern", description: "Palpation, resisted wrist or finger testing, grip and functional tasks may help identify a lateral tendon presentation." }, { title: "Measure load tolerance", description: "Grip force, repetition, tool position and recovery help establish a baseline for progressive loading." }, { title: "Screen the region", description: "Elbow joint motion, shoulder and scapular capacity, and cervical or nerve findings may be assessed when symptoms warrant it." }],
   dailyTitle: "Grip demand is more specific than the label “overuse.”", dailyDescription: "Load depends on force, wrist position, repetition, speed, tool size, rest and the capacity of the whole arm.",
@@ -245,10 +245,10 @@ export const tennisElbowPage = page({
 });
 
 export const achillesPage = page({
-  path: "/achilles-tendinopathy-lafayette", name: "Achilles Tendinopathy", eyebrow: "Achilles Tendinopathy Care in Lafayette, Louisiana", h1: "Achilles tendinopathy care matched to tendon location and load.", title: "Achilles Tendinopathy Treatment in Lafayette, LA", description: "Achilles tendinopathy treatment in Lafayette, LA with progressive loading, gait and activity evaluation, and individualized care at Relief Plus.",
-  hero: "Achilles symptoms near the heel may follow an insertional or midportion pattern, and those distinctions affect exercise and stretching choices. Relief Plus evaluates calf capacity, ankle and foot function, gait, and recent changes in activity load.",
+  path: "/achilles-tendinopathy-lafayette", name: "Achilles Tendinopathy", eyebrow: "Achilles Tendinopathy Care in Lafayette, Louisiana", h1: "Achilles tendon care for walking, running, and pushing off.", title: "Achilles Tendinopathy Treatment in Lafayette, LA", description: "Achilles tendinopathy treatment in Lafayette, LA with progressive loading, gait and activity evaluation, and individualized care at Relief Plus.",
+  hero: "Pain at the back of your heel or higher along the Achilles tendon can make walking and running difficult. The exact location matters for exercise choices. We check your calf strength, ankle movement, and recent activity changes.",
   overviewTitle: "Insertional and midportion Achilles pain are not interchangeable.",
-  overview: ["Midportion tendinopathy typically involves symptoms several centimeters above the heel. Insertional symptoms occur where the tendon meets the heel bone and can be more sensitive to compression in deep ankle dorsiflexion. Other conditions, including bursitis, partial tear and referred pain, can overlap.", "Tendon pain often reflects a mismatch between current load and capacity. A rapid increase in running, jumping, hills, speed or work demand may contribute, but age, health, recovery and prior symptoms also matter. The goal is not to identify one training “mistake” to blame."],
+  overview: ["Achilles pain may occur several centimeters above the heel, called midportion tendinopathy, or where the tendon joins the heel bone, called insertional tendinopathy. Pain at the attachment can be more sensitive when your ankle bends deeply upward and compresses the tendon. Bursitis, a partial tear, or pain from elsewhere can feel similar.", "A rapid increase in running, jumping, hills, speed, or work can ask more of a tendon than it can currently handle. Health, age, recovery, and prior symptoms also matter. The aim is to find a manageable starting point without blaming one training choice."],
   examTitle: "The examination identifies location, capacity, and rupture concern.",
   exam: [{ title: "Differentiate the region", description: "Pain location, palpation, swelling, onset and selected tendon tests help distinguish midportion, insertional and alternative presentations." }, { title: "Measure calf function", description: "Heel-raise height, repetitions, strength, balance and hopping or running tolerance may be assessed when safe." }, { title: "Assess task demand", description: "Ankle motion, foot function, gait, footwear and recent training or work changes are interpreted with symptoms and goals." }],
   dailyTitle: "Tendon demand changes with speed, incline, and ankle position.", dailyDescription: "A person may tolerate level walking yet struggle with stairs, hills, acceleration or repeated jumping.",
@@ -269,10 +269,10 @@ export const achillesPage = page({
 });
 
 export const siJointPage = page({
-  path: "/si-joint-pain-lafayette", name: "SI Joint Pain", eyebrow: "SI-Region Pain Care in Lafayette, Louisiana", h1: "SI joint pain care that starts by confirming the pain source.", title: "SI Joint Pain Treatment in Lafayette, LA", description: "SI joint pain treatment in Lafayette, LA with careful differential diagnosis, chiropractic, physical therapy, and functional rehabilitation at Relief Plus.",
-  hero: "Pain near the sacroiliac region can come from the SI joint, lumbar spine, hip, muscle, nerve, or referred sources. Relief Plus begins with a differential examination rather than assuming the pelvis is “out.”",
+  path: "/si-joint-pain-lafayette", name: "SI Joint Pain", eyebrow: "SI-Region Pain Care in Lafayette, Louisiana", h1: "Understand pain around your SI joint.", title: "SI Joint Pain Treatment in Lafayette, LA", description: "SI joint pain treatment in Lafayette, LA with careful differential diagnosis, chiropractic, physical therapy, and functional rehabilitation at Relief Plus.",
+  hero: "Pain near the back of your pelvis may come from the sacroiliac (SI) joint, lower back, hip, muscles, or nerves. We compare symptoms and examination findings before deciding what to treat; the location alone cannot confirm the cause.",
   overviewTitle: "Pain in the SI region is not the same as confirmed SI-joint pain.",
-  overview: ["The sacroiliac joints transfer load between the spine and lower limbs. Symptoms near one joint can overlap with low-back pain, hip conditions, muscular referral, nerve symptoms and inflammatory disease. Location is a clue, not confirmation.", "A cluster of symptom-reproduction tests may increase or decrease clinical suspicion. In more complex or persistent cases, medical evaluation and an image-guided diagnostic block may be considered when confirmation would change an interventional decision."],
+  overview: ["The SI joints help transfer force between your spine and legs. Pain near them can overlap with back, hip, muscle, nerve, or inflammatory conditions. The location alone cannot confirm the source.", "Several tests that try to reproduce your familiar symptoms can help guide the assessment. If the cause remains unclear and the answer would change a procedure decision, medical evaluation or an image-guided numbing injection may be considered."],
   examTitle: "The examination tests hypotheses rather than visual “alignment.”",
   exam: [{ title: "Build the differential", description: "We review location, onset, trauma, pregnancy or postpartum context when relevant, systemic symptoms, neurological findings and aggravating tasks." }, { title: "Use test clusters", description: "Selected SI provocation tests may be combined; one motion or palpation finding does not establish that the joint is the source." }, { title: "Assess function", description: "Lumbar and hip movement, gait, single-leg load, transitions, lifting and rotation may reveal relevant capacity or symptom patterns." }],
   dailyTitle: "SI-region symptoms often emerge during load transfer and transitions.", dailyDescription: "The same location can behave differently during walking, rolling, lifting or standing on one leg.",

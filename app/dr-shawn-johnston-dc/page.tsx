@@ -31,7 +31,7 @@ export default function DrShawnJohnstonPage() {
         name="Shawn D. Johnston, D.C."
         role="Founder · Doctor of Chiropractic"
         location="Relief Plus · Lafayette, Louisiana"
-        introduction="Dr. Johnston founded Relief Plus to give patients an individualized place to begin with chiropractic care while drawing on rehabilitation, physician involvement, and selected advanced options when the clinical picture supports them."
+        introduction="Dr. Johnston founded Relief Plus in 2014. He starts with your concerns and an examination, then explains whether chiropractic care, rehabilitation, or another option may fit your needs."
         image={{ src: "/shawn-d-johnston-dc-relief-plus.webp", alt: "Shawn D. Johnston, D.C., founder and chiropractor at Relief Plus", objectPosition: "center top" }}
         quote={{ text: "The goal isn't to do more treatment. It's to understand the person well enough to know what treatment actually makes sense.", attribution: "Shawn D. Johnston, D.C." }}
         sections={[

@@ -23,8 +23,8 @@ export default function InvisaRedPage() {
         path={path}
         breadcrumbLabel="InvisaRED Body Contouring"
         eyebrow="Wellness and Body Contouring"
-        title="A measured conversation about body-contouring goals."
-        description="Relief Plus offers InvisaRED as a distinct wellness service for people interested in body contouring and circumference-focused goals. It is not presented as medical weight-loss treatment, a treatment for disease, or a guaranteed way to change body composition."
+        title="Questions about InvisaRED body contouring?"
+        description="If you want to discuss changes in body shape or measurements, Relief Plus offers InvisaRED as a separate wellness service. It is not medical weight-loss care or treatment for disease, and results are not guaranteed."
         heroPoints={[
           "Goals and expectations discussed before beginning",
           "Separate from chiropractic, physical therapy, and regenerative medicine",
@@ -35,7 +35,7 @@ export default function InvisaRedPage() {
             eyebrow: "What This Service Is",
             title: "Body contouring is different from medical weight management.",
             paragraphs: [
-              "The purpose of this service is to support a conversation about appearance, body-contouring, and circumference goals. Scale weight, body circumference, body composition, and overall health are related but different measurements, and a change in one does not guarantee a change in another.",
+              "Start by explaining what you hope to change in your appearance or measurements. Your weight, body measurements, body composition, and overall health are different things. A change in one does not guarantee a change in the others.",
               "InvisaRED should not be understood as treatment for obesity, diabetes, metabolic disease, or another health condition. People seeking diagnosis or medical management of weight-related concerns should discuss those needs with an appropriately qualified medical professional.",
             ],
           },

@@ -3,13 +3,16 @@ import type { BlogPost } from "./blog-posts";
 const reference = (number: number) => ({ text: `[${number}]`, href: `#reference-${number}` });
 
 export const bowhuntingShoulderBlogPost: BlogPost = {
+    dateModified: "2026-09-07T12:00:00-05:00",
+    nextStep: "Bring questions about your draw, practice volume, and any pain or weakness to an assessment.",
+    takeaway: "A smooth draw depends on coordinated movement, not just stronger arms. A shrug alone does not prove an injury or tell you which muscle needs work.",
   slug: "bowhunting-shoulder-mechanics-acadiana",
   path: "/blog/bowhunting-shoulder-mechanics-acadiana",
   title: "Bowhunting Without the Shrug: Better Shoulder Mechanics for Acadiana Hunters",
   seoTitle: "Bowhunting Shoulder Mechanics | Relief Plus Carencro",
   description: "Learn how shoulder-blade stability, lower-trap coordination and core control support your bow draw, plus a movement check for Acadiana hunters.",
   category: "Shoulder & Upper Extremity",
-  summary: "A controlled bow draw involves more than arm strength. Learn about upper- and lower-trapezius coordination, shoulder-blade motion, trunk control and an informal reach–roll–lift check.",
+  summary: "Your bow reaches full draw, but your shoulder creeps toward your ear. This guide looks at how your shoulder blade, arm, and trunk share the work—and how to explore that movement without treating one check as a diagnosis.",
   datePublished: "2026-09-05T09:00:00-05:00",
   readTime: "13 min read",
   author: { name: "Relief Plus Editorial", href: "/clinical-standards-editorial-review" },

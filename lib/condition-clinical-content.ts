@@ -13,8 +13,8 @@ export type ConditionClinicalContent = {
 export const backPainClinical: ConditionClinicalContent = {
   serviceTitle: "A back-pain examination connects symptoms with real-life movement.",
   serviceSteps: [
-    { title: "Map symptom behavior", description: "We may compare sitting, standing, walking, bending, lifting, flexion, and extension to learn which directions or loads ease, reproduce, centralize, or spread symptoms." },
-    { title: "Examine movement and nerves", description: "The examination may include lumbar, hip, and thoracic movement; strength and endurance; gait; reflexes, sensation, or nerve tension when leg symptoms are present; and task-specific control." },
+    { title: "Find what changes your back pain", description: "We may compare sitting, walking, bending forward or backward, and lifting. We look for movements that ease pain or make it move toward the back or farther into a leg." },
+    { title: "Examine movement and nerves", description: "We may check your lower and upper back, hips, strength, walking, and how you control a difficult movement. If you have leg symptoms, reflexes, sensation, and tests of nerve sensitivity may also be useful." },
     { title: "Match care to the findings", description: "The goal is not a perfect posture or one ideal movement. It is to identify useful options, concerning findings, and a tolerable path back to the activities that matter." },
   ],
   whoDescription: "Back pain can be local, movement-related, persistent, or accompanied by leg symptoms. The same label can reflect different symptom behavior, neurological findings, work demands, and recovery priorities.",
@@ -45,7 +45,7 @@ export const neckPainClinical: ConditionClinicalContent = {
   serviceTitle: "A neck examination looks beyond a snapshot of posture.",
   serviceSteps: [
     { title: "Clarify the pattern", description: "We may ask about onset, headache or jaw relationships, screen and sleep positions, reaching, overhead work, and whether symptoms remain local or extend into an arm." },
-    { title: "Test relevant systems", description: "Assessment may include cervical and thoracic motion, shoulder-blade coordination, strength and endurance, arm nerve mobility, sensation, reflexes, and symptom response to selected positions." },
+    { title: "Test relevant systems", description: "We may check neck and upper-back movement, shoulder-blade control, strength, and endurance. Arm symptoms may call for checks of nerve sensitivity, feeling, reflexes, and responses to different positions." },
     { title: "Build a useful plan", description: "Findings are interpreted together to decide whether education, joint care, rehabilitation, an adjunct, imaging, or medical referral is the appropriate next step." },
   ],
   whoDescription: "Neck pain may involve motion loss, headache, shoulder-region discomfort, or arm symptoms. Similar complaints can reflect different mechanical, neurological, workload, and recovery factors.",
@@ -76,9 +76,9 @@ export const neckPainClinical: ConditionClinicalContent = {
 export const sciaticaClinical: ConditionClinicalContent = {
   serviceTitle: "A sciatica examination follows the symptoms and the nervous system.",
   serviceSteps: [
-    { title: "Trace the distribution", description: "We ask where symptoms begin and travel, whether pain or altered sensation reaches the foot, and which sitting, walking, bending, coughing, or lifting situations change the pattern." },
+    { title: "Trace where your leg symptoms travel", description: "We ask where symptoms begin and travel, whether pain or altered sensation reaches the foot, and which sitting, walking, bending, coughing, or lifting situations change the pattern." },
     { title: "Screen nerve function", description: "Depending on the presentation, the examination may include strength, reflexes, sensation, nerve-tension testing, gait, lumbar movement, and signs that suggest a non-spinal mimic." },
-    { title: "Observe directional response", description: "Selected repeated movements may show symptoms centralizing toward the spine or peripheralizing farther down the leg. This response can guide care but is not interpreted in isolation." },
+    { title: "See how movement changes leg symptoms", description: "Repeating a selected movement may bring symptoms closer to the spine or send them farther down the leg. This can guide care, but it is considered alongside the rest of your examination." },
   ],
   whoDescription: "Sciatica is a leg-symptom pattern, not one single diagnosis. Nerve-root irritation is common, but hip, peripheral nerve, vascular, and other conditions can sometimes resemble it.",
   approachDescription: "Chiropractic care may be considered for relevant lumbar or pelvic joint restriction and symptom modulation when safe. Physical therapy may develop directional movement, nerve mobility when appropriate, trunk and hip coordination, walking tolerance, and graded return to lifting. Regenerative medicine is not automatically indicated for sciatica and requires a separate diagnosis-specific candidacy review.",
@@ -109,7 +109,7 @@ export const sciaticaClinical: ConditionClinicalContent = {
 export const herniatedDiscClinical: ConditionClinicalContent = {
   serviceTitle: "A disc finding becomes meaningful only when it matches the person.",
   serviceSteps: [
-    { title: "Correlate symptoms", description: "We compare the location and behavior of neck, back, arm, or leg symptoms with the suspected spinal level rather than assuming an MRI phrase explains everything." },
+    { title: "Compare your symptoms with the scan", description: "We compare the location and behavior of neck, back, arm, or leg symptoms with the suspected spinal level rather than assuming an MRI phrase explains everything." },
     { title: "Check neurological function", description: "Strength, sensation, reflexes, gait, coordination, and nerve-tension findings may help determine whether a nerve root is affected and whether referral is needed." },
     { title: "Assess movement and load", description: "When clinically relevant, flexion, extension, rotation, sitting, walking, lifting, and selected repeated-movement responses may show what is currently tolerated and whether symptoms centralize or peripheralize." },
   ],
@@ -144,7 +144,7 @@ export const pinchedNerveClinical: ConditionClinicalContent = {
   serviceSteps: [
     { title: "Map symptoms", description: "We ask where pain, tingling, numbness, or weakness travels and how neck, back, shoulder, elbow, wrist, hip, or leg positions change it." },
     { title: "Compare nerve pathways", description: "Strength, reflexes, sensation, nerve mobility, spinal movement, and selected peripheral tests may help distinguish nerve-root irritation from entrapment farther along a limb." },
-    { title: "Screen alternatives", description: "Referred joint pain, muscular pain, vascular conditions, spinal cord findings, and other medical problems can mimic nerve symptoms and may need a different evaluation." },
+    { title: "Check for other causes", description: "Pain from joints or muscles, blood-vessel problems, spinal cord conditions, and other medical problems can resemble a pinched nerve. These may need a different type of assessment." },
   ],
   whoDescription: "“Pinched nerve” is a useful everyday phrase, but it can refer to cervical or lumbar nerve-root irritation, peripheral nerve entrapment, referred pain, or local muscular symptoms.",
   approachDescription: "Chiropractic care may address appropriate spinal or neighboring joint restrictions that influence symptoms. Physical therapy may use nerve-sensitive movement, strength, coordination, ergonomics, and gradual exposure to gripping, reaching, walking, or lifting. Regenerative medicine is not a general treatment for an undefined “pinched nerve” and requires a specific diagnosis and candidacy review.",

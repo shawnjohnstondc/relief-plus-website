@@ -74,12 +74,12 @@ export const chiropracticPage: PillarPageData = {
   path: "/chiropractic-adjustments-lafayette",
   breadcrumbLabel: "Chiropractic Adjustments",
   eyebrow: "Chiropractic Care in Lafayette, Louisiana",
-  h1: "Chiropractic adjustments built around how you move.",
+  h1: "Chiropractic care to help you move more comfortably.",
   seoTitle: "Chiropractic Adjustments in Lafayette, LA",
   seoDescription:
     "Chiropractic adjustments in Lafayette, LA at Relief Plus, with individualized musculoskeletal care for movement, joint function, and recovery.",
   heroDescription:
-    "Relief Plus provides individualized chiropractic care for people throughout Lafayette, Carencro, and Acadiana. Each plan begins with an examination and a clear understanding of the joints, movement patterns, and daily demands involved.",
+    "If back or neck pain is limiting your day, Dr. Shawn D. Johnston, D.C., begins with your symptoms, health history, and an examination. He explains whether chiropractic care fits, what other options may help, and when a referral is needed.",
   heroPoints: [
     "Musculoskeletal examination before treatment decisions",
     "Specific care selected for the individual patient",
@@ -87,8 +87,8 @@ export const chiropracticPage: PillarPageData = {
   ],
   overviewTitle: "Chiropractic is a primary pillar of musculoskeletal care.",
   overviewParagraphs: [
-    "Pain and stiffness can reflect more than one contributing factor. A chiropractic evaluation considers symptom history, joint motion, movement, function, and the activities that matter to the patient.",
-    "When chiropractic care is appropriate, adjustments may be used as part of a broader plan to address restricted joint motion and support more comfortable movement. Exercise, physical therapy, or other treatments may also be considered when they fit the clinical picture.",
+    "Pain and stiffness can have several causes. Dr. Johnston asks how symptoms began and what changes them, then examines your joint movement and the activities that are difficult for you.",
+    "When appropriate, an adjustment uses a controlled movement at a joint to help with restricted motion. It may be one part of care alongside exercise or physical therapy. Your findings and preferences guide the choice.",
   ],
   serviceTitle: "What chiropractic care involves.",
   serviceSteps: [
@@ -176,12 +176,12 @@ export const physicalTherapyPage: PillarPageData = {
   path: "/physical-therapy-lafayette",
   breadcrumbLabel: "Physical Therapy",
   eyebrow: "Physical Therapy in Lafayette, Louisiana",
-  h1: "Rehabilitation designed for stronger, more confident movement.",
+  h1: "Physical therapy for the movements you want back.",
   seoTitle: "Physical Therapy in Lafayette, LA",
   seoDescription:
     "Physical therapy in Lafayette, LA at Relief Plus, with individualized rehabilitation for mobility, strength, function, and musculoskeletal recovery.",
   heroDescription:
-    "Physical therapy at Relief Plus is centered on restoring mobility, developing strength, and helping patients progress toward meaningful daily, work, and activity goals. Plans are individualized for patients across Lafayette, Carencro, and Acadiana.",
+    "Whether you want to climb stairs, return to work, or enjoy exercise again, physical therapy starts with what is difficult for you. Jeanne Saucier, PT, guides rehabilitation that builds movement, strength, and confidence at a pace your symptoms allow.",
   heroPoints: [
     "Evaluation of mobility, strength, control, and function",
     "Exercise and progression matched to individual goals",
@@ -194,8 +194,8 @@ export const physicalTherapyPage: PillarPageData = {
   },
   overviewTitle: "Recovery requires a plan that can progress with you.",
   overviewParagraphs: [
-    "Musculoskeletal rehabilitation is not simply a list of exercises. It begins with understanding what a person needs to do, what is currently limited, and which physical factors may be contributing to that limitation.",
-    "Physical therapy uses guided movement, exercise, education, and hands-on strategies as appropriate. The plan can change as mobility, strength, tolerance, and confidence improve.",
+    "Physical therapy starts with a practical question: what do you want to do that is difficult right now? Your assessment may look at movement, strength, balance, and endurance to find a useful starting point.",
+    "Your plan may include guided exercises, movement practice, education, and hands-on care. We adjust the challenge as your strength, comfort, and confidence change.",
   ],
   serviceTitle: "What physical therapy involves.",
   serviceSteps: [
@@ -280,12 +280,12 @@ export const regenerativePage: PillarPageData = {
   path: "/regenerative-cellular-therapy-lafayette",
   breadcrumbLabel: "Regenerative Cellular Therapy",
   eyebrow: "Regenerative Medicine in Lafayette, Louisiana",
-  h1: "Regenerative medicine explored with scientific interest, transparency, and care.",
+  h1: "Regenerative medicine: understand the option before you decide.",
   seoTitle: "Regenerative Cellular Therapy in Lafayette, LA",
   seoDescription:
     "Regenerative cellular therapy in Lafayette, LA at Relief Plus, with advanced options considered through examination, goals, and clinical appropriateness.",
   heroDescription:
-    "Regenerative medicine is the advanced-treatment pillar at Relief Plus, bringing thoughtful clinical evaluation to a rapidly evolving area of musculoskeletal care. Each conversation connects scientific interest with the patient’s condition, goals, and the exact option being considered.",
+    "If pain continues despite earlier care, you may have questions about regenerative treatments. At Relief Plus, this program has medical oversight from Ashton Reed, MD. We discuss the exact treatment, evidence, risks, and alternatives in relation to your condition.",
   heroPoints: [
     "Advanced options evaluated for a defined musculoskeletal need",
     "Evidence and product details translated into a clear patient discussion",
@@ -298,8 +298,8 @@ export const regenerativePage: PillarPageData = {
   },
   overviewTitle: "Advanced options can add value when the science, product, and patient align.",
   overviewParagraphs: [
-    "Regenerative medicine refers to a group of advanced treatment options being explored for selected musculoskeletal concerns. The field’s scientific momentum makes it an important conversation for some patients, while its breadth makes product-specific evidence essential.",
-    "At Relief Plus, the conversation begins with an examination, the nature and duration of the problem, prior treatment, functional goals, and the alternatives available. That context helps identify when an advanced option may have a defensible role in a broader recovery plan.",
+    "Regenerative medicine covers several different treatments being studied for muscle, tendon, and joint problems. The name alone does not tell you whether a treatment works or is appropriate. Evidence must match the exact product and condition.",
+    "We start by asking how long you have had the problem, what you have tried, and what you want to do more comfortably. Your examination helps guide a discussion of treatment, rehabilitation, and alternatives. You can ask questions before making a decision.",
   ],
   serviceTitle: "How regenerative options are considered.",
   serviceSteps: [

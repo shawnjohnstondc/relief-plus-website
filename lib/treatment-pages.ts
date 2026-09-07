@@ -4,12 +4,12 @@ export const prpPage: PillarPageData = {
   path: "/prp-therapy-lafayette",
   breadcrumbLabel: "PRP Therapy",
   eyebrow: "PRP Therapy in Lafayette, Louisiana",
-  h1: "PRP therapy: a patient-derived biologic option for selected joint and tendon concerns.",
+  h1: "PRP therapy: what to know before an injection.",
   seoTitle: "PRP Therapy in Lafayette, LA",
   seoDescription:
     "PRP therapy in Lafayette, LA at Relief Plus, with candidacy based on examination, diagnosis, goals, and clinical appropriateness.",
   heroDescription:
-    "Platelet-rich plasma, commonly called PRP, uses a concentrated portion of the patient’s own blood in a targeted procedure. It is one of the most actively studied biologic options in musculoskeletal care and may be worth discussing for selected joint and tendon concerns.",
+    "Platelet-rich plasma (PRP) is prepared from a sample of your own blood and injected into a selected area. It may be considered for some joint or tendon problems, but benefit is uncertain and depends on the condition. An assessment comes first.",
   heroPoints: [
     "Prepared from the patient’s own blood",
     "Growing research base for selected diagnoses, especially knee osteoarthritis",
@@ -97,12 +97,12 @@ export const ozonePage: PillarPageData = {
   path: "/ozone-injection-therapy-lafayette",
   breadcrumbLabel: "Ozone Injection Therapy",
   eyebrow: "Ozone Injection Therapy in Lafayette, Louisiana",
-  h1: "Ozone injection therapy: an advanced option with growing musculoskeletal interest.",
+  h1: "Ozone injections: possible benefits, limits, and choices.",
   seoTitle: "Ozone Injection Therapy in Lafayette, LA",
   seoDescription:
     "Ozone injection therapy in Lafayette, LA at Relief Plus, considered individually for selected joint, muscle, tendon, and trigger-point concerns.",
   heroDescription:
-    "Ozone injection therapy is a targeted advanced option offered at Relief Plus for selected musculoskeletal concerns. Current research is most developed around knee osteoarthritis, where studies have reported encouraging short-term pain and function findings.",
+    "Ozone therapy places an oxygen-ozone mixture into a selected treatment area. Some knee osteoarthritis studies report short-term pain and function benefits, but the evidence has limits. We discuss the target, risks, and alternatives before considering treatment.",
   heroPoints: [
     "A non-surgical option with growing clinical interest",
     "Diagnosis-specific selection and transparent evidence review",
@@ -197,12 +197,12 @@ export const triggerPointPage: PillarPageData = {
   path: "/trigger-point-injections-lafayette",
   breadcrumbLabel: "Trigger Point Injections",
   eyebrow: "Trigger Point Injections in Lafayette, Louisiana",
-  h1: "Trigger-point injections for focused myofascial pain relief.",
+  h1: "Trigger-point injections for selected muscle pain.",
   seoTitle: "Trigger Point Injections in Lafayette, LA",
   seoDescription:
     "Trigger point injections in Lafayette, LA at Relief Plus, considered for selected localized muscle pain, tightness, and movement limitations.",
   heroDescription:
-    "Trigger point injections are a focused treatment option for clinically identified areas of localized muscular pain and tightness. They are considered within a broader evaluation of movement, function, and contributing factors.",
+    "A sensitive area in a muscle can contribute to pain nearby or elsewhere. A trigger-point injection places medication into a selected muscle area. We first assess whether muscle pain explains your symptoms and whether another option would fit better.",
   heroPoints: [
     "Focused evaluation of the painful muscular area",
     "Use based on clinical findings rather than symptoms alone",
@@ -285,12 +285,12 @@ export const dryNeedlingPage: PillarPageData = {
   path: "/dry-needling-lafayette",
   breadcrumbLabel: "Dry Needling",
   eyebrow: "Dry Needling in Lafayette, Louisiana",
-  h1: "Dry needling to reduce muscular sensitivity and help movement progress.",
+  h1: "Dry needling: a possible step toward easier movement.",
   seoTitle: "Dry Needling in Lafayette, LA",
   seoDescription:
     "Dry needling in Lafayette, LA at Relief Plus for selected muscular pain, trigger points, and movement restrictions within an individualized care plan.",
   heroDescription:
-    "Dry needling is a targeted technique that may be considered for selected muscular pain, sensitive trigger points, and movement restriction. At Relief Plus, it is used in the context of examination, function, and a broader recovery plan.",
+    "Dry needling uses a thin, solid needle in selected muscle or connective tissue; no medicine is injected. It may help some muscle-related symptoms. We assess the cause, discuss risks, and explain how it could fit with movement and exercise.",
   heroPoints: [
     "Targeted to clinically evaluated muscular findings",
     "Often paired with movement or rehabilitation strategies",
@@ -380,12 +380,12 @@ export const laserPage: PillarPageData = {
   path: "/class-iv-laser-therapy-lafayette",
   breadcrumbLabel: "Class IV Laser Therapy",
   eyebrow: "Class IV Laser Therapy in Lafayette, Louisiana",
-  h1: "Class IV laser therapy: comfortable, non-invasive support for musculoskeletal recovery.",
+  h1: "Class IV laser therapy: light treatment with clear limits.",
   seoTitle: "Class IV Laser Therapy in Lafayette, LA",
   seoDescription:
     "Class IV laser therapy in Lafayette, LA at Relief Plus, considered as a non-invasive option within individualized musculoskeletal care.",
   heroDescription:
-    "Class IV laser therapy is a non-invasive modality that applies therapeutic light to a selected area. It may be considered alongside chiropractic care, physical therapy, or other treatment based on the condition and goals.",
+    "Laser therapy applies light from outside the body to a selected area. It may support care for some pain or soft-tissue problems, but results vary. We discuss why it may fit your condition, safety precautions, and how to judge its benefit.",
   heroPoints: [
     "Non-invasive application to a clinically selected area",
     "Used as a supporting modality rather than a guaranteed solution",
@@ -475,12 +475,12 @@ export const shockwavePage: PillarPageData = {
   path: "/shockwave-therapy-lafayette",
   breadcrumbLabel: "Shockwave Therapy",
   eyebrow: "Shockwave Therapy in Lafayette, Louisiana",
-  h1: "Shockwave therapy for persistent tendon and plantar-fascia pain.",
+  h1: "Shockwave therapy for some persistent tendon and heel pain.",
   seoTitle: "Shockwave Therapy in Lafayette, LA",
   seoDescription:
     "Shockwave therapy in Lafayette, LA at Relief Plus, using acoustic-wave treatment for selected persistent tendon and soft-tissue concerns.",
   heroDescription:
-    "Shockwave therapy uses externally applied acoustic waves directed toward a selected treatment area. It may be considered for certain persistent tendon and soft-tissue concerns after an appropriate musculoskeletal evaluation.",
+    "Shockwave treatment uses an applicator on the skin to deliver sound-wave energy to a selected area. It may be considered for certain persistent tendon or heel problems. An assessment helps determine whether it fits alongside exercise and activity changes.",
   heroPoints: [
     "Non-surgical acoustic-wave treatment delivered externally",
     "Focused on selected persistent musculoskeletal concerns",

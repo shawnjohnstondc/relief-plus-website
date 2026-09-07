@@ -13,7 +13,7 @@ function createPage(input: Input): PillarPageData {
   return {
     path: input.path, breadcrumbLabel: input.name, eyebrow: input.eyebrow, h1: input.h1,
     seoTitle: input.title, seoDescription: input.description, heroDescription: input.hero,
-    heroPoints: ["Symptoms are classified before treatment is selected", "Movement and load are assessed in meaningful tasks", "Care is individualized to findings, goals, and clinical suitability"],
+    heroPoints: ["Understand the symptom pattern first", "Assess the activities you need to do", "Choose care based on your examination and goals"],
     overviewTitle: input.overviewTitle, overviewParagraphs: input.overview,
     serviceTitle: input.examTitle, serviceSteps: input.exam, whoTitle: input.functionTitle,
     whoDescription: input.functionDescription, considerations: input.functions,
@@ -21,8 +21,8 @@ function createPage(input: Input): PillarPageData {
     conditions: input.related, approachDescription: input.approach, relatedServices: input.therapies,
     educationSections: input.sections, faqs: input.faqs, pageSources: input.sources,
     featureImage: input.featureImage,
-    ctaTitle: `Start with an individualized ${input.name.toLowerCase()} evaluation.`,
-    ctaDescription: "Call Relief Plus in Lafayette to discuss symptoms, function, and an appropriate next step for care in Carencro and across Acadiana.",
+    ctaTitle: `Get help with ${input.name.toLowerCase()}.`,
+    ctaDescription: "Call our Lafayette clinic to discuss a visit. Tell us how your symptoms started and what you are finding difficult.",
   };
 }
 
@@ -37,11 +37,11 @@ const care = {
 
 export const headachePage = createPage({
   path: "/headache-treatment-lafayette", name: "Headache Care", eyebrow: "Headache Evaluation in Lafayette, Louisiana",
-  h1: "Headache care begins by identifying the pattern—not assuming every headache is mechanical.",
+  h1: "Recurring headaches deserve a clear assessment.",
   title: "Headache Treatment in Lafayette, LA", description: "Headache treatment in Lafayette, LA with careful classification, neck and movement evaluation, physical therapy, and selected chiropractic care at Relief Plus.",
-  hero: "Headache is a symptom category, not one diagnosis. Relief Plus distinguishes patterns that may involve the neck or jaw from migraine, tension-type, post-traumatic, and medically concerning presentations before discussing care.",
+  hero: "Headaches can disrupt work, sleep, and time with family. We ask about the pattern and associated symptoms, check whether the neck or jaw may be involved, and identify when medical headache care should come first.",
   overviewTitle: "Similar head pain can reflect very different clinical priorities.",
-  overview: ["Cervicogenic headache is associated with a neck source and may change with cervical movement or sustained position. Tension-type headache and migraine have different diagnostic features, and jaw-related or post-traumatic symptoms add other considerations.", "A headache label should come from history and appropriate screening. Location alone cannot establish the cause, and chiropractic is not presented as a universal migraine treatment."],
+  overview: ["A headache linked to a neck disorder is called cervicogenic headache. It may change when you move your neck or hold a position. Migraine, tension-type headache, jaw-related pain, and headaches after an injury have other features to consider.", "We use your history and appropriate screening to assess the pattern. Where your head hurts cannot confirm the cause. Chiropractic care is not a universal treatment for migraine."],
   examTitle: "A headache examination starts with classification and safety screening.",
   exam: [{ title: "Define the pattern", description: "Onset, frequency, duration, location, associated symptoms, medication use, trauma, sleep, visual demands, and known diagnoses help guide the differential." }, { title: "Screen neurological and medical findings", description: "When relevant, cranial nerve, strength, sensation, coordination, balance, vital signs, and systemic history help determine whether medical evaluation should lead." }, { title: "Assess mechanical contributors", description: "Upper-cervical and thoracic movement, jaw function, shoulder-girdle endurance, breathing, and work tasks may be assessed when the history supports them." }],
   functionTitle: "Headache burden is measured through life—not pain intensity alone.", functionDescription: "Screen tolerance, concentration, driving, sleep, exercise, and work may reveal different triggers and recovery needs.",
@@ -61,10 +61,10 @@ export const headachePage = createPage({
 });
 
 export const shoulderPainPage = createPage({
-  path: "/shoulder-pain-lafayette", name: "Shoulder Pain", eyebrow: "Shoulder Pain Care in Lafayette, Louisiana", h1: "Shoulder pain care built around the diagnosis and the task that hurts.",
+  path: "/shoulder-pain-lafayette", name: "Shoulder Pain", eyebrow: "Shoulder Pain Care in Lafayette, Louisiana", h1: "Shoulder pain care for reaching, lifting, and sleeping.",
   title: "Shoulder Pain Treatment in Lafayette, LA", description: "Shoulder pain treatment in Lafayette, LA with diagnosis-focused physical therapy, chiropractic, progressive exercise, and selected adjuncts at Relief Plus.",
-  hero: "Shoulder pain may arise from the rotator cuff, capsule, joint, tendon, neck, nerve, or another source. Relief Plus evaluates movement, strength, endurance, and load before selecting care.",
-  overviewTitle: "A painful shoulder is a region, not a diagnosis.", overview: ["Gradual pain during reaching can reflect a different problem from sudden weakness after trauma. Rotator cuff tendinopathy or tear, adhesive capsulitis, arthritis, instability, tendon pain, and cervical referral can overlap.", "This broad regional guide helps patients understand the differential. The rotator-cuff and frozen-shoulder pages provide deeper diagnosis-specific education rather than competing with this page."],
+  hero: "A painful shoulder can make a shelf, a work task, or a night’s sleep harder to manage. We compare how your symptoms began with your movement and strength to help distinguish tendon, joint, neck, and nerve problems.",
+  overviewTitle: "A painful shoulder is a region, not a diagnosis.", overview: ["Gradual pain during reaching can reflect a different problem from sudden weakness after trauma. Rotator cuff tendinopathy or tear, adhesive capsulitis, arthritis, instability, tendon pain, and cervical referral can overlap.", "You do not need to know the diagnosis before asking for help. The examination compares the possible causes; the rotator-cuff and frozen-shoulder guides below explain those conditions in more detail."],
   examTitle: "The examination separates mobility, strength, tendon, joint, and referred patterns.",
   exam: [{ title: "Clarify onset and behavior", description: "Traumatic versus gradual onset, night symptoms, instability, neurological features, work, sport, and health history shape priorities." }, { title: "Compare motion and capacity", description: "Active and passive motion, resisted testing, endurance, reaching, pushing, pulling, and lifting may identify meaningful limits." }, { title: "Screen connected regions", description: "Cervical, thoracic, rib-cage, scapular, and neurological findings are assessed when relevant and interpreted with shoulder-specific tests." }],
   functionTitle: "Shoulder demand changes with direction, leverage, speed, and repetition.", functionDescription: "A person may tolerate an isolated test but struggle with repeated overhead work, carrying, sleep, or sport.",
@@ -84,10 +84,10 @@ export const shoulderPainPage = createPage({
 });
 
 export const kneePainPage = createPage({
-  path: "/knee-pain-lafayette", name: "Knee Pain", eyebrow: "Knee Pain Care in Lafayette, Louisiana", h1: "Knee pain care that connects the structure, movement, and load.",
+  path: "/knee-pain-lafayette", name: "Knee Pain", eyebrow: "Knee Pain Care in Lafayette, Louisiana", h1: "Knee pain care for the steps you take every day.",
   title: "Knee Pain Treatment in Lafayette, LA", description: "Knee pain treatment in Lafayette, LA with careful evaluation, physical therapy, progressive loading, and individualized options at Relief Plus.",
-  hero: "Knee pain can follow trauma, develop gradually, or reflect joint, tendon, ligament, meniscus, patellofemoral, arthritic, or referred contributors. Care begins by distinguishing the pattern.",
-  overviewTitle: "Not every painful knee is arthritis—and not every structure needs the same plan.", overview: ["Swelling after a twist, gradual pain with running, pain on stairs, and persistent stiffness can represent different mechanisms. Locking, giving way, trauma, load changes, and symptom location help focus the differential.", "The knee-osteoarthritis page addresses confirmed or suspected OA. This broad page preserves regional intent and covers traumatic, load-related, and non-arthritic presentations."],
+  hero: "Stairs, kneeling, or getting up from a chair may bring on knee pain. We ask about injury, swelling, and the tasks that hurt, then assess movement and strength to help identify the cause and appropriate care.",
+  overviewTitle: "Not every painful knee is arthritis—and not every structure needs the same plan.", overview: ["Swelling after a twist, gradual pain with running, pain on stairs, and persistent stiffness can represent different mechanisms. Locking, giving way, trauma, load changes, and symptom location help focus the differential.", "The knee-osteoarthritis page addresses confirmed or suspected OA. Here, you can also learn about knee pain after injury or activity and causes other than arthritis."],
   examTitle: "A knee examination pairs local tests with walking and task performance.",
   exam: [{ title: "Classify onset and risk", description: "Trauma, swelling timing, locking, instability, systemic symptoms, prior injury, and recent load changes guide screening." }, { title: "Assess knee function", description: "Motion, strength, swelling, selected ligament or meniscal tests, squat, step, and sit-to-stand may be used when appropriate." }, { title: "Evaluate force transfer", description: "Hip contribution, ankle and foot motion, balance, gait, deceleration, and work or sport tasks may be assessed without assigning one cause." }],
   functionTitle: "Knee demand depends on the task and how quickly force must be managed.", functionDescription: "Walking, stairs, squatting, changing direction, and rising from a chair require different combinations of strength, motion, and control.",
@@ -107,10 +107,10 @@ export const kneePainPage = createPage({
 });
 
 export const hipPainPage = createPage({
-  path: "/hip-pain-lafayette", name: "Hip Pain", eyebrow: "Hip Pain Care in Lafayette, Louisiana", h1: "Hip pain care that distinguishes the joint, lateral hip, muscle, and referred sources.",
+  path: "/hip-pain-lafayette", name: "Hip Pain", eyebrow: "Hip Pain Care in Lafayette, Louisiana", h1: "Hip pain care for walking and everyday movement.",
   title: "Hip Pain Treatment in Lafayette, LA", description: "Hip pain treatment in Lafayette, LA with regional diagnosis, gait and movement evaluation, physical therapy, and individualized care at Relief Plus.",
-  hero: "Hip-region pain may come from the hip joint, lateral gluteal tendons, muscle, lumbar spine, SI region, or another source. Relief Plus evaluates the location within gait, single-leg load, and the tasks affected.",
-  overviewTitle: "Groin, lateral, buttock, and referred pain do not share one diagnosis.", overview: ["Groin-dominant pain may raise hip-joint questions; lateral pain can fit greater trochanteric pain syndrome; posterior symptoms may involve the lumbar spine, SI region, muscle, or nerve. Location helps, but history and examination are required.", "This broad regional page links to focused GTPS and SI-joint guides while remaining the primary landing page for patients who do not yet have a specific diagnosis."],
+  hero: "Pain in your groin, outer hip, or buttock can change how you walk, sit, or sleep. We examine the hip and, when relevant, your back and nerves to understand which findings fit your symptoms.",
+  overviewTitle: "Groin, lateral, buttock, and referred pain do not share one diagnosis.", overview: ["Groin-dominant pain may raise hip-joint questions; lateral pain can fit greater trochanteric pain syndrome; posterior symptoms may involve the lumbar spine, SI region, muscle, or nerve. Location helps, but history and examination are required.", "If you do not yet know the cause, start with where the pain occurs and what changes it. The related guides explain outer-hip and SI joint pain in more detail."],
   examTitle: "The examination compares hip findings with lumbar, SI, and functional patterns.",
   exam: [{ title: "Map symptoms and onset", description: "Location, trauma, clicking, stiffness, neurological symptoms, night pain, load change, and health history guide the differential." }, { title: "Assess hip capacity", description: "Motion, strength, selected joint or tendon tests, single-leg load, and sit-to-stand may be assessed." }, { title: "Observe movement in context", description: "Gait, stairs, rotation, frontal and transverse-plane control, running, and work or sport tasks may reveal relevant demand." }],
   functionTitle: "Hip demand changes across gait, single-leg stance, rotation, and transitions.", functionDescription: "Walking and rising from a chair can expose different joint, tendon, trunk, and lower-limb requirements.",
@@ -130,10 +130,10 @@ export const hipPainPage = createPage({
 });
 
 export const plantarFasciitisPage = createPage({
-  path: "/plantar-fasciitis-lafayette", name: "Plantar Heel Pain", eyebrow: "Plantar Fasciitis Care in Lafayette, Louisiana", h1: "Plantar heel pain care built around first-step symptoms and foot-load capacity.",
+  path: "/plantar-fasciitis-lafayette", name: "Plantar Heel Pain", eyebrow: "Plantar Fasciitis Care in Lafayette, Louisiana", h1: "Plantar fasciitis care for painful first steps.",
   title: "Plantar Fasciitis Treatment in Lafayette, LA", description: "Plantar fasciitis treatment in Lafayette, LA with progressive loading, foot and ankle evaluation, physical therapy, and selected shockwave care at Relief Plus.",
-  hero: "Plantar fasciitis—often called plantar fasciopathy in persistent cases—is a common source of heel pain, but not every painful heel has the same diagnosis. Relief Plus evaluates first-step pain, calf capacity, foot load, gait, and daily demand.",
-  overviewTitle: "Plantar heel pain is a symptom region; plantar fasciitis is a clinical pattern.", overview: ["Classic symptoms often include pain near the inside underside of the heel with first steps after rest and with prolonged standing or walking. Persistent presentations are not always best understood as ongoing inflammation alone.", "Nerve irritation, stress injury, fat-pad pain, systemic conditions, and other sources can mimic plantar fascia pain. A careful history and examination come before stretching or a modality."],
+  hero: "Heel pain when you get out of bed or after sitting can fit plantar fasciitis. We check the exact location, foot and calf strength, and your standing or walking demands while considering other causes of heel pain.",
+  overviewTitle: "Plantar heel pain is a symptom region; plantar fasciitis is a clinical pattern.", overview: ["The plantar fascia is a band of tissue under your foot. Plantar fasciitis often causes heel pain with the first steps after rest. Persistent symptoms involve more than ongoing inflammation alone.", "Nerve irritation, bone stress injury, pain in the heel’s fat pad, and medical conditions can feel similar. We assess the pattern before choosing stretches or another treatment."],
   examTitle: "The examination connects local tenderness with ankle, calf, gait, and load history.",
   exam: [{ title: "Confirm the pattern", description: "First-step symptoms, location, duration, tenderness, neurological features, trauma, and health history help test the diagnosis." }, { title: "Measure foot and calf capacity", description: "Ankle dorsiflexion, heel raises, foot strength, balance, and walking tolerance may be assessed." }, { title: "Audit current load", description: "Standing, walking, running, footwear, surface, body-load context, and recent activity changes are considered without blame." }],
   functionTitle: "Heel demand accumulates across the day and changes with surface, speed, and recovery.", functionDescription: "Morning steps, prolonged standing, work shifts, and running may expose different aspects of tissue tolerance.",
@@ -153,10 +153,10 @@ export const plantarFasciitisPage = createPage({
 });
 
 export const tendonitisPage = createPage({
-  path: "/tendonitis-treatment-lafayette", name: "Tendonitis and Tendinopathy", eyebrow: "Tendon Care in Lafayette, Louisiana", h1: "Tendonitis and tendinopathy care built around load, capacity, and the specific tendon.",
+  path: "/tendonitis-treatment-lafayette", name: "Tendonitis and Tendinopathy", eyebrow: "Tendon Care in Lafayette, Louisiana", h1: "Tendonitis care that fits the tendon and the task.",
   title: "Tendonitis Treatment in Lafayette, LA", description: "Tendonitis and tendinopathy treatment in Lafayette, LA with progressive loading, physical therapy, shockwave, and selected options at Relief Plus.",
-  hero: "“Tendonitis” is familiar language, but many persistent tendon problems are better described as tendinopathy. Relief Plus evaluates the specific tendon, current load, capacity, and the work or sport demand involved.",
-  overviewTitle: "Persistent tendon pain is not simply ongoing inflammation in every case.", overview: ["Tendons transfer force from muscle to bone. Pain can develop after a sudden load spike, repetitive exposure, deconditioning, trauma, or a combination of factors. Persistent symptoms reflect more than one biological process.", "This page is a tendon-education hub. Achilles, tennis elbow, rotator cuff, and gluteal tendon pages provide diagnosis-specific details because one universal protocol cannot fit every tendon."],
+  hero: "A tendon may hurt when you grip, lift, run, or push off. Long-lasting tendon pain is often called tendinopathy. We assess the specific tendon and how much activity it can currently handle before planning exercise or other care.",
+  overviewTitle: "Persistent tendon pain is not simply ongoing inflammation in every case.", overview: ["Tendons connect muscles to bones and transfer force when you move. Pain may follow a sudden increase in activity, repeated work, reduced conditioning, an injury, or several factors. Long-lasting tendon pain involves more than one process.", "Different tendons need different exercise plans. The Achilles, tennis elbow, rotator cuff, and outer-hip guides below explain care for those specific areas."],
   examTitle: "A tendon examination identifies location, differential, capacity, and actual exposure.",
   exam: [{ title: "Name the tissue pattern", description: "History, local tests, trauma, neurological features, and alternative diagnoses help determine whether a tendon is the likely source." }, { title: "Measure current capacity", description: "Strength, endurance, speed, stretch-shortening demand, and symptom recovery may be assessed for the involved region." }, { title: "Understand the load", description: "Work repetition, grip, running, jumping, lifting, training changes, and recovery define what the tendon is being asked to tolerate." }],
   functionTitle: "Load is more than weight—it includes speed, range, repetition, and recovery.", functionDescription: "Two people with pain at the same tendon may need different starting points because their diagnoses, jobs, sports, and capacities differ.",
@@ -176,10 +176,10 @@ export const tendonitisPage = createPage({
 });
 
 export const carAccidentPage = createPage({
-  path: "/car-accident-injuries-lafayette", name: "Car Accident Injuries", eyebrow: "Car Accident Injury Care in Lafayette, Louisiana", h1: "Car accident injury care guided by mechanism, symptom evolution, and function.",
+  path: "/car-accident-injuries-lafayette", name: "Car Accident Injuries", eyebrow: "Car Accident Injury Care in Lafayette, Louisiana", h1: "Care for pain and movement problems after a car accident.",
   title: "Car Accident Injury Treatment in Lafayette, LA", description: "Car accident injury treatment in Lafayette, LA with trauma screening, chiropractic, physical therapy, and individualized functional rehabilitation at Relief Plus.",
-  hero: "A collision can affect the neck, back, shoulder, ribs, head, or extremities, and symptoms may evolve over hours or days. Relief Plus begins with trauma history, neurological and concussion screening, and the activities affected.",
-  overviewTitle: "The mechanism matters, but it does not dictate one treatment plan.", overview: ["Direction of impact, vehicle position, restraint use, head contact, immediate symptoms, and symptom evolution help identify clinical priorities. A low-speed label alone does not establish injury severity, while not every collision produces the same tissue problem.", "Emergency and medical needs come before musculoskeletal treatment. Once serious injury is excluded, care focuses on the actual diagnosis and restoring driving, sleep, work, movement, and activity capacity."],
+  hero: "Pain or stiffness may develop or change after a collision. We review what happened, check for signs of serious injury, and assess the activities you are struggling with. Emergency and medical needs come before treatment for muscles or joints.",
+  overviewTitle: "The mechanism matters, but it does not dictate one treatment plan.", overview: ["We ask about the direction of impact, your position, seat-belt use, head contact, and how symptoms changed. A “low-speed” description alone cannot establish how serious an injury is, and collisions do not all cause the same problem.", "Emergency and medical needs come first. Once serious injury is ruled out, care focuses on the diagnosis and rebuilding your ability to drive, sleep, work, and move."],
   examTitle: "A post-collision examination begins with trauma, neurological, and head-injury screening.",
   exam: [{ title: "Reconstruct the event", description: "Impact direction, body and head position, restraints, loss of consciousness, memory, immediate symptoms, and prior care provide context." }, { title: "Screen important injury", description: "Neurological, concussion, fracture, vascular, chest, abdominal, and systemic findings determine whether urgent or medical referral is needed." }, { title: "Assess movement and function", description: "Neck and trunk motion, strength, balance, shoulder or limb function, sitting, driving, lifting, and load tolerance may be assessed when safe." }],
   functionTitle: "Recovery is measured through safe return to normal activities.", functionDescription: "Turning to check traffic, sitting, sleeping, carrying, work, exercise, and concentration may recover at different rates.",
@@ -199,15 +199,15 @@ export const carAccidentPage = createPage({
 });
 
 export const workInjuryPage = createPage({
-  path: "/work-injury-lafayette", name: "Work Injuries", eyebrow: "Work Injury Rehabilitation in Lafayette, Louisiana", h1: "Work injury care designed around the actual demands of the job.",
+  path: "/work-injury-lafayette", name: "Work Injuries", eyebrow: "Work Injury Rehabilitation in Lafayette, Louisiana", h1: "Work injury care built around your actual job.",
   title: "Work Injury Treatment in Lafayette, LA", description: "Work injury treatment in Lafayette, LA with job-specific physical therapy, chiropractic, progressive rehabilitation, and individualized care at Relief Plus.",
-  hero: "Work symptoms may follow one event or build as exposure exceeds current capacity. Relief Plus evaluates the diagnosis alongside lifting, reaching, carrying, repetition, standing, walking, and sustained-position demands.",
+  hero: "Lifting, driving, reaching, or standing may become difficult after an injury or a gradual increase in symptoms. We assess the problem and the specific demands of your work to guide treatment and practical changes.",
   featureImage: {
     src: "/work-injury-consultation-lafayette.png",
     alt: "Shawn D. Johnston, D.C., using a spine model to explain a work-related injury",
     caption: "Clear education can help connect examination findings with work demands and a practical recovery plan.",
   },
-  overviewTitle: "The same diagnosis can create different barriers in different jobs.", overview: ["A shoulder condition affects an overhead electrician differently from an office worker. Back symptoms during lifting differ from symptoms during prolonged driving. Job title alone is not enough; force, frequency, duration, environment, and recovery define exposure.", "Ergonomics can help, but posture is not blamed as the one cause. Rehabilitation focuses on restoring capacity and using practical modifications while the worker progresses."],
+  overviewTitle: "The same diagnosis can create different barriers in different jobs.", overview: ["A sore shoulder creates different problems for an electrician working overhead and someone at a desk. We ask about the weight, repetition, time, and conditions involved in your tasks rather than relying on your job title.", "Changes to work setup can help, but posture is not assumed to be the single cause. Rehabilitation builds your ability to handle work while practical adjustments help you progress."],
   examTitle: "The examination connects tissue findings with essential job functions.",
   exam: [{ title: "Clarify injury and diagnosis", description: "Sudden event versus cumulative onset, symptoms, prior care, medical restrictions, and relevant red flags guide the clinical differential." }, { title: "Define job demand", description: "Loads, heights, carrying distance, repetition, pushing, pulling, standing, walking, tools, and shift duration make the target specific." }, { title: "Measure functional capacity", description: "Mobility, strength, endurance, balance, lifting, reaching, carrying, and task simulation may be assessed within safe clinical limits." }],
   functionTitle: "Work capacity depends on exposure, recovery, and the individual task.", functionDescription: "A short clinic test and an eight-hour shift are different demands, so progression considers repetition and fatigue as well as maximum strength.",

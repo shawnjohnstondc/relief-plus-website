@@ -30,14 +30,14 @@ export default function JeanneSaucierPage() {
         name="Jeanne Saucier, PT"
         role="Physical Therapist"
         location="Relief Plus · Lafayette, Louisiana"
-        introduction="Jeanne brings a broad physical-therapy background to rehabilitation at Relief Plus. Her work helps patients rebuild movement, strength, mobility, endurance, and confidence for the demands of daily life, work, and recreation."
+        introduction="Jeanne helps you work toward the movements that matter to you, from walking and lifting to returning to exercise. Her physical-therapy background guides rehabilitation that builds strength, movement, endurance, and confidence."
         image={{ src: "/jeanne-saucier-pt-relief-plus.webp", alt: "Jeanne Saucier, PT, physical therapist at Relief Plus" }}
         sections={[
           {
             eyebrow: "Approach to Physical Therapy",
-            title: "Rehabilitation that builds useful capacity.",
+            title: "Build toward the activities you want back.",
             paragraphs: [
-              "Jeanne’s approach begins with what the patient needs and wants to do. Rehabilitation can address movement, mobility, strength, endurance, activity tolerance, and confidence, then progress those qualities toward the demands of everyday life.",
+              "Jeanne starts with what you need and want to do. Your plan may focus on movement, strength, or how long you can manage an activity, then build toward your daily goals.",
               "Physical therapy is more than passive treatment alone. Guided movement, progressive exercise and loading, education, and other appropriate strategies can help patients build capacity over time. The plan should respond to the examination, the person’s goals, and how function changes along the way.",
             ],
           },

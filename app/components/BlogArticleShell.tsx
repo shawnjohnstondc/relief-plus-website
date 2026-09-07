@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { defaultArticleDisclaimer } from "@/lib/article-reading-time";
 import type { BlogParagraph, BlogPost } from "@/lib/blog-posts";
 import { createBlogPostingStructuredData } from "@/lib/seo";
 import JsonLd from "./JsonLd";
@@ -55,7 +56,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
           </nav>
           <div className="mt-12 max-w-4xl">
             <p className="text-xs font-semibold uppercase tracking-[.28em] text-[#82601f]">{post.category}</p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.04] tracking-[-.035em] sm:text-6xl lg:text-7xl">{post.title}</h1>
+            <h1 className="mt-6 break-words font-serif text-4xl leading-[1.08] tracking-[-.035em] sm:text-6xl lg:text-7xl">{post.title}</h1>
             <p className="mt-8 max-w-3xl text-xl leading-9 text-[#12233f]/75">{post.summary}</p>
             <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/65">
               {post.author ? <span>Written by <Link href={post.author.href} className="underline decoration-[#b08d3b] underline-offset-4">{post.author.name}</Link></span> : <span>By <Link href="/clinical-standards-editorial-review" className="underline decoration-[#b08d3b] underline-offset-4">Relief Plus Editorial</Link></span>}
@@ -72,10 +73,10 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
 
       <div className="bg-[#e8e5dc] px-6 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
-          <article className="rounded-[2rem] border border-[#12233f]/10 bg-[#f7f5ef] px-7 py-10 sm:px-12 lg:px-16">
+          <article className="rounded-[2rem] border border-[#12233f]/10 bg-[#f7f5ef] min-w-0 break-words px-5 py-10 sm:px-12 lg:px-16">
             <div className="rounded-2xl border-l-4 border-[#b08d3b] bg-white/70 p-6">
               <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Key takeaway</p>
-              <p className="mt-3 text-lg leading-8">{post.summary}</p>
+              <p className="mt-3 text-lg leading-8">{post.takeaway}</p>
             </div>
             {post.scopeNote && (
               <aside className="mt-6 rounded-2xl border border-[#12233f]/10 bg-[#e8e5dc] p-6" aria-label="Scope of care">
@@ -92,7 +93,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                     {section.paragraphs.map((paragraph, index) => <p key={index}><RichText content={paragraph} /></p>)}
                   </div>
                   {section.bullets && (
-                    <ul className="mt-6 grid gap-3 pl-5 text-[1.02rem] leading-7 text-[#12233f]/75 marker:text-[#82601f]">
+                    <ul className="mt-6 grid list-disc gap-3 pl-5 text-[1.02rem] leading-7 text-[#12233f]/75 marker:text-[#82601f]">
                       {section.bullets.map((bullet, index) => <li key={index}><RichText content={bullet} /></li>)}
                     </ul>
                   )}
@@ -114,7 +115,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                   {post.comparison.columns.map((column, index) => (
                     <div key={column.title} className={`rounded-[1.75rem] border p-6 sm:p-8 ${index === 0 ? "border-[#153e35]/20 bg-[#153e35] text-white" : "border-[#12233f]/10 bg-white/65"}`}>
                       <h3 className="font-serif text-2xl">{column.title}</h3>
-                      <ul className={`mt-5 grid gap-3 pl-5 text-sm leading-6 marker:text-[#b08d3b] ${index === 0 ? "text-white/80" : "text-[#12233f]/75"}`}>
+                      <ul className={`mt-5 grid list-disc gap-3 pl-5 text-sm leading-6 marker:text-[#b08d3b] ${index === 0 ? "text-white/80" : "text-[#12233f]/75"}`}>
                         {column.items.map((item) => <li key={item}>{item}</li>)}
                       </ul>
                     </div>
@@ -123,6 +124,12 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                 <p className="mt-5 rounded-2xl border-l-4 border-[#b08d3b] bg-white/60 p-5 text-sm leading-6 text-[#12233f]/72">{post.comparison.disclaimer}</p>
               </section>
             )}
+
+            <section className="mt-14 rounded-2xl bg-white/70 p-6" aria-labelledby="next-step-heading">
+              <h2 id="next-step-heading" className="font-serif text-3xl">Your next step</h2>
+              <p className="mt-4 leading-8 text-[#12233f]/78">{post.nextStep}</p>
+              <Link href="/contact" className="mt-5 inline-block font-semibold underline decoration-[#b08d3b] underline-offset-4">Contact Relief Plus about an evaluation →</Link>
+            </section>
 
             {post.reviewedBy && (
               <section className="mt-16 rounded-[2rem] bg-[#12233f] p-7 text-white sm:p-9" aria-labelledby="clinical-review-heading">
@@ -145,7 +152,7 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 text-sm leading-6 text-[#12233f]/65">{post.disclaimer ?? "This article provides general education and is not a diagnosis or a substitute for individualized medical advice. Treatment suitability depends on examination findings, health history, goals, and clinical judgment."}</p>
+              <p className="mt-8 text-sm leading-6 text-[#12233f]/65">{post.disclaimer ?? defaultArticleDisclaimer}</p>
             </section>
           </article>
 

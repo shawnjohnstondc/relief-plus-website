@@ -50,10 +50,10 @@ export default function DrAshtonReedPage() {
           },
           {
             eyebrow: "Clinical Decision-Making",
-            title: "Advanced options require careful selection.",
+            title: "Understand the treatment before choosing it.",
             paragraphs: [
-              "Regenerative medicine is a broad term, and different procedures or products have different evidence, risks, alternatives, and regulatory considerations. Physician involvement supports diagnosis-aware review and a more complete candidacy discussion when these options are being considered.",
-              "No advanced option is appropriate for every patient. A responsible discussion should identify the exact treatment proposed, the clinical rationale, what evidence applies to the patient’s condition, known and uncertain risks, alternatives, and the role of rehabilitation or other care.",
+              "Regenerative medicine includes different procedures and products. Their evidence, risks, alternatives, and regulatory status differ. Medical oversight helps assess those questions in relation to your diagnosis.",
+              "Ask which exact treatment is proposed, why it may fit your condition, and what the evidence shows. The discussion should include known and uncertain risks, other choices, and how rehabilitation may fit. No option is appropriate for everyone.",
             ],
           },
           {

@@ -9,21 +9,25 @@ const pillars = [
   {
     title: "Chiropractic",
     href: "/chiropractic-adjustments-lafayette",
-    description: "Joint motion, musculoskeletal evaluation, and function.",
+    description: "Assessment and joint care to support more comfortable movement.",
   },
   {
     title: "Physical Therapy",
     href: "/physical-therapy-lafayette",
-    description: "Rehabilitation, strength, mobility, and progression.",
+    description: "Exercise and movement practice for daily life, work, and sport.",
   },
   {
     title: "Regenerative Medicine",
     href: "/regenerative-cellular-therapy-lafayette",
-    description: "Advanced options considered for appropriate patients.",
+    description: "Selected options discussed with their evidence, risks, and alternatives.",
   },
 ] as const;
 
 export default function PillarPageShell({ data }: { data: PillarPageData }) {
+  const educationSections = data.educationSections?.map((section, index) => ({ ...section, id: section.id ?? `care-detail-${index + 1}` }));
+
+  const safetySection = educationSections?.find((section) => /More Evaluation|Additional Evaluation|Medical Evaluation|Urgent|Prompt Care|Escalate|Feels Like|Dose and Clinical Fit|Patient Experience|Preparation,|Evidence Is Still|Treatment and Follow|Product-Specific Clarity/.test(section.eyebrow ?? ""));
+
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
       <SiteHeader currentPath={data.path} />
@@ -54,7 +58,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
                   href="#what-to-expect"
                   className="rounded-full border border-[#12233f]/20 px-7 py-4 text-center text-sm font-semibold transition hover:border-[#b08d3b] hover:text-[#9a7428]"
                 >
-                  Learn About This Care
+                  What happens at a visit
                 </a>
               </div>
             </div>
@@ -102,6 +106,23 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </div>
       </section>
 
+      <nav aria-label="On this page" className="border-y border-[#12233f]/10 bg-white/55 px-6 py-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+            <a href="#what-to-expect" className="underline underline-offset-4">Your assessment</a>
+            <a href="#care-options" className="underline underline-offset-4">Treatment options</a>
+            <a href="#common-questions" className="underline underline-offset-4">Common questions</a>
+            {safetySection && <a href={`#${safetySection.id}`} className="underline underline-offset-4">Safety and when to seek care</a>}
+          </div>
+          {educationSections && <details className="mt-4 text-sm">
+            <summary className="cursor-pointer py-2 font-semibold">Find self-care advice, risks, and when to seek medical care</summary>
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+              {educationSections.map((section) => <li key={section.id}><a href={`#${section.id}`} className="block py-1 underline decoration-[#b08d3b] underline-offset-4">{section.eyebrow}: {section.title}</a></li>)}
+            </ul>
+          </details>}
+        </div>
+      </nav>
+
       {data.provider && (
         <section className="border-y border-[#12233f]/10 bg-white/45 px-6 py-10 lg:px-8">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -139,7 +160,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr]">
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#d5b765]">
-              Why This Approach Matters
+              Understanding Your Symptoms
             </p>
             <h2 className="mt-5 break-words font-serif text-4xl leading-tight sm:text-5xl">
               {data.overviewTitle}
@@ -268,7 +289,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </div>
       </section>
 
-      {data.educationSections?.map((section, sectionIndex) => (
+      {educationSections?.map((section, sectionIndex) => (
         <section
           key={section.title}
           id={section.id}
@@ -317,21 +338,21 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         </section>
       ))}
 
-      <section className="px-6 py-24 lg:px-8">
+      <section id="care-options" className="px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
               Related Care
             </p>
             <h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">
-              Treatment options considered in context.
+              Options to discuss after your assessment.
             </h2>
           </div>
           <RelatedServices services={data.relatedServices} />
         </div>
       </section>
 
-      <section className="bg-[#e8e5dc] px-6 py-24 lg:px-8">
+      <section id="common-questions" className="bg-[#e8e5dc] px-6 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">
