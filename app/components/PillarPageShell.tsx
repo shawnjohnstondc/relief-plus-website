@@ -115,7 +115,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
             {safetySection && <a href={`#${safetySection.id}`} className="underline underline-offset-4">Safety and when to seek care</a>}
           </div>
           {educationSections && <details className="mt-4 text-sm">
-            <summary className="cursor-pointer py-2 font-semibold">Find self-care advice, risks, and when to seek medical care</summary>
+            <summary className="cursor-pointer py-2 font-semibold">{data.educationNavigationLabel ?? "Find self-care advice, risks, and when to seek medical care"}</summary>
             <ul className="mt-3 grid gap-3 sm:grid-cols-2">
               {educationSections.map((section) => <li key={section.id}><a href={`#${section.id}`} className="block py-1 underline decoration-[#b08d3b] underline-offset-4">{section.eyebrow}: {section.title}</a></li>)}
             </ul>
@@ -141,7 +141,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
         <section className="px-6 py-20 lg:px-8" aria-labelledby="treatment-answer-heading">
           <div className="mx-auto max-w-7xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#82601f]">Treatment at a Glance</p>
-            <h2 id="treatment-answer-heading" className="mt-5 max-w-3xl font-serif text-4xl tracking-tight sm:text-5xl">What the treatment may support—and what it does not prove.</h2>
+            <h2 id="treatment-answer-heading" className="mt-5 max-w-3xl font-serif text-4xl tracking-tight sm:text-5xl">{data.answerBlock.title ?? "What the treatment may support—and what it does not prove."}</h2>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               <article className="rounded-[1.75rem] bg-[#153e35] p-7 text-white sm:p-8">
                 <h3 className="font-serif text-2xl">{data.answerBlock.supportedTitle}</h3>
@@ -271,7 +271,7 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
           </div>
 
           <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid-cols-3">
-            {pillars.map((pillar) => (
+            {(data.carePillars ?? pillars).map((pillar) => (
               <Link
                 key={pillar.href}
                 href={pillar.href}

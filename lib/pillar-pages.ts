@@ -43,6 +43,8 @@ export type PillarPageData = {
   conditions: Array<{ title: string; href: string }>;
   approachDescription: string;
   relatedServices: PillarLink[];
+  carePillars?: PillarLink[];
+  educationNavigationLabel?: string;
   faqs: FaqItem[];
   ctaTitle: string;
   ctaDescription: string;
@@ -62,6 +64,7 @@ export type PillarPageData = {
     description: string;
   };
   answerBlock?: {
+    title?: string;
     supportedTitle: string;
     supportedText: string;
     limitsTitle: string;
