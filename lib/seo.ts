@@ -23,6 +23,13 @@ export function absoluteUrl(path: string) {
   return new URL(path, siteConfig.url).toString();
 }
 
+export const defaultSocialImage = {
+  url: absoluteUrl("/relief-plus-hero-wide.webp"),
+  width: 1800,
+  height: 1012,
+  alt: "Care at Relief Plus in Lafayette, Louisiana",
+};
+
 type PageMetadataInput = {
   title: string;
   description: string;
@@ -45,11 +52,13 @@ export function createPageMetadata({
       locale: "en_US",
       url: absoluteUrl(path),
       siteName: siteConfig.name,
+      images: [defaultSocialImage],
       title,
       description,
     },
     twitter: {
       card: "summary_large_image",
+      images: [defaultSocialImage.url],
       title,
       description,
     },
@@ -75,6 +84,7 @@ export function createArticleMetadata({
       locale: "en_US",
       url: absoluteUrl(path),
       siteName: siteConfig.name,
+      images: [defaultSocialImage],
       title,
       description,
       publishedTime: datePublished,
@@ -179,6 +189,7 @@ export const medicalBusinessJsonLd: Record<string, unknown> = {
   telephone: siteConfig.telephone,
   email: siteConfig.email,
   faxNumber: siteConfig.faxNumber,
+  image: defaultSocialImage.url,
   address: { "@type": "PostalAddress", ...siteConfig.address },
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday"], opens: "07:00", closes: "16:00" },

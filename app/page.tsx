@@ -8,7 +8,7 @@ import BrandMark from "./components/BrandMark";
 import SiteHeader from "./components/SiteHeader";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Chiropractic, Physical Therapy & Regenerative Medicine",
+  title: "Chiropractor & Physical Therapy in Lafayette, LA | Relief Plus",
   description:
     "Relief Plus provides chiropractic, physical therapy, and regenerative medicine for patients in Lafayette, Carencro, and Acadiana.",
   path: "/",
@@ -83,11 +83,11 @@ export default function Home() {
             </p>
 
             <h1 className="max-w-4xl font-serif text-[2.65rem] leading-[1.02] tracking-[-0.035em] text-[#12233f] sm:text-6xl lg:text-7xl">
-              Move better.
+              Chiropractic care &amp;
               <br />
-              Feel stronger.
+              physical therapy
               <br />
-              <span className="text-[#9a7428]">Live with less pain.</span>
+              <span className="text-[#9a7428]">in Lafayette.</span>
             </h1>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-[#12233f]/70 sm:mt-8 sm:text-lg sm:leading-8">

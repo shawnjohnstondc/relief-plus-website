@@ -56,9 +56,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sports-injuries-lafayette", priority: 0.8 },
   ] as const;
 
-  return [...routes, ...blogPosts.map(({ path }) => ({ path, priority: 0.6 }))].map(({ path, priority }) => ({
+  const pages: MetadataRoute.Sitemap = routes.map(({ path, priority }) => ({
     url: absoluteUrl(path),
     changeFrequency: "monthly",
     priority,
   }));
+  const articles: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: absoluteUrl(post.path),
+    lastModified: post.dateModified ?? post.datePublished,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+  return [...pages, ...articles];
 }
