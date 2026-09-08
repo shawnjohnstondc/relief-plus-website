@@ -20,7 +20,7 @@ describe("article reading estimates", () => {
     })).toBe("2 min read");
   });
   it("supplies distinct takeaways and next steps for the full article collection", () => {
-    expect(blogPosts).toHaveLength(49);
+    expect(blogPosts).toHaveLength(50);
     for (const post of blogPosts) {
       expect(post.takeaway.trim().length).toBeGreaterThan(20);
       expect(post.takeaway).not.toBe(post.summary);

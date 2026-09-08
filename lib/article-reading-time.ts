@@ -10,7 +10,7 @@ function paragraphText(value: BlogParagraph): string {
 export function calculateReadTime(post: BlogPost): string {
   const text = [
     post.title, post.summary, post.takeaway, post.scopeNote,
-    ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs.map(paragraphText), ...(section.bullets ?? []).map(paragraphText), ...(section.numbered ?? []).map(paragraphText)]),
+    ...post.sections.flatMap((section) => [section.heading, section.table?.caption, ...(section.table?.headers ?? []), ...(section.table?.rows.flat() ?? []), ...section.paragraphs.map(paragraphText), ...(section.bullets ?? []).map(paragraphText), ...(section.numbered ?? []).map(paragraphText)]),
     post.comparison?.heading, post.comparison?.introduction,
     ...(post.comparison?.columns.flatMap((column) => [column.title, ...column.items]) ?? []),
     post.comparison?.disclaimer, post.nextStep, post.reviewNote, post.disclaimer ?? defaultArticleDisclaimer,

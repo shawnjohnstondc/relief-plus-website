@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { defaultArticleDisclaimer } from "@/lib/article-reading-time";
 import type { BlogParagraph, BlogPost } from "@/lib/blog-posts";
@@ -90,7 +91,18 @@ export default function BlogArticleShell({ post }: { post: BlogPost }) {
                   {section.clinicalPerspective && <p className="mb-3 text-xs font-semibold uppercase tracking-[.22em] text-[#82601f]">Clinical perspective</p>}
                   <h2 className="font-serif text-3xl tracking-tight sm:text-4xl">{section.heading}</h2>
                   <div className="mt-5 space-y-5 text-[1.05rem] leading-8 text-[#12233f]/78">
-                    {section.paragraphs.map((paragraph, index) => <p key={index}><RichText content={paragraph} /></p>)}
+                    {section.paragraphs.map((paragraph, index) => <Fragment key={index}>
+                      <p><RichText content={paragraph} /></p>
+                      {section.table?.afterParagraph === index && (
+                        <div className="overflow-x-auto rounded-xl border border-[#12233f]/15">
+                          <table className="w-full text-left text-sm leading-6">
+                            <caption className="px-4 py-3 text-left font-semibold">{section.table.caption}</caption>
+                            <thead className="bg-[#e8e5dc]"><tr>{section.table.headers.map((header) => <th key={header} scope="col" className="px-4 py-3">{header}</th>)}</tr></thead>
+                            <tbody>{section.table.rows.map((row) => <tr key={row[0]} className="border-t border-[#12233f]/10">{row.map((cell, cellIndex) => cellIndex === 0 ? <th key={cellIndex} scope="row" className="px-4 py-3 font-medium">{cell}</th> : <td key={cellIndex} className="px-4 py-3">{cell}</td>)}</tr>)}</tbody>
+                          </table>
+                        </div>
+                      )}
+                    </Fragment>)}
                   </div>
                   {section.bullets && (
                     <ul className="mt-6 grid list-disc gap-3 pl-5 text-[1.02rem] leading-7 text-[#12233f]/75 marker:text-[#82601f]">

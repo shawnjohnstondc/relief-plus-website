@@ -1,7 +1,7 @@
 export type BlogLink = { title: string; href: string; description: string };
 export type BlogInline = string | { text: string; href: string };
 export type BlogParagraph = string | BlogInline[];
-export type BlogSection = { heading: string; paragraphs: BlogParagraph[]; bullets?: BlogParagraph[]; numbered?: BlogParagraph[]; clinicalPerspective?: boolean };
+export type BlogSection = { table?: { afterParagraph: number; caption: string; headers: string[]; rows: string[][] }; heading: string; paragraphs: BlogParagraph[]; bullets?: BlogParagraph[]; numbered?: BlogParagraph[]; clinicalPerspective?: boolean };
 export type BlogSource = { id?: string; title: string; organization: string; href: string };
 
 export type BlogPost = {
@@ -10,6 +10,7 @@ export type BlogPost = {
   title: string;
   seoTitle: string;
   description: string;
+  excerpt?: string;
   category: string;
   summary: string;
   takeaway: string;
@@ -41,6 +42,7 @@ import { phaseNineDBlogPosts } from "./phase-nine-d-blog-posts";
 import { phaseNineFBlogPosts } from "./phase-nine-f-blog-posts";
 import { phaseNineHBlogPosts } from "./phase-nine-h-blog-posts";
 import { authorityBlogPosts } from "./authority-blog-posts";
+import { sciaticaPeripheralNerveBlogPost } from "./sciatica-peripheral-nerve-blog-post";
 import { bowhuntingShoulderBlogPost } from "./bowhunting-shoulder-blog-post";
 
 const phaseNineBBlogPosts: BlogPost[] = [
@@ -200,6 +202,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
 
 import { calculateReadTime } from "./article-reading-time";
 
-export const blogPosts: BlogPost[] = [bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
+export const blogPosts: BlogPost[] = [sciaticaPeripheralNerveBlogPost, bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));

@@ -60,7 +60,7 @@ export default function BlogPage() {
             {blogPosts.slice(0, 5).map((post, index) => (
               <Link key={post.path} href={post.path} className={`rounded-[2rem] border border-white/10 p-7 transition hover:border-[#d5b765]/70 sm:p-9 ${index === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-[.65fr_1.35fr] lg:gap-10" : "bg-white/5"}`}>
                 <div><p className="text-xs font-semibold uppercase tracking-[.2em] text-[#d5b765]">{post.category}</p><p className="mt-4 text-sm text-white/55">{new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/Chicago" }).format(new Date(post.datePublished))}</p></div>
-                <div className={index === 0 ? "mt-6 lg:mt-0" : "mt-6"}><h2 className="font-serif text-3xl leading-tight sm:text-4xl">{post.title}</h2><p className="mt-4 text-base leading-7 text-white/70">{post.description}</p><span className="mt-6 block text-sm font-semibold text-[#d5b765]">Read article →</span></div>
+                <div className={index === 0 ? "mt-6 lg:mt-0" : "mt-6"}><h2 className="font-serif text-3xl leading-tight sm:text-4xl">{post.title}</h2><p className="mt-4 text-base leading-7 text-white/70">{post.excerpt ?? post.description}</p><span className="mt-6 block text-sm font-semibold text-[#d5b765]">Read article →</span></div>
               </Link>
             ))}
           </div>
@@ -71,7 +71,7 @@ export default function BlogPage() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-2xl"><p className="text-xs font-semibold uppercase tracking-[.25em] text-[#82601f]">Browse the journal</p><h2 className="mt-5 font-serif text-4xl tracking-tight sm:text-5xl">Articles organized around patient questions.</h2></div>
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {articleClusters.map((cluster) => <section key={cluster.title} className="rounded-[2rem] border border-[#12233f]/10 bg-white/55 p-7 sm:p-9"><h3 className="font-serif text-3xl">{cluster.title}</h3><div className="mt-6 divide-y divide-[#12233f]/10">{cluster.posts.map((post) => <Link key={post.path} href={post.path} className="block py-4 first:pt-0"><span className="font-medium leading-6">{post.title}</span><span className="mt-2 block text-sm leading-6 text-[#12233f]/70">{post.description}</span><span className="mt-2 block text-sm text-[#82601f]">Read article →</span></Link>)}</div></section>)}
+            {articleClusters.map((cluster) => <section key={cluster.title} className="rounded-[2rem] border border-[#12233f]/10 bg-white/55 p-7 sm:p-9"><h3 className="font-serif text-3xl">{cluster.title}</h3><div className="mt-6 divide-y divide-[#12233f]/10">{cluster.posts.map((post) => <Link key={post.path} href={post.path} className="block py-4 first:pt-0"><span className="font-medium leading-6">{post.title}</span><span className="mt-2 block text-sm leading-6 text-[#12233f]/70">{post.excerpt ?? post.description}</span><span className="mt-2 block text-sm text-[#82601f]">Read article →</span></Link>)}</div></section>)}
           </div>
         </div>
       </section>

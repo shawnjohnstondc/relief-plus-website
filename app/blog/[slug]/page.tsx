@@ -19,13 +19,18 @@ export async function generateMetadata({
   const post = blogPostsBySlug.get(slug);
   if (!post) return {};
 
-  return createArticleMetadata({
+  const metadata = createArticleMetadata({
     title: post.seoTitle,
     description: post.description,
     path: post.path,
     datePublished: post.datePublished,
     ...(post.dateModified ? { dateModified: post.dateModified } : {}),
   });
+  return {
+    ...metadata,
+    title: post.seoTitle.includes("| Relief Plus") ? { absolute: post.seoTitle } : metadata.title,
+    openGraph: { ...metadata.openGraph, type: "article", authors: [post.author?.name ?? "Relief Plus Editorial"] },
+  };
 }
 
 export default async function BlogArticlePage({
