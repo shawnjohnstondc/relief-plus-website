@@ -120,7 +120,7 @@ export default function Home() {
                   href={patientPacketUrl}
                   className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-[#9a7428]/35 bg-[#ede6d6] px-6 py-3 text-sm font-semibold text-[#12233f] transition hover:border-[#9a7428] hover:bg-[#e7ddc8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a7428] max-sm:w-full"
                 >
-                  New Patient Packet <span aria-hidden="true">↗</span>
+                  New Patient Packet
                 </a>
                 <p className="mt-2 text-sm text-[#12233f]/65">
                   Complete your initial exam questions before your visit.
