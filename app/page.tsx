@@ -112,12 +112,6 @@ export default function Home() {
                 Explore Our Treatments
               </Link>
             </div>
-
-            <div className="mt-9 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#12233f]/10 pt-6 text-sm text-[#12233f]/70 sm:mt-12 sm:pt-7">
-              <span>Start with an examination</span>
-              <span>Understand your options</span>
-              <span>Plan your next step</span>
-            </div>
           </div>
 
           <div className="relative pb-32 sm:pb-28 lg:pb-20">
