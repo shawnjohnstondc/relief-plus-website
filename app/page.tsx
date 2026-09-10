@@ -68,6 +68,7 @@ const conditions = [
 ] as const;
 
 export default function Home() {
+  const patientPacketUrl = "https://relief-plus-patient-checkin.vercel.app/";
   return (
     <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
       <JsonLd data={websiteJsonLd} />
@@ -112,6 +113,20 @@ export default function Home() {
                 Explore Our Treatments
               </Link>
             </div>
+
+            {patientPacketUrl && (
+              <div className="mt-5">
+                <a
+                  href={patientPacketUrl}
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-[#9a7428]/35 bg-[#ede6d6] px-6 py-3 text-sm font-semibold text-[#12233f] transition hover:border-[#9a7428] hover:bg-[#e7ddc8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9a7428] max-sm:w-full"
+                >
+                  New Patient Packet <span aria-hidden="true">↗</span>
+                </a>
+                <p className="mt-2 text-sm text-[#12233f]/65">
+                  Complete your initial exam questions before your visit.
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="relative pb-32 sm:pb-28 lg:pb-20">
