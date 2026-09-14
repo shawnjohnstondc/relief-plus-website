@@ -88,6 +88,11 @@ export const chiropracticPage: PillarPageData = {
     "Specific care selected for the individual patient",
     "Movement and function considered alongside symptoms",
   ],
+  featureImage: {
+    src: "/dr-shawn-johnston-adustment.PNG",
+    alt: "Dr. Shawn Johnston providing a seated neck adjustment at Relief Plus",
+    caption: "Chiropractic care is selected and adapted to the individual patient after an appropriate examination.",
+  },
   overviewTitle: "Chiropractic is a primary pillar of musculoskeletal care.",
   overviewParagraphs: [
     "Pain and stiffness can have several causes. Dr. Johnston asks how symptoms began and what changes them, then examines your joint movement and the activities that are difficult for you.",
