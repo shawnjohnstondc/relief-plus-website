@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { authenticate } from "@/lib/time-card/auth";
-import { currentPayPeriod, chicagoLocalDateTimeToInstant, dollarsToCents, hoursToMinutes, payPeriodForDate } from "@/lib/time-card/payroll";
+import { currentPayPeriod, chicagoLocalDateTimeToInstant, dollarsToCents, fourteenDayPeriodStarting, hoursToMinutes } from "@/lib/time-card/payroll";
 import { addManualPunch, addPaidHolidayForEmployees, addPaidTime, adminClockEmployee, clockIn, clockOut, correctPunch, setEmployeePayRate, voidPunch } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
 import { getSession, revokeCurrentSession } from "@/lib/time-card/session";
@@ -97,7 +97,7 @@ export async function addHolidayAction(formData: FormData) {
   const period = periodSchema.catch(currentPayPeriod().start).parse(formData.get("period"));
   const parsed = paidHolidaySchema.safeParse({ employeeIds: formData.getAll("employeeIds"), payrollDate: formData.get("payrollDate"), minutes: Number(formData.get("minutes")), note: formData.get("note"), reason: formData.get("reason") });
   if (!parsed.success) adminRedirect(period, "error", "Enter valid holiday details and select at least one employee.");
-  if (parsed.data.payrollDate < period || parsed.data.payrollDate > payPeriodForDate(period).end) adminRedirect(period, "error", "The holiday date must be within the selected pay period.");
+  if (parsed.data.payrollDate < period || parsed.data.payrollDate > fourteenDayPeriodStarting(period).end) adminRedirect(period, "error", "The holiday date must be within the selected pay period.");
   try { await addPaidHolidayForEmployees({ actorId: session.userId, ...parsed.data }); }
   catch { adminRedirect(period, "error", "Unable to add the holiday. It may already exist for one of the selected employees."); }
   revalidatePath("/time-card/admin");
@@ -112,7 +112,7 @@ export async function addAdjustmentAction(formData: FormData) {
   try { minutes = hoursToMinutes(String(formData.get("hours") || "")); } catch { /* validation below */ }
   const parsed = adjustmentSchema.safeParse({ employeeId, payrollDate: formData.get("payrollDate"), minutes, reason: formData.get("reason") });
   if (!parsed.success) adminRedirect(period, "error", "Enter signed hours that convert to whole minutes, a date, and a reason.", employeeId);
-  if (parsed.data.payrollDate < period || parsed.data.payrollDate > payPeriodForDate(period).end) adminRedirect(period, "error", "The adjustment date must be within the selected pay period.", employeeId);
+  if (parsed.data.payrollDate < period || parsed.data.payrollDate > fourteenDayPeriodStarting(period).end) adminRedirect(period, "error", "The adjustment date must be within the selected pay period.", employeeId);
   try { await addPaidTime({ actorId: session.userId, employeeId, type: "ADJUSTMENT", payrollDate: parsed.data.payrollDate, minutes: parsed.data.minutes, note: parsed.data.reason, reason: parsed.data.reason }); }
   catch { adminRedirect(period, "error", "Unable to add the adjustment. Confirm the employee and try again.", employeeId); }
   revalidatePath("/time-card/admin");

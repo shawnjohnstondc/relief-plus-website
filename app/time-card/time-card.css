@@ -54,6 +54,11 @@
 .time-card-period-nav span { color: #667181; font-size: .72rem; }
 .time-card-period-nav a { color: #12233f; font-size: .85rem; font-weight: 700; text-decoration: none; }
 .time-card-period-nav a:last-child { text-align: right; }
+.time-card-period-picker { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 1rem 2rem; margin: 1rem 0; padding: 1.25rem; }
+.time-card-period-picker p { max-width: 44rem; margin-bottom: 0; }
+.time-card-period-picker form { grid-template-columns: minmax(11rem, 1fr) auto; align-items: end; }
+.time-card-period-picker label { min-width: 11rem; }
+.time-card-period-shortcut { grid-column: 1 / -1; color: #6e511b; font-size: .86rem; font-weight: 700; text-underline-offset: 4px; }
 .time-card-payroll-grid { grid-template-columns: repeat(3, 1fr); }
 .time-card-employee-card { display: block; padding: 1.1rem; color: inherit; text-decoration: none; box-shadow: none; }
 .time-card-employee-card.is-selected { border-color: #82601f; box-shadow: 0 0 0 2px rgba(130,96,31,.12); }
@@ -95,6 +100,16 @@
 .time-card-historical-list dl div { border-radius: .65rem; background: rgba(18,35,63,.035); padding: .55rem .65rem; }
 .time-card-historical-list dt { color: #667181; font-size: .7rem; }
 .time-card-historical-list dd { margin: .18rem 0 0; font-size: .88rem; font-variant-numeric: tabular-nums; font-weight: 750; }
+.time-card-daily-report { margin: 1rem 0; overflow: hidden; }
+.time-card-daily-report > .time-card-muted { margin: 0; padding: 0 1.25rem 1rem; font-size: .84rem; }
+.time-card-table-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.time-card-daily-report table { width: 100%; min-width: 38rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.time-card-daily-report th, .time-card-daily-report td { border-top: 1px solid rgba(18,35,63,.09); padding: .75rem 1rem; text-align: right; white-space: nowrap; }
+.time-card-daily-report th:first-child { position: sticky; left: 0; z-index: 1; background: #fbfaf7; text-align: left; }
+.time-card-daily-report thead th { background: #f0ede5; color: #263752; font-size: .75rem; }
+.time-card-daily-report tbody th { color: #566274; font-size: .8rem; }
+.time-card-daily-report td { font-weight: 700; }
+.time-card-daily-report tfoot th, .time-card-daily-report tfoot td { border-top: 2px solid rgba(18,35,63,.2); background: #f0ede5; font-weight: 800; }
 
 @media (max-width: 760px) {
   .time-card-shell { width: min(100% - 1rem, 72rem); }
@@ -114,6 +129,9 @@
   .time-card-admin-heading { flex-direction: column; }
   .time-card-export { width: 100%; justify-content: center; }
   .time-card-historical-list article { grid-template-columns: 1fr; }
+  .time-card-period-picker { grid-template-columns: 1fr; align-items: stretch; }
+  .time-card-period-picker form { grid-template-columns: 1fr; }
+  .time-card-period-shortcut { grid-column: auto; }
 }
 
 @media (max-width: 390px) {

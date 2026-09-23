@@ -1,14 +1,17 @@
 import { describe, expect, it } from "vitest";
 import {
   decimalHours,
+  dailyWorkedMinutes,
   dollarsToCents,
   estimateGrossPay,
   hoursToMinutes,
   chicagoLocalDateTimeToInstant,
   elapsedWholeMinutes,
   payPeriodForDate,
+  fourteenDayPeriodStarting,
   payrollTotals,
   shiftPayPeriod,
+  trailingFourteenDays,
 } from "./payroll";
 
 describe("exact-minute payroll calculations", () => {
@@ -109,5 +112,30 @@ describe("14-calendar-day pay periods", () => {
 
   it("supports periods before the anchor", () => {
     expect(payPeriodForDate("2026-08-09")).toEqual({ start: "2026-07-27", end: "2026-08-09", index: -1 });
+  });
+
+  it("supports any administrator-selected 14-day start date without snapping to the anchor", () => {
+    expect(fourteenDayPeriodStarting("2026-09-10")).toEqual({ start: "2026-09-10", end: "2026-09-23", index: 2 });
+    expect(shiftPayPeriod(fourteenDayPeriodStarting("2026-09-10"), -1)).toEqual({ start: "2026-08-27", end: "2026-09-09", index: 1 });
+  });
+
+  it("provides a trailing 14-day window ending today", () => {
+    expect(trailingFourteenDays(new Date("2026-09-23T17:00:00Z"))).toEqual({ start: "2026-09-10", end: "2026-09-23", index: 2 });
+  });
+});
+
+describe("daily worked-hour reporting", () => {
+  it("preserves all 14 dates and splits completed overnight time by local work date", () => {
+    const employeeId = "5ac8b4df-a17f-4bcb-b29d-e5c13f916e53";
+    const entries = [
+      { id: "e1", employeeId, clockIn: new Date("2026-09-11T04:00:00Z"), clockOut: new Date("2026-09-11T06:00:00Z"), source: "EMPLOYEE" as const, note: null, voidedAt: null },
+      { id: "e2", employeeId, clockIn: new Date("2026-09-12T14:00:00Z"), clockOut: null, source: "EMPLOYEE" as const, note: null, voidedAt: null },
+    ];
+    const daily = dailyWorkedMinutes(entries, fourteenDayPeriodStarting("2026-09-10"));
+
+    expect(daily).toHaveLength(14);
+    expect(daily.find((day) => day.date === "2026-09-10")?.workedMinutes).toBe(60);
+    expect(daily.find((day) => day.date === "2026-09-11")?.workedMinutes).toBe(60);
+    expect(daily.reduce((sum, day) => sum + day.workedMinutes, 0)).toBe(120);
   });
 });

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { addAdjustmentAction, addHolidayAction, addMissedTimeAction, adminClockAction, correctPunchAction, logoutAction, setPayRateAction, voidPunchAction } from "../actions";
-import { currencyFromCents, currentPayPeriod, decimalHours, elapsedWholeMinutes, localDateForInstant, payPeriodForDate, shiftPayPeriod } from "@/lib/time-card/payroll";
+import { currencyFromCents, currentPayPeriod, dailyWorkedMinutes, decimalHours, elapsedWholeMinutes, fourteenDayPeriodStarting, localDateForInstant, shiftPayPeriod, trailingFourteenDays } from "@/lib/time-card/payroll";
 import { formatHundredths, type HistoricalPayrollSummary } from "@/lib/time-card/historical-payroll";
 import { adminPayroll, auditHistory, historicalPayrollSummaries } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
@@ -13,6 +13,17 @@ function localInput(date: Date) {
   const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(date);
   const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
   return `${values.year}-${values.month}-${values.day}T${values.hour}:${values.minute}`;
+}
+
+const dailyDateFormatter = new Intl.DateTimeFormat("en-US", {
+  timeZone: "UTC",
+  weekday: "short",
+  month: "short",
+  day: "numeric",
+});
+
+function displayCalendarDate(date: string) {
+  return dailyDateFormatter.format(new Date(`${date}T12:00:00Z`));
 }
 
 function HistoricalPayrollPanel({ items, selectedId, period, employeeId }: { items: HistoricalPayrollSummary[]; selectedId?: string; period: string; employeeId: string }) {
@@ -41,7 +52,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   requireRole(session, "ADMIN");
   const params = await searchParams;
   let period;
-  try { period = params.period ? payPeriodForDate(params.period) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
+  try { period = params.period ? fourteenDayPeriodStarting(params.period) : currentPayPeriod(); } catch { period = currentPayPeriod(); }
   const [payroll, audit, historical] = await Promise.all([adminPayroll(period), auditHistory(params.employee), historicalPayrollSummaries()]);
   const selected = payroll.find((row) => row.employee.id === params.employee) ?? payroll[0];
   const selectedHistorical = selected ? historical.filter((item) => item.employeeId === selected.employee.id) : [];
@@ -49,6 +60,9 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const next = shiftPayPeriod(period, 1);
   const now = new Date();
   const today = localDateForInstant(now);
+  const trailing = trailingFourteenDays(now);
+  const dailyDates = dailyWorkedMinutes([], period).map((day) => day.date);
+  const dailyByEmployee = new Map(payroll.map((row) => [row.employee.id, new Map(dailyWorkedMinutes(row.entries, period).map((day) => [day.date, day.workedMinutes]))]));
   const todayMinutes = selected?.entries.filter((entry) => localDateForInstant(new Date(entry.clockIn)) === today).reduce((sum, entry) => sum + elapsedWholeMinutes(new Date(entry.clockIn), entry.clockOut ? new Date(entry.clockOut) : now), 0) ?? 0;
 
   return <main className="time-card-shell time-card-admin">
@@ -56,9 +70,21 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     <section className="time-card-admin-heading"><div><p className="time-card-eyebrow">Administrator</p><h1>Payroll overview</h1><p className="time-card-muted">Signed in as {session.name}</p></div><a className="time-card-button time-card-export" href={`/time-card/admin/export?period=${period.start}`}>Export CSV</a></section>
     {params.error && <p className="time-card-alert time-card-alert-error" role="alert">{params.error}</p>}
     {params.success && <p className="time-card-alert time-card-alert-success" role="status">{params.success}</p>}
+    <section className="time-card-card time-card-period-picker" aria-labelledby="period-picker-heading">
+      <div><p className="time-card-eyebrow">Reporting window</p><h2 id="period-picker-heading">Choose any 14-day period</h2><p className="time-card-muted">Changing these dates only changes the records shown and exported. It does not alter or delete stored time-card data.</p></div>
+      <form action="/time-card/admin" method="get" className="time-card-form">
+        {params.employee && <input type="hidden" name="employee" value={params.employee}/>}<label>First day<input type="date" name="period" defaultValue={period.start} max={today} required/></label><button className="time-card-small-button" type="submit">Show 14 days</button>
+      </form>
+      <Link className="time-card-period-shortcut" href={`?period=${trailing.start}${params.employee ? `&employee=${params.employee}` : ""}`}>View the last 14 days ({displayCalendarDate(trailing.start)}–{displayCalendarDate(trailing.end)})</Link>
+    </section>
     <nav className="time-card-period-nav" aria-label="Pay period"><Link href={`?period=${previous.start}`}>← Previous</Link><div><strong>{period.start} – {period.end}</strong><span>14-day pay period</span></div><Link href={`?period=${next.start}`}>Next →</Link></nav>
     {payroll.some((row) => row.openPunch) && <section className="time-card-alert time-card-alert-warning"><strong>Open punch warning</strong><span>{payroll.filter((row) => row.openPunch).map((row) => row.employee.name).join(", ")} currently {payroll.filter((row) => row.openPunch).length === 1 ? "has" : "have"} an open punch.</span></section>}
     <section className="time-card-payroll-grid">{payroll.map((row) => <Link key={row.employee.id} className={`time-card-card time-card-employee-card ${selected?.employee.id === row.employee.id ? "is-selected" : ""}`} href={`?period=${period.start}&employee=${row.employee.id}`}><div><h2>{row.employee.name}</h2>{row.openPunch && <span className="time-card-open-badge">Open punch</span>}</div><dl><div><dt>Worked</dt><dd>{decimalHours(row.totals.workedMinutes)}</dd></div><div><dt>Holiday</dt><dd>{decimalHours(row.totals.holidayMinutes)}</dd></div><div><dt>Adjustments</dt><dd>{decimalHours(row.totals.adjustmentMinutes)}</dd></div><div className="total"><dt>Total paid</dt><dd>{decimalHours(row.totals.totalPaidMinutes)}</dd></div><div><dt>Hourly rate</dt><dd>{row.currentRate ? currencyFromCents(row.currentRate.hourlyRateCents) : "Not set"}</dd></div><div><dt>Est. gross</dt><dd>{row.gross.cents === null ? "Rate needed" : currencyFromCents(row.gross.cents)}</dd></div></dl></Link>)}</section>
+    <section className="time-card-card time-card-daily-report" aria-labelledby="daily-hours-heading">
+      <div className="time-card-section-title"><div><p className="time-card-eyebrow">Daily detail</p><h2 id="daily-hours-heading">Hours worked by day</h2></div><span>{displayCalendarDate(period.start)}–{displayCalendarDate(period.end)}</span></div>
+      <p className="time-card-muted">Completed punches are grouped by the actual Central Time work date. Overnight punches are divided between the dates worked. Open punches appear after clock-out.</p>
+      <div className="time-card-table-scroll"><table><thead><tr><th scope="col">Date</th>{payroll.map((row) => <th scope="col" key={row.employee.id}>{row.employee.name}</th>)}</tr></thead><tbody>{dailyDates.map((date) => <tr key={date}><th scope="row"><time dateTime={date}>{displayCalendarDate(date)}</time></th>{payroll.map((row) => <td key={row.employee.id}>{decimalHours(dailyByEmployee.get(row.employee.id)?.get(date) ?? 0)}</td>)}</tr>)}</tbody><tfoot><tr><th scope="row">14-day total</th>{payroll.map((row) => <td key={row.employee.id}>{decimalHours(row.totals.workedMinutes)}</td>)}</tr></tfoot></table></div>
+    </section>
     {selected && <HistoricalPayrollPanel items={selectedHistorical} selectedId={params.history} period={period.start} employeeId={selected.employee.id} />}
     {selected && <>
       <section className="time-card-card"><div className="time-card-section-title"><div><p className="time-card-eyebrow">Employee detail</p><h2>{selected.employee.name}</h2></div><span>{selected.entries.length} punches</span></div>

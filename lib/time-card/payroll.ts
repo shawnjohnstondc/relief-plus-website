@@ -64,8 +64,25 @@ export function payPeriodForDate(
   };
 }
 
+export function fourteenDayPeriodStarting(start: string): PayPeriod {
+  const anchorTimestamp = parseDate(PAY_PERIOD_ANCHOR);
+  const startTimestamp = parseDate(start);
+
+  return {
+    start: formatDate(startTimestamp),
+    end: addCalendarDays(start, PAY_PERIOD_LENGTH_DAYS - 1),
+    index: Math.floor((startTimestamp - anchorTimestamp) / DAY_MS / PAY_PERIOD_LENGTH_DAYS),
+  };
+}
+
+export function trailingFourteenDays(now = new Date()): PayPeriod {
+  return fourteenDayPeriodStarting(
+    addCalendarDays(localDateForInstant(now), -(PAY_PERIOD_LENGTH_DAYS - 1)),
+  );
+}
+
 export function shiftPayPeriod(period: PayPeriod, offset: number): PayPeriod {
-  return payPeriodForDate(
+  return fourteenDayPeriodStarting(
     addCalendarDays(period.start, offset * PAY_PERIOD_LENGTH_DAYS),
   );
 }
@@ -83,6 +100,32 @@ export function elapsedWholeMinutes(clockIn: Date, clockOut: Date) {
 export function decimalHours(minutes: number) {
   if (!Number.isInteger(minutes)) throw new Error("Payroll minutes must be integers.");
   return (minutes / 60).toFixed(2);
+}
+
+export function dailyWorkedMinutes(entries: TimeEntry[], period: PayPeriod) {
+  const totals = new Map<string, number>();
+  for (let date = period.start; date <= period.end; date = addCalendarDays(date, 1)) {
+    totals.set(date, 0);
+  }
+
+  for (const entry of entries) {
+    if (!entry.clockOut) continue;
+    const start = new Date(entry.clockIn);
+    const minutes = elapsedWholeMinutes(start, new Date(entry.clockOut));
+    if (minutes === 0) continue;
+    const startDate = localDateForInstant(start);
+    const finalMinuteDate = localDateForInstant(new Date(start.getTime() + (minutes - 1) * 60_000));
+    if (startDate === finalMinuteDate) {
+      if (totals.has(startDate)) totals.set(startDate, (totals.get(startDate) ?? 0) + minutes);
+      continue;
+    }
+    for (let offset = 0; offset < minutes; offset += 1) {
+      const date = localDateForInstant(new Date(start.getTime() + offset * 60_000));
+      if (totals.has(date)) totals.set(date, (totals.get(date) ?? 0) + 1);
+    }
+  }
+
+  return [...totals].map(([date, workedMinutes]) => ({ date, workedMinutes }));
 }
 
 export function dollarsToCents(value: string) {
