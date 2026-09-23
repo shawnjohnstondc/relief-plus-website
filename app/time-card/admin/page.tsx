@@ -6,6 +6,7 @@ import { formatHundredths, type HistoricalPayrollSummary } from "@/lib/time-card
 import { adminPayroll, auditHistory, historicalPayrollSummaries } from "@/lib/time-card/repository";
 import { requireRole } from "@/lib/time-card/security";
 import { getSession } from "@/lib/time-card/session";
+import { DailyHoursSelector } from "./daily-hours-selector";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const trailing = trailingFourteenDays(now);
   const dailyDates = dailyWorkedMinutes([], period).map((day) => day.date);
   const dailyByEmployee = new Map(payroll.map((row) => [row.employee.id, new Map(dailyWorkedMinutes(row.entries, period).map((day) => [day.date, day.workedMinutes]))]));
+  const dailyEmployees = payroll.map((row) => ({ id: row.employee.id, name: row.employee.name, minutes: dailyDates.map((date) => dailyByEmployee.get(row.employee.id)?.get(date) ?? 0) }));
   const todayMinutes = selected?.entries.filter((entry) => localDateForInstant(new Date(entry.clockIn)) === today).reduce((sum, entry) => sum + elapsedWholeMinutes(new Date(entry.clockIn), entry.clockOut ? new Date(entry.clockOut) : now), 0) ?? 0;
 
   return <main className="time-card-shell time-card-admin">
@@ -82,8 +84,8 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     <section className="time-card-payroll-grid">{payroll.map((row) => <Link key={row.employee.id} className={`time-card-card time-card-employee-card ${selected?.employee.id === row.employee.id ? "is-selected" : ""}`} href={`?period=${period.start}&employee=${row.employee.id}`}><div><h2>{row.employee.name}</h2>{row.openPunch && <span className="time-card-open-badge">Open punch</span>}</div><dl><div><dt>Worked</dt><dd>{decimalHours(row.totals.workedMinutes)}</dd></div><div><dt>Holiday</dt><dd>{decimalHours(row.totals.holidayMinutes)}</dd></div><div><dt>Adjustments</dt><dd>{decimalHours(row.totals.adjustmentMinutes)}</dd></div><div className="total"><dt>Total paid</dt><dd>{decimalHours(row.totals.totalPaidMinutes)}</dd></div><div><dt>Hourly rate</dt><dd>{row.currentRate ? currencyFromCents(row.currentRate.hourlyRateCents) : "Not set"}</dd></div><div><dt>Est. gross</dt><dd>{row.gross.cents === null ? "Rate needed" : currencyFromCents(row.gross.cents)}</dd></div></dl></Link>)}</section>
     <section className="time-card-card time-card-daily-report" aria-labelledby="daily-hours-heading">
       <div className="time-card-section-title"><div><p className="time-card-eyebrow">Daily detail</p><h2 id="daily-hours-heading">Hours worked by day</h2></div><span>{displayCalendarDate(period.start)}–{displayCalendarDate(period.end)}</span></div>
-      <p className="time-card-muted">Completed punches are grouped by the actual Central Time work date. Overnight punches are divided between the dates worked. Open punches appear after clock-out.</p>
-      <div className="time-card-table-scroll"><table><thead><tr><th scope="col">Date</th>{payroll.map((row) => <th scope="col" key={row.employee.id}>{row.employee.name}</th>)}</tr></thead><tbody>{dailyDates.map((date) => <tr key={date}><th scope="row"><time dateTime={date}>{displayCalendarDate(date)}</time></th>{payroll.map((row) => <td key={row.employee.id}>{decimalHours(dailyByEmployee.get(row.employee.id)?.get(date) ?? 0)}</td>)}</tr>)}</tbody><tfoot><tr><th scope="row">14-day total</th>{payroll.map((row) => <td key={row.employee.id}>{decimalHours(row.totals.workedMinutes)}</td>)}</tr></tfoot></table></div>
+      <p className="time-card-muted">Select any combination of days below to add their hours. Completed punches are grouped by the actual Central Time work date. Overnight punches are divided between the dates worked. Open punches appear after clock-out.</p>
+      <DailyHoursSelector dates={dailyDates.map((date) => ({ date, label: displayCalendarDate(date) }))} employees={dailyEmployees}/>
     </section>
     {selected && <HistoricalPayrollPanel items={selectedHistorical} selectedId={params.history} period={period.start} employeeId={selected.employee.id} />}
     {selected && <>
