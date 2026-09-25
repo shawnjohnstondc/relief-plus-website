@@ -47,6 +47,12 @@ export const treatmentEducation: Partial<Record<PillarPageData["path"], Educatio
 };
 
 export const treatmentAnswerBlocks: Partial<Record<PillarPageData["path"], TreatmentAnswerBlock>> = {
+  "/dry-needling-lafayette": {
+    supportedTitle: "What dry needling may support",
+    supportedText: "Dry needling may provide short-term symptom relief for selected muscular pain and trigger-point presentations. When it helps, the useful goal is often a more comfortable opportunity to move, exercise, and progress rehabilitation.",
+    limitsTitle: "What dry needling does not prove or guarantee",
+    limitsText: "Dry needling is not acupuncture, does not inject medication, and is not automatically appropriate for every painful or tight muscle. A temporary twitch or soreness does not prove success, and the technique does not replace diagnosis, screening, or active rehabilitation when those are needed.",
+  },
   "/prp-therapy-lafayette": {
     supportedTitle: "What PRP may be used for",
     supportedText: "PRP may be discussed for selected joint, tendon, or soft-tissue concerns after the diagnosis, prior care, health context, and goals are reviewed. Research is most developed for certain diagnoses, including knee osteoarthritis, and rehabilitation may remain part of the plan.",
@@ -70,6 +76,12 @@ export const treatmentAnswerBlocks: Partial<Record<PillarPageData["path"], Treat
     supportedText: "Shockwave may be considered for persistent plantar heel pain and selected tendinopathies, often alongside a progressive loading plan. Evidence and suitability vary by diagnosis, symptom duration, anatomy, and equipment, so a confirmed clinical target should guide its use.",
     limitsTitle: "What shockwave does not prove or guarantee",
     limitsText: "Shockwave is not appropriate for every tendon disorder or every stage of injury. It does not break away scar tissue, guarantee new tissue growth, replace exercise automatically, or establish that every painful tendon or plantar-fascia presentation is a candidate.",
+  },
+  "/trigger-point-injections-lafayette": {
+    supportedTitle: "What a trigger-point injection may support",
+    supportedText: "A trigger-point injection may be considered when examination identifies a localized muscular pain generator that reproduces familiar symptoms. Symptom reduction may make movement, sleep, work, or rehabilitation more tolerable for a selected patient.",
+    limitsTitle: "What a trigger-point injection does not prove or guarantee",
+    limitsText: "Tenderness alone does not confirm a trigger point or establish that an injection is appropriate. The procedure does not correct every cause of neck, back, shoulder, or hip pain, and research has not established one injectate as best for every chronic myofascial presentation.",
   },
   "/regenerative-cellular-therapy-lafayette": {
     supportedTitle: "What a cellular-product discussion should address",

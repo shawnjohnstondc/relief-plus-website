@@ -1,11 +1,25 @@
 import InfoPageShell from "@/app/components/InfoPageShell";
 import JsonLd from "@/app/components/JsonLd";
-import { createPageMetadata, createServiceStructuredData } from "@/lib/seo";
+import { createFaqStructuredData, createPageMetadata, createServiceStructuredData } from "@/lib/seo";
 
 const path = "/invisared-weight-loss-lafayette" as const;
 const title = "InvisaRED Body Contouring in Lafayette, LA";
 const description =
   "Learn about InvisaRED body-contouring and circumference-focused wellness services at Relief Plus in Lafayette, serving Carencro and Acadiana.";
+const faqs = [
+  {
+    question: "Is InvisaRED medical weight-loss treatment?",
+    answer: "No. Relief Plus presents InvisaRED as a body-contouring and circumference-focused wellness service, not as medical treatment for obesity, diabetes, metabolic disease, or another health condition.",
+  },
+  {
+    question: "Does Relief Plus guarantee inches or pounds lost with InvisaRED?",
+    answer: "No. Relief Plus does not guarantee a particular change in inches, pounds, body area, number of sessions, or permanence of results. Individual response cannot be predicted.",
+  },
+  {
+    question: "How do I ask about an InvisaRED consultation?",
+    answer: "Call Relief Plus at 337-565-4200. Appointments are scheduled by phone, and the clinic can explain the service, practical expectations, cost, and whether another type of care better fits your goal.",
+  },
+];
 
 export const metadata = createPageMetadata({ title, description, path });
 
@@ -19,6 +33,7 @@ export default function InvisaRedPage() {
           path,
         })}
       />
+      <JsonLd data={createFaqStructuredData(faqs)} />
       <InfoPageShell
         path={path}
         breadcrumbLabel="InvisaRED Body Contouring"
@@ -80,6 +95,11 @@ export default function InvisaRedPage() {
               "InvisaRED is not grouped under chiropractic, physical therapy, or regenerative medicine. Those services address musculoskeletal examination, rehabilitation, or carefully selected clinical treatment options. Body contouring has a different purpose and should be evaluated on its own terms.",
               "Relief Plus serves people from Lafayette, Carencro, and throughout Acadiana. A phone conversation can help determine whether an InvisaRED consultation or a different type of care is the appropriate next step.",
             ],
+          },
+          {
+            eyebrow: "Common Questions",
+            title: "Clear answers before you decide.",
+            items: faqs.map(({ question, answer }) => ({ title: question, description: answer })),
           },
         ]}
         cta={{

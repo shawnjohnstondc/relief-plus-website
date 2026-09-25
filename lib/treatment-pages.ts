@@ -208,6 +208,11 @@ export const triggerPointPage: PillarPageData = {
     "Use based on clinical findings rather than symptoms alone",
     "Coordination with movement-based care when appropriate",
   ],
+  provider: {
+    name: "Dr. Ashton Reed",
+    href: "/dr-ashton-reed-md",
+    description: "Ashton Reed, M.D., provides medical oversight for selected injection-based care at Relief Plus. A clinical evaluation determines whether a trigger-point injection, another treatment, or referral is appropriate.",
+  },
   overviewTitle: "Localized muscle pain can be part of a larger pattern.",
   overviewParagraphs: [
     "A trigger point is a sensitive area within muscle that may contribute to local discomfort, pain felt elsewhere, tightness, or restricted movement. A trigger point injection places medication into a selected muscular area after clinical evaluation.",
@@ -272,6 +277,10 @@ export const triggerPointPage: PillarPageData = {
       answer: "No. The appropriate response depends on the examination, symptom pattern, contributing factors, and whether another treatment better fits the problem.",
     },
     {
+      question: "How is a trigger-point injection different from dry needling?",
+      answer: "A trigger-point injection uses a hollow needle to place an injectate into a selected muscular area. Dry needling uses a thin, solid filament needle and does not inject medication. The examination, clinician scope, risks, and treatment goal guide which option—if either—fits.",
+    },
+    {
       question: "Can rehabilitation still be important?",
       answer: "Yes. Rehabilitation may address mobility, strength, tolerance, and movement factors that an injection alone does not address.",
     },
@@ -296,6 +305,11 @@ export const dryNeedlingPage: PillarPageData = {
     "Often paired with movement or rehabilitation strategies",
     "Selected according to tolerance, goals, and appropriateness",
   ],
+  provider: {
+    name: "Dr. Shawn Johnston",
+    href: "/dr-shawn-johnston-dc",
+    description: "Shawn D. Johnston, D.C., provides dry needling within a musculoskeletal evaluation and movement-focused care plan. His provider page describes his owner-verified training and clinical interests.",
+  },
   featureImage: {
     src: "/dry-needling-shoulder-relief-plus.png",
     alt: "Shawn D. Johnston, D.C., performing dry needling for a patient’s shoulder at Relief Plus",
@@ -365,6 +379,10 @@ export const dryNeedlingPage: PillarPageData = {
     {
       question: "Does dry needling include an injection?",
       answer: "No medication is injected. The technique uses a thin, solid filament needle applied to selected musculoskeletal areas.",
+    },
+    {
+      question: "What problems may be evaluated for dry needling?",
+      answer: "Dry needling may be discussed when examined muscular sensitivity, trigger points, or movement restriction contribute to concerns such as neck, shoulder, back, hip, or plantar-heel pain. A symptom or diagnosis alone does not establish that dry needling is appropriate.",
     },
     {
       question: "Can dry needling be combined with exercise or rehabilitation?",
@@ -480,12 +498,17 @@ export const shockwavePage: PillarPageData = {
   seoDescription:
     "Shockwave therapy in Lafayette, LA at Relief Plus, using acoustic-wave treatment for selected persistent tendon and soft-tissue concerns.",
   heroDescription:
-    "Shockwave treatment uses an applicator on the skin to deliver sound-wave energy to a selected area. It may be considered for certain persistent tendon or heel problems. An assessment helps determine whether it fits alongside exercise and activity changes.",
+    "Musculoskeletal shockwave therapy—also called extracorporeal shock wave therapy or ESWT—uses an applicator on the skin to deliver acoustic-wave energy to a selected area. It may be considered for certain persistent tendon or heel problems. An assessment helps determine whether it fits alongside exercise and activity changes.",
   heroPoints: [
     "Non-surgical acoustic-wave treatment delivered externally",
     "Focused on selected persistent musculoskeletal concerns",
     "Combined with progressive loading or rehabilitation when appropriate",
   ],
+  provider: {
+    name: "Dr. Shawn Johnston",
+    href: "/dr-shawn-johnston-dc",
+    description: "Shawn D. Johnston, D.C., evaluates musculoskeletal and soft-tissue concerns at Relief Plus and considers shockwave therapy only when the diagnosis, treatment target, and broader recovery plan support its use.",
+  },
   overviewTitle: "A compelling non-invasive option when persistent soft-tissue pain is holding progress back.",
   overviewParagraphs: [
     "Shockwave therapy delivers acoustic-wave energy through an applicator placed over a selected musculoskeletal area. Treatment parameters and the number of visits depend on the clinical presentation and individual plan.",
@@ -543,7 +566,11 @@ export const shockwavePage: PillarPageData = {
   faqs: [
     {
       question: "What does shockwave therapy use?",
-      answer: "It uses acoustic waves delivered through an external applicator to a selected musculoskeletal treatment area.",
+      answer: "It uses acoustic waves delivered through an external applicator to a selected musculoskeletal treatment area. It may also be described as extracorporeal shock wave therapy or ESWT.",
+    },
+    {
+      question: "Is this page about kidney-stone or erectile-dysfunction treatment?",
+      answer: "No. Relief Plus describes musculoskeletal shockwave therapy for selected tendon, plantar-fascia, and soft-tissue concerns. It does not provide kidney-stone lithotripsy or advertise shockwave treatment for erectile dysfunction on this page.",
     },
     {
       question: "Is shockwave appropriate for every tendon problem?",
