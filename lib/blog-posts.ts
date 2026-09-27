@@ -44,6 +44,7 @@ import { phaseNineHBlogPosts } from "./phase-nine-h-blog-posts";
 import { authorityBlogPosts } from "./authority-blog-posts";
 import { sciaticaPeripheralNerveBlogPost } from "./sciatica-peripheral-nerve-blog-post";
 import { bowhuntingShoulderBlogPost } from "./bowhunting-shoulder-blog-post";
+import { thoracicOutletAcadianaBlogPost } from "./thoracic-outlet-acadiana-blog-post";
 
 const phaseNineBBlogPosts: BlogPost[] = [
   {
@@ -202,6 +203,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
 
 import { calculateReadTime } from "./article-reading-time";
 
-export const blogPosts: BlogPost[] = [sciaticaPeripheralNerveBlogPost, bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
+export const blogPosts: BlogPost[] = [thoracicOutletAcadianaBlogPost, sciaticaPeripheralNerveBlogPost, bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));
