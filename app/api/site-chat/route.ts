@@ -56,21 +56,24 @@ export async function POST(request: Request) {
     if (index.version !== 1 || !Array.isArray(index.chunks)) throw new Error("SITE_CONTENT_INVALID");
     const context = retrieveContext(index, input.question, input.history.map(h => h.question));
     const { output } = await generateText({
-      model: process.env.SITE_CHAT_MODEL || "openai/gpt-6-luna",
+      model: process.env.SITE_CHAT_MODEL || "openai/gpt-6.1-sol",
       system: answerInstructions,
       prompt: JSON.stringify({ WEBSITE_PASSAGES: context, conversation: input.history, latestQuestion: input.question }),
       output: Output.object({ schema: modelAnswerSchema }),
       maxOutputTokens: 2200,
-      maxRetries: 0,
+      reasoning: "low",
+      maxRetries: 1,
       abortSignal: AbortSignal.any([request.signal, AbortSignal.timeout(30000)]),
-      providerOptions: { openai: { store: false } },
+      providerOptions: { openai: { store: false }, gateway: { models: ["openai/gpt-6-luna"] } },
     });
     return json(validateAnswer(output, context));
   } catch (error) {
     // Log only a classification; provider errors can otherwise include prompts.
     console.error("Site chat unavailable", error instanceof Error ? error.name : "UnknownError");
     const kind = error instanceof Error ? error.name : "UnknownError";
-    const code = kind.includes("Authentication") || kind.includes("LoadAPIKey") ? "AI_AUTH_REQUIRED"
+    const message = error instanceof Error ? error.message.toLowerCase() : "";
+    const code = /credits|billing|payment|balance/.test(message) ? "AI_BILLING_REQUIRED"
+      : /oidc|api.key|unauthorized|authentication|credential/.test(message) || kind.includes("Authentication") || kind.includes("LoadAPIKey") ? "AI_AUTH_REQUIRED"
       : kind.includes("Timeout") || kind.includes("Abort") ? "AI_TIMEOUT"
       : kind.includes("NoObject") || kind.includes("TypeValidation") ? "AI_OUTPUT_INVALID"
       : error instanceof Error && error.message.startsWith("SITE_CONTENT_") ? "SITE_CONTENT_UNAVAILABLE"
