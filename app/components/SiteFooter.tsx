@@ -23,6 +23,7 @@ export default function SiteFooter() {
           <p className="text-xs font-semibold uppercase tracking-[.22em] text-[#d5b765]">Patient Information</p>
           <div className="mt-4 grid gap-3 text-sm text-white/65">
             <Link href="/faq-lafayette" className="hover:text-white">FAQ</Link>
+            <Link href="/faq-lafayette/condition-library" className="hover:text-white">Condition Library</Link>
             <Link href="/hipaa-notice-of-privacy-practices" className="hover:text-white">HIPAA Notice</Link>
             <Link href="/good-faith-estimate" className="hover:text-white">Good Faith Estimate</Link>
             <Link href="/privacy-policy" className="hover:text-white">Website Privacy Policy</Link>

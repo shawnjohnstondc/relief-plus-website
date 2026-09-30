@@ -1,0 +1,672 @@
+[
+  {
+    "id": "ac-joint-sprain",
+    "title": "AC joint sprain",
+    "aliases": [
+      "acromioclavicular sprain",
+      "shoulder separation"
+    ],
+    "definition": "An AC joint sprain injures the ligaments where the collarbone meets the top of the shoulder. It often follows a fall onto the shoulder and ranges from a mild sprain to a separation.",
+    "symptoms": "Pain and tenderness on top of the shoulder may worsen with reaching across your chest or lying on that side. Swelling or a new bump can occur after a more significant injury.",
+    "care": "An examination determines the injury grade and whether imaging is needed. Care may include short-term protection followed by comfortable movement and progressive strengthening. Major separations or persistent problems may need orthopedic care."
+  },
+  {
+    "id": "achilles-tendinopathy",
+    "title": "Achilles tendinopathy",
+    "aliases": [
+      "Achilles tendonitis",
+      "Achilles tendon pain"
+    ],
+    "definition": "Achilles tendinopathy is a painful problem in the tendon that connects the calf muscles to the heel. It often develops when walking, running or jumping loads exceed what the tendon can currently tolerate.",
+    "symptoms": "Pain or stiffness at the back of the heel or just above it is common, especially on the first steps in the morning or with activity.",
+    "care": "Care usually includes adjusting aggravating activity and gradually rebuilding calf strength with a tailored loading program. A sudden pop with difficulty pushing off needs prompt assessment for a tendon tear."
+  },
+  {
+    "id": "acute-cervical-torticollis",
+    "title": "Acute cervical torticollis",
+    "aliases": [
+      "wry neck",
+      "acute torticollis"
+    ],
+    "definition": "Acute torticollis is a painful neck spasm that holds the head tilted or turned. It can begin suddenly, but an examination is needed to identify the cause.",
+    "symptoms": "The neck may feel stuck, and trying to turn it can be painful. Tightness may extend into the shoulder or upper back.",
+    "care": "After excluding injury or other important causes, care may include gentle movement, comfort measures and treatment of muscle tension. Do not force the neck into position. Fever, significant trauma or new neurological symptoms require prompt medical assessment."
+  },
+  {
+    "id": "acute-low-back-pain",
+    "title": "Acute low back pain",
+    "aliases": [
+      "new low back pain",
+      "acute lumbar pain"
+    ],
+    "definition": "Acute low back pain describes a recent episode of pain in the lower back. It is a symptom description, not an explanation of which tissue is causing the pain.",
+    "symptoms": "Pain, stiffness or muscle guarding may make bending, standing or getting out of a chair difficult. Leg pain, numbness or weakness need separate assessment.",
+    "care": "Care depends on the examination and often includes manageable daily activity, gradual movement and exercise. New bladder or bowel control problems or numbness around the groin require emergency care."
+  },
+  {
+    "id": "adductor-strain",
+    "title": "Adductor strain",
+    "aliases": [
+      "groin strain",
+      "pulled groin muscle"
+    ],
+    "definition": "An adductor strain is a stretch injury or tear of the inner-thigh muscles that help bring the legs together. It can happen with kicking, cutting or a sudden change in direction.",
+    "symptoms": "Inner-thigh or groin pain often increases when squeezing the legs together or stretching the inner thigh. A larger tear may cause bruising and difficulty walking.",
+    "care": "Care progresses from protecting the injured area to comfortable movement and gradual strengthening. Return to sport depends on strength and function, not simply a set number of days."
+  },
+  {
+    "id": "adhesive-capsulitis",
+    "title": "Adhesive capsulitis",
+    "aliases": [
+      "frozen shoulder"
+    ],
+    "definition": "Frozen shoulder occurs when the capsule around the shoulder joint becomes painful and stiff. Both moving the arm yourself and having someone else move it become limited.",
+    "symptoms": "Reaching overhead, reaching behind your back and rotating the arm may become difficult. Night pain is common, and stiffness can develop gradually.",
+    "care": "Treatment uses education, movement and stretching matched to the stage and irritability of the shoulder. A medical provider may discuss injections or other options if needed. Recovery varies and often takes months."
+  },
+  {
+    "id": "axillary-neuropathy",
+    "title": "Axillary neuropathy",
+    "aliases": [
+      "axillary nerve injury"
+    ],
+    "definition": "Axillary neuropathy is a problem affecting a nerve that supplies the shoulder's deltoid muscle and sensation over part of the outer shoulder. Injury or compression can interfere with its function.",
+    "symptoms": "Symptoms may include shoulder weakness, fatigue with lifting overhead or a patch of numbness over the outer shoulder. Pain is not always prominent.",
+    "care": "Assessment checks nerve function and possible causes, especially after a dislocation or injury. Care may include activity changes and supervised rehabilitation; persistent or worsening weakness may require specialist evaluation."
+  },
+  {
+    "id": "benign-paroxysmal-positional-vertigo",
+    "title": "Benign paroxysmal positional vertigo",
+    "aliases": [
+      "BPPV",
+      "positional vertigo"
+    ],
+    "definition": "BPPV is an inner-ear problem in which tiny crystals move into a balance canal where they do not belong. Head-position changes can then trigger brief spinning sensations.",
+    "symptoms": "Spinning may occur when rolling over in bed, lying back, looking up or bending down. Episodes are usually brief and can cause nausea or imbalance.",
+    "care": "A clinician identifies the affected canal and uses an appropriate repositioning maneuver, such as the Epley maneuver for certain cases. New dizziness with trouble speaking, double vision, weakness or difficulty walking needs emergency assessment."
+  },
+  {
+    "id": "proximal-biceps-tendinopathy",
+    "title": "Proximal biceps tendinopathy",
+    "aliases": [
+      "biceps tendonitis",
+      "shoulder biceps tendinopathy"
+    ],
+    "definition": "Proximal biceps tendinopathy affects the tendon of the biceps near the front of the shoulder. Repeated loading can make this tendon painful.",
+    "symptoms": "A deep ache at the front of the shoulder may worsen with overhead work, lifting or turning the palm upward against resistance.",
+    "care": "Care usually involves modifying painful loads, restoring comfortable shoulder movement and gradually strengthening the arm and shoulder. The examination also checks for associated rotator-cuff problems."
+  },
+  {
+    "id": "carpal-tunnel-syndrome",
+    "title": "Carpal tunnel syndrome",
+    "aliases": [
+      "carpal tunnel",
+      "median nerve compression"
+    ],
+    "definition": "Carpal tunnel syndrome occurs when the median nerve is compressed as it passes through the wrist. It can affect sensation and hand function.",
+    "symptoms": "Tingling or numbness often affects the thumb, index and middle fingers and part of the ring finger, sometimes waking you at night. Weakness or dropping objects can occur.",
+    "care": "Treatment may include a neutral-position wrist splint and changes to aggravating activities. Persistent numbness, weakness or muscle loss needs medical assessment; injections or surgery may be considered depending on severity."
+  },
+  {
+    "id": "cervical-disc-lesion",
+    "title": "Cervical disc lesion",
+    "aliases": [
+      "cervical disc herniation",
+      "herniated neck disc",
+      "bulging neck disc"
+    ],
+    "definition": "A cervical disc lesion is a problem in one of the cushions between the neck bones. A bulge or herniation may irritate nearby nerves, although some disc changes cause no symptoms.",
+    "symptoms": "Symptoms can include neck or shoulder-blade pain. If a nerve is affected, pain, tingling, numbness or weakness may extend into an arm or hand.",
+    "care": "An examination checks strength, sensation and movement. Many cases can be managed without surgery using appropriately selected activity and rehabilitation. Progressive weakness or signs of spinal-cord involvement need prompt medical evaluation."
+  },
+  {
+    "id": "whiplash",
+    "title": "Whiplash",
+    "aliases": [
+      "cervical hyperextension hyperflexion injury",
+      "acceleration deceleration injury"
+    ],
+    "definition": "Whiplash is an injury caused by a rapid back-and-forth movement of the neck, often during a collision. Muscles, ligaments and other neck structures may be affected.",
+    "symptoms": "Neck pain, stiffness and headaches may start immediately or develop over the following hours or days. Other symptoms after a collision need assessment rather than automatically being attributed to whiplash.",
+    "care": "After screening for serious injury, care commonly includes education, gentle movement and a gradual return to activity. Treatment is adjusted to symptoms and examination findings; a fixed recovery timetable does not fit everyone."
+  },
+  {
+    "id": "cervical-radiculopathy",
+    "title": "Cervical radiculopathy",
+    "aliases": [
+      "pinched nerve in the neck",
+      "neck nerve pain"
+    ],
+    "definition": "Cervical radiculopathy means a nerve root in the neck is irritated or compressed. Disc changes or narrowing around the nerve are possible causes.",
+    "symptoms": "Pain can travel from the neck into the shoulder or arm, with tingling, numbness or weakness. The pattern varies with the nerve involved.",
+    "care": "Care depends on the cause and neurological findings. Rehabilitation may help selected cases, while worsening weakness or coordination problems need medical review. New walking difficulty or loss of bladder or bowel control requires emergency assessment."
+  },
+  {
+    "id": "cervical-segmental-joint-restriction",
+    "title": "Cervical segmental joint restriction",
+    "aliases": [
+      "restricted neck joint",
+      "mechanical neck pain"
+    ],
+    "definition": "This term describes a neck joint that is not moving comfortably or as freely as expected on examination. It does not mean a bone is dislocated.",
+    "symptoms": "Local stiffness, tenderness and pain with turning or looking up may occur. Symptoms alone cannot identify a particular joint as the cause.",
+    "care": "Care may combine comfortable movement, exercise and selected manual therapy after screening for contraindications. Treatment aims to improve function rather than permanently put a bone back into place."
+  },
+  {
+    "id": "cervical-spinal-stenosis",
+    "title": "Cervical spinal stenosis",
+    "aliases": [
+      "cervical stenosis",
+      "neck spinal stenosis"
+    ],
+    "definition": "Cervical stenosis is narrowing of spaces in the neck that contain the spinal cord or nerve roots. The significance depends on whether nerve tissue is affected.",
+    "symptoms": "Some people have no symptoms. Others develop arm pain or numbness; hand clumsiness, weakness or balance changes may indicate spinal-cord involvement.",
+    "care": "Care is guided by neurological assessment and imaging when appropriate. Spinal-cord symptoms require prompt specialist evaluation. New walking problems, sudden loss of coordination or loss of bladder or bowel control require emergency care."
+  },
+  {
+    "id": "cervical-spondylosis",
+    "title": "Cervical spondylosis",
+    "aliases": [
+      "neck arthritis",
+      "cervical degenerative disc disease",
+      "cervical DDD"
+    ],
+    "definition": "Cervical spondylosis describes age-related changes in the neck's discs and joints. These changes are common and do not always cause pain.",
+    "symptoms": "Neck stiffness or aching may come and go. Arm tingling, numbness or weakness can occur if a nerve is affected.",
+    "care": "Care often focuses on staying active, comfortable neck movement and strengthening. Treatment depends on symptoms, not an X-ray alone. New walking or coordination problems need urgent medical assessment."
+  },
+  {
+    "id": "cervical-sprain-or-strain",
+    "title": "Cervical sprain or strain",
+    "aliases": [
+      "neck sprain",
+      "neck strain",
+      "pulled neck muscle"
+    ],
+    "definition": "A neck sprain injures ligaments, while a strain affects muscles or tendons. These injuries can occur together after excessive stretching or loading.",
+    "symptoms": "Neck aching, stiffness or spasm may worsen with movement and extend into the upper shoulders. Symptoms sometimes develop hours after the injury.",
+    "care": "After excluding serious injury, care commonly includes comfortable movement and gradual strengthening. Treatment is adapted to the examination, and prolonged immobilization is generally avoided unless specifically needed."
+  },
+  {
+    "id": "cervicogenic-headache",
+    "title": "Cervicogenic headache",
+    "aliases": [
+      "neck related headache",
+      "headache from the neck"
+    ],
+    "definition": "A cervicogenic headache is head pain referred from structures in the neck. Neck involvement should be assessed because not every headache with neck tension has this cause.",
+    "symptoms": "Pain may start near the upper neck or back of the head and spread forward. Neck stiffness or particular neck movements may accompany the headache.",
+    "care": "Care may include neck exercise and selected manual therapy after assessment. A sudden, unusually severe headache or a headache with new neurological symptoms requires emergency care."
+  },
+  {
+    "id": "cervicogenic-dizziness",
+    "title": "Cervicogenic dizziness",
+    "aliases": [
+      "cervicogenic vertigo",
+      "neck related dizziness"
+    ],
+    "definition": "This term describes dizziness thought to be associated with a neck problem after other causes have been evaluated. There is no single test that proves the neck is responsible.",
+    "symptoms": "Unsteadiness or a floating feeling may occur alongside neck pain or movement. True spinning can have an inner-ear cause and should not automatically be blamed on the neck.",
+    "care": "Assessment first considers inner-ear, neurological and other medical causes. If neck involvement is supported, rehabilitation may address neck movement and balance. Sudden neurological symptoms with dizziness require emergency care."
+  },
+  {
+    "id": "chondromalacia-patellae",
+    "title": "Chondromalacia patellae",
+    "aliases": [
+      "kneecap cartilage changes",
+      "chondromalacia"
+    ],
+    "definition": "Chondromalacia means changes in the cartilage under the kneecap. It can overlap with patellofemoral pain, but pain around the kneecap does not by itself prove cartilage damage.",
+    "symptoms": "Aching around or behind the kneecap may increase with stairs, squatting, kneeling or running. Clicking alone does not show how serious the problem is.",
+    "care": "Care often adjusts painful activity and builds hip and thigh strength while improving movement tolerance. Persistent locking, significant swelling or giving way needs assessment."
+  },
+  {
+    "id": "chronic-discogenic-low-back-pain",
+    "title": "Chronic discogenic low back pain",
+    "aliases": [
+      "discogenic back pain",
+      "chronic discogenic LBP"
+    ],
+    "definition": "Discogenic pain means a spinal disc is considered a contributor to back pain. Chronic means the pain has persisted; a scan showing disc changes alone does not establish the pain source.",
+    "symptoms": "Ongoing low back aching may vary with sitting, bending or loading. These symptoms overlap with other causes and need clinical assessment.",
+    "care": "Care is based on function and examination and may include activity pacing, movement and progressive strengthening."
+  },
+  {
+    "id": "chronic-pain",
+    "title": "Chronic pain",
+    "aliases": [
+      "persistent pain"
+    ],
+    "definition": "Chronic pain is pain that persists or keeps returning for more than three months. Pain can be influenced by tissue health, nervous-system sensitivity, sleep and other factors; it is real even when a scan does not fully explain it.",
+    "symptoms": "Pain may interfere with sleep, work, movement and daily routines. Symptoms can fluctuate, and a flare does not always mean new tissue damage.",
+    "care": "Care may combine understandable pain education, paced activity, exercise and support for sleep and coping. The goal is better function and quality of life, with medical care tailored to the underlying condition."
+  },
+  {
+    "id": "clavicle-fracture",
+    "title": "Clavicle fracture",
+    "aliases": [
+      "broken collarbone",
+      "collarbone fracture"
+    ],
+    "definition": "A clavicle fracture is a break in the collarbone, often after a fall or direct impact. It requires medical assessment and usually imaging.",
+    "symptoms": "Pain, swelling, bruising or a visible bump may follow the injury. Moving the arm can be difficult or painful.",
+    "care": "A clinician determines whether a sling and follow-up are sufficient or orthopedic treatment is needed. Do not try to reposition the bone. An open wound, threatened skin or a cold or numb arm needs urgent care."
+  },
+  {
+    "id": "coccydynia",
+    "title": "Coccydynia",
+    "aliases": [
+      "tailbone pain",
+      "coccyx pain"
+    ],
+    "definition": "Coccydynia means pain around the tailbone at the base of the spine. It can follow a fall, childbirth or prolonged pressure, and sometimes has no clear trigger.",
+    "symptoms": "Pain often increases with sitting, leaning backward in a chair or rising from sitting. The area may be tender.",
+    "care": "Care may include reducing pressure with suitable seating, activity changes and tailored rehabilitation. Persistent pain or pain after a significant injury should be assessed to identify the cause."
+  },
+  {
+    "id": "costovertebral-joint-dysfunction",
+    "title": "Costovertebral joint dysfunction",
+    "aliases": [
+      "rib joint pain",
+      "costovertebral dysfunction"
+    ],
+    "definition": "This term describes pain or restricted movement at the joints where a rib meets the spine. Chest and rib pain have other causes, so a joint problem should not be assumed.",
+    "symptoms": "Pain near the mid-back may extend along a rib and change with twisting, reaching or breathing. These features do not rule out a heart or lung problem.",
+    "care": "After important medical causes are excluded, care may use gentle mobility, exercise and selected manual therapy. New unexplained chest pain, shortness of breath or chest pressure requires urgent medical care."
+  },
+  {
+    "id": "cubital-tunnel-syndrome",
+    "title": "Cubital tunnel syndrome",
+    "aliases": [
+      "ulnar nerve entrapment",
+      "ulnar nerve compression at elbow"
+    ],
+    "definition": "Cubital tunnel syndrome occurs when the ulnar nerve is irritated or compressed near the elbow. Bending the elbow for long periods or leaning on it can aggravate the nerve.",
+    "symptoms": "Tingling or numbness commonly affects the little finger and part of the ring finger. More advanced problems may reduce grip strength or hand coordination.",
+    "care": "Care often reduces prolonged elbow bending and direct pressure; a clinician may recommend nighttime support. Persistent numbness, weakness or muscle wasting warrants medical assessment."
+  },
+  {
+    "id": "de-quervain-tenosynovitis",
+    "title": "De Quervain tenosynovitis",
+    "aliases": [
+      "de Quervain's",
+      "dequervains",
+      "thumb tendonitis"
+    ],
+    "definition": "De Quervain tenosynovitis is irritation around two tendons on the thumb side of the wrist. Repeated lifting, gripping or twisting can make the area painful.",
+    "symptoms": "Pain near the base of the thumb may worsen with gripping, lifting a child or moving the thumb. Local swelling can occur.",
+    "care": "Care may include modifying painful tasks, temporary thumb support and a graded return to movement. A medical provider may consider an injection or other treatment if symptoms persist."
+  },
+  {
+    "id": "dysfunctional-breathing",
+    "title": "Dysfunctional breathing",
+    "aliases": [
+      "breathing pattern disorder"
+    ],
+    "definition": "Dysfunctional breathing describes an inefficient or irregular breathing pattern. It may involve excessive upper-chest movement, breath holding or overbreathing, but breathlessness can also have a medical cause.",
+    "symptoms": "A person may notice frequent sighing, upper-chest effort or difficulty settling into a comfortable breathing rhythm. These symptoms alone do not establish the diagnosis.",
+    "care": "Once medical causes are addressed, guided breathing practice may be part of rehabilitation. New or severe shortness of breath, especially with chest pain, needs urgent medical care."
+  },
+  {
+    "id": "extension-biased-low-back-pain",
+    "title": "Extension-biased low back pain",
+    "aliases": [
+      "extension biased LBP",
+      "extension preference back pain"
+    ],
+    "definition": "An extension preference means an assessment finds that selected backward-bending movements reduce back symptoms or bring leg symptoms closer toward the back. It is a movement response, not a separate structural diagnosis.",
+    "symptoms": "Certain positions or repeated movements ease symptoms while others worsen them. The useful direction cannot reliably be chosen from the location of pain alone.",
+    "care": "A clinician chooses tolerable exercises based on your response and monitors symptoms. Do not keep forcing a movement that sends pain farther down the leg or causes new numbness or weakness."
+  },
+  {
+    "id": "extension-or-retraction-biased-neck-pain",
+    "title": "Extension or retraction-biased neck pain",
+    "aliases": [
+      "extension retraction biased neck pain",
+      "neck retraction preference"
+    ],
+    "definition": "This describes neck symptoms that improve with selected backward-gliding or extension movements during an assessment. It does not mean everyone with neck pain should perform these movements.",
+    "symptoms": "Neck or arm symptoms may improve in one direction and worsen in another. A retreat of arm pain toward the neck can be a useful response during testing.",
+    "care": "Exercises are chosen and progressed according to the examination. Stop a movement that worsens radiating symptoms or produces new neurological symptoms and seek guidance."
+  },
+  {
+    "id": "femoroacetabular-impingement",
+    "title": "Femoroacetabular impingement",
+    "aliases": [
+      "FAI",
+      "hip impingement"
+    ],
+    "definition": "FAI syndrome involves symptoms associated with contact between the ball and socket of the hip during movement. Bone shape can contribute, but a shape change on imaging does not always cause pain.",
+    "symptoms": "Groin or front-of-hip aching may worsen with deep bending, pivoting or prolonged sitting. Some people notice catching or restricted motion.",
+    "care": "Care may include modifying provocative movements and improving hip strength and movement control. Persistent symptoms may need imaging or orthopedic review; rehabilitation does not reshape the hip bones."
+  },
+  {
+    "id": "fibromyalgia",
+    "title": "Fibromyalgia",
+    "aliases": [
+      "fibromyalgia syndrome"
+    ],
+    "definition": "Fibromyalgia is a condition involving widespread persistent pain and altered pain processing. It is not simply a problem in one injured muscle or joint.",
+    "symptoms": "Widespread tenderness, fatigue, unrefreshing sleep and difficulty concentrating can occur. Symptoms vary and can flare.",
+    "care": "Care is individualized and may combine gradually paced activity, sleep support, education and medical treatment. Goals focus on daily function and symptom management rather than a guaranteed cure."
+  },
+  {
+    "id": "fibular-head-joint-dysfunction",
+    "title": "Fibular head joint dysfunction",
+    "aliases": [
+      "proximal tibiofibular joint dysfunction",
+      "fibular head pain"
+    ],
+    "definition": "This describes a movement problem at the small joint where the fibula meets the tibia just below the outside of the knee. Other knee and nerve problems can cause similar pain.",
+    "symptoms": "Pain or tenderness near the outer knee may worsen with weight bearing or pressure over the fibular head.",
+    "care": "An examination checks joint stability and nerve function. Selected cases may benefit from movement, strengthening and manual therapy. New foot weakness or persistent numbness needs medical assessment."
+  },
+  {
+    "id": "flexion-biased-low-back-pain",
+    "title": "Flexion-biased low back pain",
+    "aliases": [
+      "flexion biased LBP",
+      "flexion preference back pain"
+    ],
+    "definition": "A flexion preference means selected forward-bending positions or movements ease back symptoms during an assessment. It describes a response to movement, not a diagnosis by itself.",
+    "symptoms": "Some people feel better sitting or bending forward and worse with standing or backward bending. This pattern alone cannot identify the cause.",
+    "care": "Exercise is selected according to the examination and symptom response. A movement should not be pushed if it sends symptoms farther down a leg or causes new weakness or numbness."
+  },
+  {
+    "id": "flexion-biased-neck-pain",
+    "title": "Flexion-biased neck pain",
+    "aliases": [
+      "flexion preference neck pain"
+    ],
+    "definition": "This term describes neck symptoms that improve with selected forward-bending movements during an assessment. The best movement direction differs between people.",
+    "symptoms": "Certain neck positions may ease pain while others aggravate it. Arm symptoms and neurological findings also guide care.",
+    "care": "A clinician selects and progresses comfortable exercises. Repeated bending is not automatically appropriate, especially if it worsens arm pain, tingling or weakness."
+  },
+  {
+    "id": "foot-hyperpronation",
+    "title": "Foot hyperpronation",
+    "aliases": [
+      "overpronation",
+      "excessive foot pronation"
+    ],
+    "definition": "Pronation is the normal inward rolling motion that helps the foot absorb load. Hyperpronation describes more of this motion than expected, but it is not automatically painful or harmful.",
+    "symptoms": "There may be no symptoms. When relevant to a painful problem, foot, ankle and leg movement are assessed together rather than judging the arch alone.",
+    "care": "Care is based on symptoms and function and may include footwear advice, strengthening or a trial of inserts. Not everyone with a low arch needs correction or custom orthotics."
+  },
+  {
+    "id": "shoulder-dislocation",
+    "title": "Shoulder dislocation",
+    "aliases": [
+      "glenohumeral dislocation",
+      "dislocated shoulder"
+    ],
+    "definition": "A shoulder dislocation occurs when the upper-arm bone comes out of its socket. It is different from an AC separation at the top of the shoulder.",
+    "symptoms": "Sudden severe shoulder pain, an unusual shoulder shape and inability to move the arm may follow an injury. Numbness can occur.",
+    "care": "A suspected dislocation needs urgent medical care. Do not try to put it back yourself. After reduction and assessment, rehabilitation rebuilds movement, strength and stability."
+  },
+  {
+    "id": "glenohumeral-internal-rotation-deficit",
+    "title": "Glenohumeral internal rotation deficit",
+    "aliases": [
+      "GIRD",
+      "throwing shoulder stiffness"
+    ],
+    "definition": "GIRD describes reduced inward rotation at the shoulder, often seen in overhead athletes. The amount of difference, total movement and symptoms determine whether it is a problem.",
+    "symptoms": "A thrower may notice shoulder stiffness, pain at the back of the shoulder or reduced throwing performance. More warm-up may seem necessary.",
+    "care": "Care may address shoulder mobility, strength and throwing workload. Stretching should be individualized rather than forcing a painful shoulder to match the other side."
+  },
+  {
+    "id": "gluteal-tendinopathy",
+    "title": "Gluteal tendinopathy",
+    "aliases": [
+      "gluteus medius tendinopathy",
+      "gluteus minimus tendinopathy"
+    ],
+    "definition": "Gluteal tendinopathy affects tendons on the outside of the hip that help stabilize the pelvis. It is a common contributor to lateral hip pain.",
+    "symptoms": "Pain may increase with stairs, walking, standing on one leg or lying on the affected side. Tenderness is often near the bony point of the outer hip.",
+    "care": "Care typically manages tendon load, reduces sustained compression and progressively strengthens the hip. A tailored plan may modify side-sleeping positions and activities that repeatedly provoke pain."
+  },
+  {
+    "id": "greater-trochanteric-pain-syndrome",
+    "title": "Greater trochanteric pain syndrome",
+    "aliases": [
+      "GTPS",
+      "lateral hip pain syndrome",
+      "trochanteric bursitis"
+    ],
+    "definition": "GTPS is an umbrella term for pain around the bony point on the outside of the hip. Tendons and nearby tissues, sometimes including a bursa, can contribute.",
+    "symptoms": "Outer-hip tenderness and pain with side lying, stairs or walking are common. Numbness or symptoms far below the knee may suggest another cause.",
+    "care": "Care usually includes activity changes and gradual hip strengthening. The examination identifies the likely contributors rather than assuming every case is bursitis."
+  },
+  {
+    "id": "hamstring-strain",
+    "title": "Hamstring strain",
+    "aliases": [
+      "pulled hamstring",
+      "hamstring tear"
+    ],
+    "definition": "A hamstring strain is an injury to muscles or tendons at the back of the thigh. It often happens during sprinting or a forceful stretch.",
+    "symptoms": "Sudden back-of-thigh pain may cause limping or difficulty continuing activity. Larger injuries can produce bruising or marked weakness.",
+    "care": "Care progresses from protection to graded strengthening and running preparation. A severe injury, extensive bruising or difficulty walking warrants assessment for a larger tear or tendon injury."
+  },
+  {
+    "id": "hand-osteoarthritis",
+    "title": "Hand osteoarthritis",
+    "aliases": [
+      "hand arthritis",
+      "finger osteoarthritis"
+    ],
+    "definition": "Hand osteoarthritis involves changes in cartilage and other joint tissues, often in the fingers or base of the thumb. Symptoms and severity vary.",
+    "symptoms": "Aching, stiffness, reduced grip and bony enlargement can occur. Tasks such as opening jars or pinching may be uncomfortable.",
+    "care": "Care may include comfortable movement, hand exercise, joint-protection strategies and selected supports. A medical provider can advise on pain treatment; exercise does not regrow lost cartilage."
+  },
+  {
+    "id": "heel-pad-syndrome",
+    "title": "Heel pad syndrome",
+    "aliases": [
+      "heel fat pad pain",
+      "heel pad pain"
+    ],
+    "definition": "Heel pad syndrome involves irritation or reduced cushioning in the fatty pad beneath the heel. It is one possible cause of heel pain, distinct from plantar-fascia pain.",
+    "symptoms": "Pain often feels like a deep bruise under the center of the heel. Barefoot walking or standing on hard floors may aggravate it.",
+    "care": "Care commonly reduces pressure with cushioning, suitable footwear and activity changes. Persistent heel pain should be examined to distinguish this from plantar fasciitis, a stress injury or another cause."
+  },
+  {
+    "id": "hip-abductor-weakness",
+    "title": "Hip abductor weakness",
+    "aliases": [
+      "weak hip abductors",
+      "weak side hip muscles"
+    ],
+    "definition": "The hip abductors help control the pelvis when you walk or stand on one leg. Weakness is an examination finding and may occur with several different conditions.",
+    "symptoms": "There may be difficulty maintaining pelvic control during walking, stairs or single-leg activity. Weakness alone does not prove the cause of hip, knee or back pain.",
+    "care": "Care usually involves progressive strengthening and practice of relevant movements. Exercises are selected for the person's ability and symptoms, while the cause of significant weakness is assessed."
+  },
+  {
+    "id": "hip-osteoarthritis",
+    "title": "Hip osteoarthritis",
+    "aliases": [
+      "hip arthritis"
+    ],
+    "definition": "Hip osteoarthritis involves changes in the cartilage and other tissues of the hip joint. It may cause pain and stiffness, but symptoms do not always match the amount of change on an X-ray.",
+    "symptoms": "Groin, thigh or buttock aching and stiffness after rest are common. Putting on socks, climbing stairs or walking may become harder.",
+    "care": "Care often includes exercise, activity adjustments and weight management when appropriate. Medical options or joint replacement may be discussed when symptoms remain substantially limiting despite nonsurgical care."
+  },
+  {
+    "id": "iliotibial-band-syndrome",
+    "title": "Iliotibial band syndrome",
+    "aliases": [
+      "IT band syndrome",
+      "ITBS"
+    ],
+    "definition": "IT band syndrome is an overuse-related problem involving tissues near the outside of the knee. It commonly affects runners and cyclists.",
+    "symptoms": "Sharp or burning outer-knee pain may develop during repeated bending, running or cycling. Symptoms often depend on workload.",
+    "care": "Care typically changes the aggravating training load and builds hip strength and movement control. Rehabilitation aims for a gradual return to activity; aggressively pressing on a painful spot is not a necessary treatment."
+  },
+  {
+    "id": "ischiofemoral-impingement",
+    "title": "Ischiofemoral impingement",
+    "aliases": [
+      "IFI"
+    ],
+    "definition": "Ischiofemoral impingement involves irritation of a deep hip muscle in the space between the pelvis and upper thigh bone. It is one possible cause of deep buttock pain.",
+    "symptoms": "Deep buttock or hip pain may occur with certain walking or hip movements. Symptoms can overlap with back, tendon and nerve problems.",
+    "care": "An examination and sometimes imaging help establish the diagnosis. Selected cases are managed with activity changes and tailored hip rehabilitation; persistent symptoms may need specialist review."
+  },
+  {
+    "id": "knee-osteoarthritis",
+    "title": "Knee osteoarthritis",
+    "aliases": [
+      "knee arthritis",
+      "tibiofemoral osteoarthritis"
+    ],
+    "definition": "Knee osteoarthritis involves changes in cartilage and other joint tissues. It can affect walking and daily activities, but does not inevitably worsen at the same rate in everyone.",
+    "symptoms": "A deep ache with activity, stiffness after rest and reduced movement are common. Swelling may come and go.",
+    "care": "Exercise and strengthening are central to care, with activity adjustments and weight management when appropriate. Other medical treatments or surgery may be considered according to symptoms and function."
+  },
+  {
+    "id": "collateral-ligament-knee-sprain",
+    "title": "Collateral ligament knee sprain",
+    "aliases": [
+      "MCL sprain",
+      "LCL sprain",
+      "knee collateral ligament sprain"
+    ],
+    "definition": "This injury stretches or tears a stabilizing ligament on the inner side of the knee, the MCL, or outer side, the LCL. It often follows a sideways force or sports injury.",
+    "symptoms": "Pain and tenderness occur on the affected side of the knee. Swelling, limited movement or a feeling of instability may follow.",
+    "care": "Assessment checks the ligament and associated injuries. Protection, sometimes bracing, and progressive rehabilitation are common; severe instability or associated damage may require orthopedic care."
+  },
+  {
+    "id": "lateral-ankle-sprain",
+    "title": "Lateral ankle sprain",
+    "aliases": [
+      "inversion ankle sprain",
+      "rolled ankle",
+      "ankle sprain"
+    ],
+    "definition": "A lateral ankle sprain injures ligaments on the outside of the ankle, often when the foot rolls inward. Severity ranges from a mild stretch to a major tear.",
+    "symptoms": "Pain, swelling and sometimes bruising develop around the outer ankle. Walking may be difficult, and the ankle may feel unstable.",
+    "care": "Care includes appropriate protection followed by progressive movement, strength and balance training. Inability to bear weight, marked bone tenderness or deformity needs prompt assessment for fracture or a more serious injury."
+  },
+  {
+    "id": "lateral-epicondylopathy",
+    "title": "Lateral epicondylopathy",
+    "aliases": [
+      "tennis elbow",
+      "lateral epicondylitis"
+    ],
+    "definition": "Tennis elbow is a painful tendon problem on the outside of the elbow where wrist-extending muscles attach. It can develop from work, hobbies or sport, not just tennis.",
+    "symptoms": "Gripping, lifting or extending the wrist against resistance may provoke outer-elbow pain. Grip can feel weaker because it hurts.",
+    "care": "Care usually adjusts aggravating loads and progressively strengthens the forearm. Selected manual therapy or supports may help symptoms, but recovery time varies and improvement can be gradual."
+  },
+  {
+    "id": "leg-length-discrepancy",
+    "title": "Leg length discrepancy",
+    "aliases": [
+      "unequal leg length",
+      "leg length difference"
+    ],
+    "definition": "A leg length discrepancy means the legs differ in measured length or appear different because of position or movement. Small differences are common and do not always need treatment.",
+    "symptoms": "Many people have no symptoms. A clinically important difference may affect walking, but pain cannot automatically be attributed to unequal legs.",
+    "care": "Assessment distinguishes a true bone-length difference from an apparent difference. A lift or other treatment is considered only when the measurements and symptoms support it."
+  },
+  {
+    "id": "little-league-elbow",
+    "title": "Little League elbow",
+    "aliases": [
+      "youth throwing elbow pain",
+      "little leaguer elbow"
+    ],
+    "definition": "Little League elbow describes overuse injuries on the inner side of a growing athlete's elbow. Repeated throwing can stress the growth area and surrounding tissues.",
+    "symptoms": "A child or teenager may develop inner-elbow pain with throwing, reduced performance or difficulty straightening the arm. Pain should not be played through.",
+    "care": "Stop painful throwing and arrange a medical assessment. Return to throwing follows recovery, rehabilitation and an age-appropriate workload plan; a sudden pop or marked loss of motion needs prompt evaluation."
+  },
+  {
+    "id": "long-thoracic-neuropathy",
+    "title": "Long thoracic neuropathy",
+    "aliases": [
+      "long thoracic nerve injury",
+      "serratus anterior palsy"
+    ],
+    "definition": "This nerve problem can weaken the serratus anterior, a muscle that helps hold the shoulder blade against the rib cage. The shoulder blade may become unusually prominent, called winging.",
+    "symptoms": "Weakness or fatigue with pushing, pulling or overhead activity can occur. A winging shoulder blade has several possible causes and needs assessment.",
+    "care": "Care depends on the cause and may include activity changes and supervised rehabilitation while recovery is monitored. Persistent or progressive weakness may need nerve testing or specialist care."
+  },
+  {
+    "id": "lower-crossed-syndrome",
+    "title": "Lower crossed syndrome",
+    "aliases": [
+      "lower cross syndrome"
+    ],
+    "definition": "Lower crossed syndrome is a descriptive pattern of muscle tightness and weakness around the hips and trunk. It is not a diagnosis that can be confirmed from posture alone.",
+    "symptoms": "An examination may identify limited hip movement or difficulty controlling the trunk and pelvis. The pattern can exist with or without back pain.",
+    "care": "Care targets the person's actual movement and strength findings through exercise and, when appropriate, manual therapy. The goal is comfortable function rather than achieving one perfect posture."
+  },
+  {
+    "id": "lumbar-disc-lesion",
+    "title": "Lumbar disc lesion",
+    "aliases": [
+      "lumbar disc herniation",
+      "herniated lumbar disc",
+      "bulging lumbar disc"
+    ],
+    "definition": "A lumbar disc lesion involves a cushion between the lower-back bones. A bulge or herniation may irritate a nerve, but disc changes can also be present without pain.",
+    "symptoms": "Back pain may occur with or without leg pain. Nerve irritation can cause tingling, numbness or weakness into a leg or foot.",
+    "care": "Many cases are managed without surgery using activity advice and tailored rehabilitation. Progressive weakness needs prompt review; new bladder or bowel control problems or groin numbness require emergency care."
+  },
+  {
+    "id": "lumbar-facet-syndrome",
+    "title": "Lumbar facet syndrome",
+    "aliases": [
+      "facet joint pain",
+      "lumbar facet pain"
+    ],
+    "definition": "Lumbar facet syndrome describes pain thought to come from small joints at the back of the lower spine. These joints help guide spinal movement.",
+    "symptoms": "Pain may be felt in the lower back, buttock or upper thigh and change with standing, twisting or backward bending. Symptoms overlap with other back problems.",
+    "care": "Care may include movement, strengthening and selected manual therapy after assessment. Persistent symptoms may need further medical evaluation; numbness or weakness suggests checking for nerve involvement."
+  },
+  {
+    "id": "lumbar-radiculopathy",
+    "title": "Lumbar radiculopathy",
+    "aliases": [
+      "lumbar nerve root pain",
+      "pinched nerve in the lower back"
+    ],
+    "definition": "Lumbar radiculopathy means a nerve root in the lower back is irritated or compressed. It can produce leg symptoms often described as sciatica.",
+    "symptoms": "Pain may travel down a leg with tingling, numbness or weakness. The pattern and strength or reflex findings help identify the nerve involved.",
+    "care": "Care is based on the cause and neurological examination, often starting with suitable nonsurgical options. Progressive weakness needs prompt assessment. New bladder or bowel control problems or saddle-area numbness require emergency care."
+  },
+  {
+    "id": "lumbar-segmental-joint-restriction",
+    "title": "Lumbar segmental joint restriction",
+    "aliases": [
+      "restricted lower back joint",
+      "lumbar joint restriction"
+    ],
+    "definition": "This describes a lower-back joint that moves less comfortably or freely on examination. It does not mean that a vertebra has come out of place.",
+    "symptoms": "Local stiffness or aching may vary with sitting, standing, bending or lifting. Pain may also refer into the buttock or thigh.",
+    "care": "Care may combine exercise, activity changes and selected manual therapy. Progress is judged by movement and daily function rather than an assumption that repeated realignment is required."
+  },
+  {
+    "id": "isthmic-spondylolisthesis",
+    "title": "Isthmic spondylolisthesis",
+    "aliases": [
+      "type II spondylolisthesis",
+      "lumbar isthmic spondylolisthesis"
+    ],
+    "definition": "Isthmic spondylolisthesis is forward slipping of a vertebra associated with a defect or stress injury in a small bony bridge called the pars. It differs from age-related degenerative slipping.",
+    "symptoms": "Some people have no symptoms. Others develop activity-related lower-back pain, sometimes with leg symptoms if nerves are affected.",
+    "care": "Care depends on whether there is an active stress injury, the degree of slipping and symptoms. Activity changes and supervised rehabilitation may be appropriate; young athletes or progressing slips may need specialist care."
+  },
+  {
+    "id": "degenerative-spondylolisthesis",
+    "title": "Degenerative spondylolisthesis",
+    "aliases": [
+      "type III spondylolisthesis",
+      "lumbar degenerative spondylolisthesis"
+    ],
+    "definition": "Degenerative spondylolisthesis is forward slipping of a vertebra associated with age-related changes in the supporting joints and discs. A slip on imaging does not always cause symptoms.",
+    "symptoms": "Back aching may occur, and accompanying narrowing around nerves can cause leg pain, heaviness or difficulty with prolonged standing or walking.",
+    "care": "Treatment depends on symptoms and nerve findings and may include tailored exercise and activity changes. Persistent limiting symptoms or neurological problems may need specialist review. Exercise aims to improve function, not push the vertebra back into place."
+  }
+]

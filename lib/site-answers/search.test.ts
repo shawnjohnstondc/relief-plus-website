@@ -41,3 +41,20 @@ describe('preferred patient answers', () => {
     expect(searchSite(index, 'Does laser cure glaucoma?')).toEqual([]);
   });
 });
+
+// Condition explanations remain retrievable when Sources links include anchors.
+describe('condition-library answers', () => {
+  const conditionIndex: AnswerIndex = { ...index, chunks: [...index.chunks,
+    { path: '/faq-lafayette/condition-library#carpal-tunnel-syndrome-symptoms', title: 'Condition Library', heading: 'What are the symptoms of carpal tunnel syndrome?', section: 'Carpal tunnel syndrome', text: 'Tingling or numbness can affect the thumb, index and middle fingers.', questions: ['What are the symptoms of carpal tunnel?', 'Carpal tunnel symptoms'] },
+    { path: '/faq-lafayette/condition-library#carpal-tunnel-syndrome-definition', title: 'Condition Library', heading: 'What is carpal tunnel syndrome?', section: 'Carpal tunnel syndrome', text: 'Compression of the median nerve at the wrist.', questions: ['What is carpal tunnel?', 'Explain carpal tunnel'] },
+  ] };
+  it('returns symptoms rather than a definition for a symptom question', () => {
+    expect(searchSite(conditionIndex, 'What are the symptoms of carpal tunnel?')[0]?.path).toBe('/faq-lafayette/condition-library#carpal-tunnel-syndrome-symptoms');
+  });
+  it('preserves existing clinic-specific answers', () => {
+    expect(searchSite(conditionIndex, 'Do you treat sciatica?')[0]?.text).toContain('Yes. Relief Plus evaluates');
+  });
+  it('does not turn an unknown treatment claim into a general condition answer', () => {
+    expect(searchSite(conditionIndex, 'Does carpal tunnel treatment cure glaucoma?')).toEqual([]);
+  });
+});

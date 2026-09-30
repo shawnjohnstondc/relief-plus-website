@@ -17,6 +17,7 @@ export default function PatientQuestionsPage() {
       <Link href="/faq-lafayette" className="text-sm text-[#82601f] underline underline-offset-4">← Frequently asked questions</Link>
       <h1 className="mt-8 font-serif text-5xl tracking-tight sm:text-6xl">A little more detail.</h1>
       <p className="mt-6 max-w-2xl text-lg leading-8 text-[#12233f]/75">Practical answers about visiting Relief Plus, your care options and what to expect. Choose a topic or browse the questions below.</p>
+      <p className="mt-4 leading-7"><Link href="/faq-lafayette/condition-library" className="text-[#82601f] underline underline-offset-4">Browse the condition library</Link> for plain-language definitions, symptoms and general care.</p>
       <nav aria-label="Question topics" className="my-10 flex flex-wrap gap-x-6 gap-y-3 border-y border-[#12233f]/15 py-6">
         {answerGroups.map(group => <a key={group.id} href={`#${group.id}`} className="text-sm underline underline-offset-4">{group.title}</a>)}
       </nav>

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/clinical-standards-editorial-review", priority: 0.6 },
     { path: "/faq-lafayette", priority: 0.8 },
     { path: "/faq-lafayette/patient-questions", priority: 0.4 },
+    { path: "/faq-lafayette/condition-library", priority: 0.4 },
     { path: "/hipaa-notice-of-privacy-practices", priority: 0.3 },
     { path: "/good-faith-estimate", priority: 0.3 },
     { path: "/privacy-policy", priority: 0.3 },

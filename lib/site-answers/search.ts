@@ -17,7 +17,7 @@ export function tokens(text: string): string[] {
   return [...new Set((text.toLowerCase().replace(/\b(?:y[’']?all|ya[’']?ll)\b/g, 'you').replace(/\bwalk[ -]?ins?\b/g, 'walkin').replace(/\b(open|opening|closed|closing)\b/g, 'hours').replace(/\bphysical therapy|\bpt\b/g, 'physiotherapy').replace(/\bteat\b/g, 'treat').match(/[a-z0-9]+/g) ?? []).filter(t => !stop.has(t)).map(t => aliases[t] ?? t))];
 }
 
-const libraryPath = '/faq-lafayette/patient-questions';
+const isAnswerLibrary = (path: string) => /^\/faq-lafayette\/(patient-questions|condition-library)(?:#|$)/.test(path);
 
 function intent(question: string) {
   const text = question.toLowerCase();
@@ -33,10 +33,10 @@ function intent(question: string) {
 // Compare individual question variants; never pool aliases across different FAQs.
 function preferredAnswer(index: AnswerIndex, question: string, query: string[]): Passage | undefined {
   const normalizeQuestion = (value: string) => value.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/\s+/g, ' ').trim();
-  const exact = index.chunks.find(p => p.path === libraryPath && p.questions?.some(q => normalizeQuestion(q) === normalizeQuestion(question)));
+  const exact = index.chunks.find(p => isAnswerLibrary(p.path) && p.questions?.some(q => normalizeQuestion(q) === normalizeQuestion(question)));
   if (exact) return exact;
   if (!query.length) return undefined;
-  const ranked = index.chunks.filter(p => p.path === libraryPath && p.questions?.length).flatMap(p => {
+  const ranked = index.chunks.filter(p => isAnswerLibrary(p.path) && p.questions?.length).flatMap(p => {
     const scores = p.questions!.map(variant => {
       const terms = tokens(variant);
       const matched = query.filter(t => terms.includes(t)).length;
