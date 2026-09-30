@@ -2,91 +2,94 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { usePathname } from "next/navigation";
-import { searchSite, type AnswerIndex, type Passage } from "@/lib/site-answers/search";
+import type { ChatAnswer } from "@/lib/site-answers/grounding";
 import "./site-answers.css";
 
-const suggestions = ["What are your hours?", "Do you accept Medicare?", "What is dry needling?"];
+type Turn = { question: string; answer?: ChatAnswer; error?: string };
+function Arrow() {
+  return <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>;
+}
 
 export default function SiteAnswers() {
   const pathname = usePathname();
   const dialog = useRef<HTMLDialogElement>(null);
   const input = useRef<HTMLInputElement>(null);
-  const index = useRef<AnswerIndex | null>(null);
+  const content = useRef<HTMLDivElement>(null);
+  const inFlight = useRef(false);
   const [question, setQuestion] = useState("");
-  const [asked, setAsked] = useState("");
-  const [passages, setPassages] = useState<Passage[]>([]);
+  const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState(false);
 
   if (pathname?.startsWith("/time-card")) return null;
 
+  function scrollToLatest() {
+    requestAnimationFrame(() => content.current?.lastElementChild?.scrollIntoView({ block: "start", behavior: "instant" }));
+  }
+
   async function ask(value: string) {
-    const trimmed = value.trim().slice(0, 300);
-    if (!trimmed || busy) return;
-    setQuestion(trimmed);
-    setAsked(trimmed);
+    const trimmed = value.trim();
+    if (!trimmed || inFlight.current) return;
+    inFlight.current = true;
+    const history = turns.filter(t => t.answer).slice(-4).map(t => ({ question: t.question, answer: t.answer!.bullets.join("\n").slice(0, 3000) }));
+    dialog.current?.showModal();
+    setQuestion("");
+    setTurns(current => [...current.slice(-7), { question: trimmed }]);
     setBusy(true);
-    setError(false);
-    setPassages([]);
+    scrollToLatest();
     try {
-      if (!index.current) {
-        const response = await fetch("/site-answers.json", { cache: "no-cache" });
-        if (!response.ok) throw new Error("Unable to load site information");
-        const data: AnswerIndex = await response.json();
-        if (data.version !== 1 || !Array.isArray(data.chunks)) throw new Error("Invalid index");
-        index.current = data;
-      }
-      setPassages(searchSite(index.current, trimmed));
-    } catch {
-      setError(true);
+      const response = await fetch("/api/site-chat", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: trimmed, history }),
+        signal: AbortSignal.timeout(40000),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Chat is temporarily unavailable. Please try again.");
+      if (!Array.isArray(data.bullets) || !Array.isArray(data.sources)) throw new Error("Please try again.");
+      setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, answer: data } : turn));
+    } catch (error) {
+      const message = error instanceof Error && error.name === "TimeoutError" ? "That took too long. Please try again." : error instanceof Error ? error.message : "Chat is temporarily unavailable. Please try again.";
+      setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, error: message } : turn));
+      setQuestion(trimmed);
     } finally {
+      inFlight.current = false;
       setBusy(false);
+      input.current?.focus({ preventScroll: true });
     }
   }
 
-  function submit(event: FormEvent) {
-    event.preventDefault();
-    void ask(question);
-  }
+  function submit(event: FormEvent) { event.preventDefault(); void ask(question); }
 
-  return (
-    <div className="site-answers">
-      <div className="site-answers-space" aria-hidden="true" />
-      <button className="site-answers-launcher" onClick={() => { dialog.current?.showModal(); input.current?.focus(); }} aria-haspopup="dialog" aria-controls="site-answers-dialog">
-        <span>Ask anything…</span>
-        <span className="site-answers-send" aria-hidden="true">↗</span>
-      </button>
-      <dialog ref={dialog} id="site-answers-dialog" className="site-answers-dialog" aria-labelledby="site-answers-title" onClick={event => { if (event.target === dialog.current) dialog.current.close(); }}>
-        <div className="site-answers-panel">
-          <header className="site-answers-header">
-            <div><span className="site-answers-brand">RELIEF <b>+</b></span><h2 id="site-answers-title">Ask about Relief Plus</h2></div>
-            <button className="site-answers-close" type="button" aria-label="Close answers" onClick={() => dialog.current?.close()}>×</button>
-          </header>
-          <div className="site-answers-content">
-            <p className="site-answers-intro">Find information from our website, with links to the original pages.</p>
-            <div className="site-answers-suggestions" aria-label="Suggested questions">{suggestions.map(suggestion => <button key={suggestion} disabled={busy} onClick={() => void ask(suggestion)}>{suggestion}</button>)}</div>
-            <div role="status" aria-live="polite" aria-busy={busy}>
-              {asked && <p className="site-answers-question">{asked}</p>}
-              {busy ? <p>Finding information on our site…</p> : error ? <p>We couldn’t load the website information. Please try again or <a href="tel:+13375654200">call 337-565-4200</a>.</p> : asked && passages.length === 0 ? <p>I couldn’t find a clear match on our website. Please <a href="tel:+13375654200">call 337-565-4200</a> so our team can help.</p> : passages.length > 0 ? <>
-                <p className="site-answers-caption">Related passages from our website</p>
-                {passages.map((passage, i) => <article className="site-answers-result" key={`${passage.path}-${i}`}>
-                  <h3>{passage.heading}</h3>
-                  <p>{passage.text}</p>
-                  <a href={passage.path} onClick={() => dialog.current?.close()}>Source: {passage.title}</a>
-                </article>)}
-              </> : null}
-            </div>
-          </div>
-          <footer className="site-answers-footer">
-            <form onSubmit={submit} className="site-answers-form">
-              <label htmlFor="site-answers-question" className="sr-only">Your question about Relief Plus</label>
-              <input ref={input} id="site-answers-question" value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ask anything…" maxLength={300} autoComplete="off" enterKeyHint="search" />
-              <button type="submit" disabled={busy || !question.trim()} className="site-answers-send" aria-label="Find answers">↗</button>
-            </form>
-            <p>Website information only. Not a diagnosis. Please don’t enter personal medical details.</p>
-          </footer>
+  return <div className="site-answers">
+    <div className="site-answers-space" aria-hidden="true" />
+    <form className="site-answers-launcher site-answers-form" onSubmit={submit}>
+      <label htmlFor="site-answers-dock" className="sr-only">Ask Relief Plus</label>
+      <input id="site-answers-dock" value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ask anything…" maxLength={600} autoComplete="off" enterKeyHint="send" />
+      <button type="submit" disabled={busy || !question.trim()} className="site-answers-send" aria-label="Send question"><Arrow /></button>
+    </form>
+    <dialog ref={dialog} id="site-answers-dialog" className="site-answers-dialog" aria-labelledby="site-answers-title" onClick={event => { if (event.target === dialog.current) dialog.current.close(); }}>
+      <div className="site-answers-panel">
+        <header className="site-answers-header">
+          <h2 id="site-answers-title">Relief <span>+</span></h2>
+          <button className="site-answers-close" type="button" aria-label="Close chat" onClick={() => dialog.current?.close()}><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+        </header>
+        <div ref={content} className="site-answers-content" role="log" aria-live="polite" aria-busy={busy}>
+          {turns.map((turn, i) => <article className="site-answers-turn" key={i}>
+            <h3 className="site-answers-question">{turn.question}</h3>
+            {turn.answer ? <>
+              <ul className="site-answers-bullets">{turn.answer.bullets.map((bullet, j) => <li key={j}>{bullet}</li>)}</ul>
+              {turn.answer.sources.length > 0 && <details className="site-answers-sources"><summary>Sources</summary><ul>{turn.answer.sources.map(source => <li key={source.path}><a href={source.path} onClick={() => dialog.current?.close()}>{source.title}</a></li>)}</ul></details>}
+            </> : turn.error ? <p className="site-answers-error" role="alert">{turn.error}</p> : <p className="site-answers-loading">Reading our website…</p>}
+          </article>)}
         </div>
-      </dialog>
-    </div>
-  );
+        <footer className="site-answers-footer">
+          <form onSubmit={submit} className="site-answers-form">
+            <label htmlFor="site-answers-question" className="sr-only">Your question about Relief Plus</label>
+            <input ref={input} id="site-answers-question" value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ask anything…" maxLength={600} autoComplete="off" enterKeyHint="send" />
+            <button type="submit" disabled={busy || !question.trim()} className="site-answers-send" aria-label="Send question"><Arrow /></button>
+          </form>
+          <p>AI answers from our site. No personal medical details. <a href="/privacy-policy">Privacy</a></p>
+        </footer>
+      </div>
+    </dialog>
+  </div>;
 }
