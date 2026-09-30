@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/seo";
 import ScrollReveal from "@/app/components/ScrollReveal";
+import SiteAnswers from "@/app/components/SiteAnswers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -52,6 +53,7 @@ export default function RootLayout({
       <body>
         <ScrollReveal />
         {children}
+        <SiteAnswers />
       </body>
     </html>
   );

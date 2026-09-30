@@ -43,3 +43,4 @@ next-env.d.ts
 
 # local SEO crawl exports
 /seo-planning/screaming-frog-current.csv
+/public/site-answers.json
