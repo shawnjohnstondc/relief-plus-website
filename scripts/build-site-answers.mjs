@@ -24,18 +24,21 @@ for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   let section = title;
   let heading = title;
   let paragraphs = [];
+  let questions;
   function flush() {
     const text = [...new Set(paragraphs)].join('\n\n');
-    if (text.length >= 70) chunks.push({ path: url.pathname, title, heading, section, text });
+    if (text.length >= (questions ? 1 : 70)) chunks.push({ path: url.pathname, title, heading, section, text, ...(questions ? { questions: [heading, ...questions] } : {}) });
     paragraphs = [];
   }
   for (const block of content.matchAll(/<(h[1-6]|p|li)\b([^>]*)>([\s\S]*?)<\/\1>/gi)) {
     const text = plain(block[3]);
     if (!text) continue;
     if (block[1] === 'p' && (/uppercase/.test(block[2]) || /^[\d\s]+$/.test(text))) continue;
-    if (block[1] === 'h1' || block[1] === 'h2' || (url.pathname === '/faq-lafayette' && block[1] === 'h3')) {
+    if (block[1] === 'h1' || block[1] === 'h2' || (url.pathname.startsWith('/faq-lafayette') && block[1] === 'h3')) {
       flush();
       heading = text;
+      const aliases = block[2].match(/data-answer-questions="([^"]*)"/);
+      questions = aliases ? JSON.parse(decode(aliases[1])) : undefined;
       if (block[1] === 'h1' || block[1] === 'h2') section = text;
     } else {
       if (paragraphs.join(' ').length > 1000) flush();
