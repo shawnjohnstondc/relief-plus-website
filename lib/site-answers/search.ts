@@ -6,12 +6,12 @@ const aliases: Record<string, string> = {
   costs: 'cost', price: 'cost', prices: 'cost', pricing: 'cost', fees: 'cost', fee: 'cost',
   insurance: 'insurance', insurances: 'insurance', coverage: 'insurance', plans: 'insurance',
   location: 'address', located: 'address', directions: 'address', appointments: 'appointment', schedule: 'appointment', scheduling: 'appointment', book: 'appointment', booking: 'appointment',
-  treatments: 'treatment', services: 'treatment', service: 'treatment',
+  treat: 'treatment', treating: 'treatment', treated: 'treatment', treatments: 'treatment', services: 'treatment', service: 'treatment',
   adjustment: 'chiropractic', adjustments: 'chiropractic', chiropractor: 'chiropractic',
   accepts: 'accept', accepted: 'accept', taking: 'accept', take: 'accept',
 };
 export function tokens(text: string): string[] {
-  return [...new Set((text.toLowerCase().replace(/physical therapy/g, 'physiotherapy').match(/[a-z0-9]+/g) ?? []).filter(t => !stop.has(t)).map(t => aliases[t] ?? t))];
+  return [...new Set((text.toLowerCase().replace(/y[’']?all/g, 'you').replace(/\bteat\b/g, 'treat').replace(/physical therapy/g, 'physiotherapy').match(/[a-z0-9]+/g) ?? []).filter(t => !stop.has(t)).map(t => aliases[t] ?? t))];
 }
 
 // Extractive search: output remains verbatim website copy. No model, outside

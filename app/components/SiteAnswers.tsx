@@ -2,7 +2,9 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import { usePathname } from "next/navigation";
-import type { ChatAnswer } from "@/lib/site-answers/grounding";
+import { searchSite, type AnswerIndex } from "@/lib/site-answers/search";
+
+type ChatAnswer = { bullets: string[]; sources: { title: string; path: string }[] };
 import "./site-answers.css";
 
 type Turn = { question: string; answer?: ChatAnswer; error?: string };
@@ -16,6 +18,7 @@ export default function SiteAnswers() {
   const input = useRef<HTMLInputElement>(null);
   const content = useRef<HTMLDivElement>(null);
   const inFlight = useRef(false);
+  const index = useRef<AnswerIndex | null>(null);
   const [question, setQuestion] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
@@ -30,24 +33,27 @@ export default function SiteAnswers() {
     const trimmed = value.trim();
     if (!trimmed || inFlight.current) return;
     inFlight.current = true;
-    const history = turns.filter(t => t.answer).slice(-4).map(t => ({ question: t.question, answer: t.answer!.bullets.join("\n").slice(0, 3000) }));
     dialog.current?.showModal();
     setQuestion("");
     setTurns(current => [...current.slice(-7), { question: trimmed }]);
     setBusy(true);
     scrollToLatest();
     try {
-      const response = await fetch("/api/site-chat", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: trimmed, history }),
-        signal: AbortSignal.timeout(40000),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "Chat is temporarily unavailable. Please try again.");
-      if (!Array.isArray(data.bullets) || !Array.isArray(data.sources)) throw new Error("Please try again.");
+      if (!index.current) {
+        const response = await fetch("/site-answers.json", { cache: "no-cache", signal: AbortSignal.timeout(15000) });
+        if (!response.ok) throw new Error("Unable to load website information. Please try again.");
+        const data: AnswerIndex = await response.json();
+        if (data.version !== 1 || !Array.isArray(data.chunks)) throw new Error("Unable to load website information.");
+        index.current = data;
+      }
+      const matches = searchSite(index.current, trimmed).slice(0, 1);
+      const data: ChatAnswer = {
+        bullets: matches.length ? matches[0].text.split(/\n\n/).filter(Boolean) : ["I couldn’t find a clear match on our website. Try a specific topic, such as the treatment or condition name."],
+        sources: matches.map(p => ({ title: p.title, path: p.path })),
+      };
       setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, answer: data } : turn));
     } catch (error) {
-      const message = error instanceof Error && error.name === "TimeoutError" ? "That took too long. Please try again." : error instanceof Error ? error.message : "Chat is temporarily unavailable. Please try again.";
+      const message = error instanceof Error && error.name === "TimeoutError" ? "That took too long. Please try again." : error instanceof Error ? error.message : "Website information is temporarily unavailable. Please try again.";
       setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, error: message } : turn));
       setQuestion(trimmed);
     } finally {
@@ -87,7 +93,7 @@ export default function SiteAnswers() {
             <input ref={input} id="site-answers-question" value={question} onChange={e => setQuestion(e.target.value)} placeholder="Ask anything…" maxLength={600} autoComplete="off" enterKeyHint="send" />
             <button type="submit" disabled={busy || !question.trim()} className="site-answers-send" aria-label="Send question"><Arrow /></button>
           </form>
-          <p>AI answers from our site. No personal medical details. <a href="/privacy-policy">Privacy</a></p>
+          <p>Information from our website. No personal medical details. <a href="/privacy-policy">Privacy</a></p>
         </footer>
       </div>
     </dialog>
