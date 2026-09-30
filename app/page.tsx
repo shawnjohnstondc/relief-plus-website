@@ -415,6 +415,9 @@ export default function Home() {
                 <p>
                   <Link href="/privacy-policy">Privacy Policy</Link>
                 </p>
+                <p>
+                  <Link href="/faq-lafayette/condition-library">Condition Library</Link>
+                </p>
               </div>
             </div>
 
