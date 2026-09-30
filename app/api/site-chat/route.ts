@@ -69,6 +69,12 @@ export async function POST(request: Request) {
   } catch (error) {
     // Log only a classification; provider errors can otherwise include prompts.
     console.error("Site chat unavailable", error instanceof Error ? error.name : "UnknownError");
-    return json({ error: "Chat is temporarily unavailable. Please try again shortly." }, 503);
+    const kind = error instanceof Error ? error.name : "UnknownError";
+    const code = kind.includes("Authentication") || kind.includes("LoadAPIKey") ? "AI_AUTH_REQUIRED"
+      : kind.includes("Timeout") || kind.includes("Abort") ? "AI_TIMEOUT"
+      : kind.includes("NoObject") || kind.includes("TypeValidation") ? "AI_OUTPUT_INVALID"
+      : error instanceof Error && error.message.startsWith("SITE_CONTENT_") ? "SITE_CONTENT_UNAVAILABLE"
+      : kind.replace(/[^a-zA-Z_]/g, "").slice(0, 60);
+    return json({ error: "Chat is temporarily unavailable. Please try again shortly.", code }, 503);
   } finally { active--; }
 }
