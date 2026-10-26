@@ -80,6 +80,11 @@ export const sportsInjuriesPage: PillarPageData = {
     "Treatment is selected for the diagnosis, examination findings, goals, evidence, and athlete—not from a preset package. Chiropractic may address relevant joint restriction or a mechanical barrier to comfortable available motion. Physical therapy can build mobility, strength, coordination, endurance, progressive loading, and sport-specific capacity. Education helps adjust activity, understand symptom behavior, plan recovery, and progress safely. An athlete may need one approach or coordinated care over time; multiple modalities are not automatically better.",
   relatedServices: [
     {
+      title: "Ankle Sprain: When to Get Checked",
+      href: "/blog/ankle-sprain-when-to-get-checked",
+      description: "Read about warning signs, supported movement, and progressive return to activity after an ankle injury.",
+    },
+    {
       title: "Physical Therapy",
       href: "/physical-therapy-lafayette",
       description:

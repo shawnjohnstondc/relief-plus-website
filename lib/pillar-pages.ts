@@ -245,6 +245,11 @@ export const physicalTherapyPage: PillarPageData = {
     "Physical therapy may stand alone or work alongside chiropractic care when joint motion, strength, movement control, and activity tolerance all need attention. Advanced regenerative options remain a separate consideration based on clinical appropriateness.",
   relatedServices: [
     {
+      title: "Ankle Sprain: When to Get Checked",
+      href: "/blog/ankle-sprain-when-to-get-checked",
+      description: "Read about warning signs, supported movement, and progressive return to activity after an ankle injury.",
+    },
+    {
       title: "Meet Jeanne Saucier, PT",
       description: "Physical therapy at Relief Plus is provided by Jeanne Saucier, PT. Learn about her education, clinical background, and approach to progressive rehabilitation.",
       href: "/jeanne-saucier-pt",
