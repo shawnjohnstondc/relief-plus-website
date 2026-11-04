@@ -44,6 +44,7 @@ export default function ReviewCarousel() {
   const [isHovered, setIsHovered] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
   const [wasManuallyControlled, setWasManuallyControlled] = useState(false);
+  const [autoplayPaused, setAutoplayPaused] = useState(false);
   const [expandedReview, setExpandedReview] = useState<number | null>(null);
   const prefersReducedMotion = useSyncExternalStore(
     subscribeToReducedMotion,
@@ -51,7 +52,7 @@ export default function ReviewCarousel() {
     getServerReducedMotionPreference,
   );
   const isPaused =
-    isHovered || hasFocus || wasManuallyControlled || prefersReducedMotion;
+    isHovered || hasFocus || autoplayPaused || wasManuallyControlled || prefersReducedMotion;
 
   useEffect(() => {
     if (isPaused) {
@@ -169,12 +170,28 @@ export default function ReviewCarousel() {
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 px-7 py-5 sm:px-10 lg:px-14">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 px-7 py-5 sm:px-10 lg:px-14">
             <p className="text-xs tabular-nums text-white/45" aria-hidden="true">
               {String(currentReview + 1).padStart(2, "0")} / {reviews.length}
             </p>
 
-            <div className="flex gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                className="min-h-11 rounded-full border border-white/30 px-5 text-sm font-semibold text-white transition hover:border-[#d5b765] hover:text-[#d5b765] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d5b765] disabled:cursor-default disabled:opacity-70"
+                disabled={prefersReducedMotion}
+                aria-label={prefersReducedMotion ? "Automatic reviews paused for reduced motion" : autoplayPaused || wasManuallyControlled ? "Play automatic reviews" : "Pause automatic reviews"}
+                onClick={() => {
+                  if (autoplayPaused || wasManuallyControlled) {
+                    setAutoplayPaused(false);
+                    setWasManuallyControlled(false);
+                  } else {
+                    setAutoplayPaused(true);
+                  }
+                }}
+              >
+                {prefersReducedMotion ? "Paused · reduced motion" : autoplayPaused || wasManuallyControlled ? "Play" : "Pause"}
+              </button>
               <button
                 type="button"
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-lg transition hover:border-[#d5b765] hover:text-[#d5b765] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#d5b765]"

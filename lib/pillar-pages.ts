@@ -244,6 +244,7 @@ export const physicalTherapyPage: PillarPageData = {
   approachDescription:
     "Physical therapy may stand alone or work alongside chiropractic care when joint motion, strength, movement control, and activity tolerance all need attention. Advanced regenerative options remain a separate consideration based on clinical appropriateness.",
   relatedServices: [
+    { title: "Achilles Pain: What to Do Next", href: "/blog/achilles-pain-back-of-heel", description: "Understand heel-pain warning signs and how assessment guides tendon rehabilitation." },
     {
       title: "Ankle Sprain: When to Get Checked",
       href: "/blog/ankle-sprain-when-to-get-checked",
