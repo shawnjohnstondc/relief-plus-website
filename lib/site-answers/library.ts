@@ -1,3 +1,4 @@
+import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "../referral-guidance";
 import { backPainPage, neckPainPage, sciaticaPage, herniatedDiscPage, pinchedNervePage } from '../condition-pages';
 import { phaseFiveConditionPages } from '../phase-five-condition-pages';
 import { phaseSixConditionPages } from '../phase-six-condition-pages';
@@ -41,8 +42,8 @@ export const answerGroups = [
     item('Will I be adjusted at every visit?', 'Not necessarily. Adjustments depend on the examination, whether they are appropriate, your preference and your response to care. Exercise, physical therapy or another approach may be a better fit.', ['Does every visit include an adjustment?'], '/faq-lafayette'),
     item('How many visits will I need?', 'The number of visits depends on your condition, examination, goals and response to care. Progress is reassessed rather than assuming everyone needs the same number of visits.', ['How long will treatment take?', 'How many treatments do I need?'], '/chiropractic-adjustments-lafayette'),
     item('Do I need X-rays or an MRI before treatment?', 'Imaging is not needed for every episode of back pain. It may be appropriate when the examination suggests a serious problem, progressive nerve changes, trauma or another reason the result would change care.', ['Is imaging always required?', 'Do all patients need X-rays?'], '/back-pain-lafayette'),
-    item('Do I need a referral to see Dr. Johnston or Dr. Reed?', 'No referral is needed to see Dr. Johnston or Dr. Reed. Insurance authorization and other plan requirements may still apply.', ['Do I need a referral?', 'Do I need a referral for chiropractic?']),
-    item('Do I need a referral for physical therapy?', 'When physical therapy is appropriate, Relief Plus can coordinate the referral or plan-of-care process and send the plan to an appropriate medical provider for review when required. Requirements vary by insurance plan.', ['PT referral requirements']),
+    item('Do I need a referral for chiropractic care?', chiropracticReferralGuidance, ['Do I need a referral?', 'Do I need a referral for chiropractic?']),
+    item('Do I need a referral for physical therapy?', physicalTherapyReferralGuidance, ['PT referral requirements']),
     item('Can I have chiropractic and physical therapy together?', 'Yes. Chiropractic and physical therapy can work together when each has a clear role in your care. They can also be used independently.', ['Can I do PT and chiropractic?'], '/faq-lafayette'),
   ] },
   { id: 'insurance', title: 'Insurance & costs', items: [

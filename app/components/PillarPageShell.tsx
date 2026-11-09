@@ -61,6 +61,12 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
                   What happens at a visit
                 </a>
               </div>
+              {data.bookingGuidance && (
+                <div className="mt-6 rounded-2xl border border-[#12233f]/15 bg-white/60 p-5">
+                  <h2 className="text-base font-semibold">Referrals and booking</h2>
+                  <p className="mt-2 text-sm leading-6 text-[#12233f]/75">{data.bookingGuidance}</p>
+                </div>
+              )}
             </div>
 
             <aside className="min-w-0 overflow-hidden rounded-[2rem] bg-[#153e35] text-white">

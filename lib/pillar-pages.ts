@@ -1,3 +1,4 @@
+import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "./referral-guidance";
 export type PillarLink = {
   title: string;
   description: string;
@@ -31,6 +32,7 @@ export type PillarPageData = {
   seoTitle: string;
   seoDescription: string;
   heroDescription: string;
+  bookingGuidance?: string;
   heroPoints: string[];
   overviewTitle: string;
   overviewParagraphs: string[];
@@ -74,6 +76,7 @@ export type PillarPageData = {
 };
 
 export const chiropracticPage: PillarPageData = {
+  bookingGuidance: chiropracticReferralGuidance,
   path: "/chiropractic-adjustments-lafayette",
   breadcrumbLabel: "Chiropractic Adjustments",
   eyebrow: "Chiropractic Care in Lafayette, Louisiana",
@@ -162,6 +165,7 @@ export const chiropracticPage: PillarPageData = {
     },
   ],
   faqs: [
+    { question: "Do I need a referral for chiropractic care?", answer: chiropracticReferralGuidance },
     {
       question: "Does every chiropractic visit include an adjustment?",
       answer: "No. Treatment decisions depend on the examination, current symptoms, health history, goals, and whether an adjustment is clinically appropriate.",
@@ -181,6 +185,7 @@ export const chiropracticPage: PillarPageData = {
 };
 
 export const physicalTherapyPage: PillarPageData = {
+  bookingGuidance: physicalTherapyReferralGuidance,
   path: "/physical-therapy-lafayette",
   breadcrumbLabel: "Physical Therapy",
   eyebrow: "Physical Therapy in Lafayette, Louisiana",
@@ -244,6 +249,7 @@ export const physicalTherapyPage: PillarPageData = {
   approachDescription:
     "Physical therapy may stand alone or work alongside chiropractic care when joint motion, strength, movement control, and activity tolerance all need attention. Advanced regenerative options remain a separate consideration based on clinical appropriateness.",
   relatedServices: [
+    { title: "Leg Pain When Walking", href: "/blog/leg-pain-walking-spinal-stenosis", description: "Learn about spinal stenosis, circulation-related symptoms, and when to seek an evaluation." },
     { title: "Achilles Pain: What to Do Next", href: "/blog/achilles-pain-back-of-heel", description: "Understand heel-pain warning signs and how assessment guides tendon rehabilitation." },
     {
       title: "Ankle Sprain: When to Get Checked",
@@ -272,6 +278,7 @@ export const physicalTherapyPage: PillarPageData = {
     },
   ],
   faqs: [
+    { question: "Do I need a referral for physical therapy?", answer: physicalTherapyReferralGuidance },
     {
       question: "What happens during a physical therapy evaluation?",
       answer: "The evaluation considers symptoms, movement, mobility, strength, activity demands, and personal goals. Those findings guide the initial rehabilitation plan.",

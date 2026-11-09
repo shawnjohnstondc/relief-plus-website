@@ -1,3 +1,4 @@
+import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "@/lib/referral-guidance";
 import InfoPageShell from "@/app/components/InfoPageShell";
 import JsonLd from "@/app/components/JsonLd";
 import { createBreadcrumbStructuredData, createPageMetadata } from "@/lib/seo";
@@ -18,6 +19,6 @@ export default function Page() { return <><JsonLd data={createBreadcrumbStructur
     { title: "Friday–Sunday", description: "Closed" },
   ], paragraphs: ["These are the clinic’s public hours. Relief Plus remains open through lunch. Patients should call to confirm holiday schedules or temporary changes."] },
   { eyebrow: "Insurance", title: "Verify your plan before your visit.", paragraphs: ["Insurance benefits and network participation vary by your exact plan, provider and service. Call Relief Plus before your visit to verify current participation, referral or authorization requirements, and expected patient responsibility. A carrier name alone does not establish in-network status or guarantee coverage or payment."] },
-  { eyebrow: "Referrals", title: "Referral requirements depend on the type of care.", paragraphs: ["No referral is needed to see Dr. Johnston or Dr. Reed. Physical therapy is handled differently: when PT is appropriate, Relief Plus can coordinate the referral or plan-of-care process and can send the plan to the patient’s primary-care physician or another appropriate medical provider for review when required.", "Medical-necessity, authorization, and payer requirements vary by plan. Call the clinic to confirm what applies before care begins."] },
+  { eyebrow: "Referrals", title: "Referral requirements depend on the type of care.", paragraphs: [chiropracticReferralGuidance, physicalTherapyReferralGuidance] },
   { eyebrow: "Scheduling", title: "You do not need to choose a treatment before calling.", paragraphs: ["Tell us what hurts and which activities are difficult. You can ask for an assessment without knowing the diagnosis or choosing a treatment first."] },
 ]} cta={{ title: "Call Relief Plus to schedule.", description: "The clinic’s published scheduling number is 337-565-4200." }} /></> }

@@ -67,7 +67,7 @@ export const backPainPage = createConditionPage({
   description: "Back pain treatment in Lafayette, LA with individualized evaluation and conservative musculoskeletal care at Relief Plus.",
   overview: ["Back pain may involve joints, muscles, discs, nerves, or the demands of activity. Several factors can overlap. Where it hurts and how strong the pain feels cannot identify the cause on their own.", "We ask how your pain began, what changes it, and whether it travels into a leg. We also look at how it affects your work, sleep, movement, and the activities you enjoy."],
   symptoms: [{ title: "Aching or stiffness", description: "Symptoms may be local, intermittent, or affected by position." }, { title: "Movement limits", description: "Bending, lifting, sitting, or standing may become difficult." }, { title: "Radiating symptoms", description: "Pain, tingling, or numbness may extend into a leg." }, { title: "Reduced capacity", description: "Work, exercise, sleep, or daily routines may be affected." }],
-  related: [{ title: "Sciatica", href: "/sciatica-treatment-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
+  related: [{ title: "Leg Pain When Walking: Spinal Stenosis?", href: "/blog/leg-pain-walking-spinal-stenosis" }, { title: "Sciatica", href: "/sciatica-treatment-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
   care: [chiropractic, pt, decompression, { title: "Class IV Laser Therapy", description: "An adjunct considered within an appropriate care plan.", href: "/class-iv-laser-therapy-lafayette" }],
   clinical: backPainClinical,
 });

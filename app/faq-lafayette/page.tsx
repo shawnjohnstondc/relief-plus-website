@@ -1,3 +1,4 @@
+import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "@/lib/referral-guidance";
 import Link from "next/link";
 import InfoPageShell from "@/app/components/InfoPageShell";
 import JsonLd from "@/app/components/JsonLd";
@@ -9,7 +10,8 @@ const categories = [
     { question: "Do I need to know which treatment I need?", answer: "No. Tell us what hurts, what is difficult, and what you want to get back to. An assessment helps determine whether chiropractic, physical therapy, a selected medical option, or a referral fits your needs." },
     { question: "What should I bring or be ready to discuss?", answer: "Be prepared to discuss symptom history, relevant health information, medications, prior care, imaging you already have, and the activities you want to improve. Call the clinic for current paperwork instructions." },
     { question: "Which insurance plans does Relief Plus accept?", answer: "Insurance benefits and network participation vary by your exact plan, provider and service. Call Relief Plus before your visit to verify current participation, referral or authorization requirements, and expected patient responsibility. A carrier name alone does not establish in-network status or guarantee coverage or payment." },
-    { question: "Do I need a referral?", answer: "No referral is needed to see Dr. Johnston or Dr. Reed. Physical therapy is handled differently. When PT is appropriate, Relief Plus can coordinate the referral or plan-of-care process and send the plan to a primary-care physician or another appropriate medical provider for review when required. Payer requirements vary by plan." },
+    { question: "Do I need a referral for chiropractic care?", answer: chiropracticReferralGuidance },
+    { question: "Do I need a referral for physical therapy?", answer: physicalTherapyReferralGuidance },
   ] },
   { eyebrow: "Provider Roles", title: "Who provides care at Relief Plus?", items: [
     { question: "What are the providers’ roles?", answer: "Dr. Johnston provides chiropractic care and assesses muscle, joint, and movement concerns. Jeanne Saucier, PT, guides physical therapy to rebuild movement and strength. Dr. Reed provides medical oversight and decision-making for the regenerative medicine program. Not every patient sees all three." },
