@@ -1,3 +1,4 @@
+import { dryNeedlingAftercareAnswer } from "./patient-care-answers";
 import type { PillarPageData } from "./pillar-pages";
 
 export const prpPage: PillarPageData = {
@@ -372,6 +373,7 @@ export const dryNeedlingPage: PillarPageData = {
     },
   ],
   faqs: [
+    { question: "What should I watch for after dry needling?", answer: dryNeedlingAftercareAnswer },
     {
       question: "Is dry needling the same as acupuncture?",
       answer: "No. Although both use thin needles, they are distinct practices with different assessment frameworks, treatment goals, and professional contexts.",

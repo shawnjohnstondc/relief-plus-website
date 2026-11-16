@@ -1,3 +1,4 @@
+import { exerciseResponseAnswer } from "./patient-care-answers";
 import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "./referral-guidance";
 export type PillarLink = {
   title: string;
@@ -278,6 +279,7 @@ export const physicalTherapyPage: PillarPageData = {
     },
   ],
   faqs: [
+    { question: "Should I keep doing a PT exercise if it hurts?", answer: exerciseResponseAnswer },
     { question: "Do I need a referral for physical therapy?", answer: physicalTherapyReferralGuidance },
     {
       question: "What happens during a physical therapy evaluation?",
