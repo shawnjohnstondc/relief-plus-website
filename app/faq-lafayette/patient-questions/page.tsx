@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
+import JsonLd from '@/app/components/JsonLd';
+import { conflictingAddressFaq, outsideRecordsFaq, sciaticaDrivingFaq, vaCommunityCareFaq } from '@/lib/nov23-patient-answers';
 import { answerGroups, libraryPath } from '@/lib/site-answers/library';
-import { createPageMetadata } from '@/lib/seo';
+import { createFaqStructuredData, createPageMetadata } from '@/lib/seo';
 
 export const metadata = createPageMetadata({
   title: 'Patient Questions & Answers',
@@ -10,8 +12,11 @@ export const metadata = createPageMetadata({
   path: libraryPath,
 });
 
+const approvedAnswerAnchors = new Set([vaCommunityCareFaq.question, sciaticaDrivingFaq.question, conflictingAddressFaq.question, outsideRecordsFaq.question]);
+
 export default function PatientQuestionsPage() {
   return <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
+    <JsonLd data={createFaqStructuredData([vaCommunityCareFaq])} />
     <SiteHeader currentPath={libraryPath} />
     <div className="mx-auto max-w-4xl px-6 py-16 sm:py-24">
       <Link href="/faq-lafayette" className="text-sm text-[#82601f] underline underline-offset-4">← Frequently asked questions</Link>
@@ -24,11 +29,14 @@ export default function PatientQuestionsPage() {
       {answerGroups.map(group => <section id={group.id} key={group.id} className="scroll-mt-24 py-10">
         <h2 className="mb-8 font-serif text-3xl sm:text-4xl">{group.title}</h2>
         <div className="divide-y divide-[#12233f]/15">
-          {group.items.map((item, index) => <article key={item.question} id={`${group.id}-${index + 1}`} className="scroll-mt-24 py-7">
-            <h3 data-answer-questions={JSON.stringify(item.aliases)} className="text-lg font-semibold leading-7">{item.question}</h3>
+          {group.items.map((item, index) => {
+            const anchor = `${group.id}-${index + 1}`;
+            const linkToQuestion = approvedAnswerAnchors.has(item.question);
+            return <article key={item.question} id={linkToQuestion ? undefined : anchor} className="scroll-mt-24 py-7">
+            <h3 id={linkToQuestion ? anchor : undefined} data-answer-questions={JSON.stringify(item.aliases)} className={linkToQuestion ? "scroll-mt-24 text-lg font-semibold leading-7" : "text-lg font-semibold leading-7"}>{item.question}</h3>
             {item.answer.split('\n\n').map(paragraph => <p key={paragraph} className="mt-3 max-w-3xl leading-7 text-[#12233f]/80">{paragraph}</p>)}
-            <div className="mt-3"><Link href={item.source} className="text-xs text-[#82601f] underline underline-offset-4">More detail</Link></div>
-          </article>)}
+            <div className={item.extraLink ? "mt-3 flex flex-wrap gap-x-4 gap-y-2" : "mt-3"}><Link href={item.source} className="text-xs text-[#82601f] underline underline-offset-4">More detail</Link>{item.extraLink && <Link href={item.extraLink.href} className="text-xs text-[#82601f] underline underline-offset-4">{item.extraLink.label}</Link>}</div>
+          </article>; })}
         </div>
       </section>)}
     </div>

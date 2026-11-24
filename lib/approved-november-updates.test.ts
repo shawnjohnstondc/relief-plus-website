@@ -23,7 +23,14 @@ describe("approved November patient-facing updates", () => {
   });
   it("keeps all plan-name answers qualified, not blanket participation assertions", () => {
     const insurance = answerGroups.flatMap(g => g.items).filter(i => /insurance plans|Do you accept/.test(i.question));
-    expect(insurance.length).toBeGreaterThanOrEqual(7);
+    expect(insurance.map(i => i.question)).toEqual([
+      "Which insurance plans do you accept?",
+      "Do you accept Medicare?",
+      "Do you accept Blue Cross and Blue Shield?",
+      "Do you accept UnitedHealthcare?",
+      "Do you accept Verity?",
+      "Do you accept Healthy Blue?",
+    ]);
     for (const item of insurance) {
       expect(item.answer).toContain("exact plan, provider and service");
       expect(item.answer).toContain("does not establish in-network status");

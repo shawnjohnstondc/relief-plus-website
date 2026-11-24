@@ -1,3 +1,4 @@
+import { sciaticaDrivingFaq } from "./nov23-patient-answers";
 import type { EducationSection, PillarPageData } from "./pillar-pages";
 
 export type ConditionClinicalContent = {
@@ -87,6 +88,7 @@ export const sciaticaClinical: ConditionClinicalContent = {
     { question: "What do centralization and peripheralization mean?", answer: "Centralization means symptoms retreat from the leg toward the spine during a movement or position; peripheralization means they extend farther down the limb. When consistent, this information may help guide treatment." },
     { question: "Does sciatica always require an MRI?", answer: "No. Imaging is generally considered when serious pathology or progressive neurological loss is suspected, when symptoms remain disabling despite appropriate care, or when results are likely to change management." },
     { question: "Can I keep walking?", answer: "Tolerable activity is often encouraged, but the appropriate amount depends on weakness, balance, symptom behavior, diagnosis, and medical advice." },
+    sciaticaDrivingFaq,
   ],
   educationSections: [
     { eyebrow: "What the Pattern Means", title: "Sciatica describes symptoms; the examination searches for the mechanism.", paragraphs: ["Sciatica commonly refers to pain, burning, tingling, numbness, or weakness following part of the sciatic nerve pathway. Lumbar nerve-root irritation may be involved, but the word itself does not identify the exact tissue, level, or cause.", "Symptoms alone cannot distinguish disc-related radiculopathy from narrowing around a nerve root or a non-spinal mimic. Self-diagnosis based only on where pain travels can therefore be misleading."],

@@ -6,11 +6,12 @@ import { phaseSixConditionPages } from '../phase-six-condition-pages';
 import { sportsInjuriesPage } from '../sports-injuries-page';
 import { chiropracticPage, physicalTherapyPage, regenerativePage } from '../pillar-pages';
 import { laserPage, dryNeedlingPage, shockwavePage, prpPage, ozonePage, triggerPointPage } from '../treatment-pages';
+import { conflictingAddressFaq, outsideRecordsFaq, sciaticaDrivingFaq, sciaticaRoadTripPath, vaCommunityCareFaq } from "../nov23-patient-answers";
 import { decompressionPage } from '../decompression-page';
 
 export const libraryPath = '/faq-lafayette/patient-questions' as const;
-export type LibraryAnswer = { question: string; answer: string; aliases: string[]; source: string };
-const item = (question: string, answer: string, aliases: string[] = [], source = '/contact'): LibraryAnswer => ({ question, answer, aliases, source });
+export type LibraryAnswer = { question: string; answer: string; aliases: string[]; source: string; extraLink?: { href: string; label: string } };
+const item = (question: string, answer: string, aliases: string[] = [], source = '/contact', extraLink?: LibraryAnswer['extraLink']): LibraryAnswer => ({ question, answer, aliases, source, extraLink });
 
 // Clinic policies are maintained here; clinical summaries below reuse the same
 // source data as the condition and treatment pages so edits stay in sync.
@@ -36,6 +37,8 @@ export const answerGroups = [
     item('What is your phone number?', 'Call Relief Plus at 337-565-4200.', ['How do I call you?', 'Telephone number']),
     item('What is your email address?', 'The clinic email is myreliefplus@gmail.com. Please do not send private medical information through ordinary email.', ['How do I email you?']),
     item('Where should my doctor fax a referral?', 'Referrals can be faxed to Relief Plus at 337-565-4201.', ['What is your fax number?']),
+    item(conflictingAddressFaq.question, conflictingAddressFaq.answer, ['old Carencro address', 'which Relief Plus address', 'conflicting clinic address']),
+    item(outsideRecordsFaq.question, outsideRecordsFaq.answer, ['send MRI report', 'upload imaging', 'email my records', 'can I send you my MRI results', 'how do I share outside medical records'], '/contact', { href: '#first-visit', label: 'What to bring to a first visit' }),
   ] },
   { id: 'first-visit', title: 'Your first visit', items: [
     item('Do you adjust on the first visit?', 'Yes. If the examination finds no contraindications, treatment is done on the first visit. An adjustment is performed when it is appropriate for your condition.', ['Do you adust on the first visit?', 'Will I get adjusted at my first appointment?', 'Do you treat on the first visit?', 'Will I receive treatment the same day?', 'First visit treatment'], '/faq-lafayette'),
@@ -51,7 +54,7 @@ export const answerGroups = [
   ] },
   { id: 'insurance', title: 'Insurance & costs', items: [
     item('Which insurance plans do you accept?', 'Insurance benefits and network participation vary by your exact plan, provider and service. Call Relief Plus before your visit to verify current participation, referral or authorization requirements, and expected patient responsibility. A carrier name alone does not establish in-network status or guarantee coverage or payment.', ['Do you take insurance?', 'What insurance do you take?']),
-    ...['Medicare', 'Blue Cross and Blue Shield', 'UnitedHealthcare', 'VA', 'Verity', 'Healthy Blue'].map(name => item(`Do you accept ${name}?`, `Insurance benefits and network participation vary by your exact plan, provider and service. Call Relief Plus before your visit to verify current participation, referral or authorization requirements, and expected patient responsibility. A carrier name alone does not establish in-network status or guarantee coverage or payment.`, name === 'Blue Cross and Blue Shield' ? ['Do you take BCBS?', 'Do you take Blue Cross?'] : [])),
+    ...['Medicare', 'Blue Cross and Blue Shield', 'UnitedHealthcare', 'VA', 'Verity', 'Healthy Blue'].map(name => name === 'VA' ? item(vaCommunityCareFaq.question, vaCommunityCareFaq.answer, ['Do you accept VA?', 'VA referral', 'Veterans Community Care', 'VA authorization', 'can I use VA benefits for chiropractic'], 'https://www.va.gov/resources/how-to-get-community-care-referrals-and-schedule-appointments/') : item(`Do you accept ${name}?`, `Insurance benefits and network participation vary by your exact plan, provider and service. Call Relief Plus before your visit to verify current participation, referral or authorization requirements, and expected patient responsibility. A carrier name alone does not establish in-network status or guarantee coverage or payment.`, name === 'Blue Cross and Blue Shield' ? ['Do you take BCBS?', 'Do you take Blue Cross?'] : [])),
     item('How much does a visit cost?', 'Your cost depends on the services provided and your insurance benefits, if applicable. Call 337-565-4200 for pricing for the visit or treatment you are considering; this page does not publish a fixed visit price.', ['What are your prices?', 'How much is an adjustment?', 'What is the cost of laser therapy?', 'How much is physical therapy?']),
     item('Does insurance cover every treatment?', 'No coverage guarantee applies just because we accept your plan. Coverage and authorization vary by service and policy. Confirm benefits and your expected cost before treatment.', ['Will my insurance pay for laser therapy?', 'Is PRP covered by insurance?', 'Is shockwave covered?']),
     item('Can I get a good faith estimate?', 'Uninsured or self-pay patients may request a Good Faith Estimate of expected charges. See our Good Faith Estimate page or call the clinic for details.', ['Do you provide a good faith estimate?'], '/good-faith-estimate'),
@@ -103,6 +106,7 @@ export const answerGroups = [
     item('Can sciatica cause tingling or numbness?', 'Yes. Sciatica can include tingling, numbness, burning pain or weakness extending into a leg or foot. An examination helps identify the cause and check nerve function.', ['Sciatica symptoms', 'Can sciatica cause leg pain?'], sciaticaPage.path),
     item('When are back pain or sciatica symptoms an emergency?', 'Seek emergency care for new bladder or bowel control problems, numbness around the groin or saddle area, or severe or worsening weakness or numbness in both legs. These can signal a serious spinal problem.', ['Sciatica red flags', 'Back pain and bladder problems'], sciaticaPage.path),
     item('Can you guarantee pain relief?', 'No. Results vary by condition and patient. Care is based on the examination, your goals and reassessment of your response.', ['Will treatment definitely work?', 'Is treatment guaranteed?'], '/our-approach'),
+    item(sciaticaDrivingFaq.question, sciaticaDrivingFaq.answer, ['sciatica while driving', 'leg numbness driving', 'can I drive with leg numbness', 'sciatica makes it hard to use the pedals'], sciaticaRoadTripPath),
   ] },
   { id: 'team', title: 'Your care team', items: [
     item('Who is the chiropractor at Relief Plus?', 'Dr. Shawn D. Johnston, D.C., provides chiropractic care and assesses muscle, joint and movement concerns.', ['Who does the adjustments?', 'Who is Dr. Johnston?'], '/dr-shawn-johnston-dc'),

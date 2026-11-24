@@ -1,3 +1,4 @@
+import { sciaticaRoadTripPath } from "./nov23-patient-answers";
 import type { PillarPageData } from "./pillar-pages";
 import {
   backPainClinical,
@@ -91,7 +92,7 @@ export const sciaticaPage = createConditionPage({
   description: "Sciatica treatment in Lafayette, LA with evaluation of radiating leg symptoms, movement, and function at Relief Plus.",
   overview: ["Sciatica describes symptoms such as pain, burning, tingling, numbness, or weakness traveling into a leg along the sciatic nerve pathway. It names a pattern, not the full cause.", "We look at what changes your symptoms and check movement and nerve function. That helps us consider the likely source and decide what needs attention first."],
   symptoms: [{ title: "Radiating pain", description: "Discomfort may travel from the low back or buttock into a leg." }, { title: "Tingling or numbness", description: "Altered sensation may occur along part of the leg or foot." }, { title: "Burning symptoms", description: "Some people describe a hot, electric, or sharp quality." }, { title: "Strength changes", description: "Weakness or reduced control warrants careful evaluation." }],
-  related: [{ title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }],
+  related: [{ title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }, { title: "Sciatica on a Road Trip", href: sciaticaRoadTripPath }],
   care: [chiropractic, pt, decompression, dry],
   clinical: sciaticaClinical,
 });
