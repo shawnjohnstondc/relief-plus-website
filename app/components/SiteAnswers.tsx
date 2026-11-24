@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { usePathname } from "next/navigation";
 import { searchSite, type AnswerIndex } from "@/lib/site-answers/search";
+import { sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "@/lib/sciatica-treatment-answer";
 
 type ChatAnswer = { bullets: string[]; sources: { title: string; path: string }[] };
 import "./site-answers.css";
@@ -49,7 +50,9 @@ export default function SiteAnswers() {
       const matches = searchSite(index.current, trimmed).slice(0, 1);
       const data: ChatAnswer = {
         bullets: matches.length ? matches[0].text.split(/\n\n/).filter(Boolean) : ["I couldn’t find a clear match on our website. Try a specific topic, such as the treatment or condition name."],
-        sources: matches.map(p => ({ title: p.title, path: p.path })),
+        sources: matches.map(p => p.heading === sciaticaTreatmentQuestion && /^\/faq-lafayette\/patient-questions(?:#|$)/.test(p.path)
+          ? { title: "Sciatica care at Relief Plus", path: sciaticaTreatmentSource }
+          : { title: p.title, path: p.path }),
       };
       setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, answer: data } : turn));
     } catch (error) {

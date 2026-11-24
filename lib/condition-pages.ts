@@ -93,7 +93,7 @@ export const sciaticaPage = createConditionPage({
   overview: ["Sciatica describes symptoms such as pain, burning, tingling, numbness, or weakness traveling into a leg along the sciatic nerve pathway. It names a pattern, not the full cause.", "We look at what changes your symptoms and check movement and nerve function. That helps us consider the likely source and decide what needs attention first."],
   symptoms: [{ title: "Radiating pain", description: "Discomfort may travel from the low back or buttock into a leg." }, { title: "Tingling or numbness", description: "Altered sensation may occur along part of the leg or foot." }, { title: "Burning symptoms", description: "Some people describe a hot, electric, or sharp quality." }, { title: "Strength changes", description: "Weakness or reduced control warrants careful evaluation." }],
   related: [{ title: "Back Pain", href: "/back-pain-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }, { title: "Sciatica on a Road Trip", href: sciaticaRoadTripPath }],
-  care: [chiropractic, pt, decompression, dry],
+  care: [chiropractic, pt, dry],
   clinical: sciaticaClinical,
 });
 

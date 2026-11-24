@@ -1,3 +1,4 @@
+import { sciaticaTreatmentAliases, sciaticaTreatmentAnswer, sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "../sciatica-treatment-answer";
 import { imagingAnswer, exerciseResponseAnswer, dryNeedlingAftercareAnswer } from "../patient-care-answers";
 import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "../referral-guidance";
 import { backPainPage, neckPainPage, sciaticaPage, herniatedDiscPage, pinchedNervePage } from '../condition-pages';
@@ -99,7 +100,9 @@ export const answerGroups = [
       const label = names[data.path] ?? name as string;
       return [
         item(`Do you treat ${label}?`, `Yes. Relief Plus evaluates and treats ${label} when the examination supports care here. We assess the cause and determine whether treatment or further medical evaluation should come first.`, [`Can you help with ${label}?`, `Do you see patients with ${label}?`], data.path),
-        item(`How do you treat ${label}?`, data.path === '/sciatica-treatment-lafayette' ? 'We first check the cause of the leg symptoms, your strength, sensation and movement.\n\nWhen appropriate, chiropractic care addresses restricted back or pelvic joints. Physical therapy uses exercises to improve comfortable movement, trunk and hip control, walking and lifting. Nerve-mobility exercises may be included when appropriate.\n\nYour examination determines the plan and whether further medical evaluation is needed.' : data.approachDescription.replace(/\.\s+(?=[A-Z])/g, '.\n\n'), [`What treatments do you use for ${label}?`, `What can you do for ${label}?`], data.path),
+        data.path === sciaticaPage.path
+          ? item(sciaticaTreatmentQuestion, sciaticaTreatmentAnswer, ["What treatments do you use for sciatica?", "What can you do for sciatica?", ...sciaticaTreatmentAliases], sciaticaTreatmentSource)
+          : item(`How do you treat ${label}?`, data.approachDescription.replace(/\.\s+(?=[A-Z])/g, '.\n\n'), [`What treatments do you use for ${label}?`, `What can you do for ${label}?`], data.path),
       ];
     }),
     item('What is sciatica?', sciaticaPage.overviewParagraphs[0], ['What does sciatica mean?'], sciaticaPage.path),

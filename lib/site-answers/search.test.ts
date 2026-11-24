@@ -24,7 +24,7 @@ describe('preferred patient answers', () => {
     ['Do you do laser therapy?', 'Yes. Relief Plus offers laser therapy.'],
     ['What is laser therapy?', 'Class IV laser therapy uses specific'],
     ['Do you treat sciatica?', 'Yes. Relief Plus evaluates and treats sciatica'],
-    ['How do you treat sciatica?', 'We first check the cause'],
+    ['How do you treat sciatica?', 'At Relief Plus, we start by checking where your leg symptoms travel'],
     ['Do you take walkins?', 'Call 337-565-4200'],
   ])('matches everyday phrasing: %s', (question, expected) => {
     const match = searchSite(index, question)[0];
