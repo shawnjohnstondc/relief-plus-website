@@ -1,3 +1,4 @@
+import { approvedConditionTreatments } from "./approved-condition-treatment-answers";
 import type { PillarPageData } from "./pillar-pages";
 
 export const sportsInjuriesPage: PillarPageData = {
@@ -153,12 +154,10 @@ export const sportsInjuriesPage: PillarPageData = {
       ],
     },
     {
+      id: approvedConditionTreatments.sportsInjuries.stableSection,
       eyebrow: "Training and Recovery",
-      title: "Load management is a balance between current capacity and the dose of sport.",
-      paragraphs: [
-        "Training volume, intensity, frequency, surface, equipment, competition density, and recovery between practices or games can influence symptoms. Previous injury and time away from sport may also change current tolerance.",
-        "Activity modification does not always mean complete rest. Depending on the diagnosis, the plan may temporarily reduce a provocative dose while maintaining safe conditioning and progressively rebuilding the specific demand. Sudden large increases or repeated testing at full intensity can interrupt that progression.",
-      ],
+      title: approvedConditionTreatments.sportsInjuries.question,
+      paragraphs: approvedConditionTreatments.sportsInjuries.paragraphs,
     },
     {
       eyebrow: "Return to Sport",
