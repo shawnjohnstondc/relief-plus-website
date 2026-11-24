@@ -20,7 +20,7 @@ export default function ChiropracticAdjustmentsPage() {
           path: chiropracticPage.path,
         })}
       />
-      <PillarPageShell data={chiropracticPage} />
+      <PillarPageShell data={chiropracticPage} showNewPatientLink />
     </>
   );
 }

@@ -23,7 +23,7 @@ const pillars = [
   },
 ] as const;
 
-export default function PillarPageShell({ data }: { data: PillarPageData }) {
+export default function PillarPageShell({ data, showNewPatientLink }: { data: PillarPageData; showNewPatientLink?: boolean }) {
   const educationSections = data.educationSections?.map((section, index) => ({ ...section, id: section.id ?? `care-detail-${index + 1}` }));
 
   const safetySection = educationSections?.find((section) => /More Evaluation|Additional Evaluation|Medical Evaluation|Urgent|Prompt Care|Escalate|Feels Like|Dose and Clinical Fit|Patient Experience|Preparation,|Evidence Is Still|Treatment and Follow|Product-Specific Clarity/.test(section.eyebrow ?? ""));
@@ -61,6 +61,11 @@ export default function PillarPageShell({ data }: { data: PillarPageData }) {
                   What happens at a visit
                 </a>
               </div>
+              {showNewPatientLink && (
+                <Link href="/new-patients" className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-[#6b4e17] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4">
+                  What to expect at your first visit
+                </Link>
+              )}
               {data.bookingGuidance && (
                 <div className="mt-6 rounded-2xl border border-[#12233f]/15 bg-white/60 p-5">
                   <h2 className="text-base font-semibold">Referrals and booking</h2>

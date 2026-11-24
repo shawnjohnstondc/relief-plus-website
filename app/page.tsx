@@ -97,7 +97,7 @@ export default function Home() {
               regenerative treatments. Call our Lafayette clinic to arrange a visit.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <a
                 href="tel:+13375654200"
                 className="rounded-full bg-[#12233f] px-7 py-4 text-center text-sm font-semibold text-white transition hover:bg-[#1a3156]"
@@ -110,6 +110,9 @@ export default function Home() {
                 className="rounded-full border border-[#12233f]/20 px-7 py-4 text-center text-sm font-semibold transition hover:border-[#b08d3b] hover:text-[#9a7428]"
               >
                 Explore Our Treatments
+              </Link>
+              <Link href="/new-patients" className="inline-flex min-h-12 items-center justify-center text-sm font-semibold text-[#6b4e17] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4">
+                What to expect at your first visit
               </Link>
             </div>
 

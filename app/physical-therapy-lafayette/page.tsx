@@ -20,7 +20,7 @@ export default function PhysicalTherapyPage() {
           path: physicalTherapyPage.path,
         })}
       />
-      <PillarPageShell data={{
+      <PillarPageShell showNewPatientLink data={{
         ...physicalTherapyPage,
         provider: {
           name: "Jeanne Saucier, PT",

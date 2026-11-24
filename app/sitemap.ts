@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.9 },
     { path: "/team", priority: 0.8 },
     { path: "/contact", priority: 0.9 },
+    { path: "/new-patients", priority: 0.8 },
     { path: "/services", priority: 0.9 },
     { path: "/our-approach", priority: 0.8 },
     { path: "/dr-shawn-johnston-dc", priority: 0.8 },

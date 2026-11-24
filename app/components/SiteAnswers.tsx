@@ -94,6 +94,7 @@ export default function SiteAnswers() {
             <button type="submit" disabled={busy || !question.trim()} className="site-answers-send" aria-label="Send question"><Arrow /></button>
           </form>
           <p>Information from our website. No personal medical details. <a href="/privacy-policy">Privacy</a></p>
+          <p><a href="/new-patients" onClick={() => dialog.current?.close()}>What to expect at your first visit</a></p>
         </footer>
       </div>
     </dialog>
