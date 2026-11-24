@@ -4,6 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { usePathname } from "next/navigation";
 import { searchSite, type AnswerIndex } from "@/lib/site-answers/search";
 import { sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "@/lib/sciatica-treatment-answer";
+import { approvedConditionTreatments, approvedTreatmentHref } from "@/lib/approved-condition-treatment-answers";
 
 type ChatAnswer = { bullets: string[]; sources: { title: string; path: string }[] };
 import "./site-answers.css";
@@ -50,9 +51,14 @@ export default function SiteAnswers() {
       const matches = searchSite(index.current, trimmed).slice(0, 1);
       const data: ChatAnswer = {
         bullets: matches.length ? matches[0].text.split(/\n\n/).filter(Boolean) : ["I couldn’t find a clear match on our website. Try a specific topic, such as the treatment or condition name."],
-        sources: matches.map(p => p.heading === sciaticaTreatmentQuestion && /^\/faq-lafayette\/patient-questions(?:#|$)/.test(p.path)
-          ? { title: "Sciatica care at Relief Plus", path: sciaticaTreatmentSource }
-          : { title: p.title, path: p.path }),
+        sources: matches.map(p => {
+          if (/^\/faq-lafayette\/patient-questions(?:#|$)/.test(p.path)) {
+            if (p.heading === sciaticaTreatmentQuestion) return { title: "Sciatica care at Relief Plus", path: sciaticaTreatmentSource };
+            const treatment = Object.values(approvedConditionTreatments).find(item => item.question === p.heading);
+            if (treatment) return { title: `${treatment.title} care at Relief Plus`, path: approvedTreatmentHref(treatment) };
+          }
+          return { title: p.title, path: p.path };
+        }),
       };
       setTurns(current => current.map((turn, i) => i === current.length - 1 ? { ...turn, answer: data } : turn));
     } catch (error) {

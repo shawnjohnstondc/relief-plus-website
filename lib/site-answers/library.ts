@@ -1,3 +1,4 @@
+import { approvedTreatmentAliases, approvedTreatmentForPath, approvedTreatmentHref } from "../approved-condition-treatment-answers";
 import { sciaticaTreatmentAliases, sciaticaTreatmentAnswer, sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "../sciatica-treatment-answer";
 import { imagingAnswer, exerciseResponseAnswer, dryNeedlingAftercareAnswer } from "../patient-care-answers";
 import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "../referral-guidance";
@@ -98,11 +99,14 @@ export const answerGroups = [
       const data = page as typeof sciaticaPage;
       const names: Record<string, string> = { '/tmj-treatment-lafayette': 'TMJ pain', '/hip-bursitis-lafayette': 'hip bursitis', '/achilles-tendinopathy-lafayette': 'Achilles tendinopathy', '/si-joint-pain-lafayette': 'SI joint pain', '/headache-treatment-lafayette': 'headaches', '/plantar-fasciitis-lafayette': 'plantar fasciitis', '/tendonitis-treatment-lafayette': 'tendonitis' };
       const label = names[data.path] ?? name as string;
+      const approved = approvedTreatmentForPath(data.path);
       return [
         item(`Do you treat ${label}?`, `Yes. Relief Plus evaluates and treats ${label} when the examination supports care here. We assess the cause and determine whether treatment or further medical evaluation should come first.`, [`Can you help with ${label}?`, `Do you see patients with ${label}?`], data.path),
         data.path === sciaticaPage.path
           ? item(sciaticaTreatmentQuestion, sciaticaTreatmentAnswer, ["What treatments do you use for sciatica?", "What can you do for sciatica?", ...sciaticaTreatmentAliases], sciaticaTreatmentSource)
-          : item(`How do you treat ${label}?`, data.approachDescription.replace(/\.\s+(?=[A-Z])/g, '.\n\n'), [`What treatments do you use for ${label}?`, `What can you do for ${label}?`], data.path),
+          : approved
+            ? item(approved.question, approved.paragraphs.join("\n\n"), approvedTreatmentAliases(approved, label), approvedTreatmentHref(approved))
+            : item(`How do you treat ${label}?`, data.approachDescription.replace(/\.\s+(?=[A-Z])/g, '.\n\n'), [`What treatments do you use for ${label}?`, `What can you do for ${label}?`], data.path),
       ];
     }),
     item('What is sciatica?', sciaticaPage.overviewParagraphs[0], ['What does sciatica mean?'], sciaticaPage.path),
