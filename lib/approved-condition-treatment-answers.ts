@@ -42,6 +42,54 @@ export const approvedConditionTreatments = {
       "A “pinched nerve” could start at the spine or farther down, such as at the wrist or elbow. At Relief Plus, we check the pattern of symptoms and test movement, strength, and sensation to help locate the problem. For a spine-related problem, guided movement and strengthening may help you regain function. When a nerve is irritated at the wrist or elbow, changing activities or positions that put pressure on it may be more useful.",
       "Sometimes hands-on care helps a stiff joint that’s limiting movement, or dry needling is considered for separate muscle pain. Neither is a way to free a trapped nerve. Treatment depends on where the problem is and whether nerve function is changing. New or worsening weakness, a foot that starts to drag, or hand clumsiness needs prompt medical evaluation. An unclear source may need further testing or a referral."
     ]
+  },
+  "siJoint": {
+    "path": "/si-joint-pain-lafayette",
+    "title": "SI Joint Pain",
+    "stableSection": "care-detail-4",
+    "question": "How do you treat SI joint pain?",
+    "condition": "SI joint pain",
+    "alternateNames": [
+      "SI joint",
+      "sacroiliac joint pain",
+      "sacroiliac pain"
+    ],
+    "paragraphs": [
+      "Pain near the sacroiliac (SI) joint can feel like pain from the low back or hip. At Relief Plus, we check where the pain is and which movements reproduce it before assuming the SI joint is the source. If the exam points to the SI region, we may use guided trunk and hip strengthening and practice movements that bother you, such as climbing stairs, getting out of a chair, or walking.",
+      "Hands-on mobilization or an adjustment may be used alongside exercise when a joint restriction is relevant and it’s safe to treat. The goal is easier movement, not to “put the pelvis back in place.” We may consider dry needling for separate muscle pain, not for the SI joint itself. If the pattern suggests inflammation, another cause, or pain that stays disabling despite appropriate care, we’ll discuss medical evaluation."
+    ]
+  },
+  "headache": {
+    "path": "/headache-treatment-lafayette",
+    "title": "Headache",
+    "stableSection": "care-detail-3",
+    "question": "How do you treat headaches?",
+    "condition": "headaches",
+    "alternateNames": [
+      "a headache",
+      "headache"
+    ],
+    "paragraphs": [
+      "At Relief Plus, we ask about the headache pattern and check whether neck movement or muscle tenderness seems related. Neck pain can also accompany migraine, so a stiff neck doesn’t tell us what type of headache you have. When the exam supports a neck-related headache, care may include exercises to improve neck and shoulder movement and endurance, plus gentle hands-on mobilization if it fits.",
+      "We may consider dry needling for a separate tender muscle that’s making movement harder, not as a treatment for migraine. If the pattern points to migraine or another medical cause, we’ll recommend appropriate medical care. A sudden, severe headache, new weakness or trouble speaking, or headache with fever and a stiff neck needs emergency evaluation."
+    ]
+  },
+  "tmj": {
+    "path": "/tmj-treatment-lafayette",
+    "title": "TMJ/Jaw Pain",
+    "stableSection": "care-detail-3",
+    "question": "How do you treat TMJ or jaw pain?",
+    "condition": "TMJ or jaw pain",
+    "alternateNames": [
+      "jaw pain",
+      "TMJ",
+      "TMD",
+      "TMJ pain"
+    ],
+    "paragraphs": [
+      "At Relief Plus, we ask about chewing, clenching, clicking, and locking, then check how your jaw opens and moves. If the exam points to the jaw joint or chewing muscles, we may start with guided jaw exercises and changes to habits that aggravate it. Gentle hands-on work may help you open your mouth more comfortably or chew with less difficulty. The goal isn’t to realign your jaw or change your bite.",
+      "If a separate muscle problem is contributing, we may discuss dry needling; it isn’t needed for everyone and doesn’t replace dental care. Painless clicking on its own usually doesn’t need treatment. Persistent locking, decreasing opening, or suspected tooth problems may need a dentist or jaw specialist. Significant injury or facial swelling with fever needs prompt assessment; trouble breathing or swallowing needs emergency care."
+    ]
   }
 };
 
@@ -72,5 +120,20 @@ export function approvedTreatmentAliases(treatment: ApprovedConditionTreatment, 
     `What treatments do y’all use for ${name}?`,
     `What can you do for ${existingLabel}?`,
   ];
+  if ("alternateNames" in treatment) {
+    for (const label of new Set([name, ...treatment.alternateNames])) {
+      exact.push(
+        `How do you treat ${label}?`,
+        `How do yall treat ${label}?`,
+        `How do y’all treat ${label}?`,
+        `How do you all treat ${label}?`,
+        `What do you do for ${label}?`,
+        `What do yall do for ${label}?`,
+        `What do y’all do for ${label}?`,
+        `What treatments do you use for ${label}?`,
+        `What can you do for ${label}?`,
+      );
+    }
+  }
   return [...new Set(exact)].filter(question => question !== treatment.question);
 }
