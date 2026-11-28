@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { usePathname } from "next/navigation";
 import { searchSite, type AnswerIndex } from "@/lib/site-answers/search";
+import { neckImagingAskAnswers } from "@/lib/neck-imaging-answers";
 import { sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "@/lib/sciatica-treatment-answer";
 import { approvedConditionTreatments, approvedTreatmentHref } from "@/lib/approved-condition-treatment-answers";
 
@@ -53,6 +54,8 @@ export default function SiteAnswers() {
         bullets: matches.length ? matches[0].text.split(/\n\n/).filter(Boolean) : ["I couldn’t find a clear match on our website. Try a specific topic, such as the treatment or condition name."],
         sources: matches.map(p => {
           if (/^\/faq-lafayette\/patient-questions(?:#|$)/.test(p.path)) {
+            const neckAnswer = neckImagingAskAnswers.find(({ question }) => question === p.heading);
+            if (neckAnswer) return { title: neckAnswer.actionLabel, path: neckAnswer.href };
             if (p.heading === sciaticaTreatmentQuestion) return { title: "Sciatica care at Relief Plus", path: sciaticaTreatmentSource };
             const treatment = Object.values(approvedConditionTreatments).find(item => item.question === p.heading);
             if (treatment) return { title: `${treatment.title} care at Relief Plus`, path: approvedTreatmentHref(treatment) };

@@ -1,3 +1,4 @@
+import { neckImagingAskAnswers } from "../neck-imaging-answers";
 import { approvedTreatmentAliases, approvedTreatmentForPath, approvedTreatmentHref } from "../approved-condition-treatment-answers";
 import { sciaticaTreatmentAliases, sciaticaTreatmentAnswer, sciaticaTreatmentQuestion, sciaticaTreatmentSource } from "../sciatica-treatment-answer";
 import { imagingAnswer, exerciseResponseAnswer, dryNeedlingAftercareAnswer } from "../patient-care-answers";
@@ -114,6 +115,7 @@ export const answerGroups = [
     item('When are back pain or sciatica symptoms an emergency?', 'Seek emergency care for new bladder or bowel control problems, numbness around the groin or saddle area, or severe or worsening weakness or numbness in both legs. These can signal a serious spinal problem.', ['Sciatica red flags', 'Back pain and bladder problems'], sciaticaPage.path),
     item('Can you guarantee pain relief?', 'No. Results vary by condition and patient. Care is based on the examination, your goals and reassessment of your response.', ['Will treatment definitely work?', 'Is treatment guaranteed?'], '/our-approach'),
     item(sciaticaDrivingFaq.question, sciaticaDrivingFaq.answer, ['sciatica while driving', 'leg numbness driving', 'can I drive with leg numbness', 'sciatica makes it hard to use the pedals'], sciaticaRoadTripPath),
+    ...neckImagingAskAnswers.map(({ question, answer, aliases, href }) => item(question, answer, aliases, href)),
   ] },
   { id: 'team', title: 'Your care team', items: [
     item('Who is the chiropractor at Relief Plus?', 'Dr. Shawn D. Johnston, D.C., provides chiropractic care and assesses muscle, joint and movement concerns.', ['Who does the adjustments?', 'Who is Dr. Johnston?'], '/dr-shawn-johnston-dc'),

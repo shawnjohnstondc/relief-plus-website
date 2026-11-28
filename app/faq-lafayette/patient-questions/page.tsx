@@ -1,3 +1,4 @@
+import { neckImagingAskAnswers } from "@/lib/neck-imaging-answers";
 import Link from 'next/link';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
@@ -12,11 +13,11 @@ export const metadata = createPageMetadata({
   path: libraryPath,
 });
 
-const approvedAnswerAnchors = new Set([vaCommunityCareFaq.question, sciaticaDrivingFaq.question, conflictingAddressFaq.question, outsideRecordsFaq.question]);
+const approvedAnswerAnchors = new Set([vaCommunityCareFaq.question, sciaticaDrivingFaq.question, conflictingAddressFaq.question, outsideRecordsFaq.question, ...neckImagingAskAnswers.map(({ question }) => question)]);
 
 export default function PatientQuestionsPage() {
   return <main className="min-h-screen bg-[#f7f5ef] text-[#12233f]">
-    <JsonLd data={createFaqStructuredData([vaCommunityCareFaq])} />
+    <JsonLd data={createFaqStructuredData([vaCommunityCareFaq, ...neckImagingAskAnswers])} />
     <SiteHeader currentPath={libraryPath} />
     <div className="mx-auto max-w-4xl px-6 py-16 sm:py-24">
       <Link href="/faq-lafayette" className="text-sm text-[#82601f] underline underline-offset-4">← Frequently asked questions</Link>

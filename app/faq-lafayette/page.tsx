@@ -1,5 +1,6 @@
 import { chiropracticReferralGuidance, physicalTherapyReferralGuidance } from "@/lib/referral-guidance";
 import Link from "next/link";
+import { neckImagingFaqs } from "@/lib/neck-imaging-answers";
 import { vaCommunityCareFaqAnchor } from "@/lib/nov23-patient-answers";
 import InfoPageShell from "@/app/components/InfoPageShell";
 import JsonLd from "@/app/components/JsonLd";
@@ -40,6 +41,7 @@ const categories = [
     { question: "Are PRP, ozone, and cellular therapies the same?", answer: "No. They are distinct procedures with different evidence, risks, product questions, and regulatory considerations." },
     { question: "Is every patient a candidate for regenerative medicine?", answer: "No. Candidacy depends on the exact option, diagnosis, examination, health context, evidence, goals, risks, and reasonable alternatives." },
   ] },
+  { eyebrow: "Neck Pain", title: "Questions about neck collars and MRI.", items: neckImagingFaqs },
   { eyebrow: "Scheduling + Location", title: "Visiting Relief Plus.", items: [
     { question: "How do I schedule?", answer: "Call Relief Plus at 337-565-4200. This website does not offer online booking." },
     { question: "Where is Relief Plus?", answer: "The clinic’s published address is 112 Arabian Dr., Lafayette, Louisiana 70507." },
