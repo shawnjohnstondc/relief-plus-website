@@ -44,6 +44,7 @@ import { phaseNineHBlogPosts } from "./phase-nine-h-blog-posts";
 import { authorityBlogPosts } from "./authority-blog-posts";
 import { sciaticaPeripheralNerveBlogPost } from "./sciatica-peripheral-nerve-blog-post";
 import { bowhuntingShoulderBlogPost } from "./bowhunting-shoulder-blog-post";
+import { squirrelHuntingNeckPost } from "./squirrel-hunting-neck-blog-post";
 import { neckImagingBlogPosts } from "./neck-imaging-blog-posts";
 import { sciaticaRoadTripPost } from "./sciatica-road-trip-blog-post";
 import { backPainMriBlogPost } from "./back-pain-mri-blog-post";
@@ -210,6 +211,6 @@ const phaseNineBBlogPosts: BlogPost[] = [
 
 import { calculateReadTime } from "./article-reading-time";
 
-export const blogPosts: BlogPost[] = [...neckImagingBlogPosts, sciaticaRoadTripPost, backPainMriBlogPost, backPainMovementBlogPost, spinalStenosisBlogPost, achillesBlogPost, ankleSprainBlogPost, thoracicOutletAcadianaBlogPost, sciaticaPeripheralNerveBlogPost, bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
+export const blogPosts: BlogPost[] = [squirrelHuntingNeckPost, ...neckImagingBlogPosts, sciaticaRoadTripPost, backPainMriBlogPost, backPainMovementBlogPost, spinalStenosisBlogPost, achillesBlogPost, ankleSprainBlogPost, thoracicOutletAcadianaBlogPost, sciaticaPeripheralNerveBlogPost, bowhuntingShoulderBlogPost, ...authorityBlogPosts, ...phaseNineBBlogPosts, ...phaseNineCBlogPosts, ...phaseNineDBlogPosts, ...phaseNineFBlogPosts, ...phaseNineHBlogPosts].map((post) => ({ ...post, readTime: calculateReadTime(post) }));
 
 export const blogPostsBySlug = new Map(blogPosts.map((post) => [post.slug, post]));

@@ -81,7 +81,7 @@ export const neckPainPage = createConditionPage({
   description: "Neck pain treatment in Lafayette, LA with individualized evaluation of movement, function, and related symptoms at Relief Plus.",
   overview: ["Your neck may feel stiff or achy, or you may have sharper pain when you turn or hold a position. Headaches or symptoms traveling toward an arm can occur too.", "Several conditions can feel similar. An examination helps us consider the possible causes and choose care based on more than one symptom."],
   symptoms: [{ title: "Stiffness", description: "Turning or positioning the head may feel restricted." }, { title: "Local pain", description: "Aching or sharper discomfort may occur around the neck and upper back." }, { title: "Arm symptoms", description: "Some concerns include tingling, numbness, or discomfort into an arm." }, { title: "Headache pattern", description: "Neck symptoms and certain headache patterns may occur together." }],
-  related: [{ title: "Headaches", href: "/headache-treatment-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, ...neckImagingFaqs.map(({ actionLabel, href }) => ({ title: actionLabel, href }))],
+  related: [{ title: "Headaches", href: "/headache-treatment-lafayette" }, { title: "Pinched Nerve", href: "/pinched-nerve-lafayette" }, { title: "Herniated Disc", href: "/herniated-disc-lafayette" }, ...neckImagingFaqs.map(({ actionLabel, href }) => ({ title: actionLabel, href })), { title: "Neck Pain After Squirrel Hunting", href: "/blog/neck-pain-after-squirrel-hunting" }],
   care: [chiropractic, pt, dry],
   clinical: neckPainClinical,
 });
